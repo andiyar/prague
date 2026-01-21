@@ -415,20 +415,67 @@ function renderFlights() {
 // WEATHER
 // =============================================================================
 
+// Weather locations
+const WEATHER_LOCATIONS = {
+    home: { lat: -34.4278, lng: 150.8931, name: 'Wollongong' },
+    prague: { lat: 50.0875, lng: 14.4213, name: 'Prague' },
+    dubai: { lat: 25.2532, lng: 55.3657, name: 'Dubai' },
+    sydney: { lat: -33.8688, lng: 151.2093, name: 'Sydney' }
+};
+
 async function loadWeather() {
+    // Fetch weather for all locations in parallel
+    await Promise.all([
+        fetchWeatherForLocation('home', WEATHER_LOCATIONS.home),
+        fetchWeatherForLocation('prague', WEATHER_LOCATIONS.prague),
+        fetchWeatherForBen()
+    ]);
+}
+
+async function fetchWeatherForLocation(id, location) {
     try {
-        // Determine location for weather
-        let lat = 50.0875; // Prague default
-        let lng = 14.4213;
-        let locationName = 'Prague';
+        const response = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${location.lat}&longitude=${location.lng}&current=temperature_2m,weather_code`
+        );
+
+        if (!response.ok) throw new Error('Weather fetch failed');
+
+        const data = await response.json();
+        const temp = Math.round(data.current.temperature_2m);
+        const weatherCode = data.current.weather_code;
+
+        document.getElementById(`weather-${id}-temp`).textContent = `${temp}°`;
+        document.getElementById(`weather-${id}-icon`).textContent = getWeatherEmoji(weatherCode);
+
+    } catch (error) {
+        console.error(`Error loading weather for ${id}:`, error);
+        document.getElementById(`weather-${id}-temp`).textContent = '--°';
+        document.getElementById(`weather-${id}-icon`).textContent = '--';
+    }
+}
+
+async function fetchWeatherForBen() {
+    try {
+        // Determine Ben's current location
+        let lat, lng, locationName;
 
         if (currentStatus && currentStatus.lat && currentStatus.lng) {
             lat = currentStatus.lat;
             lng = currentStatus.lng;
 
-            if (lat < 0) locationName = 'Sydney';
-            else if (lat > 20 && lat < 30) locationName = 'Dubai';
-            else locationName = 'Prague';
+            // Determine location name based on coordinates
+            if (lat < 0) {
+                locationName = 'Sydney';
+            } else if (lat > 20 && lat < 30) {
+                locationName = 'Dubai';
+            } else {
+                locationName = 'Prague';
+            }
+        } else {
+            // Default to Sydney before trip starts
+            lat = WEATHER_LOCATIONS.sydney.lat;
+            lng = WEATHER_LOCATIONS.sydney.lng;
+            locationName = 'Sydney';
         }
 
         const response = await fetch(
@@ -441,15 +488,15 @@ async function loadWeather() {
         const temp = Math.round(data.current.temperature_2m);
         const weatherCode = data.current.weather_code;
 
-        document.getElementById('weather-temp').textContent = `${temp}°C`;
-        document.getElementById('weather-icon').textContent = getWeatherEmoji(weatherCode);
-        document.getElementById('weather-desc').textContent = getWeatherDescription(weatherCode);
-        document.getElementById('weather-location').textContent = `in ${locationName}`;
+        document.getElementById('weather-ben-temp').textContent = `${temp}°`;
+        document.getElementById('weather-ben-icon').textContent = getWeatherEmoji(weatherCode);
+        document.getElementById('weather-ben-location').textContent = locationName;
 
     } catch (error) {
-        console.error('Error loading weather:', error);
-        document.getElementById('weather-temp').textContent = '--';
-        document.getElementById('weather-desc').textContent = 'Unable to load weather';
+        console.error('Error loading weather for Ben:', error);
+        document.getElementById('weather-ben-temp').textContent = '--°';
+        document.getElementById('weather-ben-icon').textContent = '--';
+        document.getElementById('weather-ben-location').textContent = '--';
     }
 }
 
