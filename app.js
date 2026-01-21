@@ -1,5 +1,5 @@
 // =============================================================================
-// DAD'S PRAGUE TRIP DASHBOARD
+// BEN'S PRAGUE TRIP DASHBOARD
 // =============================================================================
 
 // Supabase Config
@@ -180,7 +180,7 @@ async function updateStatus() {
                     currentStatus = {
                         status_emoji: '📅',
                         status_text: 'Trip starts soon!',
-                        kids_text: 'Dad\'s trip is coming up!',
+                        kids_text: 'Daddy\'s trip is coming up!',
                         lat: -33.8688,
                         lng: 151.2093,
                         isOverride: false
@@ -189,7 +189,7 @@ async function updateStatus() {
                     currentStatus = {
                         status_emoji: '🏠',
                         status_text: 'Back home!',
-                        kids_text: 'Dad\'s home!',
+                        kids_text: 'Daddy\'s home!',
                         lat: -33.8688,
                         lng: 151.2093,
                         isOverride: false
@@ -277,7 +277,7 @@ function updateClocks() {
 
     const dadTime = new Date(now.toLocaleString('en-US', { timeZone: dadTimezone }));
     document.getElementById('time-dad').textContent = formatTime(dadTime);
-    document.getElementById('label-dad').textContent = `Dad (${dadLabel})`;
+    document.getElementById('label-dad').textContent = `Ben (${dadLabel})`;
 
     // Highlight the relevant clock
     document.querySelectorAll('.clock').forEach(el => el.classList.remove('highlight'));
@@ -306,9 +306,9 @@ function updateCountdown() {
 
     if (diff <= 0) {
         document.getElementById('countdown-value').textContent = '🎉';
-        document.getElementById('countdown-label').textContent = 'Dad\'s home!';
+        document.getElementById('countdown-label').textContent = 'Ben\'s home!';
         document.getElementById('kids-countdown-value').textContent = '0';
-        document.getElementById('kids-countdown-label').textContent = 'Dad\'s home!';
+        document.getElementById('kids-countdown-label').textContent = 'Daddy\'s home!';
         return;
     }
 
@@ -321,7 +321,7 @@ function updateCountdown() {
     } else {
         document.getElementById('countdown-value').textContent = `${hours}h`;
     }
-    document.getElementById('countdown-label').textContent = 'until Dad\'s home';
+    document.getElementById('countdown-label').textContent = 'until Ben\'s home';
 
     // Kids view: count sleeps (Sydney midnights)
     const sydneyNow = new Date(now.toLocaleString('en-US', { timeZone: 'Australia/Sydney' }));
@@ -340,7 +340,7 @@ function updateCountdown() {
 
     document.getElementById('kids-countdown-value').textContent = sleeps;
     document.getElementById('kids-countdown-label').textContent =
-        sleeps === 1 ? 'sleep until Dad\'s home!' : 'sleeps until Dad\'s home!';
+        sleeps === 1 ? 'sleep until Daddy\'s home!' : 'sleeps until Daddy\'s home!';
 }
 
 // =============================================================================
@@ -488,7 +488,7 @@ function renderContact() {
         { label: 'Hotel', value: config.hotel_name || 'STAGES HOTEL Prague', link: null },
         { label: 'Hotel Address', value: config.hotel_address || 'Ceskomoravska 19a, Prague', link: `https://maps.google.com/?q=${encodeURIComponent(config.hotel_address || 'Ceskomoravska 19a Prague')}` },
         { label: 'Conference', value: config.conference_name || 'EAPC World Congress 2026', link: config.conference_url },
-        { label: 'Dad\'s Phone', value: config.contact_phone || 'Not set', link: config.contact_phone ? `tel:${config.contact_phone}` : null },
+        { label: 'Ben\'s Phone', value: config.contact_phone || 'Not set', link: config.contact_phone ? `tel:${config.contact_phone}` : null },
         { label: 'Emergency', value: config.emergency_contact || 'Not set', link: null }
     ];
 
