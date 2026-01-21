@@ -7,7 +7,7 @@ const SUPABASE_URL = 'https://dyxupzbyssvcxjppipnl.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR5eHVwemJ5c3N2Y3hqcHBpcG5sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg5Mjc0MTksImV4cCI6MjA4NDUwMzQxOX0._pmFY2kmyUYLauX-BQeELbWziJ4nuXIaxOM5YsUYsBI';
 
 // Initialize Supabase client
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // Global state
 let tripSegments = [];
@@ -107,7 +107,7 @@ function switchView(view) {
 async function loadData() {
     try {
         // Load trip segments
-        const { data: segments, error: segmentsError } = await supabase
+        const { data: segments, error: segmentsError } = await supabaseClient
             .from('trip_segments')
             .select('*')
             .order('start_time', { ascending: true });
@@ -116,7 +116,7 @@ async function loadData() {
         tripSegments = segments || [];
 
         // Load config
-        const { data: configData, error: configError } = await supabase
+        const { data: configData, error: configError } = await supabaseClient
             .from('config')
             .select('*');
 
@@ -146,7 +146,7 @@ async function updateStatus() {
         const now = new Date();
 
         // Check for active override first
-        const { data: overrides, error: overrideError } = await supabase
+        const { data: overrides, error: overrideError } = await supabaseClient
             .from('status_override')
             .select('*')
             .gt('expires_at', now.toISOString())
