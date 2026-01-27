@@ -7,47 +7,51 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		/* WheresBen App Files */
-		WB001 /* WheresBenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF001; };
-		WB002 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF002; };
-		WB003 /* WhereIsBenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF003; };
-		WB004 /* StatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF004; };
-		WB005 /* MapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF005; };
-		WB006 /* FlightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF006; };
-		WB007 /* FlightCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF007; };
-		WB008 /* TripInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF008; };
-		WB009 /* KidsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF009; };
-		WB010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = WBF010; };
-
-		/* CaptainsLog App Files */
-		CL001 /* CaptainsLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CLF001; };
-		CL002 /* LogEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CLF002; };
-		CL003 /* QuickStatusGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CLF003; };
-		CL004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CLF004; };
-
-		/* Shared Files - WheresBen */
-		SH001WB /* TripSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF001; };
-		SH002WB /* StatusOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF002; };
-		SH003WB /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF003; };
-		SH004WB /* CurrentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF004; };
-		SH005WB /* QuickStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF005; };
-		SH006WB /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF006; };
-		SH007WB /* SupabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF007; };
-		SH008WB /* TripDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF008; };
-
-		/* Shared Files - CaptainsLog */
-		SH001CL /* TripSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF001; };
-		SH002CL /* StatusOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF002; };
-		SH003CL /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF003; };
-		SH004CL /* CurrentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF004; };
-		SH005CL /* QuickStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF005; };
-		SH006CL /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF006; };
-		SH007CL /* SupabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF007; };
+		CL001 /* CaptainsLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CLF001 /* CaptainsLogApp.swift */; };
+		CL002 /* LogEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CLF002 /* LogEntryView.swift */; };
+		CL003 /* QuickStatusGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CLF003 /* QuickStatusGrid.swift */; };
+		CL004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CLF004 /* Assets.xcassets */; };
+		SH001CL /* TripSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF001 /* TripSegment.swift */; };
+		SH001WB /* TripSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF001 /* TripSegment.swift */; };
+		SH002CL /* StatusOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF002 /* StatusOverride.swift */; };
+		SH002WB /* StatusOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF002 /* StatusOverride.swift */; };
+		SH003CL /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF003 /* Config.swift */; };
+		SH003WB /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF003 /* Config.swift */; };
+		SH004CL /* CurrentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF004 /* CurrentStatus.swift */; };
+		SH004WB /* CurrentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF004 /* CurrentStatus.swift */; };
+		SH005CL /* QuickStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF005 /* QuickStatus.swift */; };
+		SH005WB /* QuickStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF005 /* QuickStatus.swift */; };
+		SH006CL /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF006 /* DesignSystem.swift */; };
+		SH006WB /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF006 /* DesignSystem.swift */; };
+		SH007CL /* SupabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF007 /* SupabaseClient.swift */; };
+		SH007WB /* SupabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF007 /* SupabaseClient.swift */; };
+		SH008WB /* TripDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SHF008 /* TripDataService.swift */; };
+		WB001 /* WheresBenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF001 /* WheresBenApp.swift */; };
+		WB002 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF002 /* MainTabView.swift */; };
+		WB003 /* WhereIsBenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF003 /* WhereIsBenView.swift */; };
+		WB004 /* StatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF004 /* StatusCard.swift */; };
+		WB005 /* MapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF005 /* MapCard.swift */; };
+		WB006 /* FlightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF006 /* FlightsView.swift */; };
+		WB007 /* FlightCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF007 /* FlightCard.swift */; };
+		WB008 /* TripInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF008 /* TripInfoView.swift */; };
+		WB009 /* KidsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = WBF009 /* KidsView.swift */; };
+		WB010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = WBF010 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		/* WheresBen App */
-		WBPROD /* WheresBen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WheresBen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CLF001 /* CaptainsLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainsLogApp.swift; sourceTree = "<group>"; };
+		CLF002 /* LogEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryView.swift; sourceTree = "<group>"; };
+		CLF003 /* QuickStatusGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStatusGrid.swift; sourceTree = "<group>"; };
+		CLF004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CLPROD /* CaptainsLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaptainsLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		SHF001 /* TripSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripSegment.swift; sourceTree = "<group>"; };
+		SHF002 /* StatusOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusOverride.swift; sourceTree = "<group>"; };
+		SHF003 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		SHF004 /* CurrentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentStatus.swift; sourceTree = "<group>"; };
+		SHF005 /* QuickStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStatus.swift; sourceTree = "<group>"; };
+		SHF006 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
+		SHF007 /* SupabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseClient.swift; sourceTree = "<group>"; };
+		SHF008 /* TripDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDataService.swift; sourceTree = "<group>"; };
 		WBF001 /* WheresBenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheresBenApp.swift; sourceTree = "<group>"; };
 		WBF002 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		WBF003 /* WhereIsBenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereIsBenView.swift; sourceTree = "<group>"; };
@@ -58,108 +62,16 @@
 		WBF008 /* TripInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInfoView.swift; sourceTree = "<group>"; };
 		WBF009 /* KidsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsView.swift; sourceTree = "<group>"; };
 		WBF010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-
-		/* CaptainsLog App */
-		CLPROD /* CaptainsLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CaptainsLog.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CLF001 /* CaptainsLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainsLogApp.swift; sourceTree = "<group>"; };
-		CLF002 /* LogEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryView.swift; sourceTree = "<group>"; };
-		CLF003 /* QuickStatusGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStatusGrid.swift; sourceTree = "<group>"; };
-		CLF004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-
-		/* Shared */
-		SHF001 /* TripSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripSegment.swift; sourceTree = "<group>"; };
-		SHF002 /* StatusOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusOverride.swift; sourceTree = "<group>"; };
-		SHF003 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		SHF004 /* CurrentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentStatus.swift; sourceTree = "<group>"; };
-		SHF005 /* QuickStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStatus.swift; sourceTree = "<group>"; };
-		SHF006 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
-		SHF007 /* SupabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseClient.swift; sourceTree = "<group>"; };
-		SHF008 /* TripDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDataService.swift; sourceTree = "<group>"; };
+		WBPROD /* WheresBen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WheresBen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		ROOT = {
+		CLAPP /* App */ = {
 			isa = PBXGroup;
 			children = (
-				WBGRP /* WheresBen */,
-				CLGRP /* CaptainsLog */,
-				SHGRP /* Shared */,
-				PRODUCTS /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		PRODUCTS /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				WBPROD /* WheresBen.app */,
-				CLPROD /* CaptainsLog.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		WBGRP /* WheresBen */ = {
-			isa = PBXGroup;
-			children = (
-				WBAPP /* App */,
-				WBVIEWS /* Views */,
-				WBF010 /* Assets.xcassets */,
-			);
-			path = WheresBen;
-			sourceTree = "<group>";
-		};
-		WBAPP /* App */ = {
-			isa = PBXGroup;
-			children = (
-				WBF001 /* WheresBenApp.swift */,
+				CLF001 /* CaptainsLogApp.swift */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		WBVIEWS /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				WBF002 /* MainTabView.swift */,
-				WBWHERE /* WhereIsBen */,
-				WBFLIGHTS /* Flights */,
-				WBTRIP /* TripInfo */,
-				WBKIDS /* Kids */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		WBWHERE /* WhereIsBen */ = {
-			isa = PBXGroup;
-			children = (
-				WBF003 /* WhereIsBenView.swift */,
-				WBF004 /* StatusCard.swift */,
-				WBF005 /* MapCard.swift */,
-			);
-			path = WhereIsBen;
-			sourceTree = "<group>";
-		};
-		WBFLIGHTS /* Flights */ = {
-			isa = PBXGroup;
-			children = (
-				WBF006 /* FlightsView.swift */,
-				WBF007 /* FlightCard.swift */,
-			);
-			path = Flights;
-			sourceTree = "<group>";
-		};
-		WBTRIP /* TripInfo */ = {
-			isa = PBXGroup;
-			children = (
-				WBF008 /* TripInfoView.swift */,
-			);
-			path = TripInfo;
-			sourceTree = "<group>";
-		};
-		WBKIDS /* Kids */ = {
-			isa = PBXGroup;
-			children = (
-				WBF009 /* KidsView.swift */,
-			);
-			path = Kids;
 			sourceTree = "<group>";
 		};
 		CLGRP /* CaptainsLog */ = {
@@ -172,14 +84,6 @@
 			path = CaptainsLog;
 			sourceTree = "<group>";
 		};
-		CLAPP /* App */ = {
-			isa = PBXGroup;
-			children = (
-				CLF001 /* CaptainsLogApp.swift */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
 		CLVIEWS /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +91,33 @@
 				CLF003 /* QuickStatusGrid.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		PRODUCTS /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				WBPROD /* WheresBen.app */,
+				CLPROD /* CaptainsLog.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ROOT = {
+			isa = PBXGroup;
+			children = (
+				WBGRP /* WheresBen */,
+				CLGRP /* CaptainsLog */,
+				SHGRP /* Shared */,
+				PRODUCTS /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		SHDESIGN /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				SHF006 /* DesignSystem.swift */,
+			);
+			path = Design;
 			sourceTree = "<group>";
 		};
 		SHGRP /* Shared */ = {
@@ -220,36 +151,77 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		SHDESIGN /* Design */ = {
+		WBAPP /* App */ = {
 			isa = PBXGroup;
 			children = (
-				SHF006 /* DesignSystem.swift */,
+				WBF001 /* WheresBenApp.swift */,
 			);
-			path = Design;
+			path = App;
+			sourceTree = "<group>";
+		};
+		WBFLIGHTS /* Flights */ = {
+			isa = PBXGroup;
+			children = (
+				WBF006 /* FlightsView.swift */,
+				WBF007 /* FlightCard.swift */,
+			);
+			path = Flights;
+			sourceTree = "<group>";
+		};
+		WBGRP /* WheresBen */ = {
+			isa = PBXGroup;
+			children = (
+				WBAPP /* App */,
+				WBVIEWS /* Views */,
+				WBF010 /* Assets.xcassets */,
+			);
+			path = WheresBen;
+			sourceTree = "<group>";
+		};
+		WBKIDS /* Kids */ = {
+			isa = PBXGroup;
+			children = (
+				WBF009 /* KidsView.swift */,
+			);
+			path = Kids;
+			sourceTree = "<group>";
+		};
+		WBTRIP /* TripInfo */ = {
+			isa = PBXGroup;
+			children = (
+				WBF008 /* TripInfoView.swift */,
+			);
+			path = TripInfo;
+			sourceTree = "<group>";
+		};
+		WBVIEWS /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				WBF002 /* MainTabView.swift */,
+				WBWHERE /* WhereIsBen */,
+				WBFLIGHTS /* Flights */,
+				WBTRIP /* TripInfo */,
+				WBKIDS /* Kids */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		WBWHERE /* WhereIsBen */ = {
+			isa = PBXGroup;
+			children = (
+				WBF003 /* WhereIsBenView.swift */,
+				WBF004 /* StatusCard.swift */,
+				WBF005 /* MapCard.swift */,
+			);
+			path = WhereIsBen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		WBTARGET /* WheresBen */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = WBBCL;
-			buildPhases = (
-				WBSOURCES /* Sources */,
-				WBRESOURCES /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = WheresBen;
-			productName = WheresBen;
-			productReference = WBPROD /* WheresBen.app */;
-			productType = "com.apple.product-type.application";
-		};
 		CLTARGET /* CaptainsLog */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CLBCL;
+			buildConfigurationList = CLBCL /* Build configuration list for PBXNativeTarget "CaptainsLog" */;
 			buildPhases = (
 				CLSOURCES /* Sources */,
 				CLRESOURCES /* Resources */,
@@ -263,25 +235,41 @@
 			productReference = CLPROD /* CaptainsLog.app */;
 			productType = "com.apple.product-type.application";
 		};
+		WBTARGET /* WheresBen */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = WBBCL /* Build configuration list for PBXNativeTarget "WheresBen" */;
+			buildPhases = (
+				WBSOURCES /* Sources */,
+				WBRESOURCES /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WheresBen;
+			productName = WheresBen;
+			productReference = WBPROD /* WheresBen.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		PROJ = {
+		PROJ /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					WBTARGET = {
+					CLTARGET = {
 						CreatedOnToolsVersion = 15.0;
 					};
-					CLTARGET = {
+					WBTARGET = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = PROJBCL;
+			buildConfigurationList = PROJBCL /* Build configuration list for PBXProject "WheresBen" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -300,7 +288,43 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		CLRESOURCES /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CL004 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		WBRESOURCES /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				WB010 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		CLSOURCES /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CL001 /* CaptainsLogApp.swift in Sources */,
+				CL002 /* LogEntryView.swift in Sources */,
+				CL003 /* QuickStatusGrid.swift in Sources */,
+				SH001CL /* TripSegment.swift in Sources */,
+				SH002CL /* StatusOverride.swift in Sources */,
+				SH003CL /* Config.swift in Sources */,
+				SH004CL /* CurrentStatus.swift in Sources */,
+				SH005CL /* QuickStatus.swift in Sources */,
+				SH006CL /* DesignSystem.swift in Sources */,
+				SH007CL /* SupabaseClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		WBSOURCES /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -325,45 +349,65 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CLSOURCES /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CL001 /* CaptainsLogApp.swift in Sources */,
-				CL002 /* LogEntryView.swift in Sources */,
-				CL003 /* QuickStatusGrid.swift in Sources */,
-				SH001CL /* TripSegment.swift in Sources */,
-				SH002CL /* StatusOverride.swift in Sources */,
-				SH003CL /* Config.swift in Sources */,
-				SH004CL /* CurrentStatus.swift in Sources */,
-				SH005CL /* QuickStatus.swift in Sources */,
-				SH006CL /* DesignSystem.swift in Sources */,
-				SH007CL /* SupabaseClient.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXResourcesBuildPhase section */
-		WBRESOURCES /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				WB010 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CLRESOURCES /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CL004 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin XCBuildConfiguration section */
+		CLDEBUG /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Captain's Log";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Captain's Log needs your location to share where you are with your family.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andiyar.CaptainsLog;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CLRELEASE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Captain's Log";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Captain's Log needs your location to share where you are with your family.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andiyar.CaptainsLog;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		PROJDEBUG /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -424,7 +468,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5W72UJL332;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Where's Ben?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -451,7 +495,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5W72UJL332;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Where's Ben?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -472,66 +516,19 @@
 			};
 			name = Release;
 		};
-		CLDEBUG /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Captain's Log";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Captain's Log needs your location to share where you are with your family.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.andiyar.CaptainsLog;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		CLRELEASE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Captain's Log";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Captain's Log needs your location to share where you are with your family.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.andiyar.CaptainsLog;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		PROJBCL /* Build configuration list for PBXProject */ = {
+		CLBCL /* Build configuration list for PBXNativeTarget "CaptainsLog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CLDEBUG /* Debug */,
+				CLRELEASE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		PROJBCL /* Build configuration list for PBXProject "WheresBen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				PROJDEBUG /* Debug */,
@@ -540,20 +537,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		WBBCL /* Build configuration list for WheresBen */ = {
+		WBBCL /* Build configuration list for PBXNativeTarget "WheresBen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				WBDEBUG /* Debug */,
 				WBRELEASE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CLBCL /* Build configuration list for CaptainsLog */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CLDEBUG /* Debug */,
-				CLRELEASE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

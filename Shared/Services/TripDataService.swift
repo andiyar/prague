@@ -91,11 +91,19 @@ class TripDataService: ObservableObject {
     }
 
     var outboundFlights: [TripSegment] {
-        flights.filter { $0.flightTo == "DXB" || $0.flightTo == "PRG" }
+        // Outbound: SYD→DXB (EK417) and DXB→PRG (EK139)
+        flights.filter { flight in
+            (flight.flightFrom == "SYD" && flight.flightTo == "DXB") ||
+            (flight.flightFrom == "DXB" && flight.flightTo == "PRG")
+        }
     }
 
     var returnFlights: [TripSegment] {
-        flights.filter { $0.flightTo == "DXB" && $0.flightFrom == "PRG" || $0.flightTo == "SYD" }
+        // Return: PRG→DXB (EK140) and DXB→SYD (EK412)
+        flights.filter { flight in
+            (flight.flightFrom == "PRG" && flight.flightTo == "DXB") ||
+            (flight.flightFrom == "DXB" && flight.flightTo == "SYD")
+        }
     }
 
     func flightStatus(for segment: TripSegment) -> FlightStatus {
