@@ -14,6 +14,9 @@ struct MainTabView: View {
                         ToolbarItem(placement: .principal) {
                             headerView
                         }
+                        ToolbarItem(placement: .topBarTrailing) {
+                            debugButton
+                        }
                     }
             }
             .tabItem {
@@ -29,6 +32,9 @@ struct MainTabView: View {
                         ToolbarItem(placement: .principal) {
                             headerView
                         }
+                        ToolbarItem(placement: .topBarTrailing) {
+                            debugButton
+                        }
                     }
             }
             .tabItem {
@@ -43,6 +49,9 @@ struct MainTabView: View {
                     .toolbar {
                         ToolbarItem(placement: .principal) {
                             headerView
+                        }
+                        ToolbarItem(placement: .topBarTrailing) {
+                            debugButton
                         }
                     }
             }
@@ -61,6 +70,22 @@ struct MainTabView: View {
         .tint(.cozyAccent)
         .sheet(isPresented: $showDebugControls) {
             DebugTimeSheet()
+        }
+    }
+
+    // MARK: - Debug Button
+
+    private var debugButton: some View {
+        Button {
+            if tripData.isDebugMode {
+                showDebugControls = true
+            } else {
+                tripData.isDebugMode = true
+                showDebugControls = true
+            }
+        } label: {
+            Image(systemName: tripData.isDebugMode ? "clock.badge.checkmark.fill" : "ladybug")
+                .foregroundColor(tripData.isDebugMode ? .orange : .cozyTextSecondary)
         }
     }
 
