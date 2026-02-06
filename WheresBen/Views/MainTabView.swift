@@ -1,4 +1,5 @@
 import SwiftUI
+import UserNotifications
 
 struct MainTabView: View {
     @EnvironmentObject var tripData: TripDataService
@@ -217,6 +218,22 @@ struct DebugTimeSheet: View {
                     }
                 }
                 .padding()
+
+                // Test notification button
+                Button {
+                    NotificationService.shared.sendTestNotification()
+                } label: {
+                    HStack {
+                        Image(systemName: "bell.badge")
+                        Text("Send Test Notification")
+                    }
+                    .font(.cozyCaption)
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .background(Color.cozyAccent)
+                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                }
 
                 Spacer()
             }

@@ -164,3 +164,50 @@ Ben presenting (time TBD)
 | ☕ | Awake now | Daddy's awake! |
 | 🏠 | Heading home | Daddy's coming home! |
 | 💬 | [Custom] | [Custom] |
+
+## Push Notifications Setup
+
+### 1. Run the SQL
+Run `sql/push_notifications.sql` in Supabase SQL Editor to create the push tables.
+
+### 2. Enable Push in Xcode
+1. Select the WheresBen target
+2. Go to Signing & Capabilities
+3. Add "Push Notifications" capability
+4. Add "Background Modes" → check "Remote notifications"
+
+### 3. APNs Key (for production)
+1. Go to Apple Developer Portal → Certificates, Identifiers & Profiles
+2. Create a new Key → enable Apple Push Notifications service (APNs)
+3. Download the .p8 file
+4. Note the Key ID and Team ID
+
+### 4. Deploy Edge Function (optional - for server-sent pushes)
+```bash
+cd ~/Developer/WheresBen
+supabase functions deploy send-notification
+```
+
+### Current Implementation
+- **Local notifications**: Scheduled from trip data on app launch (flight departures/landings)
+- **Test button**: In debug mode, "Send Test Notification" button
+- **Token registration**: Device tokens saved to Supabase `push_tokens` table
+
+### Future: Server-sent pushes
+When you post from Captain's Log, a Supabase webhook could trigger the Edge Function
+to send a push to all registered devices. Requires APNs setup.
+
+## Assets to Customize
+
+### App Icons (1024x1024 PNG)
+- `WheresBen/Assets.xcassets/AppIcon.appiconset/` - Pin/map, plane with heart, or "Dad" illustration
+- `CaptainsLog/Assets.xcassets/AppIcon.appiconset/` - Ship's wheel, compass, captain's hat
+
+### Colors (in Shared/Design/DesignSystem.swift)
+- `cozyBackground`: #FAF7F2 (cream)
+- `cozyAccent`: #C4846C (terracotta)
+- `cozySage`: #8FA98F (sage)
+- Kids palette: sky blue, sun yellow, purple, pink
+
+### Status Icons (optional)
+Currently using emoji. Can swap for custom illustrations in future.

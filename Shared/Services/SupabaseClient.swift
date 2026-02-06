@@ -59,7 +59,7 @@ actor SupabaseClient {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("resolution=merge-duplicates", forHTTPHeaderField: "Prefer")
 
-        let expiresAt = Calendar.current.date(byAdding: .hour, value: 6, to: Date())!
+        let expiresAt = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
 
         let override = StatusOverrideInsert(
             id: 1, // Always use ID 1 to replace previous

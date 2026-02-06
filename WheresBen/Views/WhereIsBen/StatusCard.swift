@@ -7,10 +7,8 @@ struct StatusCard: View {
     var body: some View {
         VStack(spacing: 16) {
             HStack(spacing: 16) {
-                // Emoji with glow
-                Text(tripData.currentStatus.emoji)
-                    .font(.system(size: 56))
-                    .glow(color: .cozyAccent, radius: 15)
+                // Status image with emoji fallback
+                statusImage
                     .scaleEffect(isAnimating ? 1.05 : 1.0)
                     .animation(
                         .easeInOut(duration: 2).repeatForever(autoreverses: true),
@@ -32,8 +30,10 @@ struct StatusCard: View {
                 Spacer()
             }
 
-            // Updated timestamp
-            if tripData.currentStatus.isOverride, let updatedAt = tripData.currentStatus.updatedAt {
+            // Updated timestamp (only show if recent - within 1 hour)
+            if tripData.currentStatus.isOverride,
+               let updatedAt = tripData.currentStatus.updatedAt,
+               Date().timeIntervalSince(updatedAt) < 3600 {
                 HStack {
                     Spacer()
                     Text("Updated \(timeAgo(from: updatedAt))")
@@ -61,6 +61,38 @@ struct StatusCard: View {
         }
         let days = diff / 1440
         return "\(days) day\(days == 1 ? "" : "s") ago"
+    }
+
+    // MARK: - Status Image
+
+    @ViewBuilder
+    private var statusImage: some View {
+        if let imageName = statusImageName, UIImage(named: imageName) != nil {
+            Image(imageName)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 96, height: 96)
+        } else {
+            // Emoji fallback
+            Text(tripData.currentStatus.emoji)
+                .font(.system(size: 56))
+                .glow(color: .cozyAccent, radius: 15)
+        }
+    }
+
+    private var statusImageName: String? {
+        let emoji = tripData.currentStatus.emoji
+        switch emoji {
+        case "📅": return "status-pretrip"
+        case "✈️": return "status-flying"
+        case "🛬": return "status-landing"
+        case "⏳": return "status-layover"
+        case "🏨": return "status-hotel"
+        case "📍": return "status-conference"
+        case "😴": return "status-sleeping"
+        case "🏠": return "status-home"
+        default: return nil
+        }
     }
 }
 

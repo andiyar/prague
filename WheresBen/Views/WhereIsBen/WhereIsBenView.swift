@@ -10,6 +10,11 @@ struct WhereIsBenView: View {
                     ProgressView()
                         .padding(40)
                 } else {
+                    // Title
+                    Text("Where's Ben?")
+                        .font(.cozyLargeTitle)
+                        .foregroundColor(.cozyText)
+
                     // Status Card
                     StatusCard()
 
@@ -46,11 +51,11 @@ struct QuickInfoRow: View {
                 value: homeTimeString
             )
 
-            // Weather at Ben's location
+            // Ben's local time
             QuickInfoItem(
-                icon: "thermometer.medium",
+                icon: "person.fill",
                 title: benLocationName,
-                value: "—" // TODO: Add weather service
+                value: benTimeString
             )
 
             // Countdown
@@ -69,6 +74,19 @@ struct QuickInfoRow: View {
         return formatter.string(from: tripData.effectiveNow)
     }
 
+    private var benTimezone: TimeZone {
+        if let coord = tripData.currentStatus.coordinate {
+            if coord.latitude < 0 {
+                return TimeZone(identifier: "Australia/Sydney")!
+            } else if coord.latitude > 20 && coord.latitude < 30 {
+                return TimeZone(identifier: "Asia/Dubai")!
+            } else {
+                return TimeZone(identifier: "Europe/Prague")!
+            }
+        }
+        return TimeZone(identifier: "Australia/Sydney")!
+    }
+
     private var benLocationName: String {
         if let coord = tripData.currentStatus.coordinate {
             if coord.latitude < 0 {
@@ -79,7 +97,14 @@ struct QuickInfoRow: View {
                 return "Prague"
             }
         }
-        return "Weather"
+        return "Ben"
+    }
+
+    private var benTimeString: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        formatter.timeZone = benTimezone
+        return formatter.string(from: tripData.effectiveNow)
     }
 
     private var countdownString: String {
