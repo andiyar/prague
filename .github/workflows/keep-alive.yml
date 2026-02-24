@@ -15,7 +15,7 @@ jobs:
           response=$(curl -s -o /dev/null -w "%{http_code}" \
             -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
             -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
-            "${{ secrets.SUPABASE_URL }}/rest/v1/config?limit=1")
+            "${{ secrets.SUPABASE_URL }}/rest/v1/trip_segments?limit=1")
           echo "Supabase responded with HTTP $response"
           if [ "$response" -ne 200 ]; then
             echo "::warning::Supabase returned non-200 status: $response"
