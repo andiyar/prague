@@ -12,12 +12,16 @@ jobs:
     steps:
       - name: Ping Supabase
         run: |
-          response=$(curl -s -o /dev/null -w "%{http_code}" \
+          # Write to keepalive table (upsert) - registers as real DB activity
+          write_response=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
             -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
             -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
-            "${{ secrets.SUPABASE_URL }}/rest/v1/trip_segments?limit=1")
-          echo "Supabase responded with HTTP $response"
-          if [ "$response" -ne 200 ]; then
-            echo "::warning::Supabase returned non-200 status: $response"
+            -H "Content-Type: application/json" \
+            -H "Prefer: resolution=merge-duplicates" \
+            -d '{"id": 1, "pinged_at": "'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'"}' \
+            "${{ secrets.SUPABASE_URL }}/rest/v1/keepalive")
+          echo "Supabase write ping: HTTP $write_response"
+          if [ "$write_response" -ne 200 ] && [ "$write_response" -ne 201 ]; then
+            echo "::warning::Supabase write ping failed with HTTP $write_response"
             exit 1
           fi
