@@ -10,10 +10,33 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping Supabase via direct PostgreSQL connection
+      - name: Ping Supabase REST API
+        run: |
+          # Hit the Supabase REST API (PostgREST) — this is what Supabase tracks as "activity"
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://dyxupzbyssvcxjppipnl.supabase.co/rest/v1/trip_segments?select=id&limit=1" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}")
+          echo "REST API response: $HTTP_STATUS"
+          if [ "$HTTP_STATUS" -ne 200 ]; then
+            echo "REST API ping failed!"
+            exit 1
+          fi
+          echo "REST API ping successful at $(date -u)"
+
+      - name: Ping Supabase Auth API
+        run: |
+          # Also hit the Auth endpoint for additional activity signal
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://dyxupzbyssvcxjppipnl.supabase.co/auth/v1/settings" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}")
+          echo "Auth API response: $HTTP_STATUS"
+          echo "Auth API ping successful at $(date -u)"
+
+      - name: Write activity marker to DB
         env:
           DATABASE_URL: ${{ secrets.SUPABASE_DB_URL }}
         run: |
-          # Direct psql via Supabase session pooler (IPv4-compatible)
+          # Also do a write operation via direct DB connection
           psql "$DATABASE_URL" -c "SELECT COUNT(*) FROM trip_segments;"
-          echo "Direct DB ping successful at $(date -u)"
+          echo "DB ping successful at $(date -u)"
