@@ -120,13 +120,15 @@ WheresBen/
 ### Passenger
 Dr Benjamin Wayne Thomas
 
-### Flights (Emirates, Business Class, A380)
+### Flights (Cathay Pacific / British Airways, Business Class, B777/A320)
 | Flight | Route | Depart | Arrive |
 |--------|-------|--------|--------|
-| EK417 | SYD→DXB | Tue 12 May 20:10 | Wed 13 May 04:30 |
-| EK139 | DXB→PRG | Wed 13 May 08:35 | Wed 13 May 13:00 |
-| EK140 | PRG→DXB | Sat 16 May 16:10 | Sat 16 May 23:55 |
-| EK412 | DXB→SYD | Sun 17 May 10:10 | Mon 18 May 06:05 |
+| CX100 | SYD→HKG | Tue 12 May 14:05 | Tue 12 May 21:30 |
+| CX255 | HKG→LHR | Tue 12 May 23:15 | Wed 13 May 06:20 |
+| BA852 | LHR→PRG | Wed 13 May 08:35 | Wed 13 May 11:30 |
+| BA853 | PRG→LHR | Sat 16 May 14:05 | Sat 16 May 15:15 |
+| CX250 | LHR→HKG | Sat 16 May 18:20 | Sun 17 May 14:10 |
+| CX181 | HKG→SYD | Mon 18 May 00:45 | Mon 18 May 11:45 |
 
 ### Hotel
 STAGES HOTEL Prague
@@ -145,7 +147,8 @@ Ben presenting (time TBD)
 | Location | Lat | Lng |
 |----------|-----|-----|
 | Sydney Airport | -33.9461 | 151.1772 |
-| Dubai Airport | 25.2532 | 55.3657 |
+| Hong Kong Airport | 22.3080 | 113.9185 |
+| London Heathrow | 51.4700 | -0.4543 |
 | Prague Airport | 50.1008 | 14.2600 |
 | STAGES Hotel | 50.1097 | 14.4990 |
 | O2 Arena Prague | 50.1047 | 14.4923 |

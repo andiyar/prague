@@ -10,12 +10,16 @@ struct MapCard: View {
             Map(position: $position) {
                 // Flight paths
                 if showFlightPaths {
-                    // Sydney to Dubai
-                    MapPolyline(coordinates: flightPath(from: Airports.sydney, to: Airports.dubai))
+                    // Sydney to Hong Kong
+                    MapPolyline(coordinates: flightPath(from: Airports.sydney, to: Airports.hongKong))
                         .stroke(.gray.opacity(0.4), style: StrokeStyle(lineWidth: 2, dash: [5, 5]))
 
-                    // Dubai to Prague
-                    MapPolyline(coordinates: flightPath(from: Airports.dubai, to: Airports.prague))
+                    // Hong Kong to London
+                    MapPolyline(coordinates: flightPath(from: Airports.hongKong, to: Airports.london))
+                        .stroke(.gray.opacity(0.4), style: StrokeStyle(lineWidth: 2, dash: [5, 5]))
+
+                    // London to Prague
+                    MapPolyline(coordinates: flightPath(from: Airports.london, to: Airports.prague))
                         .stroke(.gray.opacity(0.4), style: StrokeStyle(lineWidth: 2, dash: [5, 5]))
                 }
 
@@ -144,10 +148,16 @@ enum Airports {
         coordinate: CLLocationCoordinate2D(latitude: -33.9461, longitude: 151.1772)
     )
 
-    static let dubai = Airport(
-        name: "Dubai",
-        code: "DXB",
-        coordinate: CLLocationCoordinate2D(latitude: 25.2532, longitude: 55.3657)
+    static let hongKong = Airport(
+        name: "Hong Kong",
+        code: "HKG",
+        coordinate: CLLocationCoordinate2D(latitude: 22.3080, longitude: 113.9185)
+    )
+
+    static let london = Airport(
+        name: "London",
+        code: "LHR",
+        coordinate: CLLocationCoordinate2D(latitude: 51.4700, longitude: -0.4543)
     )
 
     static let prague = Airport(
@@ -156,7 +166,7 @@ enum Airports {
         coordinate: CLLocationCoordinate2D(latitude: 50.1008, longitude: 14.2600)
     )
 
-    static let all = [sydney, dubai, prague]
+    static let all = [sydney, hongKong, london, prague]
 }
 
 #Preview {

@@ -91,18 +91,20 @@ class TripDataService: ObservableObject {
     }
 
     var outboundFlights: [TripSegment] {
-        // Outbound: SYD→DXB (EK417) and DXB→PRG (EK139)
+        // Outbound: SYD→HKG (CX100), HKG→LHR (CX255), LHR→PRG (BA852)
         flights.filter { flight in
-            (flight.flightFrom == "SYD" && flight.flightTo == "DXB") ||
-            (flight.flightFrom == "DXB" && flight.flightTo == "PRG")
+            (flight.flightFrom == "SYD" && flight.flightTo == "HKG") ||
+            (flight.flightFrom == "HKG" && flight.flightTo == "LHR") ||
+            (flight.flightFrom == "LHR" && flight.flightTo == "PRG")
         }
     }
 
     var returnFlights: [TripSegment] {
-        // Return: PRG→DXB (EK140) and DXB→SYD (EK412)
+        // Return: PRG→LHR (BA853), LHR→HKG (CX250), HKG→SYD (CX181)
         flights.filter { flight in
-            (flight.flightFrom == "PRG" && flight.flightTo == "DXB") ||
-            (flight.flightFrom == "DXB" && flight.flightTo == "SYD")
+            (flight.flightFrom == "PRG" && flight.flightTo == "LHR") ||
+            (flight.flightFrom == "LHR" && flight.flightTo == "HKG") ||
+            (flight.flightFrom == "HKG" && flight.flightTo == "SYD")
         }
     }
 

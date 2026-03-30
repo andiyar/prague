@@ -159,7 +159,8 @@ class NotificationService: ObservableObject {
     private func airportName(_ code: String?) -> String {
         switch code {
         case "SYD": return "Sydney"
-        case "DXB": return "Dubai"
+        case "HKG": return "Hong Kong"
+        case "LHR": return "London"
         case "PRG": return "Prague"
         default: return code ?? "airport"
         }

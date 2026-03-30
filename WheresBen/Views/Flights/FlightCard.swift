@@ -219,7 +219,8 @@ struct FlightCard: View {
     private var departureTimezone: TimeZone {
         switch segment.flightFrom {
         case "SYD": return TimeZone(identifier: "Australia/Sydney")!
-        case "DXB": return TimeZone(identifier: "Asia/Dubai")!
+        case "HKG": return TimeZone(identifier: "Asia/Hong_Kong")!
+        case "LHR": return TimeZone(identifier: "Europe/London")!
         case "PRG": return TimeZone(identifier: "Europe/Prague")!
         default: return .current
         }
@@ -228,7 +229,8 @@ struct FlightCard: View {
     private var arrivalTimezone: TimeZone {
         switch segment.flightTo {
         case "SYD": return TimeZone(identifier: "Australia/Sydney")!
-        case "DXB": return TimeZone(identifier: "Asia/Dubai")!
+        case "HKG": return TimeZone(identifier: "Asia/Hong_Kong")!
+        case "LHR": return TimeZone(identifier: "Europe/London")!
         case "PRG": return TimeZone(identifier: "Europe/Prague")!
         default: return .current
         }
@@ -241,7 +243,8 @@ struct FlightCard: View {
     private func airportName(_ code: String?) -> String {
         switch code {
         case "SYD": return "Sydney"
-        case "DXB": return "Dubai"
+        case "HKG": return "Hong Kong"
+        case "LHR": return "London"
         case "PRG": return "Prague"
         default: return code ?? ""
         }
@@ -277,9 +280,9 @@ struct FlightCard: View {
                 kidsText: "Daddy's on the plane!",
                 lat: nil,
                 lng: nil,
-                flightNumber: "EK417",
+                flightNumber: "CX100",
                 flightFrom: "SYD",
-                flightTo: "DXB"
+                flightTo: "HKG"
             ))
             .padding()
         }

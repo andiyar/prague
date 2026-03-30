@@ -21,7 +21,8 @@ let kidsPlaneMarker = null;
 // Airport coordinates for flight paths
 const AIRPORTS = {
     SYD: { lat: -33.9461, lng: 151.1772, name: 'Sydney' },
-    DXB: { lat: 25.2532, lng: 55.3657, name: 'Dubai' },
+    HKG: { lat: 22.3080, lng: 113.9185, name: 'Hong Kong' },
+    LHR: { lat: 51.4700, lng: -0.4543, name: 'London' },
     PRG: { lat: 50.1008, lng: 14.2600, name: 'Prague' }
 };
 
@@ -265,10 +266,14 @@ function updateClocks() {
     let dadLabel = 'Sydney';
 
     if (currentStatus) {
-        if (currentStatus.flight_from === 'DXB' || currentStatus.flight_to === 'DXB' ||
-            (currentStatus.location && currentStatus.location.includes('Dubai'))) {
-            dadTimezone = 'Asia/Dubai';
-            dadLabel = 'Dubai';
+        if (currentStatus.flight_from === 'HKG' || currentStatus.flight_to === 'HKG' ||
+            (currentStatus.location && currentStatus.location.includes('Hong Kong'))) {
+            dadTimezone = 'Asia/Hong_Kong';
+            dadLabel = 'Hong Kong';
+        } else if (currentStatus.flight_from === 'LHR' || currentStatus.flight_to === 'LHR' ||
+            (currentStatus.location && currentStatus.location.includes('London'))) {
+            dadTimezone = 'Europe/London';
+            dadLabel = 'London';
         } else if (currentStatus.lat && currentStatus.lat > 40 && currentStatus.lng > 10 && currentStatus.lng < 20) {
             dadTimezone = 'Europe/Prague';
             dadLabel = 'Prague';
@@ -389,7 +394,8 @@ function renderFlights() {
             hour: '2-digit',
             minute: '2-digit',
             timeZone: flight.flight_from === 'SYD' ? 'Australia/Sydney' :
-                       flight.flight_from === 'DXB' ? 'Asia/Dubai' : 'Europe/Prague'
+                       flight.flight_from === 'HKG' ? 'Asia/Hong_Kong' :
+                       flight.flight_from === 'LHR' ? 'Europe/London' : 'Europe/Prague'
         });
 
         return `
@@ -419,7 +425,7 @@ function renderFlights() {
 const WEATHER_LOCATIONS = {
     home: { lat: -34.4278, lng: 150.8931, name: 'Wollongong' },
     prague: { lat: 50.0875, lng: 14.4213, name: 'Prague' },
-    dubai: { lat: 25.2532, lng: 55.3657, name: 'Dubai' },
+    hongKong: { lat: 22.3080, lng: 113.9185, name: 'Hong Kong' },
     sydney: { lat: -33.8688, lng: 151.2093, name: 'Sydney' }
 };
 
@@ -466,8 +472,10 @@ async function fetchWeatherForBen() {
             // Determine location name based on coordinates
             if (lat < 0) {
                 locationName = 'Sydney';
-            } else if (lat > 20 && lat < 30) {
-                locationName = 'Dubai';
+            } else if (lat > 15 && lat < 30) {
+                locationName = 'Hong Kong';
+            } else if (lng < 5) {
+                locationName = 'London';
             } else {
                 locationName = 'Prague';
             }
@@ -571,13 +579,17 @@ function initMaps() {
 }
 
 function drawFlightPaths(map) {
-    // Sydney to Dubai
-    const sydDxb = createCurvedPath(AIRPORTS.SYD, AIRPORTS.DXB);
-    L.polyline(sydDxb, { color: '#94a3b8', weight: 2, dashArray: '5, 10' }).addTo(map);
+    // Sydney to Hong Kong
+    const sydHkg = createCurvedPath(AIRPORTS.SYD, AIRPORTS.HKG);
+    L.polyline(sydHkg, { color: '#94a3b8', weight: 2, dashArray: '5, 10' }).addTo(map);
 
-    // Dubai to Prague
-    const dxbPrg = createCurvedPath(AIRPORTS.DXB, AIRPORTS.PRG);
-    L.polyline(dxbPrg, { color: '#94a3b8', weight: 2, dashArray: '5, 10' }).addTo(map);
+    // Hong Kong to London
+    const hkgLhr = createCurvedPath(AIRPORTS.HKG, AIRPORTS.LHR);
+    L.polyline(hkgLhr, { color: '#94a3b8', weight: 2, dashArray: '5, 10' }).addTo(map);
+
+    // London to Prague
+    const lhrPrg = createCurvedPath(AIRPORTS.LHR, AIRPORTS.PRG);
+    L.polyline(lhrPrg, { color: '#94a3b8', weight: 2, dashArray: '5, 10' }).addTo(map);
 
     // Add airport markers
     Object.values(AIRPORTS).forEach(airport => {

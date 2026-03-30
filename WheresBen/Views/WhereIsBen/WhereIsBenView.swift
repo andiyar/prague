@@ -78,8 +78,10 @@ struct QuickInfoRow: View {
         if let coord = tripData.currentStatus.coordinate {
             if coord.latitude < 0 {
                 return TimeZone(identifier: "Australia/Sydney")!
-            } else if coord.latitude > 20 && coord.latitude < 30 {
-                return TimeZone(identifier: "Asia/Dubai")!
+            } else if coord.latitude > 15 && coord.latitude < 30 {
+                return TimeZone(identifier: "Asia/Hong_Kong")!
+            } else if coord.longitude < 5 {
+                return TimeZone(identifier: "Europe/London")!
             } else {
                 return TimeZone(identifier: "Europe/Prague")!
             }
@@ -91,8 +93,10 @@ struct QuickInfoRow: View {
         if let coord = tripData.currentStatus.coordinate {
             if coord.latitude < 0 {
                 return "Sydney"
-            } else if coord.latitude > 20 && coord.latitude < 30 {
-                return "Dubai"
+            } else if coord.latitude > 15 && coord.latitude < 30 {
+                return "Hong Kong"
+            } else if coord.longitude < 5 {
+                return "London"
             } else {
                 return "Prague"
             }
