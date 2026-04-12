@@ -1,10 +1,59 @@
 import SwiftUI
 
+/// Navigation value that carries an optional search query into detail view
+struct SessionNav: Hashable {
+    let sessionId: Int
+    let searchQuery: String
+
+    init(_ sessionId: Int, query: String = "") {
+        self.sessionId = sessionId
+        self.searchQuery = query
+    }
+}
+
 struct SessionDetailView: View {
     let session: Session
+    var searchQuery: String = ""
+
     @Environment(ConferenceStore.self) var store
     @Environment(\.colorScheme) var colorScheme
     @State private var showFullDescription = false
+    @State private var showAllPresentations = false
+
+    private var hasSearch: Bool {
+        !searchQuery.trimmingCharacters(in: .whitespaces).isEmpty
+    }
+
+    private var matchingPresentations: [Presentation] {
+        guard hasSearch else { return session.presentations }
+        let terms = searchQuery.lowercased()
+            .folding(options: .diacriticInsensitive, locale: .current)
+            .split(separator: " ")
+            .map(String.init)
+
+        return session.presentations.filter { pres in
+            let searchable = ([
+                pres.title,
+                pres.presenter
+            ] + pres.authors.map(\.name) + pres.authors.map(\.organisation))
+                .joined(separator: " ")
+                .lowercased()
+                .folding(options: .diacriticInsensitive, locale: .current)
+
+            return terms.allSatisfy { searchable.contains($0) }
+        }
+    }
+
+    private var visiblePresentations: [Presentation] {
+        if hasSearch && !showAllPresentations {
+            return matchingPresentations
+        }
+        return session.presentations
+    }
+
+    private var hasFilteredResults: Bool {
+        hasSearch && matchingPresentations.count < session.presentations.count
+    }
 
     var body: some View {
         ScrollView {
@@ -75,15 +124,41 @@ struct SessionDetailView: View {
                 // Presentations
                 if !session.presentations.isEmpty {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Presentations (\(session.presentations.count))")
-                            .font(CNFonts.sans(13, weight: .semibold))
-                            .foregroundStyle(CNColors.textSecondary)
-                            .textCase(.uppercase)
-                            .padding(.horizontal, 16)
+                        // Header with match count
+                        HStack {
+                            if hasSearch && !showAllPresentations {
+                                Text("Matching presentations (\(matchingPresentations.count) of \(session.presentations.count))")
+                                    .font(CNFonts.sans(13, weight: .semibold))
+                                    .foregroundStyle(CNColors.textSecondary)
+                                    .textCase(.uppercase)
+                            } else {
+                                Text("Presentations (\(session.presentations.count))")
+                                    .font(CNFonts.sans(13, weight: .semibold))
+                                    .foregroundStyle(CNColors.textSecondary)
+                                    .textCase(.uppercase)
+                            }
+                        }
+                        .padding(.horizontal, 16)
 
-                        ForEach(session.presentations) { pres in
+                        ForEach(visiblePresentations) { pres in
                             PresentationRow(presentation: pres)
                                 .padding(.horizontal, 16)
+                        }
+
+                        // Show all / show matches toggle
+                        if hasFilteredResults {
+                            Button {
+                                withAnimation { showAllPresentations.toggle() }
+                            } label: {
+                                Text(showAllPresentations
+                                     ? "Show matches only (\(matchingPresentations.count))"
+                                     : "Show all \(session.presentations.count) presentations")
+                                    .font(CNFonts.sans(13, weight: .medium))
+                                    .foregroundStyle(CNColors.teal(for: colorScheme))
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 10)
+                            }
+                            .padding(.horizontal, 16)
                         }
                     }
                 }

@@ -105,7 +105,7 @@ struct SearchView: View {
                     ScrollView {
                         LazyVStack(spacing: 8) {
                             ForEach(results) { session in
-                                NavigationLink(value: session.id) {
+                                NavigationLink(value: SessionNav(session.id, query: query)) {
                                     SessionCardView(session: session, showTime: true)
                                 }
                                 .buttonStyle(.plain)
@@ -118,9 +118,9 @@ struct SearchView: View {
             }
             .background(CNColors.background(for: colorScheme))
             .navigationTitle("Search")
-            .navigationDestination(for: Int.self) { sessionId in
-                if let session = store.sessions.first(where: { $0.id == sessionId }) {
-                    SessionDetailView(session: session)
+            .navigationDestination(for: SessionNav.self) { nav in
+                if let session = store.sessions.first(where: { $0.id == nav.sessionId }) {
+                    SessionDetailView(session: session, searchQuery: nav.searchQuery)
                 }
             }
         }
