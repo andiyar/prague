@@ -61,7 +61,11 @@ The main browse view. Shows all sessions for a selected day.
 
 **Layout:**
 - **Day selector**: Three pill buttons at the top — Thu 14 May / Fri 15 May / Sat 16 May. Active day uses navy fill (light mode) or gold fill (dark mode).
-- **Time slot groups**: Sessions grouped under time headers (e.g. "09:00 - 10:30 · 2 parallel sessions"). The header shows how many parallel sessions exist in that slot.
+- **Filter chips** (below day selector): Horizontal scroll of toggleable chips, same pattern as Search tab:
+  - Type: Keynote / Oral / Panel / Poster / General / Meeting
+  - Venue: Hall A / C1 / C2 / C3 / D3 / D4 / D7 / D8 / D9
+  - Filters reduce the visible cards within each time slot. Active filters persist while switching days.
+- **Time slot groups**: Sessions grouped under time headers (e.g. "11:15 - 12:45 · 9 parallel sessions"). The header shows the total count for that slot (unfiltered) so you always know the full picture, even when filtering.
 - **Session cards**: Each card shows:
   - Session title (bold, primary text)
   - Type badge (Keynote / Oral / Panel / Poster / General / Meeting) — small coloured pill
@@ -115,7 +119,7 @@ Your personal conference programme.
 See what your conference buddy has picked.
 
 **Layout:**
-- **User pills**: Top section with two toggleable pills — "Ron's Picks" / "Ben's Picks" / "Both". Default shows the other person's picks (Ron sees Ben's, Ben sees Ron's).
+- **User pills**: Top section with three toggleable pills — "Ben's Picks" / "Ron's Picks" / "Both" (alphabetical order, naturally). Default shows the other person's picks (Ron sees Ben's, Ben sees Ron's).
 - **"Both" filter**: Shows sessions that both users have picked — the overlap. Great for "let's go to this one together".
 - **Session cards**: Same format, with B/R badges. When showing "Both", cards get a special "You're both going" indicator.
 - **Day grouping**: Same as My Picks — grouped by day, chronological.
@@ -343,9 +347,8 @@ WheresBen/
 
 ### V2 (Post-Conference or if Time Permits)
 
-- **Session notes**: Text notes tied to a session
-- **Session photos**: Camera capture tied to a session
-- **Conference report export**: Generate a PDF/document of attended sessions with notes and photos
+- **Session notes + photos**: Text notes and camera captures tied to sessions. Stored as Markdown files + images in iCloud Drive (`ConferenceNav/notes/` and `ConferenceNav/photos/`). Each note file includes YAML front matter with session metadata (title, time, venue, speakers) so it's self-contained and human-readable. Syncs automatically to Mac/iPad for evening editing in Typora, Obsidian, or any text editor.
+- **Conference report export**: Auto-generate a report skeleton from attended sessions + notes. Could be a combined Markdown file or PDF.
 - **Push notifications**: Reminders before picked sessions start
 - **Programme update**: Fetch updated programme JSON from a URL without app rebuild
 
