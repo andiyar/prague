@@ -111,7 +111,8 @@ struct MatesView: View {
                     }
                 }
             }
-            .background(CNColors.background(for: colorScheme))
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(CNColors.background(for: colorScheme).ignoresSafeArea())
             .navigationTitle("Mates")
             .navigationDestination(for: Int.self) { sessionId in
                 if let session = store.sessions.first(where: { $0.id == sessionId }) {
