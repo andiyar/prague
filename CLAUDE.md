@@ -1,6 +1,6 @@
 # Where's Ben? - iOS Apps
 
-Two native iOS apps for tracking Ben's EAPC Prague conference trip (May 12-18, 2026).
+Two native iOS apps for tracking Ben's EAPC Prague conference trip (May 12-18, 2026), plus a standalone conference navigator app.
 
 ## Apps
 
@@ -8,6 +8,7 @@ Two native iOS apps for tracking Ben's EAPC Prague conference trip (May 12-18, 2
 |-----|--------|---------|
 | **WheresBen** | Wife's iPhone 17 (iOS 26) | Dashboard: location, flights, trip info, kids mode |
 | **CaptainsLog** | Ben's iPhone | Quick status updater with GPS |
+| **EAPragueC 2026** | Ben + Ron's iPhones | Conference programme browser, search, personal picks |
 
 ## Tech Stack
 
@@ -108,10 +109,29 @@ CREATE POLICY "Allow anon select on sent_notifications" ON sent_notifications FO
 
 ```
 WheresBen/
-├── WheresBen/           # Wife's app (Xcode target)
-├── CaptainsLog/         # Ben's app (Xcode target)
-├── Shared/              # Shared models & services
-├── docs/plans/          # Design documents
+├── WheresBen/           # Wife's app (Xcode target in WheresBen.xcodeproj)
+├── CaptainsLog/         # Ben's app (Xcode target in WheresBen.xcodeproj)
+├── Shared/              # Shared models & services (WheresBen/CaptainsLog)
+├── ConferenceNav/       # Standalone conference app (own .xcodeproj)
+│   ├── ConferenceNav.xcodeproj   # Generated via xcodegen from project.yml
+│   ├── ConferenceNavApp.swift    # App entry point with splash screen
+│   ├── Models/                   # Session, Presentation, Author, UserProfile
+│   ├── Services/                 # ConferenceStore, SearchIndex, PicksSyncService
+│   ├── Design/                   # ConferenceDesign (colours, fonts, card style)
+│   ├── Views/                    # All SwiftUI views
+│   │   ├── Components/           # DayPicker, TypeBadge, MateBadges, etc.
+│   │   ├── ScheduleView.swift    # Tab 1: day-by-day timeline
+│   │   ├── SearchView.swift      # Tab 2: full-text search + filters
+│   │   ├── MyPicksView.swift     # Tab 3: personal programme
+│   │   ├── MatesView.swift       # Tab 4: mate's picks
+│   │   ├── SessionDetailView.swift
+│   │   ├── SplashScreen.swift    # "Your Conference Czechlist"
+│   │   └── UserPickerView.swift  # First-launch Ben/Ron picker
+│   ├── Resources/programme.json  # 98 sessions, 1289 presentations
+│   └── project.yml               # xcodegen spec (run: cd ConferenceNav && xcodegen)
+├── data/eapc/           # Raw extracted programme data + scripts
+├── sql/                 # Supabase migration SQL files
+├── docs/                # Design documents and plans
 └── CLAUDE.md            # This file
 ```
 
@@ -214,3 +234,77 @@ to send a push to all registered devices. Requires APNs setup.
 
 ### Status Icons (optional)
 Currently using emoji. Can swap for custom illustrations in future.
+
+---
+
+## EAPragueC 2026 (ConferenceNav)
+
+### Status: V1 Complete (April 2026)
+
+Standalone SwiftUI app for navigating the EAPC 2026 conference programme.
+Display name: "EAPragueC 2026". Tagline: "Your Conference Czechlist".
+
+### What's Built (V1)
+- Browse 90 browseable sessions (98 total minus tea/lunch breaks) across 3 days
+- Full-text search across session titles, presentations, speakers, organisations
+- Search drills into detail view (shows only matching presentations, not all 265 posters)
+- Filter chips: day, session type (Keynote/Oral/Panel/Poster/General/Meeting), room
+- Pick/unpick sessions with gold star (optimistic UI)
+- Conflict detection for overlapping picked sessions (amber warning)
+- B/R badges showing Ben's and Ron's picks on every card
+- Mates tab with Ben/Ron/Both filter pills, pull-to-refresh
+- Supabase sync for picks between two users
+- Offline-capable (bundled JSON, UserDefaults pick cache)
+- Light/dark mode with custom palette (navy/gold/teal)
+- Splash screen with 3.5s display + 0.5s fade
+- User identity picker on first launch (Ben or Ron)
+
+### Supabase Table
+```sql
+-- Run sql/conference_picks.sql in Supabase SQL Editor
+CREATE TABLE conference_picks (
+    id          SERIAL PRIMARY KEY,
+    user_id     TEXT NOT NULL,       -- 'ben' or 'ron'
+    session_id  INTEGER NOT NULL,
+    picked_at   TIMESTAMPTZ DEFAULT NOW(),
+    UNIQUE(user_id, session_id)
+);
+```
+
+### Design Language
+- Background: `#FAFAF7` (warm white) / `#0D0D1A` (dark)
+- Navy: `#002664` / `#4A7FD4` — primary brand, active tabs
+- Gold: `#C9A227` / `#E0B840` — picked stars, poster badges
+- Teal: `#1B6B7D` / `#3DBAD4` — links, presenter names
+- Red: `#D7153A` / `#FF4D6A` — keynote badges, Ron's badge
+- Typography: New York (serif headlines), SF Pro (body), SF Mono (times)
+- Cards: 12pt corners, coloured left border by session type
+
+### Xcode Project
+- Standalone project at `ConferenceNav/ConferenceNav.xcodeproj`
+- Generated via xcodegen: `cd ConferenceNav && xcodegen generate`
+- iOS 17.0+, SwiftUI, no external dependencies
+- Bundle ID: `com.wheresBen.ConferenceNav`
+
+### App Icon
+- TODO: Finalising icon (compass/Prague theme, navy + gold)
+- Place 1024x1024 PNG at `ConferenceNav/Assets.xcassets/AppIcon.appiconset/`
+- Update Contents.json with filename
+
+### V2 Roadmap (from spec)
+- **Session notes + photos**: Markdown notes tied to sessions, stored in iCloud Drive
+- **Conference report export**: Auto-generate report from attended sessions + notes
+- **Push notifications**: Reminders before picked sessions start
+- **Programme update**: Fetch updated JSON from URL without app rebuild
+- **Programme data refresh**: If Exordo data changes before the conference
+
+### Key Files to Know
+| File | What it does |
+|------|-------------|
+| `ConferenceNav/project.yml` | xcodegen spec — edit this, not pbxproj directly |
+| `ConferenceNav/Resources/programme.json` | Bundled conference data (copied from `data/eapc/programme_structured.json`) |
+| `ConferenceNav/Services/ConferenceStore.swift` | Central state: sessions, picks, search, sync |
+| `ConferenceNav/Services/PicksSyncService.swift` | Supabase REST calls for pick CRUD |
+| `ConferenceNav/Design/ConferenceDesign.swift` | All colours, fonts, card modifier |
+| `docs/superpowers/specs/2026-04-12-conference-nav-design.md` | Full design spec |
+| `docs/superpowers/plans/2026-04-12-conference-nav.md` | Implementation plan (all tasks complete) |
