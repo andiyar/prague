@@ -1,0 +1,455 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B0BA07E1BAF1E0CF280E1F3 /* PicksSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EF0E69F44ED6B4CCD641FE /* PicksSyncService.swift */; };
+		140AACDEEBBA289CA46A9B7A /* DayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C3E4F7B3B746731B2E40B /* DayPicker.swift */; };
+		22B8C7D682511D5E75DCD06B /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8654FF576496E1DBA602B /* UserProfile.swift */; };
+		24708B210E80D772D5A46030 /* MateBadges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBFF9EBEC0A1C303429029A /* MateBadges.swift */; };
+		3C3A02D0BFB717DF9A3A7C84 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A314A12B39A28121D292BDA5 /* ScheduleView.swift */; };
+		3D14095D483511B17D269768 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B93C3F602ADC1451B95D /* Session.swift */; };
+		41998527D364FEEB64034E39 /* programme.json in Resources */ = {isa = PBXBuildFile; fileRef = F4FAA964607147AFD06F8EE2 /* programme.json */; };
+		4D2D19E23D7C95A78A4AAD65 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF438AA89D0AB0473C3C12C /* SplashScreen.swift */; };
+		637D5707861F36BA9E47F10D /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C20146D120CDC1954E3B374 /* MainTabView.swift */; };
+		6DAF4358E3534325C9CAD3D2 /* UserPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33FA74F231592E2E84267B9 /* UserPickerView.swift */; };
+		6DE13A274D4683DBD7571EFC /* ConferenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB78744B1F1A19FB7595441 /* ConferenceStore.swift */; };
+		735C658CFB9D205C360F09E2 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465010D6828C14CA51F9FE8 /* SearchView.swift */; };
+		90169BCAE57F9F98E3152AA2 /* ConferenceNavApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D132BE6002F392FA73C410 /* ConferenceNavApp.swift */; };
+		A167A4C4FD3A61A98E76FE35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAEF12E4AE1A856CE79051D3 /* Assets.xcassets */; };
+		A50036AB1B7ACEDE553E2381 /* ConferenceDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DCCE05D03ED77F14D5E700 /* ConferenceDesign.swift */; };
+		AB5F1B4CF81ADC74FF3AE9FF /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806773D59A447642DBC5605F /* SessionDetailView.swift */; };
+		ABB202A3C3FF442305F380C1 /* SessionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973E810CB78C7D2116DAE13F /* SessionCardView.swift */; };
+		B14984DBFFA96F178425C872 /* PickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905DAB7858468A4F9BB51832 /* PickButton.swift */; };
+		CC3F8C04681DC46D9ABD7AFD /* ConflictBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D818A856FBA8AD3E835B6C9C /* ConflictBanner.swift */; };
+		CDE82F251FC80BF43A6C18CB /* MatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF16FC2B7C5FDC7BCDBE67A /* MatesView.swift */; };
+		D7B2C1FD36142A55BD82882A /* SearchIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE2D9637735FA17911238B /* SearchIndex.swift */; };
+		E624B8B3765D8A8F8A1EBD28 /* FilterChips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DBFC2BEBC7B97FD3DDBCCB /* FilterChips.swift */; };
+		E633ABB8D16A7C3CBCEFEF26 /* MyPicksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4FBA25A56952993867E09 /* MyPicksView.swift */; };
+		FE2EC69A050F1756E79C0290 /* TypeBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421665C99AF96863DB84F34 /* TypeBadge.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0BA4FBA25A56952993867E09 /* MyPicksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPicksView.swift; sourceTree = "<group>"; };
+		0C20146D120CDC1954E3B374 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		25DBFC2BEBC7B97FD3DDBCCB /* FilterChips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterChips.swift; sourceTree = "<group>"; };
+		2C8C3E4F7B3B746731B2E40B /* DayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPicker.swift; sourceTree = "<group>"; };
+		806773D59A447642DBC5605F /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
+		8421665C99AF96863DB84F34 /* TypeBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeBadge.swift; sourceTree = "<group>"; };
+		8BBFF9EBEC0A1C303429029A /* MateBadges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MateBadges.swift; sourceTree = "<group>"; };
+		905DAB7858468A4F9BB51832 /* PickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickButton.swift; sourceTree = "<group>"; };
+		973E810CB78C7D2116DAE13F /* SessionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCardView.swift; sourceTree = "<group>"; };
+		A314A12B39A28121D292BDA5 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		A8EF0E69F44ED6B4CCD641FE /* PicksSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicksSyncService.swift; sourceTree = "<group>"; };
+		AEA8654FF576496E1DBA602B /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		CAEF12E4AE1A856CE79051D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CB18E6E703765036469FAF4A /* ConferenceNav.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ConferenceNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCF438AA89D0AB0473C3C12C /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		D7DCCE05D03ED77F14D5E700 /* ConferenceDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceDesign.swift; sourceTree = "<group>"; };
+		D818A856FBA8AD3E835B6C9C /* ConflictBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictBanner.swift; sourceTree = "<group>"; };
+		DBB78744B1F1A19FB7595441 /* ConferenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceStore.swift; sourceTree = "<group>"; };
+		DCEE2D9637735FA17911238B /* SearchIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchIndex.swift; sourceTree = "<group>"; };
+		DFF16FC2B7C5FDC7BCDBE67A /* MatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatesView.swift; sourceTree = "<group>"; };
+		F0D132BE6002F392FA73C410 /* ConferenceNavApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceNavApp.swift; sourceTree = "<group>"; };
+		F33FA74F231592E2E84267B9 /* UserPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPickerView.swift; sourceTree = "<group>"; };
+		F465010D6828C14CA51F9FE8 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		F4FAA964607147AFD06F8EE2 /* programme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = programme.json; sourceTree = "<group>"; };
+		FAD5B93C3F602ADC1451B95D /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		09EA12A104AA16618AE76D35 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0C20146D120CDC1954E3B374 /* MainTabView.swift */,
+				DFF16FC2B7C5FDC7BCDBE67A /* MatesView.swift */,
+				0BA4FBA25A56952993867E09 /* MyPicksView.swift */,
+				A314A12B39A28121D292BDA5 /* ScheduleView.swift */,
+				F465010D6828C14CA51F9FE8 /* SearchView.swift */,
+				973E810CB78C7D2116DAE13F /* SessionCardView.swift */,
+				806773D59A447642DBC5605F /* SessionDetailView.swift */,
+				CCF438AA89D0AB0473C3C12C /* SplashScreen.swift */,
+				F33FA74F231592E2E84267B9 /* UserPickerView.swift */,
+				8D4C237B668DECF2C9C8B182 /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1669E25AA7F6375C0263CA6D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F4FAA964607147AFD06F8EE2 /* programme.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		57E968DA6E68562A5142BAA0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB18E6E703765036469FAF4A /* ConferenceNav.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		70E1C00BE13825905EF0EC66 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DBB78744B1F1A19FB7595441 /* ConferenceStore.swift */,
+				A8EF0E69F44ED6B4CCD641FE /* PicksSyncService.swift */,
+				DCEE2D9637735FA17911238B /* SearchIndex.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7158F7107AC7F97D0E6682D5 = {
+			isa = PBXGroup;
+			children = (
+				CAEF12E4AE1A856CE79051D3 /* Assets.xcassets */,
+				F0D132BE6002F392FA73C410 /* ConferenceNavApp.swift */,
+				F6DC5345A89078801D6A9C7B /* Design */,
+				761D829C1505D303EDEA0FC6 /* Models */,
+				1669E25AA7F6375C0263CA6D /* Resources */,
+				70E1C00BE13825905EF0EC66 /* Services */,
+				09EA12A104AA16618AE76D35 /* Views */,
+				57E968DA6E68562A5142BAA0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		761D829C1505D303EDEA0FC6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FAD5B93C3F602ADC1451B95D /* Session.swift */,
+				AEA8654FF576496E1DBA602B /* UserProfile.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8D4C237B668DECF2C9C8B182 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D818A856FBA8AD3E835B6C9C /* ConflictBanner.swift */,
+				2C8C3E4F7B3B746731B2E40B /* DayPicker.swift */,
+				25DBFC2BEBC7B97FD3DDBCCB /* FilterChips.swift */,
+				8BBFF9EBEC0A1C303429029A /* MateBadges.swift */,
+				905DAB7858468A4F9BB51832 /* PickButton.swift */,
+				8421665C99AF96863DB84F34 /* TypeBadge.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F6DC5345A89078801D6A9C7B /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				D7DCCE05D03ED77F14D5E700 /* ConferenceDesign.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		643E5BFEBB7734EBAF6D7B42 /* ConferenceNav */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 505C5E49CF30AA09F192CA4B /* Build configuration list for PBXNativeTarget "ConferenceNav" */;
+			buildPhases = (
+				36BD40E463B5243D8AB105CE /* Sources */,
+				21B57D59C6E8D452168D9E25 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ConferenceNav;
+			packageProductDependencies = (
+			);
+			productName = ConferenceNav;
+			productReference = CB18E6E703765036469FAF4A /* ConferenceNav.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		24DB57695720E850FE6A6E92 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					643E5BFEBB7734EBAF6D7B42 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = D81B37C82A82E7408FC87A05 /* Build configuration list for PBXProject "ConferenceNav" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 7158F7107AC7F97D0E6682D5;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				643E5BFEBB7734EBAF6D7B42 /* ConferenceNav */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		21B57D59C6E8D452168D9E25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A167A4C4FD3A61A98E76FE35 /* Assets.xcassets in Resources */,
+				41998527D364FEEB64034E39 /* programme.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		36BD40E463B5243D8AB105CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A50036AB1B7ACEDE553E2381 /* ConferenceDesign.swift in Sources */,
+				90169BCAE57F9F98E3152AA2 /* ConferenceNavApp.swift in Sources */,
+				6DE13A274D4683DBD7571EFC /* ConferenceStore.swift in Sources */,
+				CC3F8C04681DC46D9ABD7AFD /* ConflictBanner.swift in Sources */,
+				140AACDEEBBA289CA46A9B7A /* DayPicker.swift in Sources */,
+				E624B8B3765D8A8F8A1EBD28 /* FilterChips.swift in Sources */,
+				637D5707861F36BA9E47F10D /* MainTabView.swift in Sources */,
+				24708B210E80D772D5A46030 /* MateBadges.swift in Sources */,
+				CDE82F251FC80BF43A6C18CB /* MatesView.swift in Sources */,
+				E633ABB8D16A7C3CBCEFEF26 /* MyPicksView.swift in Sources */,
+				B14984DBFFA96F178425C872 /* PickButton.swift in Sources */,
+				0B0BA07E1BAF1E0CF280E1F3 /* PicksSyncService.swift in Sources */,
+				3C3A02D0BFB717DF9A3A7C84 /* ScheduleView.swift in Sources */,
+				D7B2C1FD36142A55BD82882A /* SearchIndex.swift in Sources */,
+				735C658CFB9D205C360F09E2 /* SearchView.swift in Sources */,
+				3D14095D483511B17D269768 /* Session.swift in Sources */,
+				ABB202A3C3FF442305F380C1 /* SessionCardView.swift in Sources */,
+				AB5F1B4CF81ADC74FF3AE9FF /* SessionDetailView.swift in Sources */,
+				4D2D19E23D7C95A78A4AAD65 /* SplashScreen.swift in Sources */,
+				FE2EC69A050F1756E79C0290 /* TypeBadge.swift in Sources */,
+				6DAF4358E3534325C9CAD3D2 /* UserPickerView.swift in Sources */,
+				22B8C7D682511D5E75DCD06B /* UserProfile.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		49B4BEE1ADA76F08DA20218D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGNING_ALLOWED = "$(inherited)";
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "EAPragueC 2026";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wheresBen.ConferenceNav;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5413F59AB03AD9E522FD8202 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "EAPragueC 2026";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		DD39B8E86306330895B9972E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "EAPragueC 2026";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		E062008B8A4DABEB5AC3A494 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGNING_ALLOWED = "$(inherited)";
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "EAPragueC 2026";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wheresBen.ConferenceNav;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		505C5E49CF30AA09F192CA4B /* Build configuration list for PBXNativeTarget "ConferenceNav" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49B4BEE1ADA76F08DA20218D /* Debug */,
+				E062008B8A4DABEB5AC3A494 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D81B37C82A82E7408FC87A05 /* Build configuration list for PBXProject "ConferenceNav" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD39B8E86306330895B9972E /* Debug */,
+				5413F59AB03AD9E522FD8202 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 24DB57695720E850FE6A6E92 /* Project object */;
+}
