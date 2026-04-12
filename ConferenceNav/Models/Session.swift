@@ -94,6 +94,6 @@ extension Session {
 
 extension SessionType {
     static var filterableTypes: [SessionType] {
-        [.keynote, .oral, .panel, .poster, .general, .meeting, .social]
+        [.keynote, .oral, .panel, .poster, .general, .meeting]
     }
 }
