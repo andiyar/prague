@@ -26,7 +26,9 @@ struct PeopleListView: View {
                 contactList
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(CNColors.background(for: colorScheme))
+        .ignoresSafeArea(edges: .bottom)
         .navigationTitle("People")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
