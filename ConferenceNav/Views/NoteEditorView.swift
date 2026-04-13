@@ -78,7 +78,9 @@ struct NoteEditorView: View {
                 }
             }
             .confirmationDialog("Add Photo", isPresented: $showingPhotoSource) {
-                Button("Take Photo") { showingCamera = true }
+                if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                    Button("Take Photo") { showingCamera = true }
+                }
                 Button("Choose from Library") { showingPhotoPicker = true }
                 Button("Cancel", role: .cancel) {}
             }
