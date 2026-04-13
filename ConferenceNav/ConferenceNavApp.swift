@@ -3,6 +3,7 @@ import SwiftUI
 @main
 struct ConferenceNavApp: App {
     @State private var store = ConferenceStore()
+    @State private var contactStore: ContactStore?
     @AppStorage("conferenceNavUser") private var savedUserId: String?
     @State private var showSplash = true
 
@@ -14,15 +15,21 @@ struct ConferenceNavApp: App {
                         MainTabView()
                     } else {
                         UserPickerView {
-                            // onSelect — savedUserId set in UserPickerView
+                            if let id = savedUserId {
+                                contactStore = ContactStore(userId: id)
+                            }
                         }
                     }
                 }
                 .environment(store)
+                .environment(contactStore ?? ContactStore(userId: savedUserId ?? "default"))
                 .onAppear {
                     if let id = savedUserId {
                         let user: UserProfile = id == "ron" ? .ron : .ben
                         store.switchUser(to: user)
+                        if contactStore == nil {
+                            contactStore = ContactStore(userId: id)
+                        }
                     }
                 }
                 .task {

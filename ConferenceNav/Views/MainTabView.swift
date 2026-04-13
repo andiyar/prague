@@ -20,9 +20,9 @@ struct MainTabView: View {
                     Label("My Picks", systemImage: "star.fill")
                 }
 
-            MatesView()
+            ExtrasView()
                 .tabItem {
-                    Label("Mates", systemImage: "person.2.fill")
+                    Label("Extras", systemImage: "ellipsis.circle.fill")
                 }
         }
         .tint(CNColors.navy(for: colorScheme))
