@@ -5,8 +5,7 @@ struct ExportView: View {
     @Environment(ConferenceStore.self) var store
     @Environment(\.colorScheme) var colorScheme
 
-    @State private var showingShareSheet = false
-    @State private var exportURL: URL?
+    @State private var shareItem: URL?
 
     var body: some View {
         List {
@@ -65,10 +64,8 @@ struct ExportView: View {
         }
         .listStyle(.insetGrouped)
         .navigationTitle("Export")
-        .sheet(isPresented: $showingShareSheet) {
-            if let url = exportURL {
-                ShareSheet(items: [url])
-            }
+        .sheet(item: $shareItem) { url in
+            ShareSheet(items: [url])
         }
     }
 
@@ -105,8 +102,7 @@ struct ExportView: View {
         let tempDir = FileManager.default.temporaryDirectory
         let fileURL = tempDir.appendingPathComponent(filename)
         try? content.write(to: fileURL, atomically: true, encoding: .utf8)
-        exportURL = fileURL
-        showingShareSheet = true
+        shareItem = fileURL
     }
 
     private func exportPicksMarkdown() -> String {
@@ -135,6 +131,12 @@ struct ExportView: View {
         }
         return md
     }
+}
+
+// MARK: - URL + Identifiable
+
+extension URL: @retroactive Identifiable {
+    public var id: String { absoluteString }
 }
 
 // MARK: - ShareSheet (UIKit wrapper)
