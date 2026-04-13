@@ -15,6 +15,7 @@
 		24708B210E80D772D5A46030 /* MateBadges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBFF9EBEC0A1C303429029A /* MateBadges.swift */; };
 		3C3A02D0BFB717DF9A3A7C84 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A314A12B39A28121D292BDA5 /* ScheduleView.swift */; };
 		3D14095D483511B17D269768 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B93C3F602ADC1451B95D /* Session.swift */; };
+		3E2383F522640C3A7D3D0E32 /* SessionNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4447E6B4A64BFD204C31FB /* SessionNote.swift */; };
 		41998527D364FEEB64034E39 /* programme.json in Resources */ = {isa = PBXBuildFile; fileRef = F4FAA964607147AFD06F8EE2 /* programme.json */; };
 		4BF364BC5F678097A00EF423 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19F6CC6B036B9A63464531 /* ExportView.swift */; };
 		4D2D19E23D7C95A78A4AAD65 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF438AA89D0AB0473C3C12C /* SplashScreen.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		0BA4FBA25A56952993867E09 /* MyPicksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPicksView.swift; sourceTree = "<group>"; };
 		0C20146D120CDC1954E3B374 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		1E4447E6B4A64BFD204C31FB /* SessionNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionNote.swift; sourceTree = "<group>"; };
 		25DBFC2BEBC7B97FD3DDBCCB /* FilterChips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterChips.swift; sourceTree = "<group>"; };
 		2C8C3E4F7B3B746731B2E40B /* DayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPicker.swift; sourceTree = "<group>"; };
 		2D19F6CC6B036B9A63464531 /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			children = (
 				B22A4F389E85B91D969404A0 /* Contact.swift */,
 				FAD5B93C3F602ADC1451B95D /* Session.swift */,
+				1E4447E6B4A64BFD204C31FB /* SessionNote.swift */,
 				AEA8654FF576496E1DBA602B /* UserProfile.swift */,
 			);
 			path = Models;
@@ -280,6 +283,7 @@
 				3D14095D483511B17D269768 /* Session.swift in Sources */,
 				ABB202A3C3FF442305F380C1 /* SessionCardView.swift in Sources */,
 				AB5F1B4CF81ADC74FF3AE9FF /* SessionDetailView.swift in Sources */,
+				3E2383F522640C3A7D3D0E32 /* SessionNote.swift in Sources */,
 				4D2D19E23D7C95A78A4AAD65 /* SplashScreen.swift in Sources */,
 				FE2EC69A050F1756E79C0290 /* TypeBadge.swift in Sources */,
 				6DAF4358E3534325C9CAD3D2 /* UserPickerView.swift in Sources */,
