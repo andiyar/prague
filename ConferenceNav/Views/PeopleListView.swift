@@ -5,6 +5,7 @@ struct PeopleListView: View {
     @Environment(\.colorScheme) var colorScheme
 
     @State private var showingAddSheet = false
+    @State private var editingContact: Contact?
     @State private var searchText = ""
 
     private var filtered: [Contact] {
@@ -43,6 +44,9 @@ struct PeopleListView: View {
         .sheet(isPresented: $showingAddSheet) {
             ContactFormView(mode: .add)
         }
+        .sheet(item: $editingContact) { contact in
+            ContactFormView(mode: .edit(contact))
+        }
         .searchable(text: $searchText, prompt: "Search contacts")
     }
 
@@ -67,7 +71,9 @@ struct PeopleListView: View {
     private var contactList: some View {
         List {
             ForEach(filtered) { contact in
-                NavigationLink(value: contact.id) {
+                Button {
+                    editingContact = contact
+                } label: {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(contact.name)
                             .font(CNFonts.headline)
@@ -83,11 +89,11 @@ struct PeopleListView: View {
                                 .foregroundStyle(CNColors.textSecondary)
                         }
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.vertical, 4)
                 }
             }
             .onDelete { offsets in
-                // Map filtered offsets back to the store
                 let toDelete = offsets.map { filtered[$0] }
                 for contact in toDelete {
                     contactStore.delete(contact)
@@ -95,10 +101,5 @@ struct PeopleListView: View {
             }
         }
         .listStyle(.plain)
-        .navigationDestination(for: UUID.self) { contactId in
-            if let contact = contactStore.contacts.first(where: { $0.id == contactId }) {
-                ContactFormView(mode: .edit(contact))
-            }
-        }
     }
 }
