@@ -16,9 +16,11 @@ struct SessionDetailView: View {
     var searchQuery: String = ""
 
     @Environment(ConferenceStore.self) var store
+    @Environment(NotesStore.self) var notesStore
     @Environment(\.colorScheme) var colorScheme
     @State private var showFullDescription = false
     @State private var showAllPresentations = false
+    @State private var showingNoteEditor = false
 
     private var hasSearch: Bool {
         !searchQuery.trimmingCharacters(in: .whitespaces).isEmpty
@@ -84,6 +86,24 @@ struct SessionDetailView: View {
                     HStack(spacing: 12) {
                         PickButton(sessionId: session.id)
                         MateBadges(session: session)
+                        Button {
+                            showingNoteEditor = true
+                        } label: {
+                            HStack(spacing: 4) {
+                                Image(systemName: notesStore.hasNote(for: session.id) ? "note.text" : "note.text.badge.plus")
+                                    .font(.system(size: 16))
+                                if notesStore.hasNote(for: session.id) {
+                                    Circle()
+                                        .fill(CNColors.teal(for: colorScheme))
+                                        .frame(width: 6, height: 6)
+                                }
+                            }
+                            .foregroundStyle(CNColors.teal(for: colorScheme))
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 6)
+                            .background(CNColors.surfaceSecondary(for: colorScheme))
+                            .clipShape(Capsule())
+                        }
                         Spacer()
                     }
 
@@ -166,6 +186,9 @@ struct SessionDetailView: View {
                 Spacer(minLength: 40)
             }
             .padding(.top, 8)
+        }
+        .sheet(isPresented: $showingNoteEditor) {
+            NoteEditorView(session: session)
         }
         .background(CNColors.background(for: colorScheme))
         .navigationBarTitleDisplayMode(.inline)
