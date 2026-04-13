@@ -3,6 +3,7 @@ import SwiftUI
 struct ExtrasView: View {
     @Environment(ContactStore.self) var contactStore
     @Environment(ConferenceStore.self) var store
+    @Environment(NotesStore.self) var notesStore
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
@@ -27,23 +28,24 @@ struct ExtrasView: View {
                     .padding(.vertical, 6)
                 }
 
-                // Session Notes (V2)
-                Label {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Session Notes")
-                            .font(CNFonts.headline)
-                            .foregroundStyle(CNColors.textPrimary(for: colorScheme))
-                        Text("Coming soon")
-                            .font(CNFonts.caption)
-                            .foregroundStyle(CNColors.textSecondary)
+                // Session Notes
+                NavigationLink(value: "notes") {
+                    Label {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Session Notes")
+                                .font(CNFonts.headline)
+                                .foregroundStyle(CNColors.textPrimary(for: colorScheme))
+                            Text("\(notesStore.notesWithContent.count) notes")
+                                .font(CNFonts.caption)
+                                .foregroundStyle(CNColors.textSecondary)
+                        }
+                    } icon: {
+                        Image(systemName: "note.text")
+                            .foregroundStyle(CNColors.teal(for: colorScheme))
+                            .font(.system(size: 20))
                     }
-                } icon: {
-                    Image(systemName: "note.text")
-                        .foregroundStyle(CNColors.textSecondary.opacity(0.5))
-                        .font(.system(size: 20))
+                    .padding(.vertical, 6)
                 }
-                .padding(.vertical, 6)
-                .opacity(0.5)
 
                 // Export
                 Section {
@@ -74,6 +76,8 @@ struct ExtrasView: View {
                     PeopleListView()
                 case "export":
                     ExportView()
+                case "notes":
+                    NoteListView()
                 default:
                     EmptyView()
                 }

@@ -4,6 +4,7 @@ import SwiftUI
 struct ConferenceNavApp: App {
     @State private var store = ConferenceStore()
     @State private var contactStore: ContactStore?
+    @State private var notesStore: NotesStore?
     @AppStorage("conferenceNavUser") private var savedUserId: String?
     @State private var showSplash = true
 
@@ -17,18 +18,23 @@ struct ConferenceNavApp: App {
                         UserPickerView {
                             if let id = savedUserId {
                                 contactStore = ContactStore(userId: id)
+                                notesStore = NotesStore(userId: id)
                             }
                         }
                     }
                 }
                 .environment(store)
                 .environment(contactStore ?? ContactStore(userId: savedUserId ?? "default"))
+                .environment(notesStore ?? NotesStore(userId: savedUserId ?? "default"))
                 .onAppear {
                     if let id = savedUserId {
                         let user: UserProfile = id == "ron" ? .ron : .ben
                         store.switchUser(to: user)
                         if contactStore == nil {
                             contactStore = ContactStore(userId: id)
+                        }
+                        if notesStore == nil {
+                            notesStore = NotesStore(userId: id)
                         }
                     }
                 }
