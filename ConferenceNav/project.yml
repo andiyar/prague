@@ -50,3 +50,5 @@ targets:
         CODE_SIGN_STYLE: Automatic
         CODE_SIGNING_ALLOWED: "$(inherited)"
         CODE_SIGNING_REQUIRED: NO
+        INFOPLIST_KEY_NSCameraUsageDescription: "Take photos of sessions, posters, and slides"
+        INFOPLIST_KEY_NSPhotoLibraryUsageDescription: "Attach photos from your library to session notes"
