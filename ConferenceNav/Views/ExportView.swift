@@ -3,6 +3,7 @@ import SwiftUI
 struct ExportView: View {
     @Environment(ContactStore.self) var contactStore
     @Environment(ConferenceStore.self) var store
+    @Environment(NotesStore.self) var notesStore
     @Environment(\.colorScheme) var colorScheme
 
     @State private var shareItem: URL?
@@ -57,9 +58,33 @@ struct ExportView: View {
             }
 
             Section {
-                Text("Session Notes export coming in V2")
-                    .font(CNFonts.caption)
-                    .foregroundStyle(CNColors.textSecondary)
+                exportRow(
+                    title: "Conference Report",
+                    subtitle: "Picks + notes combined",
+                    icon: "doc.richtext",
+                    iconColor: CNColors.navy(for: colorScheme),
+                    disabled: store.myPickedSessions.isEmpty
+                ) {
+                    exportFile(
+                        content: notesStore.exportConferenceReport(pickedSessions: store.myPickedSessions),
+                        filename: "EAPC-2026-Conference-Report.md"
+                    )
+                }
+
+                exportRow(
+                    title: "All Notes (Markdown)",
+                    subtitle: "\(notesStore.notesWithContent.count) notes",
+                    icon: "note.text",
+                    iconColor: CNColors.teal(for: colorScheme),
+                    disabled: notesStore.notesWithContent.isEmpty
+                ) {
+                    exportFile(
+                        content: exportAllNotes(),
+                        filename: "EAPC-2026-Notes.md"
+                    )
+                }
+            } header: {
+                Text("Notes & Report")
             }
         }
         .listStyle(.insetGrouped)
@@ -103,6 +128,17 @@ struct ExportView: View {
         let fileURL = tempDir.appendingPathComponent(filename)
         try? content.write(to: fileURL, atomically: true, encoding: .utf8)
         shareItem = fileURL
+    }
+
+    private func exportAllNotes() -> String {
+        var md = "# Session Notes — EAPC 2026\n\n"
+        for note in notesStore.notesWithContent {
+            md += "## \(note.sessionTitle)\n"
+            md += "*\(note.sessionDate) · \(note.sessionTime) · \(note.sessionVenue)*\n\n"
+            md += note.body
+            md += "\n\n---\n\n"
+        }
+        return md
     }
 
     private func exportPicksMarkdown() -> String {
