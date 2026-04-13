@@ -16,9 +16,28 @@ class NotesStore {
 
     // MARK: - Public API
 
-    /// Get or create a note for a session
+    /// Get or create a note for a presentation within a session
+    func note(for presentation: Presentation, in session: Session) -> SessionNote {
+        let key = "p-\(presentation.id)"
+        if let existing = notes.first(where: { $0.noteKey == key }) {
+            return existing
+        }
+        return SessionNote(
+            sessionId: session.id,
+            sessionTitle: session.title,
+            sessionDate: session.date,
+            sessionTime: "\(session.startsAt)-\(session.endsAt)",
+            sessionVenue: session.venue,
+            presentationId: presentation.id,
+            presentationTitle: presentation.title,
+            presenter: presentation.presenter
+        )
+    }
+
+    /// Get or create a session-level note (for sessions with no presentations)
     func note(for session: Session) -> SessionNote {
-        if let existing = notes.first(where: { $0.sessionId == session.id }) {
+        let key = "s-\(session.id)"
+        if let existing = notes.first(where: { $0.noteKey == key }) {
             return existing
         }
         return SessionNote(
@@ -30,10 +49,26 @@ class NotesStore {
         )
     }
 
-    /// Check if a session has a note with content
-    func hasNote(for sessionId: Int) -> Bool {
-        guard let note = notes.first(where: { $0.sessionId == sessionId }) else { return false }
+    /// Check if a presentation has a note with content
+    func hasNote(forPresentation presentationId: Int) -> Bool {
+        let key = "p-\(presentationId)"
+        guard let note = notes.first(where: { $0.noteKey == key }) else { return false }
         return !note.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !note.photoFilenames.isEmpty
+    }
+
+    /// Check if a session has a note with content (session-level only)
+    func hasNote(forSession sessionId: Int) -> Bool {
+        let key = "s-\(sessionId)"
+        guard let note = notes.first(where: { $0.noteKey == key }) else { return false }
+        return !note.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !note.photoFilenames.isEmpty
+    }
+
+    /// Check if any notes exist for a session (session-level or any of its presentations)
+    func hasAnyNote(forSession sessionId: Int) -> Bool {
+        notes.contains { note in
+            note.sessionId == sessionId &&
+            (!note.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !note.photoFilenames.isEmpty)
+        }
     }
 
     /// Save a note (creates or updates)
@@ -41,7 +76,7 @@ class NotesStore {
         var updated = note
         updated.lastModified = Date()
 
-        if let index = notes.firstIndex(where: { $0.sessionId == note.sessionId }) {
+        if let index = notes.firstIndex(where: { $0.noteKey == note.noteKey }) {
             notes[index] = updated
         } else {
             notes.append(updated)
@@ -51,15 +86,16 @@ class NotesStore {
 
     /// Delete a note and its photos
     func delete(_ note: SessionNote) {
-        notes.removeAll { $0.sessionId == note.sessionId }
+        notes.removeAll { $0.noteKey == note.noteKey }
         deleteNoteFile(note)
     }
 
-    /// Save a photo for a session, returns the filename
+    /// Save a photo, returns the filename
     func savePhoto(_ image: UIImage, for note: SessionNote) -> String? {
         guard let data = image.jpegData(compressionQuality: 0.8) else { return nil }
 
-        let filename = "session-\(note.sessionId)-\(UUID().uuidString.prefix(8)).jpg"
+        let prefix = note.presentationId.map { "pres-\($0)" } ?? "session-\(note.sessionId)"
+        let filename = "\(prefix)-\(UUID().uuidString.prefix(8)).jpg"
         let photosDir = photosDirectory()
 
         do {
@@ -86,11 +122,12 @@ class NotesStore {
         try? FileManager.default.removeItem(at: url)
     }
 
-    /// All notes sorted by session date/time
+    /// All notes sorted by session date/time, then presentation
     var sortedNotes: [SessionNote] {
         notes.sorted { a, b in
             if a.sessionDate != b.sessionDate { return a.sessionDate < b.sessionDate }
-            return a.sessionTime < b.sessionTime
+            if a.sessionTime != b.sessionTime { return a.sessionTime < b.sessionTime }
+            return a.displayTitle < b.displayTitle
         }
     }
 
@@ -126,15 +163,29 @@ class NotesStore {
                 md += "### \(session.startsAt)-\(session.endsAt) · \(session.venue)\n"
                 md += "**\(session.title)** (\(session.type.rawValue))\n\n"
 
-                if let note = notes.first(where: { $0.sessionId == session.id }),
+                // Session-level note
+                let sessionNote = notes.first(where: { $0.noteKey == "s-\(session.id)" })
+                if let note = sessionNote,
                    !note.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                    md += note.body
-                    md += "\n\n"
+                    md += note.body + "\n\n"
+                }
 
-                    if !note.photoFilenames.isEmpty {
-                        md += "*Photos: \(note.photoFilenames.joined(separator: ", "))*\n\n"
+                // Presentation-level notes
+                let presNotes = notes.filter { $0.sessionId == session.id && $0.presentationId != nil }
+                    .filter { !$0.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !$0.photoFilenames.isEmpty }
+
+                if !presNotes.isEmpty {
+                    for pNote in presNotes {
+                        md += "#### \(pNote.presentationTitle)\n"
+                        if !pNote.presenter.isEmpty {
+                            md += "*\(pNote.presenter)*\n\n"
+                        }
+                        md += pNote.body + "\n\n"
+                        if !pNote.photoFilenames.isEmpty {
+                            md += "*Photos: \(pNote.photoFilenames.joined(separator: ", "))*\n\n"
+                        }
                     }
-                } else {
+                } else if sessionNote == nil {
                     md += "*No notes recorded.*\n\n"
                 }
             }
@@ -161,7 +212,6 @@ class NotesStore {
             .appendingPathComponent("Documents") {
             return iCloudURL
         }
-        // Fallback to local Documents
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
 
@@ -220,7 +270,6 @@ class NotesStore {
             let fileURL = self.notesDirectory().appendingPathComponent(note.filename)
             try? FileManager.default.removeItem(at: fileURL)
 
-            // Also delete associated photos
             for photo in note.photoFilenames {
                 let photoURL = self.photosDirectory().appendingPathComponent(photo)
                 try? FileManager.default.removeItem(at: photoURL)

@@ -86,23 +86,36 @@ struct SessionDetailView: View {
                     HStack(spacing: 12) {
                         PickButton(sessionId: session.id)
                         MateBadges(session: session)
-                        Button {
-                            showingNoteEditor = true
-                        } label: {
-                            HStack(spacing: 4) {
-                                Image(systemName: notesStore.hasNote(for: session.id) ? "note.text" : "note.text.badge.plus")
-                                    .font(.system(size: 16))
-                                if notesStore.hasNote(for: session.id) {
-                                    Circle()
-                                        .fill(CNColors.teal(for: colorScheme))
-                                        .frame(width: 6, height: 6)
+                        // Session-level note button only for sessions with no presentations
+                        if session.presentations.isEmpty {
+                            Button {
+                                showingNoteEditor = true
+                            } label: {
+                                HStack(spacing: 4) {
+                                    Image(systemName: notesStore.hasNote(forSession: session.id) ? "note.text" : "note.text.badge.plus")
+                                        .font(.system(size: 16))
+                                    if notesStore.hasNote(forSession: session.id) {
+                                        Circle()
+                                            .fill(CNColors.teal(for: colorScheme))
+                                            .frame(width: 6, height: 6)
+                                    }
                                 }
+                                .foregroundStyle(CNColors.teal(for: colorScheme))
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 6)
+                                .background(CNColors.surfaceSecondary(for: colorScheme))
+                                .clipShape(Capsule())
+                            }
+                        } else if notesStore.hasAnyNote(forSession: session.id) {
+                            // Show indicator that this session has notes on presentations
+                            HStack(spacing: 4) {
+                                Image(systemName: "note.text")
+                                    .font(.system(size: 14))
+                                Circle()
+                                    .fill(CNColors.teal(for: colorScheme))
+                                    .frame(width: 6, height: 6)
                             }
                             .foregroundStyle(CNColors.teal(for: colorScheme))
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 6)
-                            .background(CNColors.surfaceSecondary(for: colorScheme))
-                            .clipShape(Capsule())
                         }
                         Spacer()
                     }
@@ -161,7 +174,7 @@ struct SessionDetailView: View {
                         .padding(.horizontal, 16)
 
                         ForEach(visiblePresentations) { pres in
-                            PresentationRow(presentation: pres)
+                            PresentationRow(presentation: pres, session: session)
                                 .padding(.horizontal, 16)
                         }
 
@@ -188,7 +201,7 @@ struct SessionDetailView: View {
             .padding(.top, 8)
         }
         .sheet(isPresented: $showingNoteEditor) {
-            NoteEditorView(session: session)
+            NoteEditorView(session: session, presentation: nil)
         }
         .background(CNColors.background(for: colorScheme))
         .navigationBarTitleDisplayMode(.inline)
@@ -199,8 +212,11 @@ struct SessionDetailView: View {
 
 struct PresentationRow: View {
     let presentation: Presentation
+    let session: Session
+    @Environment(NotesStore.self) var notesStore
     @Environment(\.colorScheme) var colorScheme
     @State private var expanded = false
+    @State private var showingNoteEditor = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -223,31 +239,54 @@ struct PresentationRow: View {
                             .foregroundStyle(CNColors.teal(for: colorScheme))
                     }
 
-                    if presentation.authors.count > 1 {
+                    // Note + authors row
+                    HStack(spacing: 8) {
                         Button {
-                            withAnimation { expanded.toggle() }
+                            showingNoteEditor = true
                         } label: {
-                            Text(expanded ? "Hide authors" : "\(presentation.authors.count) authors")
-                                .font(CNFonts.sans(11, weight: .medium))
-                                .foregroundStyle(CNColors.textSecondary)
+                            HStack(spacing: 3) {
+                                Image(systemName: notesStore.hasNote(forPresentation: presentation.id)
+                                      ? "note.text" : "note.text.badge.plus")
+                                    .font(.system(size: 12))
+                                if notesStore.hasNote(forPresentation: presentation.id) {
+                                    Circle()
+                                        .fill(CNColors.teal(for: colorScheme))
+                                        .frame(width: 5, height: 5)
+                                }
+                            }
+                            .foregroundStyle(CNColors.teal(for: colorScheme))
+                            .padding(.horizontal, 7)
+                            .padding(.vertical, 4)
+                            .background(CNColors.surfaceSecondary(for: colorScheme))
+                            .clipShape(Capsule())
                         }
 
-                        if expanded {
-                            ForEach(presentation.authors, id: \.name) { author in
-                                HStack(spacing: 4) {
-                                    Text(author.name)
+                        if presentation.authors.count > 1 {
+                            Button {
+                                withAnimation { expanded.toggle() }
+                            } label: {
+                                Text(expanded ? "Hide authors" : "\(presentation.authors.count) authors")
+                                    .font(CNFonts.sans(11, weight: .medium))
+                                    .foregroundStyle(CNColors.textSecondary)
+                            }
+                        }
+                    }
+
+                    if expanded {
+                        ForEach(presentation.authors, id: \.name) { author in
+                            HStack(spacing: 4) {
+                                Text(author.name)
+                                    .font(CNFonts.small)
+                                    .foregroundStyle(
+                                        author.presenting
+                                            ? CNColors.teal(for: colorScheme)
+                                            : CNColors.textSecondary
+                                    )
+                                if !author.organisation.isEmpty {
+                                    Text("— \(author.organisation)")
                                         .font(CNFonts.small)
-                                        .foregroundStyle(
-                                            author.presenting
-                                                ? CNColors.teal(for: colorScheme)
-                                                : CNColors.textSecondary
-                                        )
-                                    if !author.organisation.isEmpty {
-                                        Text("— \(author.organisation)")
-                                            .font(CNFonts.small)
-                                            .foregroundStyle(CNColors.textSecondary)
-                                            .lineLimit(1)
-                                    }
+                                        .foregroundStyle(CNColors.textSecondary)
+                                        .lineLimit(1)
                                 }
                             }
                         }
@@ -258,5 +297,8 @@ struct PresentationRow: View {
         .padding(10)
         .background(CNColors.surfaceSecondary(for: colorScheme))
         .clipShape(RoundedRectangle(cornerRadius: 8))
+        .sheet(isPresented: $showingNoteEditor) {
+            NoteEditorView(session: session, presentation: presentation)
+        }
     }
 }

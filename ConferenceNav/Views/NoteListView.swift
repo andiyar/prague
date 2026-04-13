@@ -5,12 +5,12 @@ struct NoteListView: View {
     @Environment(ConferenceStore.self) var store
     @Environment(\.colorScheme) var colorScheme
 
-    @State private var editingSessionId: Int?
+    @State private var editingNote: SessionNote?
 
     private var isShowingEditor: Binding<Bool> {
         Binding(
-            get: { editingSessionId != nil },
-            set: { if !$0 { editingSessionId = nil } }
+            get: { editingNote != nil },
+            set: { if !$0 { editingNote = nil } }
         )
     }
 
@@ -27,9 +27,14 @@ struct NoteListView: View {
         .ignoresSafeArea(edges: .bottom)
         .navigationTitle("Session Notes")
         .sheet(isPresented: isShowingEditor) {
-            if let sessionId = editingSessionId,
-               let session = store.sessions.first(where: { $0.id == sessionId }) {
-                NoteEditorView(session: session)
+            if let note = editingNote,
+               let session = store.sessions.first(where: { $0.id == note.sessionId }) {
+                if let presId = note.presentationId,
+                   let pres = session.presentations.first(where: { $0.id == presId }) {
+                    NoteEditorView(session: session, presentation: pres)
+                } else {
+                    NoteEditorView(session: session, presentation: nil)
+                }
             }
         }
     }
@@ -43,7 +48,7 @@ struct NoteListView: View {
             Text("No notes yet")
                 .font(CNFonts.title2)
                 .foregroundStyle(CNColors.textPrimary(for: colorScheme))
-            Text("Open a session and tap the notes icon\nto start capturing your thoughts.")
+            Text("Open a session and tap the notes icon\non any talk or poster to start.")
                 .font(CNFonts.body)
                 .foregroundStyle(CNColors.textSecondary)
                 .multilineTextAlignment(.center)
@@ -56,13 +61,29 @@ struct NoteListView: View {
         List {
             ForEach(notesStore.notesWithContent) { note in
                 Button {
-                    editingSessionId = note.sessionId
+                    editingNote = note
                 } label: {
                     VStack(alignment: .leading, spacing: 6) {
-                        Text(note.sessionTitle)
+                        // Primary title: presentation or session
+                        Text(note.displayTitle)
                             .font(CNFonts.headline)
                             .foregroundStyle(CNColors.textPrimary(for: colorScheme))
                             .lineLimit(2)
+
+                        // Presenter (for presentation-level notes)
+                        if !note.presenter.isEmpty {
+                            Text(note.presenter)
+                                .font(CNFonts.caption)
+                                .foregroundStyle(CNColors.teal(for: colorScheme))
+                        }
+
+                        // Parent session (for presentation-level notes)
+                        if note.presentationId != nil {
+                            Text(note.sessionTitle)
+                                .font(CNFonts.small)
+                                .foregroundStyle(CNColors.textSecondary)
+                                .lineLimit(1)
+                        }
 
                         HStack(spacing: 6) {
                             Text(note.sessionDate)

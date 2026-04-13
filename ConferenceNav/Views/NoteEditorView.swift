@@ -4,6 +4,7 @@ import PhotosUI
 
 struct NoteEditorView: View {
     let session: Session
+    let presentation: Presentation?
 
     @Environment(NotesStore.self) var notesStore
     @Environment(\.colorScheme) var colorScheme
@@ -17,28 +18,40 @@ struct NoteEditorView: View {
     @State private var showingPhotoSource = false
     @State private var hasLoaded = false
 
+    init(session: Session, presentation: Presentation? = nil) {
+        self.session = session
+        self.presentation = presentation
+    }
+
+    private var currentNote: SessionNote {
+        if let pres = presentation {
+            return notesStore.note(for: pres, in: session)
+        }
+        return notesStore.note(for: session)
+    }
+
+    private var noteTitle: String {
+        presentation?.title ?? session.title
+    }
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                // Session context header
-                sessionHeader
-
+                contextHeader
                 Divider()
 
-                // Editor or preview
                 if isPreview {
                     previewMode
                 } else {
                     editMode
                 }
 
-                // Photo strip
                 if !photoFilenames.isEmpty {
                     photoStrip
                 }
             }
             .background(CNColors.background(for: colorScheme))
-            .navigationTitle("Session Notes")
+            .navigationTitle("Notes")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -82,21 +95,41 @@ struct NoteEditorView: View {
             .onAppear {
                 guard !hasLoaded else { return }
                 hasLoaded = true
-                let note = notesStore.note(for: session)
+                let note = currentNote
                 noteBody = note.body
                 photoFilenames = note.photoFilenames
             }
         }
     }
 
-    // MARK: - Session Header
+    // MARK: - Context Header
 
-    private var sessionHeader: some View {
+    private var contextHeader: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(session.title)
-                .font(CNFonts.headline)
-                .foregroundStyle(CNColors.textPrimary(for: colorScheme))
-                .lineLimit(2)
+            if let pres = presentation {
+                // Presentation-level note
+                Text(pres.title)
+                    .font(CNFonts.headline)
+                    .foregroundStyle(CNColors.textPrimary(for: colorScheme))
+                    .lineLimit(2)
+
+                if !pres.presenter.isEmpty {
+                    Text(pres.presenter)
+                        .font(CNFonts.caption)
+                        .foregroundStyle(CNColors.teal(for: colorScheme))
+                }
+
+                Text(session.title)
+                    .font(CNFonts.small)
+                    .foregroundStyle(CNColors.textSecondary)
+                    .lineLimit(1)
+            } else {
+                // Session-level note
+                Text(session.title)
+                    .font(CNFonts.headline)
+                    .foregroundStyle(CNColors.textPrimary(for: colorScheme))
+                    .lineLimit(2)
+            }
 
             HStack(spacing: 6) {
                 Text(session.dayLabel)
@@ -120,7 +153,6 @@ struct NoteEditorView: View {
 
     private var editMode: some View {
         VStack(spacing: 0) {
-            // Markdown hint bar
             HStack(spacing: 16) {
                 markdownHint("**bold**")
                 markdownHint("*italic*")
@@ -215,7 +247,7 @@ struct NoteEditorView: View {
     // MARK: - Actions
 
     private func attachPhoto(_ image: UIImage) {
-        if let filename = notesStore.savePhoto(image, for: notesStore.note(for: session)) {
+        if let filename = notesStore.savePhoto(image, for: currentNote) {
             photoFilenames.append(filename)
         }
     }
@@ -226,14 +258,17 @@ struct NoteEditorView: View {
     }
 
     private func saveAndDismiss() {
-        var note = notesStore.note(for: session)
+        var note = currentNote
         note.body = noteBody
         note.photoFilenames = photoFilenames
-        // Only save if there's actual content
-        if !noteBody.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !photoFilenames.isEmpty {
+
+        let hasContent = !noteBody.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !photoFilenames.isEmpty
+        let noteKey = note.noteKey
+        let hadNote = notesStore.notes.contains { $0.noteKey == noteKey }
+
+        if hasContent {
             notesStore.save(note)
-        } else if notesStore.hasNote(for: session.id) {
-            // Had a note before but now it's empty — delete
+        } else if hadNote {
             notesStore.delete(note)
         }
         dismiss()

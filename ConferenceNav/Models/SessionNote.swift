@@ -7,9 +7,20 @@ struct SessionNote: Identifiable, Equatable {
     let sessionDate: String      // "2026-05-14"
     let sessionTime: String      // "09:00-10:30"
     let sessionVenue: String
+    let presentationId: Int?     // nil = session-level note
+    let presentationTitle: String
+    let presenter: String
     var body: String             // Markdown content
     var photoFilenames: [String] // Relative filenames in photos/ dir
     var lastModified: Date
+
+    /// Unique key for lookups — presentation ID if available, otherwise session ID
+    var noteKey: String {
+        if let pid = presentationId {
+            return "p-\(pid)"
+        }
+        return "s-\(sessionId)"
+    }
 
     init(
         id: UUID = UUID(),
@@ -18,6 +29,9 @@ struct SessionNote: Identifiable, Equatable {
         sessionDate: String,
         sessionTime: String,
         sessionVenue: String,
+        presentationId: Int? = nil,
+        presentationTitle: String = "",
+        presenter: String = "",
         body: String = "",
         photoFilenames: [String] = [],
         lastModified: Date = Date()
@@ -28,14 +42,25 @@ struct SessionNote: Identifiable, Equatable {
         self.sessionDate = sessionDate
         self.sessionTime = sessionTime
         self.sessionVenue = sessionVenue
+        self.presentationId = presentationId
+        self.presentationTitle = presentationTitle
+        self.presenter = presenter
         self.body = body
         self.photoFilenames = photoFilenames
         self.lastModified = lastModified
     }
 
+    /// Display title — presentation title if available, otherwise session title
+    var displayTitle: String {
+        presentationTitle.isEmpty ? sessionTitle : presentationTitle
+    }
+
     /// Filename for this note's Markdown file
     var filename: String {
-        "session-\(sessionId).md"
+        if let pid = presentationId {
+            return "presentation-\(pid).md"
+        }
+        return "session-\(sessionId).md"
     }
 
     // MARK: - YAML Front Matter Serialisation
@@ -47,10 +72,15 @@ struct SessionNote: Identifiable, Equatable {
 
         var md = "---\n"
         md += "session_id: \(sessionId)\n"
-        md += "title: \"\(sessionTitle.replacingOccurrences(of: "\"", with: "\\\""))\"\n"
+        md += "session_title: \"\(sessionTitle.replacingOccurrences(of: "\"", with: "\\\""))\"\n"
         md += "date: \(sessionDate)\n"
         md += "time: \(sessionTime)\n"
         md += "venue: \(sessionVenue)\n"
+        if let pid = presentationId {
+            md += "presentation_id: \(pid)\n"
+            md += "presentation_title: \"\(presentationTitle.replacingOccurrences(of: "\"", with: "\\\""))\"\n"
+            md += "presenter: \"\(presenter.replacingOccurrences(of: "\"", with: "\\\""))\"\n"
+        }
         if !photoFilenames.isEmpty {
             md += "photos:\n"
             for photo in photoFilenames {
@@ -59,7 +89,7 @@ struct SessionNote: Identifiable, Equatable {
         }
         md += "last_modified: \(dateFormatter.string(from: lastModified))\n"
         md += "---\n\n"
-        md += "# \(sessionTitle)\n\n"
+        md += "# \(displayTitle)\n\n"
         md += body
         return md
     }
@@ -104,12 +134,15 @@ struct SessionNote: Identifiable, Equatable {
         guard let sessionIdStr = yaml["session_id"],
               let sessionId = Int(sessionIdStr) else { return nil }
 
+        let presentationId = yaml["presentation_id"].flatMap { Int($0) }
+
         // Strip the leading "# Title\n\n" from body if present
         var cleanBody = bodyBlock
         if cleanBody.hasPrefix("\n") {
             cleanBody = String(cleanBody.dropFirst())
         }
-        let titlePrefix = "# \(yaml["title"] ?? "")\n\n"
+        let title = yaml["presentation_title"] ?? yaml["session_title"] ?? yaml["title"] ?? ""
+        let titlePrefix = "# \(title)\n\n"
         if cleanBody.hasPrefix(titlePrefix) {
             cleanBody = String(cleanBody.dropFirst(titlePrefix.count))
         }
@@ -120,10 +153,13 @@ struct SessionNote: Identifiable, Equatable {
         return SessionNote(
             id: id,
             sessionId: sessionId,
-            sessionTitle: yaml["title"] ?? "Unknown Session",
+            sessionTitle: yaml["session_title"] ?? yaml["title"] ?? "Unknown Session",
             sessionDate: yaml["date"] ?? "",
             sessionTime: yaml["time"] ?? "",
             sessionVenue: yaml["venue"] ?? "",
+            presentationId: presentationId,
+            presentationTitle: yaml["presentation_title"] ?? "",
+            presenter: yaml["presenter"] ?? "",
             body: cleanBody,
             photoFilenames: photos,
             lastModified: dateFormatter.date(from: yaml["last_modified"] ?? "") ?? Date()
