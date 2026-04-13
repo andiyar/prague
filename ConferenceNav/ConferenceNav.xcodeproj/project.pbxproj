@@ -25,6 +25,7 @@
 		90169BCAE57F9F98E3152AA2 /* ConferenceNavApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D132BE6002F392FA73C410 /* ConferenceNavApp.swift */; };
 		9C2EAB7CA1856210D60C2BE2 /* ContactFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CB20D2EA6F65D8A36A1DE1 /* ContactFormView.swift */; };
 		A167A4C4FD3A61A98E76FE35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAEF12E4AE1A856CE79051D3 /* Assets.xcassets */; };
+		A2089B62FC3F005BAA5C7978 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 681E8D0B10A4F3533B42B01F /* MarkdownUI */; };
 		A50036AB1B7ACEDE553E2381 /* ConferenceDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DCCE05D03ED77F14D5E700 /* ConferenceDesign.swift */; };
 		AB5F1B4CF81ADC74FF3AE9FF /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806773D59A447642DBC5605F /* SessionDetailView.swift */; };
 		ABB202A3C3FF442305F380C1 /* SessionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973E810CB78C7D2116DAE13F /* SessionCardView.swift */; };
@@ -72,6 +73,17 @@
 		F4FAA964607147AFD06F8EE2 /* programme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = programme.json; sourceTree = "<group>"; };
 		FAD5B93C3F602ADC1451B95D /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ED5702186B4408D0E0E9D92D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2089B62FC3F005BAA5C7978 /* MarkdownUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		09EA12A104AA16618AE76D35 /* Views */ = {
@@ -176,6 +188,7 @@
 			buildPhases = (
 				36BD40E463B5243D8AB105CE /* Sources */,
 				21B57D59C6E8D452168D9E25 /* Resources */,
+				ED5702186B4408D0E0E9D92D /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -183,6 +196,7 @@
 			);
 			name = ConferenceNav;
 			packageProductDependencies = (
+				681E8D0B10A4F3533B42B01F /* MarkdownUI */,
 			);
 			productName = ConferenceNav;
 			productReference = CB18E6E703765036469FAF4A /* ConferenceNav.app */;
@@ -213,6 +227,9 @@
 			);
 			mainGroup = 7158F7107AC7F97D0E6682D5;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				ECD5C5426F95B95796C97820 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
+			);
 			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
@@ -334,7 +351,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -348,7 +365,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "EAPragueC 2026";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -393,7 +410,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -413,7 +430,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "EAPragueC 2026";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -474,6 +491,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ECD5C5426F95B95796C97820 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		681E8D0B10A4F3533B42B01F /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ECD5C5426F95B95796C97820 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			productName = MarkdownUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 24DB57695720E850FE6A6E92 /* Project object */;
 }
