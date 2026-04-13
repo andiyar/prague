@@ -6,7 +6,7 @@ struct ExportView: View {
     @Environment(NotesStore.self) var notesStore
     @Environment(\.colorScheme) var colorScheme
 
-    @State private var shareItem: URL?
+    @State private var sharePayload: SharePayload?
 
     var body: some View {
         List {
@@ -65,9 +65,10 @@ struct ExportView: View {
                     iconColor: CNColors.navy(for: colorScheme),
                     disabled: store.myPickedSessions.isEmpty
                 ) {
-                    exportFile(
+                    exportWithPhotos(
                         content: notesStore.exportConferenceReport(pickedSessions: store.myPickedSessions),
-                        filename: "EAPC-2026-Conference-Report.md"
+                        filename: "EAPC-2026-Conference-Report.md",
+                        photoFilenames: notesStore.allPhotoFilenames
                     )
                 }
 
@@ -78,9 +79,10 @@ struct ExportView: View {
                     iconColor: CNColors.teal(for: colorScheme),
                     disabled: notesStore.notesWithContent.isEmpty
                 ) {
-                    exportFile(
+                    exportWithPhotos(
                         content: exportAllNotes(),
-                        filename: "EAPC-2026-Notes.md"
+                        filename: "EAPC-2026-Notes.md",
+                        photoFilenames: notesStore.allPhotoFilenames
                     )
                 }
             } header: {
@@ -89,8 +91,8 @@ struct ExportView: View {
         }
         .listStyle(.insetGrouped)
         .navigationTitle("Export")
-        .sheet(item: $shareItem) { url in
-            ShareSheet(items: [url])
+        .sheet(item: $sharePayload) { payload in
+            ShareSheet(items: payload.items)
         }
     }
 
@@ -127,16 +129,54 @@ struct ExportView: View {
         let tempDir = FileManager.default.temporaryDirectory
         let fileURL = tempDir.appendingPathComponent(filename)
         try? content.write(to: fileURL, atomically: true, encoding: .utf8)
-        shareItem = fileURL
+        sharePayload = SharePayload(items: [fileURL])
+    }
+
+    private func exportWithPhotos(content: String, filename: String, photoFilenames: [String]) {
+        // Create a unique temp directory for this export
+        let exportDir = FileManager.default.temporaryDirectory
+            .appendingPathComponent("EAPC-Export-\(UUID().uuidString.prefix(8))")
+        try? FileManager.default.createDirectory(at: exportDir, withIntermediateDirectories: true)
+
+        // Write the markdown file
+        let mdURL = exportDir.appendingPathComponent(filename)
+        try? content.write(to: mdURL, atomically: true, encoding: .utf8)
+
+        var items: [Any] = [mdURL]
+
+        // Copy referenced photos into the export directory
+        for photoFilename in photoFilenames {
+            if let sourceURL = notesStore.photoURL(filename: photoFilename) {
+                let destURL = exportDir.appendingPathComponent(photoFilename)
+                try? FileManager.default.copyItem(at: sourceURL, to: destURL)
+                items.append(destURL)
+            }
+        }
+
+        sharePayload = SharePayload(items: items)
     }
 
     private func exportAllNotes() -> String {
         var md = "# Session Notes — EAPC 2026\n\n"
         for note in notesStore.notesWithContent {
-            md += "## \(note.sessionTitle)\n"
-            md += "*\(note.sessionDate) · \(note.sessionTime) · \(note.sessionVenue)*\n\n"
+            if !note.presentationTitle.isEmpty {
+                md += "## \(note.presentationTitle)\n"
+                if !note.presenter.isEmpty {
+                    md += "*\(note.presenter)*\n\n"
+                }
+                md += "*\(note.sessionTitle) · \(note.sessionDate) · \(note.sessionTime) · \(note.sessionVenue)*\n\n"
+            } else {
+                md += "## \(note.sessionTitle)\n"
+                md += "*\(note.sessionDate) · \(note.sessionTime) · \(note.sessionVenue)*\n\n"
+            }
             md += note.body
-            md += "\n\n---\n\n"
+            if !note.photoFilenames.isEmpty {
+                md += "\n\n"
+                for (i, filename) in note.photoFilenames.enumerated() {
+                    md += "![Photo \(i + 1)](\(filename))\n\n"
+                }
+            }
+            md += "\n---\n\n"
         }
         return md
     }
@@ -169,10 +209,11 @@ struct ExportView: View {
     }
 }
 
-// MARK: - URL + Identifiable
+// MARK: - Share Payload
 
-extension URL: @retroactive Identifiable {
-    public var id: String { absoluteString }
+struct SharePayload: Identifiable {
+    let id = UUID()
+    let items: [Any]
 }
 
 // MARK: - ShareSheet (UIKit wrapper)

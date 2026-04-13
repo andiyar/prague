@@ -122,6 +122,18 @@ class NotesStore {
         try? FileManager.default.removeItem(at: url)
     }
 
+    /// Get the file URL for a photo (for export/sharing)
+    func photoURL(filename: String) -> URL? {
+        let url = photosDirectory().appendingPathComponent(filename)
+        guard FileManager.default.fileExists(atPath: url.path) else { return nil }
+        return url
+    }
+
+    /// All photo filenames referenced by notes that have content
+    var allPhotoFilenames: [String] {
+        notesWithContent.flatMap(\.photoFilenames)
+    }
+
     /// All notes sorted by session date/time, then presentation
     var sortedNotes: [SessionNote] {
         notes.sorted { a, b in
@@ -182,7 +194,9 @@ class NotesStore {
                         }
                         md += pNote.body + "\n\n"
                         if !pNote.photoFilenames.isEmpty {
-                            md += "*Photos: \(pNote.photoFilenames.joined(separator: ", "))*\n\n"
+                            for (i, filename) in pNote.photoFilenames.enumerated() {
+                                md += "![Photo \(i + 1)](\(filename))\n\n"
+                            }
                         }
                     }
                 } else if sessionNote == nil {
