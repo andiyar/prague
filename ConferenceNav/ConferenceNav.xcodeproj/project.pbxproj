@@ -13,6 +13,7 @@
 		1C20602467A99573E1BA3AAD /* ExtrasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D7DDB99F4720F1690CC658 /* ExtrasView.swift */; };
 		22B8C7D682511D5E75DCD06B /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8654FF576496E1DBA602B /* UserProfile.swift */; };
 		24708B210E80D772D5A46030 /* MateBadges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBFF9EBEC0A1C303429029A /* MateBadges.swift */; };
+		3B365F0C8B01AC46C26358C0 /* MarkdownTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3849F1C44B79277CEF99F0F2 /* MarkdownTheme.swift */; };
 		3C3A02D0BFB717DF9A3A7C84 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A314A12B39A28121D292BDA5 /* ScheduleView.swift */; };
 		3D14095D483511B17D269768 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B93C3F602ADC1451B95D /* Session.swift */; };
 		3E2383F522640C3A7D3D0E32 /* SessionNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4447E6B4A64BFD204C31FB /* SessionNote.swift */; };
@@ -51,6 +52,7 @@
 		25DBFC2BEBC7B97FD3DDBCCB /* FilterChips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterChips.swift; sourceTree = "<group>"; };
 		2C8C3E4F7B3B746731B2E40B /* DayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPicker.swift; sourceTree = "<group>"; };
 		2D19F6CC6B036B9A63464531 /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
+		3849F1C44B79277CEF99F0F2 /* MarkdownTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTheme.swift; sourceTree = "<group>"; };
 		4892D4D14C96B8ADE4E9520C /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		806773D59A447642DBC5605F /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		81CB20D2EA6F65D8A36A1DE1 /* ContactFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormView.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				D7DCCE05D03ED77F14D5E700 /* ConferenceDesign.swift */,
+				3849F1C44B79277CEF99F0F2 /* MarkdownTheme.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				1C20602467A99573E1BA3AAD /* ExtrasView.swift in Sources */,
 				E624B8B3765D8A8F8A1EBD28 /* FilterChips.swift in Sources */,
 				637D5707861F36BA9E47F10D /* MainTabView.swift in Sources */,
+				3B365F0C8B01AC46C26358C0 /* MarkdownTheme.swift in Sources */,
 				24708B210E80D772D5A46030 /* MateBadges.swift in Sources */,
 				CDE82F251FC80BF43A6C18CB /* MatesView.swift in Sources */,
 				E633ABB8D16A7C3CBCEFEF26 /* MyPicksView.swift in Sources */,
