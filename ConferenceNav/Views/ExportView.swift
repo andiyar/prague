@@ -63,10 +63,13 @@ struct ExportView: View {
                     subtitle: "Picks + notes combined",
                     icon: "doc.richtext",
                     iconColor: CNColors.navy(for: colorScheme),
-                    disabled: store.myPickedSessions.isEmpty
+                    disabled: store.myPickedSessions.isEmpty && notesStore.notesWithContent.isEmpty
                 ) {
                     exportWithPhotos(
-                        content: notesStore.exportConferenceReport(pickedSessions: store.myPickedSessions),
+                        content: notesStore.exportConferenceReport(
+                            pickedSessions: store.myPickedSessions,
+                            allSessions: store.sessions
+                        ),
                         filename: "EAPC-2026-Conference-Report.md",
                         photoFilenames: notesStore.allPhotoFilenames
                     )
@@ -138,16 +141,40 @@ struct ExportView: View {
             .appendingPathComponent("EAPC-Export-\(UUID().uuidString.prefix(8))")
         try? FileManager.default.createDirectory(at: exportDir, withIntermediateDirectories: true)
 
+        // Build a mapping from internal filename -> readable export name
+        var renameMap: [String: String] = [:]
+        for note in notesStore.notesWithContent {
+            for (i, photoFilename) in note.photoFilenames.enumerated() {
+                let baseName = note.presentationTitle.isEmpty ? note.sessionTitle : note.presentationTitle
+                let slug = baseName
+                    .components(separatedBy: CharacterSet.alphanumerics.inverted)
+                    .filter { !$0.isEmpty }
+                    .prefix(6)
+                    .joined(separator: "-")
+                    .lowercased()
+                let suffix = note.photoFilenames.count > 1 ? "-\(i + 1)" : ""
+                let ext = (photoFilename as NSString).pathExtension
+                renameMap[photoFilename] = "\(slug)\(suffix).\(ext)"
+            }
+        }
+
+        // Rewrite photo references in the markdown content
+        var updatedContent = content
+        for (oldName, newName) in renameMap {
+            updatedContent = updatedContent.replacingOccurrences(of: oldName, with: newName)
+        }
+
         // Write the markdown file
         let mdURL = exportDir.appendingPathComponent(filename)
-        try? content.write(to: mdURL, atomically: true, encoding: .utf8)
+        try? updatedContent.write(to: mdURL, atomically: true, encoding: .utf8)
 
         var items: [Any] = [mdURL]
 
-        // Copy referenced photos into the export directory
+        // Copy referenced photos with readable names
         for photoFilename in photoFilenames {
             if let sourceURL = notesStore.photoURL(filename: photoFilename) {
-                let destURL = exportDir.appendingPathComponent(photoFilename)
+                let exportName = renameMap[photoFilename] ?? photoFilename
+                let destURL = exportDir.appendingPathComponent(exportName)
                 try? FileManager.default.copyItem(at: sourceURL, to: destURL)
                 items.append(destURL)
             }

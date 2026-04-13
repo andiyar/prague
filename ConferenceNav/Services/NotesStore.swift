@@ -152,8 +152,8 @@ class NotesStore {
 
     // MARK: - Export
 
-    /// Generate a combined conference report from all notes
-    func exportConferenceReport(pickedSessions: [Session]) -> String {
+    /// Generate a combined conference report from picks + any session with notes
+    func exportConferenceReport(pickedSessions: [Session], allSessions: [Session]) -> String {
         let dates = ["2026-05-14", "2026-05-15", "2026-05-16"]
         let dayLabels = [
             "2026-05-14": "Wednesday, 14 May",
@@ -161,25 +161,45 @@ class NotesStore {
             "2026-05-16": "Friday, 16 May",
         ]
 
+        // Merge picked sessions with any sessions that have notes
+        let pickedIds = Set(pickedSessions.map(\.id))
+        let sessionIdsWithNotes = Set(notesWithContent.map(\.sessionId))
+        let extraSessionIds = sessionIdsWithNotes.subtracting(pickedIds)
+        let extraSessions = allSessions.filter { extraSessionIds.contains($0.id) }
+        let mergedSessions = pickedSessions + extraSessions
+
         var md = "# EAPC 2026 Conference Report\n\n"
         md += "*Generated \(formattedDate(Date()))*\n\n"
         md += "---\n\n"
 
         for date in dates {
-            let daySessions = pickedSessions.filter { $0.date == date }
+            let daySessions = mergedSessions.filter { $0.date == date }
+                .sorted { $0.startsAt < $1.startsAt }
             if daySessions.isEmpty { continue }
 
             md += "## \(dayLabels[date] ?? date)\n\n"
 
             for session in daySessions {
+                let isPicked = pickedIds.contains(session.id)
+                let hasNotes = sessionIdsWithNotes.contains(session.id)
+
                 md += "### \(session.startsAt)-\(session.endsAt) · \(session.venue)\n"
-                md += "**\(session.title)** (\(session.type.rawValue))\n\n"
+                md += "**\(session.title)** (\(session.type.rawValue))"
+                if !isPicked {
+                    md += " 📝"
+                }
+                md += "\n\n"
 
                 // Session-level note
                 let sessionNote = notes.first(where: { $0.noteKey == "s-\(session.id)" })
                 if let note = sessionNote,
                    !note.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                     md += note.body + "\n\n"
+                    if !note.photoFilenames.isEmpty {
+                        for (i, filename) in note.photoFilenames.enumerated() {
+                            md += "![Photo \(i + 1)](\(filename))\n\n"
+                        }
+                    }
                 }
 
                 // Presentation-level notes
@@ -192,14 +212,16 @@ class NotesStore {
                         if !pNote.presenter.isEmpty {
                             md += "*\(pNote.presenter)*\n\n"
                         }
-                        md += pNote.body + "\n\n"
+                        if !pNote.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                            md += pNote.body + "\n\n"
+                        }
                         if !pNote.photoFilenames.isEmpty {
                             for (i, filename) in pNote.photoFilenames.enumerated() {
                                 md += "![Photo \(i + 1)](\(filename))\n\n"
                             }
                         }
                     }
-                } else if sessionNote == nil {
+                } else if sessionNote == nil && isPicked {
                     md += "*No notes recorded.*\n\n"
                 }
             }
