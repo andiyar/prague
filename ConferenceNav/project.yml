@@ -52,3 +52,4 @@ targets:
         CODE_SIGNING_REQUIRED: NO
         INFOPLIST_KEY_NSCameraUsageDescription: "Take photos of sessions, posters, and slides"
         INFOPLIST_KEY_NSPhotoLibraryUsageDescription: "Attach photos from your library to session notes"
+        CODE_SIGN_ENTITLEMENTS: ConferenceNav.entitlements
