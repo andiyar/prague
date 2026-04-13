@@ -34,6 +34,7 @@
 		AB5F1B4CF81ADC74FF3AE9FF /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806773D59A447642DBC5605F /* SessionDetailView.swift */; };
 		ABB202A3C3FF442305F380C1 /* SessionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973E810CB78C7D2116DAE13F /* SessionCardView.swift */; };
 		B14984DBFFA96F178425C872 /* PickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905DAB7858468A4F9BB51832 /* PickButton.swift */; };
+		B1F3D17D1B9D524FE2CE17B2 /* NoteEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019D4CAE08FEDE0CF7A72461 /* NoteEditorView.swift */; };
 		CC3F8C04681DC46D9ABD7AFD /* ConflictBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D818A856FBA8AD3E835B6C9C /* ConflictBanner.swift */; };
 		CDE82F251FC80BF43A6C18CB /* MatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF16FC2B7C5FDC7BCDBE67A /* MatesView.swift */; };
 		D7B2C1FD36142A55BD82882A /* SearchIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE2D9637735FA17911238B /* SearchIndex.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		019D4CAE08FEDE0CF7A72461 /* NoteEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorView.swift; sourceTree = "<group>"; };
 		0BA4FBA25A56952993867E09 /* MyPicksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPicksView.swift; sourceTree = "<group>"; };
 		0C20146D120CDC1954E3B374 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		0EFF38970856A976CDD64DD1 /* NotesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesStore.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				0C20146D120CDC1954E3B374 /* MainTabView.swift */,
 				DFF16FC2B7C5FDC7BCDBE67A /* MatesView.swift */,
 				0BA4FBA25A56952993867E09 /* MyPicksView.swift */,
+				019D4CAE08FEDE0CF7A72461 /* NoteEditorView.swift */,
 				EA3D68B1D6DCC148013B6C23 /* PeopleListView.swift */,
 				4892D4D14C96B8ADE4E9520C /* PhotoPickerView.swift */,
 				A314A12B39A28121D292BDA5 /* ScheduleView.swift */,
@@ -284,6 +287,7 @@
 				24708B210E80D772D5A46030 /* MateBadges.swift in Sources */,
 				CDE82F251FC80BF43A6C18CB /* MatesView.swift in Sources */,
 				E633ABB8D16A7C3CBCEFEF26 /* MyPicksView.swift in Sources */,
+				B1F3D17D1B9D524FE2CE17B2 /* NoteEditorView.swift in Sources */,
 				82B89C76CEAEB46ED94503ED /* NotesStore.swift in Sources */,
 				E6D5620D8AED78205F25F2FF /* PeopleListView.swift in Sources */,
 				881944143EC8720B76C5F4EE /* PhotoPickerView.swift in Sources */,

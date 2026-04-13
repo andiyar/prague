@@ -1,0 +1,241 @@
+import SwiftUI
+import MarkdownUI
+import PhotosUI
+
+struct NoteEditorView: View {
+    let session: Session
+
+    @Environment(NotesStore.self) var notesStore
+    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.dismiss) var dismiss
+
+    @State private var noteBody: String = ""
+    @State private var photoFilenames: [String] = []
+    @State private var isPreview = false
+    @State private var showingPhotoPicker = false
+    @State private var showingCamera = false
+    @State private var showingPhotoSource = false
+    @State private var hasLoaded = false
+
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: 0) {
+                // Session context header
+                sessionHeader
+
+                Divider()
+
+                // Editor or preview
+                if isPreview {
+                    previewMode
+                } else {
+                    editMode
+                }
+
+                // Photo strip
+                if !photoFilenames.isEmpty {
+                    photoStrip
+                }
+            }
+            .background(CNColors.background(for: colorScheme))
+            .navigationTitle("Session Notes")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Done") {
+                        saveAndDismiss()
+                    }
+                    .fontWeight(.semibold)
+                }
+
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    Button {
+                        withAnimation { isPreview.toggle() }
+                    } label: {
+                        Image(systemName: isPreview ? "pencil" : "eye")
+                            .foregroundStyle(CNColors.navy(for: colorScheme))
+                    }
+
+                    Button {
+                        showingPhotoSource = true
+                    } label: {
+                        Image(systemName: "camera.fill")
+                            .foregroundStyle(CNColors.navy(for: colorScheme))
+                    }
+                }
+            }
+            .confirmationDialog("Add Photo", isPresented: $showingPhotoSource) {
+                Button("Take Photo") { showingCamera = true }
+                Button("Choose from Library") { showingPhotoPicker = true }
+                Button("Cancel", role: .cancel) {}
+            }
+            .sheet(isPresented: $showingPhotoPicker) {
+                PhotoPickerView { image in
+                    attachPhoto(image)
+                }
+            }
+            .fullScreenCover(isPresented: $showingCamera) {
+                CameraView { image in
+                    attachPhoto(image)
+                }
+            }
+            .onAppear {
+                guard !hasLoaded else { return }
+                hasLoaded = true
+                let note = notesStore.note(for: session)
+                noteBody = note.body
+                photoFilenames = note.photoFilenames
+            }
+        }
+    }
+
+    // MARK: - Session Header
+
+    private var sessionHeader: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(session.title)
+                .font(CNFonts.headline)
+                .foregroundStyle(CNColors.textPrimary(for: colorScheme))
+                .lineLimit(2)
+
+            HStack(spacing: 6) {
+                Text(session.dayLabel)
+                    .font(CNFonts.caption)
+                Text("·")
+                Text("\(session.startsAt)-\(session.endsAt)")
+                    .font(CNFonts.timeSmall)
+                Text("·")
+                Text(session.venue)
+                    .font(CNFonts.caption)
+            }
+            .foregroundStyle(CNColors.teal(for: colorScheme))
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 10)
+        .background(CNColors.surface(for: colorScheme))
+    }
+
+    // MARK: - Edit Mode
+
+    private var editMode: some View {
+        VStack(spacing: 0) {
+            // Markdown hint bar
+            HStack(spacing: 16) {
+                markdownHint("**bold**")
+                markdownHint("*italic*")
+                markdownHint("## heading")
+                markdownHint("- list")
+                markdownHint("> quote")
+                Spacer()
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 6)
+            .background(CNColors.surfaceSecondary(for: colorScheme))
+
+            TextEditor(text: $noteBody)
+                .font(.system(size: 15, design: .monospaced))
+                .foregroundStyle(CNColors.textPrimary(for: colorScheme))
+                .scrollContentBackground(.hidden)
+                .padding(.horizontal, 12)
+                .padding(.top, 8)
+        }
+    }
+
+    private func markdownHint(_ text: String) -> some View {
+        Text(text)
+            .font(CNFonts.mono(11))
+            .foregroundStyle(CNColors.textSecondary)
+    }
+
+    // MARK: - Preview Mode
+
+    private var previewMode: some View {
+        ScrollView {
+            if noteBody.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                VStack(spacing: 8) {
+                    Spacer(minLength: 60)
+                    Text("No notes yet")
+                        .font(CNFonts.title2)
+                        .foregroundStyle(CNColors.textSecondary)
+                    Text("Tap the pencil icon to start writing.")
+                        .font(CNFonts.body)
+                        .foregroundStyle(CNColors.textSecondary)
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity)
+            } else {
+                Markdown(noteBody)
+                    .markdownTheme(.conference(colorScheme: colorScheme))
+                    .padding(16)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+    }
+
+    // MARK: - Photo Strip
+
+    private var photoStrip: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Divider()
+            Text("Photos (\(photoFilenames.count))")
+                .font(CNFonts.caption)
+                .foregroundStyle(CNColors.textSecondary)
+                .padding(.horizontal, 16)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 8) {
+                    ForEach(photoFilenames, id: \.self) { filename in
+                        if let image = notesStore.loadPhoto(filename: filename) {
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 72, height: 72)
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                                .overlay(alignment: .topTrailing) {
+                                    Button {
+                                        removePhoto(filename)
+                                    } label: {
+                                        Image(systemName: "xmark.circle.fill")
+                                            .font(.system(size: 18))
+                                            .foregroundStyle(.white, .black.opacity(0.6))
+                                    }
+                                    .offset(x: 4, y: -4)
+                                }
+                        }
+                    }
+                }
+                .padding(.horizontal, 16)
+            }
+            .padding(.bottom, 8)
+        }
+        .background(CNColors.surface(for: colorScheme))
+    }
+
+    // MARK: - Actions
+
+    private func attachPhoto(_ image: UIImage) {
+        if let filename = notesStore.savePhoto(image, for: notesStore.note(for: session)) {
+            photoFilenames.append(filename)
+        }
+    }
+
+    private func removePhoto(_ filename: String) {
+        photoFilenames.removeAll { $0 == filename }
+        notesStore.deletePhoto(filename: filename)
+    }
+
+    private func saveAndDismiss() {
+        var note = notesStore.note(for: session)
+        note.body = noteBody
+        note.photoFilenames = photoFilenames
+        // Only save if there's actual content
+        if !noteBody.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !photoFilenames.isEmpty {
+            notesStore.save(note)
+        } else if notesStore.hasNote(for: session.id) {
+            // Had a note before but now it's empty — delete
+            notesStore.delete(note)
+        }
+        dismiss()
+    }
+}
