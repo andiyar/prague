@@ -239,7 +239,7 @@ Currently using emoji. Can swap for custom illustrations in future.
 
 ## EAPragueC 2026 (ConferenceNav)
 
-### Status: V1 Complete (April 2026)
+### Status: V2 In Progress (April 2026)
 
 Standalone SwiftUI app for navigating the EAPC 2026 conference programme.
 Display name: "EAPragueC 2026". Tagline: "Your Conference Czechlist".
@@ -252,12 +252,28 @@ Display name: "EAPragueC 2026". Tagline: "Your Conference Czechlist".
 - Pick/unpick sessions with gold star (optimistic UI)
 - Conflict detection for overlapping picked sessions (amber warning)
 - B/R badges showing Ben's and Ron's picks on every card
-- Mates tab with Ben/Ron/Both filter pills, pull-to-refresh
+- My Picks tab with Mine/Ben/Ron/Both filter pills (merged Mates)
 - Supabase sync for picks between two users
 - Offline-capable (bundled JSON, UserDefaults pick cache)
 - Light/dark mode with custom palette (navy/gold/teal)
 - Splash screen with 3.5s display + 0.5s fade
 - User identity picker on first launch (Ben or Ron)
+- Extras tab: People directory, Session Notes, Export
+
+### What's Built (V2 — April 2026)
+- **Session Notes**: Per-session Markdown notes with YAML front matter
+- **Markdown Preview**: In-app rendered preview via MarkdownUI (custom conference theme with navy headings, teal links)
+- **Edit/Preview Toggle**: Write in monospaced TextEditor, preview rendered Markdown
+- **Photo Capture**: Camera + photo library, photos saved alongside notes
+- **Photo Strip**: Horizontal thumbnail strip in editor with delete buttons
+- **Notes List**: Browse all notes from Extras tab, swipe-to-delete
+- **Notes Button**: Teal note icon on session detail view (dot indicator when note exists)
+- **Conference Report Export**: Combined Markdown report from picks + notes via share sheet
+- **All Notes Export**: Export all session notes as single Markdown file
+- **iCloud Drive Sync**: Notes stored in iCloud Drive Documents (falls back to local)
+- **People Directory**: Local contact manager with add/edit/search/delete
+- **People Export**: Export contacts as Markdown or CSV
+- **Extras Tab**: People, Session Notes, Export (replaced old Mates tab)
 
 ### Supabase Table
 ```sql
@@ -291,9 +307,7 @@ CREATE TABLE conference_picks (
 - Place 1024x1024 PNG at `ConferenceNav/Assets.xcassets/AppIcon.appiconset/`
 - Update Contents.json with filename
 
-### V2 Roadmap (from spec)
-- **Session notes + photos**: Markdown notes tied to sessions, stored in iCloud Drive
-- **Conference report export**: Auto-generate report from attended sessions + notes
+### V3 Roadmap
 - **Push notifications**: Reminders before picked sessions start
 - **Programme update**: Fetch updated JSON from URL without app rebuild
 - **Programme data refresh**: If Exordo data changes before the conference
@@ -306,5 +320,14 @@ CREATE TABLE conference_picks (
 | `ConferenceNav/Services/ConferenceStore.swift` | Central state: sessions, picks, search, sync |
 | `ConferenceNav/Services/PicksSyncService.swift` | Supabase REST calls for pick CRUD |
 | `ConferenceNav/Design/ConferenceDesign.swift` | All colours, fonts, card modifier |
+| `ConferenceNav/Design/MarkdownTheme.swift` | Custom MarkdownUI theme (conference palette) |
+| `ConferenceNav/Models/SessionNote.swift` | Note model with YAML front matter serialisation |
+| `ConferenceNav/Services/NotesStore.swift` | Notes CRUD, iCloud Drive file I/O, photo management |
+| `ConferenceNav/Services/ContactStore.swift` | Local contact persistence per user |
+| `ConferenceNav/Views/NoteEditorView.swift` | Edit/preview Markdown editor with photo strip |
+| `ConferenceNav/Views/NoteListView.swift` | Browse all session notes |
+| `ConferenceNav/Views/ExtrasView.swift` | Extras tab: People, Notes, Export |
+| `ConferenceNav/Views/ExportView.swift` | Export contacts, picks, notes, conference report |
 | `docs/superpowers/specs/2026-04-12-conference-nav-design.md` | Full design spec |
-| `docs/superpowers/plans/2026-04-12-conference-nav.md` | Implementation plan (all tasks complete) |
+| `docs/superpowers/plans/2026-04-12-conference-nav.md` | V1 implementation plan (complete) |
+| `docs/superpowers/plans/2026-04-13-session-notes.md` | V2 session notes plan (complete) |
