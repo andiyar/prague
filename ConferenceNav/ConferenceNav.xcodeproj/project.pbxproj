@@ -23,6 +23,7 @@
 		6DAF4358E3534325C9CAD3D2 /* UserPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33FA74F231592E2E84267B9 /* UserPickerView.swift */; };
 		6DE13A274D4683DBD7571EFC /* ConferenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB78744B1F1A19FB7595441 /* ConferenceStore.swift */; };
 		735C658CFB9D205C360F09E2 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465010D6828C14CA51F9FE8 /* SearchView.swift */; };
+		82B89C76CEAEB46ED94503ED /* NotesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF38970856A976CDD64DD1 /* NotesStore.swift */; };
 		90169BCAE57F9F98E3152AA2 /* ConferenceNavApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D132BE6002F392FA73C410 /* ConferenceNavApp.swift */; };
 		9C2EAB7CA1856210D60C2BE2 /* ContactFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CB20D2EA6F65D8A36A1DE1 /* ContactFormView.swift */; };
 		A167A4C4FD3A61A98E76FE35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAEF12E4AE1A856CE79051D3 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		0BA4FBA25A56952993867E09 /* MyPicksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPicksView.swift; sourceTree = "<group>"; };
 		0C20146D120CDC1954E3B374 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		0EFF38970856A976CDD64DD1 /* NotesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesStore.swift; sourceTree = "<group>"; };
 		1E4447E6B4A64BFD204C31FB /* SessionNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionNote.swift; sourceTree = "<group>"; };
 		25DBFC2BEBC7B97FD3DDBCCB /* FilterChips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterChips.swift; sourceTree = "<group>"; };
 		2C8C3E4F7B3B746731B2E40B /* DayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPicker.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				DBB78744B1F1A19FB7595441 /* ConferenceStore.swift */,
 				E3B8A4B544BCE2EED3C45B73 /* ContactStore.swift */,
+				0EFF38970856A976CDD64DD1 /* NotesStore.swift */,
 				A8EF0E69F44ED6B4CCD641FE /* PicksSyncService.swift */,
 				DCEE2D9637735FA17911238B /* SearchIndex.swift */,
 			);
@@ -274,6 +277,7 @@
 				24708B210E80D772D5A46030 /* MateBadges.swift in Sources */,
 				CDE82F251FC80BF43A6C18CB /* MatesView.swift in Sources */,
 				E633ABB8D16A7C3CBCEFEF26 /* MyPicksView.swift in Sources */,
+				82B89C76CEAEB46ED94503ED /* NotesStore.swift in Sources */,
 				E6D5620D8AED78205F25F2FF /* PeopleListView.swift in Sources */,
 				B14984DBFFA96F178425C872 /* PickButton.swift in Sources */,
 				0B0BA07E1BAF1E0CF280E1F3 /* PicksSyncService.swift in Sources */,
