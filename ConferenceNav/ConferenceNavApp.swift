@@ -1,12 +1,22 @@
 import SwiftUI
+import UserNotifications
 
 @main
 struct ConferenceNavApp: App {
     @State private var store = ConferenceStore()
+    @State private var notificationService = NotificationService()
     @State private var contactStore: ContactStore?
     @State private var notesStore: NotesStore?
     @AppStorage("conferenceNavUser") private var savedUserId: String?
     @State private var showSplash = true
+
+    init() {
+        _store = State(initialValue: ConferenceStore())
+        _notificationService = State(initialValue: NotificationService())
+
+        UNUserNotificationCenter.current().delegate = _notificationService.wrappedValue
+        _store.wrappedValue.notificationService = _notificationService.wrappedValue
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -26,6 +36,7 @@ struct ConferenceNavApp: App {
                 .environment(store)
                 .environment(contactStore ?? ContactStore(userId: savedUserId ?? "default"))
                 .environment(notesStore ?? NotesStore(userId: savedUserId ?? "default"))
+                .environment(notificationService)
                 .onAppear {
                     if let id = savedUserId {
                         let user: UserProfile = id == "ron" ? .ron : .ben
@@ -41,6 +52,7 @@ struct ConferenceNavApp: App {
                 .task {
                     if savedUserId != nil {
                         await store.syncPicks()
+                        await notificationService.requestPermission()
                     }
                 }
 
