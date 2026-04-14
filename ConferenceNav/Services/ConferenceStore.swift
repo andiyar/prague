@@ -7,9 +7,15 @@ class ConferenceStore {
     var currentUser: UserProfile = .ben
     let lastUpdated = "12 April 2026"
 
+    // MARK: - Notifications
+    var notificationService: NotificationService?
+
     // MARK: - Picks
     var myPicks: Set<Int> = [] {
-        didSet { savePicksLocally() }
+        didSet {
+            savePicksLocally()
+            rescheduleNotifications()
+        }
     }
     var matePicks: Set<Int> = []
 
@@ -18,6 +24,10 @@ class ConferenceStore {
 
     // MARK: - Sync
     private let syncService = PicksSyncService()
+
+    private func rescheduleNotifications() {
+        notificationService?.scheduleNotifications(for: myPickedSessions)
+    }
 
     // MARK: - Init
 
