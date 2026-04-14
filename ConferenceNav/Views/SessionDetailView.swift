@@ -17,6 +17,7 @@ struct SessionDetailView: View {
 
     @Environment(ConferenceStore.self) var store
     @Environment(NotesStore.self) var notesStore
+    @Environment(NotificationService.self) var notificationService
     @Environment(\.colorScheme) var colorScheme
     @State private var showFullDescription = false
     @State private var showAllPresentations = false
@@ -205,6 +206,17 @@ struct SessionDetailView: View {
         }
         .background(CNColors.background(for: colorScheme))
         .navigationBarTitleDisplayMode(.inline)
+        #if DEBUG
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    notificationService.sendTestNotification(for: session)
+                } label: {
+                    Image(systemName: "bell.badge")
+                }
+            }
+        }
+        #endif
     }
 }
 
