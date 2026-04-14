@@ -307,8 +307,10 @@ CREATE TABLE conference_picks (
 - Place 1024x1024 PNG at `ConferenceNav/Assets.xcassets/AppIcon.appiconset/`
 - Update Contents.json with filename
 
-### V3 Roadmap
-- **Push notifications**: Reminders before picked sessions start
+### What's Built (V3 — April 2026)
+- **Push notifications**: Local reminders 15 min before picked sessions (excludes posters), deep link to session on tap
+
+### V4 Roadmap
 - **Programme update**: Fetch updated JSON from URL without app rebuild
 - **Programme data refresh**: If Exordo data changes before the conference
 
@@ -319,6 +321,7 @@ CREATE TABLE conference_picks (
 | `ConferenceNav/Resources/programme.json` | Bundled conference data (copied from `data/eapc/programme_structured.json`) |
 | `ConferenceNav/Services/ConferenceStore.swift` | Central state: sessions, picks, search, sync |
 | `ConferenceNav/Services/PicksSyncService.swift` | Supabase REST calls for pick CRUD |
+| `ConferenceNav/Services/NotificationService.swift` | Local push notifications for session reminders |
 | `ConferenceNav/Design/ConferenceDesign.swift` | All colours, fonts, card modifier |
 | `ConferenceNav/Design/MarkdownTheme.swift` | Custom MarkdownUI theme (conference palette) |
 | `ConferenceNav/Models/SessionNote.swift` | Note model with YAML front matter serialisation |
@@ -331,3 +334,5 @@ CREATE TABLE conference_picks (
 | `docs/superpowers/specs/2026-04-12-conference-nav-design.md` | Full design spec |
 | `docs/superpowers/plans/2026-04-12-conference-nav.md` | V1 implementation plan (complete) |
 | `docs/superpowers/plans/2026-04-13-session-notes.md` | V2 session notes plan (complete) |
+| `docs/superpowers/specs/2026-04-14-push-notifications-design.md` | V3 push notifications spec |
+| `docs/superpowers/plans/2026-04-14-push-notifications.md` | V3 push notifications plan (complete) |
