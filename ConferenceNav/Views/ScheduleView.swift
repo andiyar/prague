@@ -8,8 +8,11 @@ struct ScheduleView: View {
     @State private var selectedTypes: Set<SessionType> = []
     @State private var selectedVenues: Set<String> = []
 
+    @Binding var navigateToSessionId: Int?
+    @State private var navigationPath = NavigationPath()
+
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navigationPath) {
             ScrollView {
                 VStack(spacing: 12) {
                     DayPicker(selectedDate: $selectedDate)
@@ -82,6 +85,11 @@ struct ScheduleView: View {
                     SessionDetailView(session: session)
                 }
             }
+            .onChange(of: navigateToSessionId) { _, sessionId in
+                guard let sessionId else { return }
+                navigationPath.append(sessionId)
+                navigateToSessionId = nil
+            }
         }
     }
 
@@ -90,5 +98,11 @@ struct ScheduleView: View {
             (selectedTypes.isEmpty || selectedTypes.contains(session.type)) &&
             (selectedVenues.isEmpty || selectedVenues.contains(session.venue))
         }
+    }
+}
+
+extension ScheduleView {
+    init() {
+        self._navigateToSessionId = .constant(nil)
     }
 }
