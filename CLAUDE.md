@@ -310,6 +310,9 @@ CREATE TABLE conference_picks (
 ### What's Built (V3 — April 2026)
 - **Push notifications**: Local reminders 15 min before picked sessions (excludes posters), deep link to session on tap
 
+### What's Built (V5 — April 2026)
+- **Venue Map**: 5 O2 Universum floor plans bundled (~1.7 MB) as Asset Catalog images. Map thumbnail on every session detail with pulsing pin → opens full-screen `VenueMapView`. Pinch-zoom (1×–5×), pan (clamped to image edges), double-tap to reset. Floor switcher (Floor 0/1/2/3/Meeting Hub) at the bottom of the map. Calendar-icon toolbar toggle swaps the single-pin focus for a "My Day" numbered overlay (today's picks in chronological order, merging back-to-back same-room sessions into "1-2" labels). Tapping a numbered pin shows a sheet with the session(s). DEBUG-only date picker (Thu 14 / Fri 15 / Sat 16 May) in Extras → "Venue Map Debug" so My Day can be validated pre-conference. DEBUG-only crosshair toggle in the map toolbar marks every catalogued pin position. Sessions with venues not in the catalog (e.g. "Printed Posters Hall", "Refreshment & lunch area" — neither visible on the bundled plans) silently omit the thumbnail.
+
 ### V4 Roadmap
 - **Programme update**: Fetch updated JSON from URL without app rebuild
 - **Programme data refresh**: If Exordo data changes before the conference
@@ -327,12 +330,17 @@ CREATE TABLE conference_picks (
 | `ConferenceNav/Models/SessionNote.swift` | Note model with YAML front matter serialisation |
 | `ConferenceNav/Services/NotesStore.swift` | Notes CRUD, iCloud Drive file I/O, photo management |
 | `ConferenceNav/Services/ContactStore.swift` | Local contact persistence per user |
+| `ConferenceNav/Services/DebugClock.swift` | Abstracts 'today' so DEBUG builds can simulate conference dates |
+| `ConferenceNav/Models/VenueMap.swift` | Static catalog: programme venue string → floor + normalised pin coords |
 | `ConferenceNav/Views/NoteEditorView.swift` | Edit/preview Markdown editor with photo strip |
 | `ConferenceNav/Views/NoteListView.swift` | Browse all session notes |
 | `ConferenceNav/Views/ExtrasView.swift` | Extras tab: People, Notes, Export |
 | `ConferenceNav/Views/ExportView.swift` | Export contacts, picks, notes, conference report |
+| `ConferenceNav/Views/VenueMap/` | Full venue map feature: pin, view, thumbnail, MyDay overlay, debug |
 | `docs/superpowers/specs/2026-04-12-conference-nav-design.md` | Full design spec |
 | `docs/superpowers/plans/2026-04-12-conference-nav.md` | V1 implementation plan (complete) |
 | `docs/superpowers/plans/2026-04-13-session-notes.md` | V2 session notes plan (complete) |
 | `docs/superpowers/specs/2026-04-14-push-notifications-design.md` | V3 push notifications spec |
 | `docs/superpowers/plans/2026-04-14-push-notifications.md` | V3 push notifications plan (complete) |
+| `docs/superpowers/specs/2026-04-20-venue-map-design.md` | V5 venue map design spec |
+| `docs/superpowers/plans/2026-04-20-venue-map.md` | V5 venue map implementation plan |
