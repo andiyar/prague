@@ -129,6 +129,10 @@ struct SessionDetailView: View {
                 }
                 .padding(.horizontal, 16)
 
+                // Venue map thumbnail — tap to open full venue map
+                VenueMapThumbnail(venue: session.venue)
+                    .padding(.horizontal, 16)
+
                 // Description
                 if !session.description.isEmpty {
                     VStack(alignment: .leading, spacing: 8) {
