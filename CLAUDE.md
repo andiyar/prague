@@ -239,7 +239,7 @@ Currently using emoji. Can swap for custom illustrations in future.
 
 ## EAPragueC 2026 (ConferenceNav)
 
-### Status: V2 In Progress (April 2026)
+### Status: V5 Shipped (April 2026)
 
 Standalone SwiftUI app for navigating the EAPC 2026 conference programme.
 Display name: "EAPragueC 2026". Tagline: "Your Conference Czechlist".

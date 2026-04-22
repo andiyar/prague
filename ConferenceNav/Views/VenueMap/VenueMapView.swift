@@ -74,7 +74,7 @@ struct VenueMapView: View {
                     Button {
                         showCrosshairs.toggle()
                     } label: {
-                        Image(systemName: showCrosshairs ? "scope" : "scope")
+                        Image(systemName: "scope")
                             .foregroundStyle(showCrosshairs ? CNColors.red(for: colorScheme) : CNColors.textSecondary)
                     }
                 }
@@ -289,9 +289,13 @@ struct VenueMapView: View {
 #Preview("Specific room") {
     if let c2 = VenueMapCatalog.room(for: "C2") {
         VenueMapView(focus: .specificRoom(c2))
+            .environment(ConferenceStore())
+            .environment(DebugClock.shared)
     }
 }
 
 #Preview("Browse mode") {
     VenueMapView(focus: .browse(.floor3))
+        .environment(ConferenceStore())
+        .environment(DebugClock.shared)
 }
