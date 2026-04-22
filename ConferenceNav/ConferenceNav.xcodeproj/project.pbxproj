@@ -45,6 +45,7 @@
 		CC3F8C04681DC46D9ABD7AFD /* ConflictBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D818A856FBA8AD3E835B6C9C /* ConflictBanner.swift */; };
 		CDE82F251FC80BF43A6C18CB /* MatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF16FC2B7C5FDC7BCDBE67A /* MatesView.swift */; };
 		D7B2C1FD36142A55BD82882A /* SearchIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE2D9637735FA17911238B /* SearchIndex.swift */; };
+		E5D0BF7D2D800B6C179A9DC7 /* VenueMapDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE189CB9DCA5816125BA0FA /* VenueMapDebugView.swift */; };
 		E624B8B3765D8A8F8A1EBD28 /* FilterChips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DBFC2BEBC7B97FD3DDBCCB /* FilterChips.swift */; };
 		E633ABB8D16A7C3CBCEFEF26 /* MyPicksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4FBA25A56952993867E09 /* MyPicksView.swift */; };
 		E6D5620D8AED78205F25F2FF /* PeopleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D68B1D6DCC148013B6C23 /* PeopleListView.swift */; };
@@ -64,6 +65,7 @@
 		27F4AA3996BD6DD8FA7299C1 /* MyDayOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayOverlay.swift; sourceTree = "<group>"; };
 		2C8C3E4F7B3B746731B2E40B /* DayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPicker.swift; sourceTree = "<group>"; };
 		2D19F6CC6B036B9A63464531 /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
+		2FE189CB9DCA5816125BA0FA /* VenueMapDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueMapDebugView.swift; sourceTree = "<group>"; };
 		3849F1C44B79277CEF99F0F2 /* MarkdownTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTheme.swift; sourceTree = "<group>"; };
 		4892D4D14C96B8ADE4E9520C /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		5160D738B676A8A49EAC5F73 /* VenueMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueMap.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				27F4AA3996BD6DD8FA7299C1 /* MyDayOverlay.swift */,
+				2FE189CB9DCA5816125BA0FA /* VenueMapDebugView.swift */,
 				75F8DA2243F9539A0DABC1B9 /* VenueMapPin.swift */,
 				C5F48A8EA3472703F679BEBE /* VenueMapThumbnail.swift */,
 				6AB3DF6E94C2B441E064F7FA /* VenueMapView.swift */,
@@ -341,6 +344,7 @@
 				6DAF4358E3534325C9CAD3D2 /* UserPickerView.swift in Sources */,
 				22B8C7D682511D5E75DCD06B /* UserProfile.swift in Sources */,
 				8DE366B071BED80669662FAD /* VenueMap.swift in Sources */,
+				E5D0BF7D2D800B6C179A9DC7 /* VenueMapDebugView.swift in Sources */,
 				51B4D1B4711ED952DAF0C7C1 /* VenueMapPin.swift in Sources */,
 				8E114903E66E59DF59AEEADA /* VenueMapThumbnail.swift in Sources */,
 				80743A7A3D464BB86C2AA183 /* VenueMapView.swift in Sources */,

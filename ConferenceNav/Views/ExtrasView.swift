@@ -87,6 +87,30 @@ struct ExtrasView: View {
                         .padding(.vertical, 6)
                     }
                 }
+
+                #if DEBUG
+                Section {
+                    NavigationLink(value: "venueMapDebug") {
+                        Label {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Venue Map Debug")
+                                    .font(CNFonts.headline)
+                                    .foregroundStyle(CNColors.textPrimary(for: colorScheme))
+                                Text("Simulate dates · pin crosshairs")
+                                    .font(CNFonts.caption)
+                                    .foregroundStyle(CNColors.textSecondary)
+                            }
+                        } icon: {
+                            Image(systemName: "ladybug")
+                                .foregroundStyle(CNColors.red(for: colorScheme))
+                                .font(.system(size: 20))
+                        }
+                        .padding(.vertical, 6)
+                    }
+                } header: {
+                    Text("Debug")
+                }
+                #endif
             }
             .listStyle(.insetGrouped)
             .navigationTitle("Extras")
@@ -100,6 +124,10 @@ struct ExtrasView: View {
                     NoteListView()
                 case "venueMap":
                     VenueMapView(focus: .browse(.floor3))
+                #if DEBUG
+                case "venueMapDebug":
+                    VenueMapDebugView()
+                #endif
                 default:
                     EmptyView()
                 }
