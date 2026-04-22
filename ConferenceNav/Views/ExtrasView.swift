@@ -67,6 +67,26 @@ struct ExtrasView: View {
                         .padding(.vertical, 6)
                     }
                 }
+
+                Section {
+                    NavigationLink(value: "venueMap") {
+                        Label {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Venue Map")
+                                    .font(CNFonts.headline)
+                                    .foregroundStyle(CNColors.textPrimary(for: colorScheme))
+                                Text("O2 Universum floor plans")
+                                    .font(CNFonts.caption)
+                                    .foregroundStyle(CNColors.textSecondary)
+                            }
+                        } icon: {
+                            Image(systemName: "map")
+                                .foregroundStyle(CNColors.gold(for: colorScheme))
+                                .font(.system(size: 20))
+                        }
+                        .padding(.vertical, 6)
+                    }
+                }
             }
             .listStyle(.insetGrouped)
             .navigationTitle("Extras")
@@ -78,6 +98,8 @@ struct ExtrasView: View {
                     ExportView()
                 case "notes":
                     NoteListView()
+                case "venueMap":
+                    VenueMapView(focus: .browse(.floor3))
                 default:
                     EmptyView()
                 }
