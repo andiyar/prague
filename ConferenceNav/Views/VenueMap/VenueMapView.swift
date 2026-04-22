@@ -12,6 +12,8 @@ enum VenueMapFocus: Equatable {
 struct VenueMapView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dismiss) private var dismiss
+    @Environment(ConferenceStore.self) private var store
+    @Environment(DebugClock.self) private var clock
 
     let focus: VenueMapFocus
 
@@ -21,10 +23,19 @@ struct VenueMapView: View {
     @State private var offset: CGSize = .zero
     @State private var lastOffset: CGSize = .zero
     @State private var containerSize: CGSize = .zero
+    @State private var showMyDay: Bool = false
 
     #if DEBUG
     @State private var showCrosshairs: Bool = false
     #endif
+
+    private var myDayPins: [MyDayPin] {
+        MyDayOverlay.pins(
+            for: clock.currentDay,
+            sessions: store.sessions,
+            picks: store.myPicks
+        )
+    }
 
     init(focus: VenueMapFocus) {
         self.focus = focus
@@ -48,6 +59,15 @@ struct VenueMapView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Done") { dismiss() }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showMyDay.toggle()
+                    } label: {
+                        Image(systemName: showMyDay ? "calendar.badge.checkmark" : "calendar")
+                            .foregroundStyle(showMyDay ? CNColors.gold(for: colorScheme) : CNColors.textSecondary)
+                    }
+                    .accessibilityLabel(showMyDay ? "Hide My Day" : "Show My Day")
                 }
                 #if DEBUG
                 ToolbarItem(placement: .topBarTrailing) {
@@ -73,6 +93,7 @@ struct VenueMapView: View {
                     .scaledToFit()
                     .frame(width: geo.size.width, height: geo.size.height)
                     .overlay(pinOverlay(in: geo.size))
+                    .overlay(myDayOverlay(in: geo.size))
                     #if DEBUG
                     .overlay(crosshairOverlay(in: geo.size))
                     #endif
@@ -103,10 +124,14 @@ struct VenueMapView: View {
         )
     }
 
-    /// Pin shown for the focused room (if any).
+    /// Pin shown for the focused room (if any). Hidden while the My Day
+    /// overlay is active so the two pin sets don't overlap.
     @ViewBuilder
     private func pinOverlay(in size: CGSize) -> some View {
-        if case .specificRoom(let room) = focus, room.floor == currentFloor {
+        if !showMyDay,
+           case .specificRoom(let room) = focus,
+           room.floor == currentFloor
+        {
             // Image is scaledToFit inside `size`, so compute the actual displayed image rect.
             let rect = displayedImageRect(in: size)
             VenueMapPin()
@@ -114,6 +139,19 @@ struct VenueMapView: View {
                     x: rect.minX + room.pinPosition.x * rect.width,
                     y: rect.minY + room.pinPosition.y * rect.height
                 )
+        }
+    }
+
+    /// Numbered overlay of all of today's picks.
+    @ViewBuilder
+    private func myDayOverlay(in size: CGSize) -> some View {
+        if showMyDay {
+            let rect = displayedImageRect(in: size)
+            MyDayOverlayView(
+                pins: myDayPins,
+                floor: currentFloor,
+                displayedImageRect: rect
+            )
         }
     }
 
