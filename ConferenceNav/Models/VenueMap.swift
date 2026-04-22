@@ -83,26 +83,33 @@ struct VenueRoom: Hashable, Identifiable {
 enum VenueMapCatalog {
 
     /// Keyed on the exact `venue` string from `programme.json`.
-    /// Pin positions are placeholders — refined in Task 6.
+    /// Pin positions measured from the bundled floor plan JPGs in Task 6.
+    /// Coordinates are normalised (0–1, top-left origin) and target the centre
+    /// of each room's labelled rectangle. Verifiable visually with the in-app
+    /// DEBUG crosshair tool — small nudges welcome.
     static let rooms: [String: VenueRoom] = [
-        // Floor 3 — east wing (C and D halls)
-        "C1": VenueRoom(code: "C1", displayName: "Hall C1", floor: .floor3, pinPosition: CGPoint(x: 0.5, y: 0.5)),
-        "C2": VenueRoom(code: "C2", displayName: "Hall C2", floor: .floor3, pinPosition: CGPoint(x: 0.5, y: 0.5)),
-        "C3": VenueRoom(code: "C3", displayName: "Hall C3", floor: .floor3, pinPosition: CGPoint(x: 0.5, y: 0.5)),
-        "D3": VenueRoom(code: "D3", displayName: "Hall D3", floor: .floor3, pinPosition: CGPoint(x: 0.5, y: 0.5)),
-        "D4": VenueRoom(code: "D4", displayName: "Hall D4", floor: .floor3, pinPosition: CGPoint(x: 0.5, y: 0.5)),
-        "D7": VenueRoom(code: "D7", displayName: "Hall D7", floor: .floor3, pinPosition: CGPoint(x: 0.5, y: 0.5)),
-        "D8": VenueRoom(code: "D8", displayName: "Hall D8", floor: .floor3, pinPosition: CGPoint(x: 0.5, y: 0.5)),
-        "D9": VenueRoom(code: "D9", displayName: "Hall D9", floor: .floor3, pinPosition: CGPoint(x: 0.5, y: 0.5)),
+        // Floor 3 — C column (left), D row (middle/bottom).
+        // C3 / C2 / C1 stack vertically along the far left, top → bottom.
+        "C3": VenueRoom(code: "C3", displayName: "Hall C3", floor: .floor3, pinPosition: CGPoint(x: 0.09, y: 0.25)),
+        "C2": VenueRoom(code: "C2", displayName: "Hall C2", floor: .floor3, pinPosition: CGPoint(x: 0.09, y: 0.32)),
+        "C1": VenueRoom(code: "C1", displayName: "Hall C1", floor: .floor3, pinPosition: CGPoint(x: 0.09, y: 0.39)),
+        // D3 / D4 sit in the middle-row band, right of centre.
+        "D3": VenueRoom(code: "D3", displayName: "Hall D3", floor: .floor3, pinPosition: CGPoint(x: 0.55, y: 0.45)),
+        "D4": VenueRoom(code: "D4", displayName: "Hall D4", floor: .floor3, pinPosition: CGPoint(x: 0.62, y: 0.45)),
+        // D7 / D8 / D9 sit along the bottom row (D9, D8 left of centre stage; D7 right).
+        "D9": VenueRoom(code: "D9", displayName: "Hall D9", floor: .floor3, pinPosition: CGPoint(x: 0.16, y: 0.55)),
+        "D8": VenueRoom(code: "D8", displayName: "Hall D8", floor: .floor3, pinPosition: CGPoint(x: 0.22, y: 0.55)),
+        "D7": VenueRoom(code: "D7", displayName: "Hall D7", floor: .floor3, pinPosition: CGPoint(x: 0.56, y: 0.55)),
 
-        // Hall A — floor TBD in Task 6 (placeholder: floor1)
-        "Hall A": VenueRoom(code: "Hall A", displayName: "Hall A", floor: .floor1, pinPosition: CGPoint(x: 0.5, y: 0.5)),
+        // Hall A is the main blue hall on Floor 0 (clearly labelled "Hall A").
+        // Floor 1 shows the upper view of the same arena but is unlabeled,
+        // so Floor 0 is the canonical map for Hall A.
+        "Hall A": VenueRoom(code: "Hall A", displayName: "Hall A", floor: .floor0, pinPosition: CGPoint(x: 0.37, y: 0.45)),
 
-        // Posters Hall and Refreshment area — locations TBD in Task 6.
-        // If they cannot be placed on any floor plan, REMOVE them from this dictionary
-        // (graceful fallback: thumbnail silently disappears for those sessions).
-        "Printed Posters Hall":     VenueRoom(code: "Printed Posters Hall", displayName: "Printed Posters Hall", floor: .floor3, pinPosition: CGPoint(x: 0.5, y: 0.5)),
-        "Refreshment & lunch area": VenueRoom(code: "Refreshment & lunch area", displayName: "Refreshment & Lunch", floor: .floor3, pinPosition: CGPoint(x: 0.5, y: 0.5)),
+        // Printed Posters Hall and Refreshment & lunch area are not labelled on
+        // any of the 5 floor plans (Floor 0–3 + Meeting Hub). Per Task 6 spec,
+        // we omit them so the graceful fallback in the UI silently hides the
+        // thumbnail for those sessions instead of showing a wrong location.
     ]
 
     /// Lookup by the exact `Session.venue` string. Returns nil for unknown venues.
