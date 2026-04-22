@@ -37,6 +37,7 @@ struct ConferenceNavApp: App {
                 .environment(contactStore ?? ContactStore(userId: savedUserId ?? "default"))
                 .environment(notesStore ?? NotesStore(userId: savedUserId ?? "default"))
                 .environment(notificationService)
+                .environment(DebugClock.shared)
                 .onAppear {
                     if let id = savedUserId {
                         let user: UserProfile = id == "ron" ? .ron : .ben
