@@ -90,21 +90,21 @@ enum VenueMapCatalog {
     static let rooms: [String: VenueRoom] = [
         // Floor 3 — C column (left), D row (middle/bottom).
         // C3 / C2 / C1 stack vertically along the far left, top → bottom.
-        "C3": VenueRoom(code: "C3", displayName: "Hall C3", floor: .floor3, pinPosition: CGPoint(x: 0.09, y: 0.25)),
-        "C2": VenueRoom(code: "C2", displayName: "Hall C2", floor: .floor3, pinPosition: CGPoint(x: 0.09, y: 0.32)),
-        "C1": VenueRoom(code: "C1", displayName: "Hall C1", floor: .floor3, pinPosition: CGPoint(x: 0.09, y: 0.39)),
+        "C3": VenueRoom(code: "C3", displayName: "Hall C3", floor: .floor3, pinPosition: CGPoint(x: 0.07, y: 0.42)),
+        "C2": VenueRoom(code: "C2", displayName: "Hall C2", floor: .floor3, pinPosition: CGPoint(x: 0.07, y: 0.50)),
+        "C1": VenueRoom(code: "C1", displayName: "Hall C1", floor: .floor3, pinPosition: CGPoint(x: 0.07, y: 0.58)),
         // D3 / D4 sit in the middle-row band, right of centre.
-        "D3": VenueRoom(code: "D3", displayName: "Hall D3", floor: .floor3, pinPosition: CGPoint(x: 0.55, y: 0.45)),
-        "D4": VenueRoom(code: "D4", displayName: "Hall D4", floor: .floor3, pinPosition: CGPoint(x: 0.62, y: 0.45)),
+        "D3": VenueRoom(code: "D3", displayName: "Hall D3", floor: .floor3, pinPosition: CGPoint(x: 0.57, y: 0.62)),
+        "D4": VenueRoom(code: "D4", displayName: "Hall D4", floor: .floor3, pinPosition: CGPoint(x: 0.66, y: 0.62)),
         // D7 / D8 / D9 sit along the bottom row (D9, D8 left of centre stage; D7 right).
-        "D9": VenueRoom(code: "D9", displayName: "Hall D9", floor: .floor3, pinPosition: CGPoint(x: 0.16, y: 0.55)),
-        "D8": VenueRoom(code: "D8", displayName: "Hall D8", floor: .floor3, pinPosition: CGPoint(x: 0.22, y: 0.55)),
-        "D7": VenueRoom(code: "D7", displayName: "Hall D7", floor: .floor3, pinPosition: CGPoint(x: 0.56, y: 0.55)),
+        "D9": VenueRoom(code: "D9", displayName: "Hall D9", floor: .floor3, pinPosition: CGPoint(x: 0.20, y: 0.78)),
+        "D8": VenueRoom(code: "D8", displayName: "Hall D8", floor: .floor3, pinPosition: CGPoint(x: 0.27, y: 0.78)),
+        "D7": VenueRoom(code: "D7", displayName: "Hall D7", floor: .floor3, pinPosition: CGPoint(x: 0.62, y: 0.78)),
 
         // Hall A is the main blue hall on Floor 0 (clearly labelled "Hall A").
         // Floor 1 shows the upper view of the same arena but is unlabeled,
         // so Floor 0 is the canonical map for Hall A.
-        "Hall A": VenueRoom(code: "Hall A", displayName: "Hall A", floor: .floor0, pinPosition: CGPoint(x: 0.37, y: 0.45)),
+        "Hall A": VenueRoom(code: "Hall A", displayName: "Hall A", floor: .floor0, pinPosition: CGPoint(x: 0.46, y: 0.58)),
 
         // Printed Posters Hall and Refreshment & lunch area are not labelled on
         // any of the 5 floor plans (Floor 0–3 + Meeting Hub). Per Task 6 spec,
