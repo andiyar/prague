@@ -53,24 +53,32 @@ struct VenueMapThumbnail: View {
                 )
             )
 
-            // Map preview cropped around the pin
+            // Map preview cropped to centre the pin
             GeometryReader { geo in
+                let size = geo.size
+                let imageRect = displayedImageRect(for: room.floor, in: size)
+                let pinPreScale = CGPoint(
+                    x: imageRect.minX + room.pinPosition.x * imageRect.width,
+                    y: imageRect.minY + room.pinPosition.y * imageRect.height
+                )
+                let zoom: CGFloat = 2.5
+                let computedOffset = CGSize(
+                    width: zoom * (size.width / 2 - pinPreScale.x),
+                    height: zoom * (size.height / 2 - pinPreScale.y)
+                )
+
                 ZStack {
                     Image(room.floor.imageName)
                         .resizable()
-                        .scaledToFill()
-                        // Pan the image so the pin lands roughly in centre.
-                        // 2.5× zoom, then offset so pinPosition centres in view.
-                        .scaleEffect(2.5, anchor: UnitPoint(
-                            x: room.pinPosition.x,
-                            y: room.pinPosition.y
-                        ))
-                        .frame(width: geo.size.width, height: geo.size.height)
-                        .clipped()
+                        .scaledToFit()
+                        .frame(width: size.width, height: size.height)
+                        .scaleEffect(zoom)
+                        .offset(computedOffset)
 
                     VenueMapPin(size: 32)
                 }
-                .frame(width: geo.size.width, height: geo.size.height)
+                .frame(width: size.width, height: size.height)
+                .clipped()
             }
             .frame(height: 140)
             .clipped()
@@ -80,6 +88,29 @@ struct VenueMapThumbnail: View {
             RoundedRectangle(cornerRadius: 12)
                 .stroke(CNColors.surfaceSecondary(for: colorScheme), lineWidth: 1)
         )
+    }
+
+    /// Computes the actual rendered image rect inside a scaledToFit frame.
+    /// Matches the same logic in `VenueMapView.displayedImageRect(in:)`.
+    private func displayedImageRect(for floor: VenueFloor, in containerSize: CGSize) -> CGRect {
+        guard let ui = UIImage(named: floor.imageName) else {
+            return CGRect(origin: .zero, size: containerSize)
+        }
+        let imgSize = ui.size
+        let imgAspect = imgSize.width / imgSize.height
+        let containerAspect = containerSize.width / containerSize.height
+
+        if imgAspect > containerAspect {
+            let displayedWidth = containerSize.width
+            let displayedHeight = displayedWidth / imgAspect
+            let yOffset = (containerSize.height - displayedHeight) / 2
+            return CGRect(x: 0, y: yOffset, width: displayedWidth, height: displayedHeight)
+        } else {
+            let displayedHeight = containerSize.height
+            let displayedWidth = displayedHeight * imgAspect
+            let xOffset = (containerSize.width - displayedWidth) / 2
+            return CGRect(x: xOffset, y: 0, width: displayedWidth, height: displayedHeight)
+        }
     }
 }
 
