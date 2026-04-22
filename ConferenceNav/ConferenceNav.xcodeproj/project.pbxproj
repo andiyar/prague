@@ -21,6 +21,7 @@
 		41998527D364FEEB64034E39 /* programme.json in Resources */ = {isa = PBXBuildFile; fileRef = F4FAA964607147AFD06F8EE2 /* programme.json */; };
 		4BF364BC5F678097A00EF423 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19F6CC6B036B9A63464531 /* ExportView.swift */; };
 		4D2D19E23D7C95A78A4AAD65 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF438AA89D0AB0473C3C12C /* SplashScreen.swift */; };
+		51B4D1B4711ED952DAF0C7C1 /* VenueMapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8DA2243F9539A0DABC1B9 /* VenueMapPin.swift */; };
 		637D5707861F36BA9E47F10D /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C20146D120CDC1954E3B374 /* MainTabView.swift */; };
 		6DAF4358E3534325C9CAD3D2 /* UserPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33FA74F231592E2E84267B9 /* UserPickerView.swift */; };
 		6DE13A274D4683DBD7571EFC /* ConferenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB78744B1F1A19FB7595441 /* ConferenceStore.swift */; };
@@ -62,6 +63,7 @@
 		3849F1C44B79277CEF99F0F2 /* MarkdownTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTheme.swift; sourceTree = "<group>"; };
 		4892D4D14C96B8ADE4E9520C /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		5160D738B676A8A49EAC5F73 /* VenueMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueMap.swift; sourceTree = "<group>"; };
+		75F8DA2243F9539A0DABC1B9 /* VenueMapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueMapPin.swift; sourceTree = "<group>"; };
 		806773D59A447642DBC5605F /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		81CB20D2EA6F65D8A36A1DE1 /* ContactFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormView.swift; sourceTree = "<group>"; };
 		8421665C99AF96863DB84F34 /* TypeBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeBadge.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				CCF438AA89D0AB0473C3C12C /* SplashScreen.swift */,
 				F33FA74F231592E2E84267B9 /* UserPickerView.swift */,
 				8D4C237B668DECF2C9C8B182 /* Components */,
+				CE59C13665EE5BE7F612634F /* VenueMap */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,6 +198,14 @@
 				8421665C99AF96863DB84F34 /* TypeBadge.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		CE59C13665EE5BE7F612634F /* VenueMap */ = {
+			isa = PBXGroup;
+			children = (
+				75F8DA2243F9539A0DABC1B9 /* VenueMapPin.swift */,
+			);
+			path = VenueMap;
 			sourceTree = "<group>";
 		};
 		F6DC5345A89078801D6A9C7B /* Design */ = {
@@ -320,6 +331,7 @@
 				6DAF4358E3534325C9CAD3D2 /* UserPickerView.swift in Sources */,
 				22B8C7D682511D5E75DCD06B /* UserProfile.swift in Sources */,
 				8DE366B071BED80669662FAD /* VenueMap.swift in Sources */,
+				51B4D1B4711ED952DAF0C7C1 /* VenueMapPin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
