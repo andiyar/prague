@@ -20,6 +20,7 @@ struct VenueMapView: View {
     @State private var lastZoom: CGFloat = 1.0
     @State private var offset: CGSize = .zero
     @State private var lastOffset: CGSize = .zero
+    @State private var containerSize: CGSize = .zero
 
     #if DEBUG
     @State private var showCrosshairs: Bool = false
@@ -83,7 +84,23 @@ struct VenueMapView: View {
             }
             .frame(width: geo.size.width, height: geo.size.height)
             .clipped()
+            .onAppear { containerSize = geo.size }
+            .onChange(of: geo.size) { _, new in containerSize = new }
         }
+    }
+
+    /// Returns `offset` clamped so the displayed image (at the current zoom) cannot
+    /// be dragged past the container's edges.
+    private func clampedOffset(_ proposed: CGSize) -> CGSize {
+        let imageRect = displayedImageRect(in: containerSize)
+        let imageWidth = imageRect.width * zoom
+        let imageHeight = imageRect.height * zoom
+        let maxOffsetX = max(0, (imageWidth - containerSize.width) / 2)
+        let maxOffsetY = max(0, (imageHeight - containerSize.height) / 2)
+        return CGSize(
+            width: min(maxOffsetX, max(-maxOffsetX, proposed.width)),
+            height: min(maxOffsetY, max(-maxOffsetY, proposed.height))
+        )
     }
 
     /// Pin shown for the focused room (if any).
@@ -162,19 +179,24 @@ struct VenueMapView: View {
         MagnificationGesture()
             .onChanged { value in
                 zoom = max(1.0, min(5.0, lastZoom * value))
+                // Re-clamp offset against the new zoom so we don't end up out of bounds
+                // when zooming out from a panned position.
+                offset = clampedOffset(offset)
             }
             .onEnded { _ in
                 lastZoom = zoom
+                lastOffset = offset
             }
     }
 
     private var panGesture: some Gesture {
         DragGesture()
             .onChanged { value in
-                offset = CGSize(
+                let proposed = CGSize(
                     width: lastOffset.width + value.translation.width,
                     height: lastOffset.height + value.translation.height
                 )
+                offset = clampedOffset(proposed)
             }
             .onEnded { _ in
                 lastOffset = offset
