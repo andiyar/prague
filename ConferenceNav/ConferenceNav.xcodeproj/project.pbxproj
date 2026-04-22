@@ -40,6 +40,7 @@
 		ABB202A3C3FF442305F380C1 /* SessionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973E810CB78C7D2116DAE13F /* SessionCardView.swift */; };
 		B14984DBFFA96F178425C872 /* PickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905DAB7858468A4F9BB51832 /* PickButton.swift */; };
 		B1F3D17D1B9D524FE2CE17B2 /* NoteEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019D4CAE08FEDE0CF7A72461 /* NoteEditorView.swift */; };
+		B834CDC7A202CEBA6886F667 /* MyDayOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F4AA3996BD6DD8FA7299C1 /* MyDayOverlay.swift */; };
 		BBE777061BFCC9F280661159 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6A211695F9F00B26E7BD4 /* NotificationService.swift */; };
 		CC3F8C04681DC46D9ABD7AFD /* ConflictBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D818A856FBA8AD3E835B6C9C /* ConflictBanner.swift */; };
 		CDE82F251FC80BF43A6C18CB /* MatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF16FC2B7C5FDC7BCDBE67A /* MatesView.swift */; };
@@ -60,6 +61,7 @@
 		0EFF38970856A976CDD64DD1 /* NotesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesStore.swift; sourceTree = "<group>"; };
 		1E4447E6B4A64BFD204C31FB /* SessionNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionNote.swift; sourceTree = "<group>"; };
 		25DBFC2BEBC7B97FD3DDBCCB /* FilterChips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterChips.swift; sourceTree = "<group>"; };
+		27F4AA3996BD6DD8FA7299C1 /* MyDayOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayOverlay.swift; sourceTree = "<group>"; };
 		2C8C3E4F7B3B746731B2E40B /* DayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPicker.swift; sourceTree = "<group>"; };
 		2D19F6CC6B036B9A63464531 /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
 		3849F1C44B79277CEF99F0F2 /* MarkdownTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTheme.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 		CE59C13665EE5BE7F612634F /* VenueMap */ = {
 			isa = PBXGroup;
 			children = (
+				27F4AA3996BD6DD8FA7299C1 /* MyDayOverlay.swift */,
 				75F8DA2243F9539A0DABC1B9 /* VenueMapPin.swift */,
 				C5F48A8EA3472703F679BEBE /* VenueMapThumbnail.swift */,
 				6AB3DF6E94C2B441E064F7FA /* VenueMapView.swift */,
@@ -316,6 +319,7 @@
 				3B365F0C8B01AC46C26358C0 /* MarkdownTheme.swift in Sources */,
 				24708B210E80D772D5A46030 /* MateBadges.swift in Sources */,
 				CDE82F251FC80BF43A6C18CB /* MatesView.swift in Sources */,
+				B834CDC7A202CEBA6886F667 /* MyDayOverlay.swift in Sources */,
 				E633ABB8D16A7C3CBCEFEF26 /* MyPicksView.swift in Sources */,
 				B1F3D17D1B9D524FE2CE17B2 /* NoteEditorView.swift in Sources */,
 				0D7C5F8C6E837B167AE44E4D /* NoteListView.swift in Sources */,
