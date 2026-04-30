@@ -5,7 +5,7 @@ class ConferenceStore {
     // MARK: - Data
     private(set) var sessions: [Session] = []
     var currentUser: UserProfile = .ben
-    let lastUpdated = "12 April 2026"
+    let lastUpdated = "30 April 2026"
 
     // MARK: - Notifications
     var notificationService: NotificationService?

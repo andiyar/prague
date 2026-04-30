@@ -50,22 +50,6 @@
     ]
   },
   {
-    "id": 8,
-    "day": "2026-05-14",
-    "date": "2026-05-14",
-    "title": "Overflow from Plenary I",
-    "type": "Keynote",
-    "venue": "C1",
-    "starts_at": "09:00",
-    "ends_at": "10:30",
-    "starts_at_iso": "2026-05-14T09:00:00+02:00",
-    "ends_at_iso": "2026-05-14T10:30:00+02:00",
-    "description": "",
-    "chairs": [],
-    "presentations_count": 0,
-    "presentations": []
-  },
-  {
     "id": 112,
     "day": "2026-05-14",
     "date": "2026-05-14",
@@ -78,23 +62,8 @@
     "ends_at_iso": "2026-05-14T18:00:00+02:00",
     "description": "",
     "chairs": [],
-    "presentations_count": 261,
+    "presentations_count": 216,
     "presentations": [
-      {
-        "id": 233,
-        "title": "End of Life Experiences (ELEs) - Death-bed visions, shared death-bed visions and terminal lucidity",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mr Admir Serrano",
-            "organisation": "Independent researcher",
-            "presenting": true
-          }
-        ],
-        "presenter": "Mr Admir Serrano"
-      },
       {
         "id": 234,
         "title": "Development of a Bereavement Model for Specialist Palliative Care in  Ireland",
@@ -264,21 +233,6 @@
           }
         ],
         "presenter": "Dr Laurien Ham"
-      },
-      {
-        "id": 238,
-        "title": "Resilience of cancer survivors and palliative care staff",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mrs Caruntu Adriana",
-            "organisation": "University of Bucharest , Doctoral School of Social Work",
-            "presenting": true
-          }
-        ],
-        "presenter": "Mrs Caruntu Adriana"
       },
       {
         "id": 239,
@@ -833,7 +787,7 @@
             "presenting": false
           },
           {
-            "name": "Mrs Teresa Gabarró Taulé",
+            "name": "Mrs teresa gabarró",
             "organisation": "Supportive Cancer and Palliative Care Unit, Cancer and Blood Diseases Institute. Hospital Clinic (Barcelona)",
             "presenting": false
           },
@@ -3291,21 +3245,6 @@
         "presenter": "Ms Po-Ya Chan"
       },
       {
-        "id": 322,
-        "title": "Advocating for Policy Changes to Improve Cancer Care in Rural India",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mr ADITYA MANNA",
-            "organisation": "MAS Clinic and Hospital",
-            "presenting": true
-          }
-        ],
-        "presenter": "Mr ADITYA MANNA"
-      },
-      {
         "id": 323,
         "title": "Scoping Review on Navigation Interventions for Older Adults with Cancer in Europe",
         "starts_at": "09:00",
@@ -3423,12 +3362,12 @@
             "presenting": false
           },
           {
-            "name": "Ms Paula O’Reilly",
+            "name": "Ms Paula O'Reilly",
             "organisation": "CEO, Irish Hospice Foundation",
             "presenting": true
           }
         ],
-        "presenter": "Ms Paula O’Reilly"
+        "presenter": "Ms Paula O'Reilly"
       },
       {
         "id": 327,
@@ -4236,21 +4175,6 @@
         "presenter": "Mrs Martina Hillebrecht"
       },
       {
-        "id": 348,
-        "title": "Cost-Effectiveness of Home Visitation in Improving Health Outcomes of HIV-Affected Children in Eswatini",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mr Themba Matsebula",
-            "organisation": "Young Heroes Organisation",
-            "presenting": true
-          }
-        ],
-        "presenter": "Mr Themba Matsebula"
-      },
-      {
         "id": 349,
         "title": "Assessing Knowledge, Attitudes, and Understanding of Palliative Care: Insights from a Cross-Sectional Survey",
         "starts_at": "09:00",
@@ -4282,7 +4206,7 @@
       },
       {
         "id": 350,
-        "title": "An integrated approach to enable data availability of Advanced Care Planning across Dutch healthcare settings.",
+        "title": "An integrated approach to enable data availability of Advance Care Planning across Dutch healthcare settings.",
         "starts_at": "09:00",
         "ends_at": "18:00",
         "duration_mins": 15,
@@ -5224,7 +5148,7 @@
         "authors": [
           {
             "name": "Mrs Rebekka Hocher",
-            "organisation": "Faculty of Health, Witten/Herdecke University, Germany",
+            "organisation": "Juniorprofessorship for Digital Health, Faculty of Health, Witten/Herdecke University, Germany",
             "presenting": true
           },
           {
@@ -5250,6 +5174,11 @@
           {
             "name": "Dr Jannik Zimmermann",
             "organisation": "Department of Psychology, University of Kassel, Kassel, Germany",
+            "presenting": false
+          },
+          {
+            "name": "Dr Theresa Sophie Busse",
+            "organisation": "Juniorprofessorship for Digital Health, Faculty of Health, Witten/Herdecke University, Germany",
             "presenting": false
           }
         ],
@@ -5545,7 +5474,7 @@
           {
             "name": "Prof Helen Yue-Lai Chan",
             "organisation": "The Nethersole School of Nursing, The Faculty of Medicine, The Chinese University of Hong Kong",
-            "presenting": false
+            "presenting": true
           },
           {
             "name": "Prof Jialiang Cui",
@@ -5555,7 +5484,7 @@
           {
             "name": "Dr Anderson An Tao",
             "organisation": "The Nethersole School of Nursing, The Faculty of Medicine, The Chinese University of Hong Kong",
-            "presenting": true
+            "presenting": false
           },
           {
             "name": "Dr Mimi Wai Man Chan",
@@ -5563,7 +5492,7 @@
             "presenting": false
           }
         ],
-        "presenter": "Dr Anderson An Tao"
+        "presenter": "Prof Helen Yue-Lai Chan"
       },
       {
         "id": 381,
@@ -6136,51 +6065,6 @@
         "presenter": "Ms Heidi Defloor"
       },
       {
-        "id": 399,
-        "title": "The Role and Position of Palliative Care Nurses within the Dutch Healthcare System: A Mixed-Methods Study",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mrs Ingrid van Zuilekom",
-            "organisation": "Saxion University of applied sciences",
-            "presenting": true
-          },
-          {
-            "name": "Dr Suzanne Metselaar",
-            "organisation": "Amsterdam UMC Department of Ethics, Law and Humanities",
-            "presenting": false
-          },
-          {
-            "name": "Mrs Fleur Godrie",
-            "organisation": "Amsterdam UMC Department of Ethics, Law and Humanities",
-            "presenting": false
-          },
-          {
-            "name": "Dr Myrna Pelgrum-Keurhorst",
-            "organisation": "Windesheim",
-            "presenting": false
-          },
-          {
-            "name": "Mrs Berdine Koekoek",
-            "organisation": "Gelre Hospitals",
-            "presenting": false
-          },
-          {
-            "name": "Prof Bregje Onwuteaka-Philipsen",
-            "organisation": "Amsterdam UMC",
-            "presenting": false
-          },
-          {
-            "name": "Dr Harmieke van Os-Medendorp",
-            "organisation": "InHolland/Spaarne Gasthuis",
-            "presenting": false
-          }
-        ],
-        "presenter": "Mrs Ingrid van Zuilekom"
-      },
-      {
         "id": 400,
         "title": "An on-line educational geriatric program based on palliative care competencies in Greece; an exploratory analysis",
         "starts_at": "09:00",
@@ -6296,26 +6180,6 @@
         "presenter": "Prof Deidre Morgan"
       },
       {
-        "id": 404,
-        "title": "Does Mortal Distress in Healthcare Professionals (HCPs) Have Negative Impacts Only?",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Juan Wang",
-            "organisation": "The Nethersole School of Nursing, The Faculty of Medicine, The Chinese University of Hong Kong",
-            "presenting": true
-          },
-          {
-            "name": "Prof Amy, Yin Man Chow",
-            "organisation": "Faculty of Social Sciences, The University of Hong Kong, Hong Kong SAR, China",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Juan Wang"
-      },
-      {
         "id": 406,
         "title": "Gaps and Opportunities in Palliative Care Education for Allied Health Professionals: A Scoping Review",
         "starts_at": "09:00",
@@ -6394,21 +6258,6 @@
           }
         ],
         "presenter": "Dr Katie Weatherstone"
-      },
-      {
-        "id": 409,
-        "title": "Cultural Influences on End-of-Life Decisions: A Cross Cultural Comparison: A Meta-Analytical Review",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Kusum Kumari",
-            "organisation": "Associate Professor",
-            "presenting": true
-          }
-        ],
-        "presenter": "Dr Kusum Kumari"
       },
       {
         "id": 410,
@@ -6836,21 +6685,6 @@
         "presenter": "Dr Angela Recchia"
       },
       {
-        "id": 421,
-        "title": "Racialized Assemblages of Death: Muslim Pastoral Care, Disenfranchised Grief, and the Ethics of Dignified Dying",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Prof Ans Irfan",
-            "organisation": "University of Southern California/The Public Health Praxis Center",
-            "presenting": true
-          }
-        ],
-        "presenter": "Prof Ans Irfan"
-      },
-      {
         "id": 422,
         "title": "Policy Inclusion of Palliative Care for Older Adults in Africa",
         "starts_at": "09:00",
@@ -6869,41 +6703,6 @@
           }
         ],
         "presenter": "Ms Caroline Mutune"
-      },
-      {
-        "id": 423,
-        "title": "Contrasting perspectives on the use of Medical Assistance in Dying between professionals involved and not involved in the practice",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Prof Catherine Perron",
-            "organisation": "University of Sherbrooke",
-            "presenting": true
-          },
-          {
-            "name": "Prof Marie-Eve Bouthillier",
-            "organisation": "University of Montreal",
-            "presenting": false
-          },
-          {
-            "name": "Prof Isabelle Marcoux",
-            "organisation": "University of Ottawa",
-            "presenting": false
-          },
-          {
-            "name": "Mrs Alexandra Beaudin",
-            "organisation": "University of Ottawa",
-            "presenting": false
-          },
-          {
-            "name": "Mr Simon Lemyre",
-            "organisation": "University of Montreal",
-            "presenting": false
-          }
-        ],
-        "presenter": "Prof Catherine Perron"
       },
       {
         "id": 424,
@@ -6961,21 +6760,6 @@
         "presenter": "Ms María Belmonte Herrera"
       },
       {
-        "id": 426,
-        "title": "Rethinking Well-being in Palliative Care: The Role of Character and Moral Growth in the Experience of Chronic Illness",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Elena Ricci",
-            "organisation": "Sant'Anna School of Advanced Studies",
-            "presenting": true
-          }
-        ],
-        "presenter": "Dr Elena Ricci"
-      },
-      {
         "id": 427,
         "title": "Developing ethical reasoning within a specialized palliative care team",
         "starts_at": "09:00",
@@ -6985,12 +6769,12 @@
           {
             "name": "Mrs Sarah Leduc",
             "organisation": "Fondation Rive-Neuve, Blonay, Switzerland",
-            "presenting": false
+            "presenting": true
           },
           {
             "name": "Mrs Esther Thorens",
             "organisation": "Fondation Rive-Neuve, Blonay, Switzerland",
-            "presenting": true
+            "presenting": false
           },
           {
             "name": "Dr Kristina Wuerth",
@@ -7018,7 +6802,7 @@
             "presenting": false
           }
         ],
-        "presenter": "Mrs Esther Thorens"
+        "presenter": "Mrs Sarah Leduc"
       },
       {
         "id": 428,
@@ -7323,7 +7107,7 @@
         "duration_mins": 15,
         "authors": [
           {
-            "name": "Dr Ju Chien Jeng",
+            "name": "Ms Ju Chien Jeng",
             "organisation": "China Medical University Hospital",
             "presenting": true
           },
@@ -7343,7 +7127,7 @@
             "presenting": false
           }
         ],
-        "presenter": "Dr Ju Chien Jeng"
+        "presenter": "Ms Ju Chien Jeng"
       },
       {
         "id": 434,
@@ -7485,15 +7269,15 @@
           {
             "name": "Ms Blandine Humbert",
             "organisation": "Institut Catholique de Paris",
-            "presenting": false
+            "presenting": true
           },
           {
             "name": "Ms Marie-Caroline Arreto",
             "organisation": "Institut Catholique de Paris",
-            "presenting": true
+            "presenting": false
           }
         ],
-        "presenter": "Ms Marie-Caroline Arreto"
+        "presenter": "Ms Blandine Humbert"
       },
       {
         "id": 439,
@@ -7786,36 +7570,6 @@
         "presenter": "Dr ARZU NURDAŞ"
       },
       {
-        "id": 448,
-        "title": "Mindfulness Self-Compassionate Care (MASC) for Dementia Caregivers: A Pilot Randomized Controlled Trial",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Ana-Maria Vranceanu",
-            "organisation": "Mass General Brigham",
-            "presenting": true
-          },
-          {
-            "name": "Ms Maggie Crean",
-            "organisation": "Mass General Brigham",
-            "presenting": false
-          },
-          {
-            "name": "Ms Sahana Giridharan",
-            "organisation": "University of North Carolina School of Medicine",
-            "presenting": false
-          },
-          {
-            "name": "Dr christine ritchie",
-            "organisation": "Mass General Brigham",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Ana-Maria Vranceanu"
-      },
-      {
         "id": 449,
         "title": "Supporting relatives of patients in the agonal phase by an interdisciplinary team : research of a consensus by Delphi’s method",
         "starts_at": "09:00",
@@ -7869,71 +7623,6 @@
           }
         ],
         "presenter": "Ms Brid McCarthy"
-      },
-      {
-        "id": 451,
-        "title": "The Cost of Informal Cancer Caregiving (CCC) Questionnaire: pilot of a co-designed tool for palliative oncology",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Cara Platts",
-            "organisation": "University of Melbourne",
-            "presenting": false
-          },
-          {
-            "name": "Dr Chris Schilling",
-            "organisation": "University of Melbourne",
-            "presenting": true
-          },
-          {
-            "name": "Dr Anna Collins",
-            "organisation": "Department of Medicine, St Vincent’s Hospital, University of Melbourne",
-            "presenting": false
-          },
-          {
-            "name": "Ms Isabella Hall",
-            "organisation": "Monash University",
-            "presenting": false
-          },
-          {
-            "name": "Prof Clare Gardiner",
-            "organisation": "University of Sheffield",
-            "presenting": false
-          },
-          {
-            "name": "Prof Jennifer Philip",
-            "organisation": "Department of Palliative Care, St Vincent’s Hospital, Melbourne",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Chris Schilling"
-      },
-      {
-        "id": 452,
-        "title": "Prevalence of Caregiver Collapse in Primary Caregivers of Hospitalized Older Adults with Oncological Disease",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Eduardo Daniel Anica Malagón",
-            "organisation": "Hospital General de México",
-            "presenting": false
-          },
-          {
-            "name": "Dr Helga Lidysse Vega Vargas",
-            "organisation": "Hospital General de México",
-            "presenting": true
-          },
-          {
-            "name": "Dr Ricardo Vilchis",
-            "organisation": "Hospital General de México",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Helga Lidysse Vega Vargas"
       },
       {
         "id": 453,
@@ -8081,41 +7770,6 @@
         "presenter": "Dr Silvia Goss"
       },
       {
-        "id": 456,
-        "title": "Understanding the concept of ‘good death’ across cultures: A comparative study of patients and family caregivers in five countries",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Hammoda ABU-ODAH",
-            "organisation": "The Hong Kong Polytechnic University",
-            "presenting": true
-          },
-          {
-            "name": "Prof Gulbeyaz Can",
-            "organisation": "Istanbul University-Cerrahpasa",
-            "presenting": false
-          },
-          {
-            "name": "Dr Juanjuan Zhao",
-            "organisation": "Sun Yat-sen University, Guangzhou, China.",
-            "presenting": false
-          },
-          {
-            "name": "Dr Sotirios Plakas",
-            "organisation": "University of West Attica",
-            "presenting": false
-          },
-          {
-            "name": "Prof Frances Kam Yuet Wong",
-            "organisation": "The Hong Kong Polytechnic University",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Hammoda ABU-ODAH"
-      },
-      {
         "id": 457,
         "title": "The guilt experiences of post-caregivers bereaved by cancer: a scoping review",
         "starts_at": "09:00",
@@ -8211,46 +7865,6 @@
         "presenter": "Mrs Kathy Rogers"
       },
       {
-        "id": 460,
-        "title": "Understanding the Training Needs of Caregivers in Palliative Situations: Evidence from a Qualitative Study",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Léonor Fasse",
-            "organisation": "Université Paris Cité",
-            "presenting": true
-          },
-          {
-            "name": "Dr Sylvia Zimmers",
-            "organisation": "Ecole des Psychologues Psychopraticiens",
-            "presenting": false
-          },
-          {
-            "name": "Dr Julien Carretier",
-            "organisation": "Centre National Fin de Vie Soins Palliatifs",
-            "presenting": false
-          },
-          {
-            "name": "Ms Amarantha Bourgeois",
-            "organisation": "Association JAID",
-            "presenting": false
-          },
-          {
-            "name": "Mr Henri de Rohan-Chabot",
-            "organisation": "Association France-Répit",
-            "presenting": false
-          },
-          {
-            "name": "Ms Françoise Ellien",
-            "organisation": "Réseau SPES",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Léonor Fasse"
-      },
-      {
         "id": 461,
         "title": "See  me, support me: a call from family caregivers for better support in the hospital: a single center academic patient panel survey",
         "starts_at": "09:00",
@@ -8299,36 +7913,6 @@
           }
         ],
         "presenter": "Mrs Marcella Tam"
-      },
-      {
-        "id": 462,
-        "title": "PREVALENCE AND CHARACTERISTICS OF CAREGIVER BURDEN IN TERMINAL DEMENTIA: A PROSPECTIVE HOSPITAL-BASED STUDY",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Eduardo Daniel Anica Malagón",
-            "organisation": "Hospital General de México",
-            "presenting": false
-          },
-          {
-            "name": "Dr Raúl García Marcial",
-            "organisation": "Hospital General de México",
-            "presenting": false
-          },
-          {
-            "name": "Dr Ricardo Vilchis",
-            "organisation": "Hospital General de México",
-            "presenting": false
-          },
-          {
-            "name": "Dr Helga Lidysse Vega Vargas",
-            "organisation": "Hospital General de México",
-            "presenting": true
-          }
-        ],
-        "presenter": "Dr Helga Lidysse Vega Vargas"
       },
       {
         "id": 463,
@@ -8711,56 +8295,6 @@
         "presenter": "Dr Annika Elizabeth Malmström"
       },
       {
-        "id": 476,
-        "title": "Integrating Palliative Care in Advanced Kidney Disease: A Retrospective Audit of 325 Patients in a Tertiary Indian Center&nbsp;",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Anuja Damani",
-            "organisation": "Kasturba Medical College, Manipal, Manipal Academy of Higher Education",
-            "presenting": true
-          },
-          {
-            "name": "Dr Arun Ghoshal",
-            "organisation": "Kasturba Medical College, Manipal, Manipal Academy of Higher Education",
-            "presenting": false
-          },
-          {
-            "name": "Dr Gayatri S",
-            "organisation": "Kasturba Medical College, Manipal, Manipal Academy of Higher Education",
-            "presenting": false
-          },
-          {
-            "name": "Dr Shailja Sharma",
-            "organisation": "Kasturba Medical College, Manipal, Manipal Academy of Higher Education",
-            "presenting": false
-          },
-          {
-            "name": "Dr Trishtha Agarwal",
-            "organisation": "Kasturba Medical College, Manipal, Manipal Academy of Higher Education",
-            "presenting": false
-          },
-          {
-            "name": "Dr Aahaan Agrawal",
-            "organisation": "Kasturba Medical College, Manipal, Manipal Academy of Higher Education",
-            "presenting": false
-          },
-          {
-            "name": "Prof Shankar Prasad N",
-            "organisation": "Kasturba Medical College, Manipal, Manipal Academy of Higher Education",
-            "presenting": false
-          },
-          {
-            "name": "Prof Naveen Salins",
-            "organisation": "Kasturba Medical College, Manipal, Manipal Academy of Higher Education",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Anuja Damani"
-      },
-      {
         "id": 477,
         "title": "More oxygen, less peace? Examing the association between end-of-life oxygen flow and the Good Death Score: A retrospective study",
         "starts_at": "09:00",
@@ -8789,56 +8323,6 @@
           }
         ],
         "presenter": "Ms Wei-Hsu Chen"
-      },
-      {
-        "id": 478,
-        "title": "Diagnosis-Driven Inequities in Palliative Care Among Older Adults Hospitalized for Respiratory Diseases",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Daniela Josefina Cataneo Piña",
-            "organisation": "National Institute of Respiratory Diseases",
-            "presenting": true
-          },
-          {
-            "name": "Dr Brenda Paola Castillo Marmolejo",
-            "organisation": "National Institute of Respiratory Diseases",
-            "presenting": false
-          },
-          {
-            "name": "Dr Adriana Bautista",
-            "organisation": "National Institute of Respiratory Diseases",
-            "presenting": false
-          },
-          {
-            "name": "Dr Lidia Aurora Mondragon Posadas",
-            "organisation": "National Institute of Respiratory Diseases",
-            "presenting": false
-          },
-          {
-            "name": "Dr Blanca Patricia Sánchez Hernández",
-            "organisation": "National Institute of Respiratory Diseases",
-            "presenting": false
-          },
-          {
-            "name": "Dr Natalia Sanchez Garrido",
-            "organisation": "National Institute of Geriatrics",
-            "presenting": false
-          },
-          {
-            "name": "Dr Ana Patricia Navarrete Reyes",
-            "organisation": "The National Institute of Medical Sciences and Nutrition Salvador Zubirán",
-            "presenting": false
-          },
-          {
-            "name": "Dr Ivette Buendía Roldán",
-            "organisation": "National Institute of Respiratory Diseases",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Daniela Josefina Cataneo Piña"
       },
       {
         "id": 479,
@@ -8876,81 +8360,6 @@
         "presenter": "Dr Adrian Chapman Yan"
       },
       {
-        "id": 480,
-        "title": "Profile of Patients Referred to an Outpatient Palliative Care Service: Sociodemographic and Clinical Aspects",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Ms Julia Stephani Martins",
-            "organisation": "University of São Paulo at Ribeirão Preto College of Nursing",
-            "presenting": false
-          },
-          {
-            "name": "Ms Leticia Freitas",
-            "organisation": "University of São Paulo at Ribeirão Preto College of Nursing",
-            "presenting": false
-          },
-          {
-            "name": "Mrs Thaís Giansante",
-            "organisation": "University of São Paulo at Ribeirão Preto College of Nursing",
-            "presenting": false
-          },
-          {
-            "name": "Ms Simone Cristina Ribeiro",
-            "organisation": "University of São Paulo at Ribeirão Preto College of Nursing",
-            "presenting": false
-          },
-          {
-            "name": "Mrs Odete Nauessi Calala",
-            "organisation": "University of São Paulo at Ribeirão Preto College of Nursing",
-            "presenting": false
-          },
-          {
-            "name": "Mrs Letícia Noelle Corbo Macedo",
-            "organisation": "University of São Paulo at Ribeirão Preto College of Nursing",
-            "presenting": false
-          },
-          {
-            "name": "Ms Juliana Pelegrino",
-            "organisation": "University of São Paulo at Ribeirão Preto College of Nursing",
-            "presenting": false
-          },
-          {
-            "name": "Ms Carla Beatriz Gondim",
-            "organisation": "University of São Paulo at Ribeirão Preto College of Nursing",
-            "presenting": false
-          },
-          {
-            "name": "Ms Thais Benevides Silva",
-            "organisation": "University of São Paulo at Ribeirão Preto College of Nursing",
-            "presenting": false
-          },
-          {
-            "name": "Ms Flávia Regina Binati Oliveira",
-            "organisation": "University of São Paulo at Ribeirão Preto College of Nursing",
-            "presenting": false
-          },
-          {
-            "name": "Dr Gabriela Rezende",
-            "organisation": "Ribeirão Preto Medical School - University of São Paulo",
-            "presenting": false
-          },
-          {
-            "name": "Mrs Giovana Paula Rezende Simino",
-            "organisation": "Federal University of Minas Gerais",
-            "presenting": false
-          },
-          {
-            "name": "Dr Fabiana Bolela",
-            "organisation": "University of São Paulo at Ribeirão Preto College of Nursing",
-            "presenting": true
-          }
-        ],
-        "presenter": "Dr Fabiana Bolela"
-      },
-      {
         "id": 481,
         "title": "Predicting the need for an indwelling peritoneal catheter in malignant ascites: a retrospective cohort study",
         "starts_at": "09:00",
@@ -8964,41 +8373,6 @@
           }
         ],
         "presenter": "Dr Filipa Tavares"
-      },
-      {
-        "id": 482,
-        "title": "Comfort Feeding and Risk of Aspiration Pneumonia in Elder Adults Under Palliative Care: A Retrospective Correlational Study",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Yen Chun Wang",
-            "organisation": "Taipei Veterans General Hospital",
-            "presenting": true
-          },
-          {
-            "name": "Mrs Chu-Ying Huang",
-            "organisation": "Taipei Veterans General Hospital",
-            "presenting": false
-          },
-          {
-            "name": "Mrs Hsiao-Ching Liu",
-            "organisation": "Dah-Der Hospice &amp; Palliative Care Foundation",
-            "presenting": false
-          },
-          {
-            "name": "Dr Hsiao-Ting Chang",
-            "organisation": "Taipei Veterans General Hospital",
-            "presenting": false
-          },
-          {
-            "name": "Dr Ming-Hwai Lin",
-            "organisation": "Taipei Veterans General Hospital",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Yen Chun Wang"
       },
       {
         "id": 483,
@@ -9109,36 +8483,6 @@
           }
         ],
         "presenter": "Dr Gudrun Jonsdottir"
-      },
-      {
-        "id": 486,
-        "title": "Burden of symptoms among home-based palliative care patients in Eswatini",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Gwennan Rucinski",
-            "organisation": "University of Southampton",
-            "presenting": true
-          },
-          {
-            "name": "Dr Eliana Peus",
-            "organisation": "University of Southampton",
-            "presenting": false
-          },
-          {
-            "name": "Dr Alex Shaw",
-            "organisation": "University of Southampton",
-            "presenting": false
-          },
-          {
-            "name": "Dr Zachariah Wells",
-            "organisation": "University of Southampton",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Gwennan Rucinski"
       },
       {
         "id": 487,
@@ -9341,31 +8685,6 @@
         "presenter": "Dr Julius Arkhe Atacador"
       },
       {
-        "id": 494,
-        "title": "Improving Antiemetic Prescribing to Prevent Opioid-Induced Nausea and Vomiting: Findings from an Audit in a Tertiary Cancer Institute of Northeast India",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Dr Jutika Kalita",
-            "organisation": "Dr B Borooah Cancer Institute, Guwahati, Assam",
-            "presenting": true
-          },
-          {
-            "name": "Dr Kabindra Bhagabati",
-            "organisation": "Dr B Borooah Cancer Institute, Guwahati, Assam",
-            "presenting": false
-          },
-          {
-            "name": "Dr Nengneivah Haokip",
-            "organisation": "Dr B Borooah Cancer Institute, Guwahati, Assam",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Dr Jutika Kalita"
-      },
-      {
         "id": 495,
         "title": "Glycopyronium induced bacterial parotitis",
         "starts_at": "09:00",
@@ -9510,7 +8829,7 @@
     "ends_at_iso": "2026-05-14T18:00:00+02:00",
     "description": "",
     "chairs": [],
-    "presentations_count": 261,
+    "presentations_count": 229,
     "presentations": [
       {
         "id": 501,
@@ -9928,61 +9247,6 @@
         "presenter": "Ms Annie Smithson"
       },
       {
-        "id": 512,
-        "title": "The Efficacy of Brief Psychotherapeutic Interventions (Meaning-Centered Therapy, Dignity Therapy, and Cognitive Behavioural Therapy) in a Palliative Care Population in Northwest Nigeria: A Randomised Controlled Trial",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Abdullahi Abdulwahab Yakubu",
-            "organisation": "Department of Psychiatry, Ahmadu Bello University, Zaria, Nigeria",
-            "presenting": true
-          },
-          {
-            "name": "Dr Summayyah Muhammad Bashar",
-            "organisation": "Department of Psychiatry, Ahmadu Bello University Teaching Hospital, Zaria, Nigeria",
-            "presenting": false
-          },
-          {
-            "name": "Dr Audu Ishaq Aveka",
-            "organisation": "Department of Psychiatry, Ahmadu Bello University, Zaria, Nigeria",
-            "presenting": false
-          },
-          {
-            "name": "Dr Sani Khalid",
-            "organisation": "Department of Psychiatry, Ahmadu Bello University Teaching Hospital, Zaria, Nigeria",
-            "presenting": false
-          },
-          {
-            "name": "Dr Muhammad Aliyu",
-            "organisation": "Federal Neuropsychiatric Hospital, Kaduna, Nigeria",
-            "presenting": false
-          },
-          {
-            "name": "Dr Shehu Salihu Umar",
-            "organisation": "Department of Radiation and Clinical Oncology, Ahmadu Bello University Teaching Hospital, Zaria, Nigeria",
-            "presenting": false
-          },
-          {
-            "name": "Dr Munir Sani",
-            "organisation": "Department of Radiation and Clinical Oncology, Ahmadu Bello University Teaching Hospital, Zaria, Nigeria",
-            "presenting": false
-          },
-          {
-            "name": "Dr Abusufyan Attahiru",
-            "organisation": "Department of Psychiatry, Usmanu Danfodio University Teaching Hospital, Sokoto, Nigeria",
-            "presenting": false
-          },
-          {
-            "name": "Prof Bashir Adam Yakasai",
-            "organisation": "Department of Psychiatry, Ahmadu Bello University Teaching Hospital, Zaria, Nigeria",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Abdullahi Abdulwahab Yakubu"
-      },
-      {
         "id": 513,
         "title": "Palliative care social workers’ current practice and perspectives on trauma-informed care",
         "starts_at": "09:00",
@@ -10186,31 +9450,6 @@
           }
         ],
         "presenter": "Dr Aminah AlAnsari"
-      },
-      {
-        "id": 520,
-        "title": "Feasibility and Outcomes of Brief Cognitive-Behavioral Therapy in Palliative care:  Insights from a Case Series",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Nengneivah Haokip",
-            "organisation": "Dr B Borooah Cancer Institute, Guwahati, Assam",
-            "presenting": true
-          },
-          {
-            "name": "Dr Kabindra Bhagabati",
-            "organisation": "Dr B Borooah Cancer Institute, Guwahati, Assam",
-            "presenting": false
-          },
-          {
-            "name": "Ms Chandamita Barua",
-            "organisation": "Dr B Borooah Cancer Institute, Guwahati, Assam",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Nengneivah Haokip"
       },
       {
         "id": 521,
@@ -10693,31 +9932,6 @@
         "presenter": "Dr Poorni Jaganathan"
       },
       {
-        "id": 536,
-        "title": "Coping, Meaning in Life, and Fear of Death during the COVID-19 Pandemic and the Ukraine War: A Comparative Study of Health-Care and Non-Health-Care Professionals",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mrs Petra Szimon",
-            "organisation": "Faculty of Medicine, Institute of Behavioural Sciences, Semmelweis University, Nagyvárad tér 4., Budapest, 1089, Hungary",
-            "presenting": true
-          },
-          {
-            "name": "Dr Nándor Takács",
-            "organisation": "Károli Gáspár University of the Reformed Church in Hungary, Institute of Psychology, Kálvin tér 9. Budapest, 1091",
-            "presenting": false
-          },
-          {
-            "name": "Dr Ágnes Zana",
-            "organisation": "Faculty of Medicine, Institute of Behavioural Sciences, Semmelweis University, Nagyvárad tér 4., Budapest, 1089, Hungary",
-            "presenting": false
-          }
-        ],
-        "presenter": "Mrs Petra Szimon"
-      },
-      {
         "id": 537,
         "title": "The Two-Spiral Model: A Conceptual Perspective on Existential Suffering in Palliative Care",
         "starts_at": "09:00",
@@ -11021,21 +10235,6 @@
           }
         ],
         "presenter": "Ms Ali-Rose Sisk"
-      },
-      {
-        "id": 547,
-        "title": "An Exploration of the spiritual needs of children with life limiting conditions- a Qualitative Evidence Synthesis.",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mrs Carina Conroy",
-            "organisation": "Waterford Community Specialist Palliative Care Team",
-            "presenting": true
-          }
-        ],
-        "presenter": "Mrs Carina Conroy"
       },
       {
         "id": 548,
@@ -11541,36 +10740,6 @@
           }
         ],
         "presenter": "Ms Barbora Nebazniva"
-      },
-      {
-        "id": 567,
-        "title": "Opioid Availability in Pediatric Palliative Care in Low- and Middle-Income Countries: A Subset Analysis from a Systematic Literature Review",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Eddy Carolina Pedraza",
-            "organisation": "Faculty of Health Sciences and Medicine, University of Lucerne, Switzerland;  Paediatric Chronicity and Palliative Care, Institut de Recerca Sant Juan de Deu, Palliative and Complex Care Unit, Hospital Sant Joan de Deu Barcelona.",
-            "presenting": true
-          },
-          {
-            "name": "Dr Elizabeth Hall",
-            "organisation": "•\tDepartment of Clinical Pharmacy and Translational Science. The University of Tennessee Health Science Center",
-            "presenting": false
-          },
-          {
-            "name": "Dr Michael McNeil",
-            "organisation": "Department of Global Pediatric Medicine, •\tDivision of Quality of Life and Palliative Care, Department of Oncology, St. Jude Children’s Research Hospital",
-            "presenting": false
-          },
-          {
-            "name": "Dr Doralina Anghelescu",
-            "organisation": "Department of Global Pediatric Medicine, St. Jude Children's Research Hospital",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Eddy Carolina Pedraza"
       },
       {
         "id": 568,
@@ -12173,21 +11342,6 @@
         "presenter": "Dr Lidia Bueno-Sánchez"
       },
       {
-        "id": 583,
-        "title": "Pioneering Child Life in Pediatric Palliative Care: Lessons from the First Public Children’s Hospital in East and Central Africa.",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mr Michael Omondi",
-            "organisation": "Shoe4Africa Children’s Hospital",
-            "presenting": true
-          }
-        ],
-        "presenter": "Mr Michael Omondi"
-      },
-      {
         "id": 584,
         "title": "Comparative evaluation of midazolam, ketamine, and their combination as sedative agents in pediatric dentistry: a systematic review and meta-analysis",
         "starts_at": "09:00",
@@ -12211,46 +11365,6 @@
           }
         ],
         "presenter": "Dr Matine Gharavi"
-      },
-      {
-        "id": 585,
-        "title": "Pediatric Palliative Care Research: Difficulties and Challenges in Iberoamerica",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Mercedes Bernadá",
-            "organisation": "School of Medicine Universidad de la República",
-            "presenting": true
-          },
-          {
-            "name": "Dr Martin Notejane",
-            "organisation": "School of Medicine Universidad de la República",
-            "presenting": false
-          },
-          {
-            "name": "Dr Alvaro Navarro",
-            "organisation": "Hospital del Niño Jesús",
-            "presenting": false
-          },
-          {
-            "name": "Dr Ricardo Martino",
-            "organisation": "Hospital del Niño Jesús",
-            "presenting": false
-          },
-          {
-            "name": "Dr Martin Mindeguia",
-            "organisation": "Hospital Vithas Xanit Internacional (España)",
-            "presenting": false
-          },
-          {
-            "name": "Dr Sergi Navarro-Vilarrubí",
-            "organisation": "Hospital Sant Joan de Déu. University of Barcelona",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Mercedes Bernadá"
       },
       {
         "id": 586,
@@ -12351,26 +11465,6 @@
           }
         ],
         "presenter": "Dr Ping Guo"
-      },
-      {
-        "id": 588,
-        "title": "Collateral beauty: lights and shadows in pediatric palliative care",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Ms Iris Parra Jounou",
-            "organisation": "Universitat Autònoma de Barcelona",
-            "presenting": false
-          },
-          {
-            "name": "Mr Pau Miquel",
-            "organisation": "Paediatric Chronicity and Palliative Care. Institut deRecerca Sant Juan deDeu. Esplugues de Llobregat. Palliative and Complex Care Unit. Hospital San Joan de Deu Barcelona. Esplugues de Llobregat, Spain.",
-            "presenting": true
-          }
-        ],
-        "presenter": "Mr Pau Miquel"
       },
       {
         "id": 589,
@@ -12551,36 +11645,6 @@
           }
         ],
         "presenter": "Dr David Wenzel"
-      },
-      {
-        "id": 594,
-        "title": "Monitoring Opioid Shortages among Home-Based Palliative Care Patients in Eswatini",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Eliana Peus",
-            "organisation": "School of Health Sciences, University of Southampton &amp; University Hospital Southampton NHS Foundation Trust.",
-            "presenting": true
-          },
-          {
-            "name": "Dr Zachariah Wells",
-            "organisation": "School of Health Sciences, University of Southampton &amp; University Hospital Southampton NHS Foundation Trust.",
-            "presenting": false
-          },
-          {
-            "name": "Dr Gwennan Rucinski",
-            "organisation": "School of Health Sciences, University of Southampton &amp; University Hospital Southampton NHS Foundation Trust.",
-            "presenting": false
-          },
-          {
-            "name": "Dr Alex Shaw",
-            "organisation": "School of Health Sciences, University of Southampton &amp; University Hospital Southampton NHS Foundation Trust.",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Eliana Peus"
       },
       {
         "id": 595,
@@ -12981,21 +12045,6 @@
           }
         ],
         "presenter": "Mrs Lea Summerer"
-      },
-      {
-        "id": 603,
-        "title": "Cancer Pain and Its Management in Libya: Insights from Healthcare Professionals and Cancer Patients",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Salim Makhlouf",
-            "organisation": "The College of Medical Technology",
-            "presenting": true
-          }
-        ],
-        "presenter": "Dr Salim Makhlouf"
       },
       {
         "id": 604,
@@ -13651,46 +12700,6 @@
           }
         ],
         "presenter": "Dr Dio Kavalieratos"
-      },
-      {
-        "id": 625,
-        "title": "The Big Promise of Big Data for Palliative Care Research: Experienced Structural Challenges and Solutions",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mr Degefaye Zelalem Anlay",
-            "organisation": "End-of-Life Care Research Group, Vrije Universiteit Brussel (VUB) &amp; Ghent University",
-            "presenting": true
-          },
-          {
-            "name": "Dr Kristel Paque",
-            "organisation": "University of Antwerp",
-            "presenting": false
-          },
-          {
-            "name": "Dr Kelly Sabbe",
-            "organisation": "University antwerp",
-            "presenting": false
-          },
-          {
-            "name": "Dr Rose Miranda",
-            "organisation": "End-of-Life Care Research Group, Vrije Universiteit Brussel (VUB) &amp; Ghent University",
-            "presenting": false
-          },
-          {
-            "name": "Prof Tinne Dilles",
-            "organisation": "University of Antwerp",
-            "presenting": false
-          },
-          {
-            "name": "Prof Joachim Cohen",
-            "organisation": "End-of-Life Care Research Group, Vrije Universiteit Brussel (VUB) &amp; Ghent University",
-            "presenting": false
-          }
-        ],
-        "presenter": "Mr Degefaye Zelalem Anlay"
       },
       {
         "id": 626,
@@ -15093,36 +14102,6 @@
         "presenter": "Dr Laurien Ham"
       },
       {
-        "id": 663,
-        "title": "‘Queer Life:Moving’: Using Film to Change Perceptions of End of Life",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Prof Michele Aaron",
-            "organisation": "University of Warwick",
-            "presenting": true
-          },
-          {
-            "name": "Dr Emma Hodges",
-            "organisation": "Compassionate Communities UK",
-            "presenting": false
-          },
-          {
-            "name": "Ms Helen Juffs",
-            "organisation": "BVSC",
-            "presenting": false
-          },
-          {
-            "name": "Dr El Jones",
-            "organisation": "XYZ Project CIC",
-            "presenting": false
-          }
-        ],
-        "presenter": "Prof Michele Aaron"
-      },
-      {
         "id": 664,
         "title": "‘How we talk impacts how patients are treated’. Developing a language-based reflective toolkit for talking about choices and inequity in palliative care",
         "starts_at": "09:00",
@@ -15408,21 +14387,6 @@
         "presenter": "Dr Petra Řeháčková"
       },
       {
-        "id": 671,
-        "title": "Retrospective study of pattern of palliative care services in geriatric patients suffering from metastatic cancers",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Pratyasa Padhi",
-            "organisation": "St John's National Academy of Medical Sciences, Bangalore",
-            "presenting": true
-          }
-        ],
-        "presenter": "Dr Pratyasa Padhi"
-      },
-      {
         "id": 672,
         "title": "Disparities in Advance Care Planning Among Older Adults Scheduled for Major Surgery and Feasibility of an Electronic Record-Embedded Intervention",
         "starts_at": "09:00",
@@ -15656,26 +14620,6 @@
           }
         ],
         "presenter": "Ms Amy Hutchison"
-      },
-      {
-        "id": 678,
-        "title": "The relationship between the time of last dose of new active systemic treatment for cancer and mode of discharge in admitted patients with advanced cancer: A preliminary report.",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Abdulrahman Abdullah",
-            "organisation": "Palliative Care Centre, MOH",
-            "presenting": true
-          },
-          {
-            "name": "Prof Wafaa Mohammed",
-            "organisation": "Medical School, Ain Shams University",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Abdulrahman Abdullah"
       },
       {
         "id": 679,
@@ -16508,61 +15452,6 @@
         "presenter": "Dr Chetna Malhotra"
       },
       {
-        "id": 700,
-        "title": "Prospective observational study of prevalence, treatment limitation documentation and outcomes of hospitalised patients with life limiting illnesses",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Cian Lannon",
-            "organisation": "St Luke’s Radiation Oncology Network, Children’s Health Ireland",
-            "presenting": true
-          },
-          {
-            "name": "Dr Niamh O'Connor",
-            "organisation": "Mayo Hospice",
-            "presenting": false
-          },
-          {
-            "name": "Dr Ronan McLernon",
-            "organisation": "Galway Hospice Foundation",
-            "presenting": false
-          },
-          {
-            "name": "Dr Alison Cran",
-            "organisation": "Mayo Hospice",
-            "presenting": false
-          },
-          {
-            "name": "Dr Ita Harnett",
-            "organisation": "Galway Hospice Foundation",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Cian Lannon"
-      },
-      {
-        "id": 701,
-        "title": "Using palliative prognostic index (PPI) to predict survival of geriatric terminal patients",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Chih-Kuan Lai",
-            "organisation": "Camillian Hospice and Palliative Care Center, Camillian St. Mary’s Hospital Luodong, Luodong Township, Yilan County",
-            "presenting": true
-          },
-          {
-            "name": "Dr Bing-Hau Lee",
-            "organisation": "Camillian St. Mary’s Hospital Luodong",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Chih-Kuan Lai"
-      },
-      {
         "id": 702,
         "title": "Behavior Change Model Describing Barriers and Facilitators of Palliative Care in Surgery",
         "starts_at": "09:00",
@@ -17105,7 +15994,7 @@
         "duration_mins": 15,
         "authors": [
           {
-            "name": "Mrs Teresa Gabarró Taulé",
+            "name": "Mrs teresa gabarró",
             "organisation": "Supportive Cancer and Palliative Care Unit, Cancer and Blood Diseases Institute. Hospital Clinic (Barcelona)",
             "presenting": true
           },
@@ -17180,7 +16069,7 @@
             "presenting": false
           }
         ],
-        "presenter": "Mrs Teresa Gabarró Taulé"
+        "presenter": "Mrs teresa gabarró"
       },
       {
         "id": 717,
@@ -18030,7 +16919,7 @@
         "duration_mins": 15,
         "authors": [
           {
-            "name": "Mrs Maria José Portillo-Peña",
+            "name": "Mrs Maria Jose Portillo Peña",
             "organisation": "CUDECA Institute for Training and Research in Palliative Care, CUDECA Hospice Foundation, Málaga, Spain. IBIMA Institute-Plataforma Bionand Group CA15: Palliative Care, Málaga, Spain",
             "presenting": true
           },
@@ -18065,7 +16954,7 @@
             "presenting": false
           }
         ],
-        "presenter": "Mrs Maria José Portillo-Peña"
+        "presenter": "Mrs Maria Jose Portillo Peña"
       },
       {
         "id": 742,
@@ -18195,7 +17084,7 @@
             "presenting": false
           },
           {
-            "name": "Mrs Teresa Gabarró Taulé",
+            "name": "Mrs teresa gabarró",
             "organisation": "Supportive Cancer and Palliative Care Unit, Cancer and Blood Diseases Institute. Hospital Clinic (Barcelona)",
             "presenting": false
           },
@@ -18245,7 +17134,7 @@
             "presenting": false
           },
           {
-            "name": "Mrs Teresa Gabarró Taulé",
+            "name": "Mrs teresa gabarró",
             "organisation": "Supportive Cancer and Palliative Care Unit, Cancer and Blood Diseases Institute. Hospital Clinic (Barcelona)",
             "presenting": false
           },
@@ -19354,7 +18243,7 @@
     "description": "Oral abstract session",
     "chairs": [
       "None Monica Fliedner",
-      "Prof Simone Veronese"
+      "None Manuel Castillo"
     ],
     "presentations_count": 6,
     "presentations": [
@@ -19588,8 +18477,8 @@
     "ends_at_iso": "2026-05-14T12:45:00+02:00",
     "description": "Oral abstract session",
     "chairs": [
-      "None Manuel Castillo",
-      "None Anne Letsch"
+      "None Anne Letsch",
+      "Prof Simone Veronese"
     ],
     "presentations_count": 6,
     "presentations": [
@@ -19603,7 +18492,7 @@
           {
             "name": "Prof Matteo Moroni",
             "organisation": "Palliative Care Unit of Ravenna, Italy; University of Trieste, Italy",
-            "presenting": true
+            "presenting": false
           },
           {
             "name": "Prof Eduardo Bruera",
@@ -19623,10 +18512,10 @@
           {
             "name": "Prof Simone Veronese",
             "organisation": "Fondazione FARO ETS, Torino, Italy; University of Milan Bicocca, Italy",
-            "presenting": false
+            "presenting": true
           }
         ],
-        "presenter": "Prof Matteo Moroni"
+        "presenter": "Prof Simone Veronese"
       },
       {
         "id": 90,
@@ -20126,7 +19015,7 @@
       "Prof Philip Larkin",
       "Prof Catherine Walshe"
     ],
-    "presentations_count": 7,
+    "presentations_count": 8,
     "presentations": [
       {
         "id": 11,
@@ -20367,6 +19256,96 @@
           }
         ],
         "presenter": "Dr Yunxia Ni"
+      },
+      {
+        "id": 1309,
+        "title": "Immersive Care: Virtual Reality for Palliative Innovation",
+        "starts_at": "12:18",
+        "ends_at": "12:25",
+        "duration_mins": 7,
+        "authors": [
+          {
+            "name": "Prof Sara Patuzzo Manzati",
+            "organisation": "Department of Surgery, Dentistry, Paediatrics and Gynaecology, University of Verona, Italy",
+            "presenting": false
+          },
+          {
+            "name": "Prof Paolo Manganotti",
+            "organisation": "Department of Medical, Surgical and Health Sciences, University of Trieste, Italy",
+            "presenting": false
+          },
+          {
+            "name": "Prof Giovanni De Manzoni",
+            "organisation": "Department of Surgery, Dentistry, Paediatrics and Gynaecology, University of Verona, Italy",
+            "presenting": false
+          },
+          {
+            "name": "Prof Anna Festi",
+            "organisation": "Obstetrics and Gynecology Unit, University Hospital, Verona, Italy",
+            "presenting": false
+          },
+          {
+            "name": "Dr Marzia Tecchiolli",
+            "organisation": "School of Specialization in Medicine and Palliative Care, University of Trieste, Italy",
+            "presenting": false
+          },
+          {
+            "name": "Dr Sara Costa",
+            "organisation": "School of Specialization in Medicine and Palliative Care, University of Trieste, Italy",
+            "presenting": true
+          },
+          {
+            "name": "Dr Anna Ghizzo",
+            "organisation": "School of Specialization in Medicine and Palliative Care, University of Trieste, Italy",
+            "presenting": false
+          },
+          {
+            "name": "Dr Raluca Maria Stanescu",
+            "organisation": "School of Specialization in Medicine and Palliative Care, University of Trieste, Italy",
+            "presenting": false
+          },
+          {
+            "name": "Dr Francesca Depetroni",
+            "organisation": "School of Specialization in Medicine and Palliative Care, University of Trieste, Italy",
+            "presenting": false
+          },
+          {
+            "name": "Dr Mariantonietta Di Cosimo",
+            "organisation": "General Surgery Unit, University Hospital, Verona, Italy",
+            "presenting": false
+          },
+          {
+            "name": "Dr Giulia Piccinni Leopardi",
+            "organisation": "Department of Surgery, Dentistry, Paediatrics and Gynaecology, University of Verona, Italy",
+            "presenting": false
+          },
+          {
+            "name": "Dr Carlo Chemello",
+            "organisation": "Hospice “Marzana”, Palliative Care Unit, ULSS9 Scaligera, Verona, Italy",
+            "presenting": false
+          },
+          {
+            "name": "Dr Michele Schirru",
+            "organisation": "Hospice “Il Tulipano”, Palliative Care Unit, ASST GOM Niguarda, Milan, Italy",
+            "presenting": false
+          },
+          {
+            "name": "Dr Marion Longo",
+            "organisation": "Hospice “Bassini”, Milan, Italy",
+            "presenting": false
+          },
+          {
+            "name": "Dr Luciano Orsi",
+            "organisation": "Palliative care physician and scientific director of “Rivista Italiana di Cure Palliative”",
+            "presenting": false
+          },
+          {
+            "name": "Prof Raffaella antonione",
+            "organisation": "Palliative Care Unit and Hospice Giulian Area, Azienda Sanitaria Universitraia Giuliano Isontina Trieste, Italy",
+            "presenting": false
+          }
+        ],
+        "presenter": "Dr Sara Costa"
       }
     ]
   },
@@ -20426,14 +19405,14 @@
     "id": 127,
     "day": "2026-05-14",
     "date": "2026-05-14",
-    "title": "Lunchtime symposium",
+    "title": "Lunchtime symposium sponsored by Viatris",
     "type": "General",
     "venue": "D8",
     "starts_at": "12:45",
     "ends_at": "14:15",
     "starts_at_iso": "2026-05-14T12:45:00+02:00",
     "ends_at_iso": "2026-05-14T14:15:00+02:00",
-    "description": "",
+    "description": "“Opioid-Induced Constipation (OIC): Translating Evidence into Palliative Practice” \nChaired by Prof. Andrew Davies \nSession 1: Unmet needs of European palliative care patients: review of the latest evidence \nSpeaker: Prof. Andrew Davies \nSession 2: Recent guidelines and the role of PAMORAs (peripherally acting μ-opioid receptor antagonists): how to ensure adoption?  \nSpeaker: Prof. Frank Elsner \nSession 3: Q&A: practical considerations to improve the management of OIC \nSpeakers: Prof. Andrew Davies & Prof. Frank Elsner",
     "chairs": [],
     "presentations_count": 0,
     "presentations": []
@@ -20700,12 +19679,12 @@
             "presenting": false
           },
           {
-            "name": "Dr Carmen Roch",
+            "name": "Prof Carmen Roch",
             "organisation": "Interdisciplinary Center for Palliative Medicine, Department of Radiation Oncology, Comprehensive Cancer Center Mainfranken, University Hospital Wuerzburg,",
             "presenting": true
           }
         ],
-        "presenter": "Dr Carmen Roch"
+        "presenter": "Prof Carmen Roch"
       },
       {
         "id": 59,
@@ -20750,33 +19729,13 @@
       "Dr Stephen Mason",
       "Ms Siobhan Murphy"
     ],
-    "presentations_count": 6,
+    "presentations_count": 4,
     "presentations": [
-      {
-        "id": 71,
-        "title": "Co-designing digital education for palliative heart failure care in nursing homes",
-        "starts_at": "14:15",
-        "ends_at": "14:30",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Stephanie Craig",
-            "organisation": "Queen's University Belfast",
-            "presenting": true
-          },
-          {
-            "name": "Dr Gary Mitchell",
-            "organisation": "Queen's University Belfast",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Stephanie Craig"
-      },
       {
         "id": 72,
         "title": "Development of Consensus-Based Quality Indicators for Palliative Care Education: Findings from the CODE-YAA@PC-EDU Project",
-        "starts_at": "14:30",
-        "ends_at": "14:45",
+        "starts_at": "14:15",
+        "ends_at": "14:30",
         "duration_mins": 15,
         "authors": [
           {
@@ -20825,8 +19784,8 @@
       {
         "id": 73,
         "title": "Evaluating a Train-the-Trainer program to implement a navigation program for older people with cancer across six European countries, as part of the EU NAVIGATE project: a Kirkpatrick multi-method evaluation",
-        "starts_at": "14:45",
-        "ends_at": "15:00",
+        "starts_at": "14:30",
+        "ends_at": "14:45",
         "duration_mins": 15,
         "authors": [
           {
@@ -20915,8 +19874,8 @@
       {
         "id": 74,
         "title": "Evaluation of a National Continuous Learning Programme Supporting Palliative, End-of-Life and Bereavement Care in Nursing Homes across Ireland",
-        "starts_at": "15:00",
-        "ends_at": "15:15",
+        "starts_at": "14:45",
+        "ends_at": "15:00",
         "duration_mins": 15,
         "authors": [
           {
@@ -20945,8 +19904,8 @@
       {
         "id": 75,
         "title": "Learning outcomes from the “All providers Better Communication skills” (ABCs) continuing professional development program: A Canada-wide randomized controlled trial with interprofessional clinicians",
-        "starts_at": "15:15",
-        "ends_at": "15:30",
+        "starts_at": "15:00",
+        "ends_at": "15:15",
         "duration_mins": 15,
         "authors": [
           {
@@ -21005,8 +19964,8 @@
       {
         "id": 76,
         "title": "Sustained competencies in an early palliative approach to care following a virtual education program: 6-month follow-up of the CAPACITI national trial",
-        "starts_at": "15:30",
-        "ends_at": "15:45",
+        "starts_at": "15:15",
+        "ends_at": "15:30",
         "duration_mins": 15,
         "authors": [
           {
@@ -21075,14 +20034,18 @@
     "ends_at": "15:45",
     "starts_at_iso": "2026-05-14T14:15:00+02:00",
     "ends_at_iso": "2026-05-14T15:45:00+02:00",
-    "description": "Panel 1: Recruitment, equity and inclusion in trials\nThis panel will explore how equity, inclusion and diversity can be embedded across study design, consortium governance, implementation and dissemination, with attention to structural inequities in access, inclusive recruitment, culturally and linguistically appropriate methods, and equitable partnership models. The session will highlight practical strategies and measurable indicators.\nPanellists: Lise Nottleman (INSPIRE), Everlien de Graaf (RAPHAEL), Nicola Cornally (In Touch) \n\nPanel 2: Harnessing Artificial Intelligence in palliative care research \nThis panel will examine how AI can be responsibly integrated into research projects to enhance communication training, personalise care planning, support clinical decision-making, and generate real-world evidence, while addressing risks such as algorithmic bias, data governance, and digital exclusion.\nPanellists: Izidor Mlakar (AI4HOPE), Alexander Varjord (INSPIRE), Jan Hrdlička (VR Talks)",
+    "description": "Chaired by Patricia White and Tamara Radojicic (Pal-Cycles)\nPanel 1: Recruitment, equity and inclusion in trials\nThis panel will explore how equity, inclusion and diversity can be embedded across study design, consortium governance, implementation and dissemination, with attention to structural inequities in access, inclusive recruitment, culturally and linguistically appropriate methods, and equitable partnership models. The session will highlight practical strategies and measurable indicators.\nPanellists: Lise Nottleman (INSPIRE), Everlien de Graaf (RAPHAEL), Manuel Luís Vila Capelas (Pal-Cycles), Nicola Cornally (In Touch) \n\nPanel 2: Harnessing Artificial Intelligence in palliative care research \nThis panel will examine how AI can be responsibly integrated into research projects to enhance communication training, personalise care planning, support clinical decision-making, and generate real-world evidence, while addressing risks such as algorithmic bias, data governance, and digital exclusion.\nPanellists: Izidor Mlakar (AI4HOPE), Alexander Varjord (INSPIRE), Jan Hrdlička (VR Talks), Carsten Klein",
     "chairs": [
       "Dr Lise Nottelmann",
       "Dr Everlien de Graaf",
       "Dr Izidor Mlakar",
       "Mr Alexander Varjord",
       "Prof Nicola Cornally",
-      "Mr Jan Hrdlička"
+      "Mr Jan Hrdlička",
+      "Prof Manuel Luís Capelas",
+      "Dr Carsten Klein",
+      "Dr Patricia White",
+      "Ms Tamara Radojicic"
     ],
     "presentations_count": 0,
     "presentations": []
@@ -21101,7 +20064,7 @@
     "description": "Oral abstract session",
     "chairs": [
       "Prof Sheila Payne",
-      "Dr R. Sean Morrison"
+      "Dr sean Morrison"
     ],
     "presentations_count": 6,
     "presentations": [
@@ -21178,12 +20141,12 @@
             "presenting": false
           },
           {
-            "name": "Dr R. Sean Morrison",
+            "name": "Dr sean Morrison",
             "organisation": "Icahn School of Medicine at Mount Sinai",
             "presenting": true
           }
         ],
-        "presenter": "Dr R. Sean Morrison"
+        "presenter": "Dr sean Morrison"
       },
       {
         "id": 85,
@@ -22255,7 +21218,7 @@
       "Prof Simone Veronese",
       "Prof Irene Higginson"
     ],
-    "presentations_count": 5,
+    "presentations_count": 3,
     "presentations": [
       {
         "id": 60,
@@ -22363,30 +21326,10 @@
         "presenter": "Ms Sifra van de Beek"
       },
       {
-        "id": 62,
-        "title": "Integrating early palliative care in advanced sarcoma patients",
-        "starts_at": "17:00",
-        "ends_at": "17:15",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Ms Viviana Valentina Verdoliva",
-            "organisation": "IRCCS - Istituto Ortopedico Rizzoli di Bologna",
-            "presenting": true
-          },
-          {
-            "name": "Ms Mattia Morri",
-            "organisation": "IRCCS - Istituto Ortopedico Rizzoli di Bologna",
-            "presenting": false
-          }
-        ],
-        "presenter": "Ms Viviana Valentina Verdoliva"
-      },
-      {
         "id": 63,
         "title": "Associations between Stress Levels, 1/f Fluctuations, and Spectral Flatness in Music Preferred by Cancer Patients",
-        "starts_at": "17:15",
-        "ends_at": "17:30",
+        "starts_at": "17:00",
+        "ends_at": "17:15",
         "duration_mins": 15,
         "authors": [
           {
@@ -22445,8 +21388,8 @@
       {
         "id": 64,
         "title": "Improving Sleep in Advanced Cancer: Feasibility and Outcomes of a Multimodal Non-Pharmacological Intervention",
-        "starts_at": "17:30",
-        "ends_at": "17:45",
+        "starts_at": "17:15",
+        "ends_at": "17:30",
         "duration_mins": 15,
         "authors": [
           {
@@ -22805,7 +21748,7 @@
     "ends_at": "18:00",
     "starts_at_iso": "2026-05-14T16:30:00+02:00",
     "ends_at_iso": "2026-05-14T18:00:00+02:00",
-    "description": "Panel 3: Issues with implementation\nThis panel will explore barriers such as regulatory variation, workforce capacity, cultural differences, integration into routine care, sustainability beyond project funding, and uneven adoption across countries. The session will identify practical strategies from implementation science to enhance scalability, long-term impact, and real-world uptake of palliative care innovations across Europe.\nPanellists: Elias Lundereng (MyPath), Lieve van den Block (EuNavigate), Sergi Navaro (PALLIAKID), Suzanne Timmons (IN TOUCH and AI4Hope)\nPanel 4: Moving research into practice\nThis panel will examine the gap between evidence generation and real-world adoption, exploring knowledge translation strategies, stakeholder engagement and sustainable service integration across diverse European health systems. The session will highlight practical models and success factors that enable research findings to influence clinical practice and organisational change at scale.\nPanellists: Katrine Rolid (EUonQOL, JANE2), Roman Rolke (RAPHAEL), Ulf Bremberg (PsyPal)",
+    "description": "Chaired by Fódhla Ní Chéileachair (EAPC) and Everlien de Graaf (RAPHAEL)\nPanel 3: Issues with implementation\nThis panel will explore barriers such as regulatory variation, workforce capacity, cultural differences, integration into routine care, sustainability beyond project funding, and uneven adoption across countries. The session will identify practical strategies from implementation science to enhance scalability, long-term impact, and real-world uptake of palliative care innovations across Europe.\nPanellists: Elias Lundereng (MyPath), Lieve van den Block (EuNavigate), Sergi Navaro (PALLIAKID), Suzanne Timmons (IN TOUCH and AI4Hope)\nPanel 4: Moving research into practice\nThis panel will examine the gap between evidence generation and real-world adoption, exploring knowledge translation strategies, stakeholder engagement and sustainable service integration across diverse European health systems. The session will highlight practical models and success factors that enable research findings to influence clinical practice and organisational change at scale.\nPanellists: Katrine Rolid (EUonQOL, JANE2), Roman Rolke (RAPHAEL), Ulf Bremberg (PsyPal), Jo Bayly (INSPIRE)",
     "chairs": [
       "Prof Roman Rolke",
       "Prof Lieve Van den Block",
@@ -22813,7 +21756,10 @@
       "Mr Ulf Bremberg",
       "Mr Elias David Lundereng",
       "Dr Sergi Navarro-Vilarrubí",
-      "Dr Katrine Rolid"
+      "Dr Katrine Rolid",
+      "Dr Joanne Bayly",
+      "None Fódhla Ní Chéileachair",
+      "Dr Everlien de Graaf"
     ],
     "presentations_count": 0,
     "presentations": []
@@ -23662,12 +22608,12 @@
     "ends_at": "18:00",
     "starts_at_iso": "2026-05-14T16:30:00+02:00",
     "ends_at_iso": "2026-05-14T18:00:00+02:00",
-    "description": "The integration of palliative care into out-of-hospital emergency services is gaining momentum worldwide. People with life-limiting illnesses often face acute medical emergencies, which, in the absence of clear communication and structural pathways, may lead to distressing overtreatment from emergency care workers. This session presents experiences from South Africa, Australia and Germany on systematically strengthening palliative care within EMS — from provider and patient surveys to concrete implementation concepts, in addition to an overview of the state of palliative paramedicine affairs globally. Building on these insights, a proposal for a European White Paper will be introduced. The session aims to foster international exchange and develop joint recommendations for improving palliative care in EMS across Europe and further abroad.\n\nThe aims and learning objectives:\n\n - Understand the unique role of Emergency Medical Services (EMS) in delivering palliative care.  \n - Explore how integrating palliative care benefits EMS, palliative care services, patient outcomes and the broader healthcare system, through a global systems lens. \n - Learn from international models, including South Africa (low-to-middle income country context), Australia and Germany.  \n - Identify key elements for implementation such as communication, documentation, education and policy. \n - Reflect on how these insights can inform local practice and support a European framework.\n\nSpeakers:\n\nDr Caleb Gage, Paramedic, University of Cape Town, South Africa, \nDr Eva Diehl-Wiesenecker, Consultant Emergency Medicine, Charité – Universitätsmedizin Berlin, Germany; Department of Palliative Medicine, Faculty of Medicine, University of Augsburg, Germany\nDr Madeleine Juhrmann. Post-Doctoral Research Fellow, University of New South Wales, Australia\nDr Martin Loucka, Founder, Center for Palliative Care, Czech Republic\n\nAll speakers are members of the EAPC Task Force on Palliative Care & Emergency Medical Services",
+    "description": "The integration of palliative care into out-of-hospital emergency services is gaining momentum worldwide. People with life-limiting illnesses often face acute medical emergencies, which, in the absence of clear communication and structural pathways, may lead to distressing overtreatment from emergency care workers. This session presents experiences from South Africa, Australia and Germany on systematically strengthening palliative care within EMS — from provider and patient surveys to concrete implementation concepts, in addition to an overview of the state of palliative paramedicine affairs globally. Building on these insights, a proposal for a European White Paper will be introduced. The session aims to foster international exchange and develop joint recommendations for improving palliative care in EMS across Europe and further abroad.\n\nThe aims and learning objectives:\n\n - Understand the unique role of Emergency Medical Services (EMS) in delivering palliative care.  \n - Explore how integrating palliative care benefits EMS, palliative care services, patient outcomes and the broader healthcare system, through a global systems lens. \n - Learn from international models, including South Africa (low-to-middle income country context), Australia and Germany.  \n - Identify key elements for implementation such as communication, documentation, education and policy. \n - Reflect on how these insights can inform local practice and support a European framework.\n\nSpeakers:\n\nDr Caleb Gage, Paramedic, University of Cape Town, South Africa, \nDr Eva Diehl-Wiesenecker, Consultant Emergency Medicine, Charité – Universitätsmedizin Berlin, Germany; Department of Palliative Medicine, Faculty of Medicine, University of Augsburg, Germany\nMs Georgina Murphy-Jones, Deputy Director of Clinical Assessment and Pathways at London Ambulance Service, UK\nDr Martin Loucka, Founder, Center for Palliative Care, Czech Republic\nMs Michala Chatrna, Project manager and researcher, Center for Palliative Care & Masaryk University, Brno, Czech Republic\nAll speakers are members of the EAPC Task Force on Palliative Care & Emergency Medical Services",
     "chairs": [
       "Dr Caleb Gage",
       "Dr Eva Diehl-Wiesenecker",
-      "Dr Madeleine Juhrmann",
-      "Dr Martin Loučka"
+      "Dr Martin Loučka",
+      "Ms Georgina Murphy-Jones"
     ],
     "presentations_count": 0,
     "presentations": []
@@ -24001,7 +22947,7 @@
     "ends_at": "10:30",
     "starts_at_iso": "2026-05-15T09:00:00+02:00",
     "ends_at_iso": "2026-05-15T10:30:00+02:00",
-    "description": "Panel 5: Optimising Networks: From networks of expertise (NoEs) and clusters into future ways of working and collaborating\nNetworks of Expertise (NoEs) generate valuable evidence, tools, and collaborations in palliative care, but translating these outputs into enduring change remains a challenge. This panel will explore how network findings can move beyond publications to shape routine practice, policy, training, and ongoing professional collaboration. Panellists will discuss what elements should be sustained after NoEs conclude, and how professional organisations such as the EAPC can lead efforts to standardise approaches, support scale-up, and embed network outputs into everyday palliative care practice across Europe.\nPanellists: Stein Kaasa ( JANE2), Cinzia Brunelli (EUonQOL and QOL Cluster), Carlos Centeno (EAPC Atlas), Erna Michiels (Hope4Kids), Phil Larkin (CODE-YAA)",
+    "description": "Chairs: Cathy Payne (EAPC) and Minna Hokka (NursEduPal), Cathy Payne\nPanel 5: Optimising Networks: From networks of expertise (NoEs) and clusters into future ways of working and collaborating\nNetworks of Expertise (NoEs) generate valuable evidence, tools, and collaborations in palliative care, but translating these outputs into enduring change remains a challenge. This panel will explore how network findings can move beyond publications to shape routine practice, policy, training, and ongoing professional collaboration. Panellists will discuss what elements should be sustained after NoEs conclude, and how professional organisations such as the EAPC can lead efforts to standardise approaches, support scale-up, and embed network outputs into everyday palliative care practice across Europe.\nPanellists: Stein Kaasa ( JANE2), Cinzia Brunelli (EUonQOL and QOL Cluster), Carlos Centeno (EAPC Atlas), Erna Michiels (Hope4Kids), Phil Larkin (CODE-YAA)",
     "chairs": [
       "Prof Stein Kaasa",
       "Dr Cinzia Brunelli",
@@ -24027,7 +22973,7 @@
     "ends_at_iso": "2026-05-15T18:00:00+02:00",
     "description": "",
     "chairs": [],
-    "presentations_count": 266,
+    "presentations_count": 242,
     "presentations": [
       {
         "id": 769,
@@ -24397,7 +23343,7 @@
             "presenting": false
           },
           {
-            "name": "Ms Nicola Coutu-langmead",
+            "name": "Ms Nicola Coutu-Langmead",
             "organisation": "Child Bereavement UK",
             "presenting": true
           },
@@ -24422,7 +23368,7 @@
             "presenting": false
           }
         ],
-        "presenter": "Ms Nicola Coutu-langmead"
+        "presenter": "Ms Nicola Coutu-Langmead"
       },
       {
         "id": 779,
@@ -25897,12 +24843,12 @@
             "presenting": false
           },
           {
-            "name": "Dr Shatha Al Ghusaini",
+            "name": "Dr shadha Al Ghusaini",
             "organisation": "Oman Medical Specialty Board",
             "presenting": true
           }
         ],
-        "presenter": "Dr Shatha Al Ghusaini"
+        "presenter": "Dr shadha Al Ghusaini"
       },
       {
         "id": 820,
@@ -25947,7 +24893,7 @@
             "presenting": true
           },
           {
-            "name": "Dr Lucie Kluzova Kracmarova",
+            "name": "Dr Lucie Kluzova",
             "organisation": "Czech Academy of Sciences",
             "presenting": false
           },
@@ -26008,26 +24954,6 @@
           }
         ],
         "presenter": "Dr Alethea Yee"
-      },
-      {
-        "id": 824,
-        "title": "Assessment of stakeholders’ satisfaction with family conferences in palliative care: instrumemt development and preliminary psychometric evaluation.",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Prof Ana Maria Rocha",
-            "organisation": "Nursing School of Coimbra/ Health Sciences Research Unit: Nursing",
-            "presenting": true
-          },
-          {
-            "name": "Prof Filipa Ventura",
-            "organisation": "Nursing School of Coimbra/ Health Sciences Research Unit: Nursing",
-            "presenting": false
-          }
-        ],
-        "presenter": "Prof Ana Maria Rocha"
       },
       {
         "id": 825,
@@ -26400,21 +25326,6 @@
         "presenter": "Mrs Catharina Muente"
       },
       {
-        "id": 835,
-        "title": "Beyond the Guidelines: Addressing Palliative Care Inequalities for People with Intellectual Disabilities",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Oliwia Kowalczyk",
-            "organisation": "Nicolaus Copernicus University  Collegium Medicum Department of Oncology",
-            "presenting": true
-          }
-        ],
-        "presenter": "Dr Oliwia Kowalczyk"
-      },
-      {
         "id": 836,
         "title": "Harnessing Artificial Intelligence in teaching communications for Goals of Care discussions",
         "starts_at": "09:00",
@@ -26678,46 +25589,6 @@
           }
         ],
         "presenter": "Mr Mirek Čepický"
-      },
-      {
-        "id": 843,
-        "title": "“What Do You Understand About What Has Happened to Your Loved One?”: Investigating Clinician Use of Open-ended Questions Early in Neurocritical Care Family Meetings",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Ms Michaela Bostwick",
-            "organisation": "Johns Hopkins School of Medicine",
-            "presenting": false
-          },
-          {
-            "name": "Ms Eleni Panagopoulos",
-            "organisation": "Johns Hopkins School of Medicine",
-            "presenting": false
-          },
-          {
-            "name": "Ms Winnie Liu",
-            "organisation": "Johns Hopkins School of Medicine",
-            "presenting": false
-          },
-          {
-            "name": "Ms Celine Arar",
-            "organisation": "Johns Hopkins School of Medicine",
-            "presenting": false
-          },
-          {
-            "name": "Dr Miriam Quinlan",
-            "organisation": "John Hopkins School of Medicine",
-            "presenting": true
-          },
-          {
-            "name": "Dr Susanne Muehlschlegel",
-            "organisation": "Johns Hopkins School of Medicine",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Miriam Quinlan"
       },
       {
         "id": 844,
@@ -27175,46 +26046,6 @@
         "presenter": "Prof Anne Goossensen"
       },
       {
-        "id": 858,
-        "title": "“What I Hope for When Illness Advances” - Palliative Care Awareness Campaign",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Prof Ana Maria Rocha",
-            "organisation": "Nursing School of Coimbra",
-            "presenting": true
-          },
-          {
-            "name": "Prof Isabel Moreira",
-            "organisation": "Nursing School University of Coimbra",
-            "presenting": false
-          },
-          {
-            "name": "Prof Andréa Marques",
-            "organisation": "Nursing School University of Coimbra",
-            "presenting": false
-          },
-          {
-            "name": "Prof Sara Gomes",
-            "organisation": "Nursing School University of Coimbra",
-            "presenting": false
-          },
-          {
-            "name": "Prof Ivo Paiva",
-            "organisation": "Nursing School University of Coimbra",
-            "presenting": false
-          },
-          {
-            "name": "Mx on behalf of the group of palliative care day ESEUC",
-            "organisation": "Nursing School of Coimbra; Health Sciences Research Unit: Nursing",
-            "presenting": false
-          }
-        ],
-        "presenter": "Prof Ana Maria Rocha"
-      },
-      {
         "id": 859,
         "title": "You’re death literate, so what? Theorized outcomes of death literacy based on expert panels and a scoping review",
         "starts_at": "09:00",
@@ -27314,12 +26145,12 @@
           {
             "name": "Dr Chia-jung Li",
             "organisation": "Department of Child and Adolescent Psychiatry, Kaohsiung Chang Gung Memorial Hospital and Chang Gung University College of Medicine, Kaohsiung, Taiwan",
-            "presenting": true
+            "presenting": false
           },
           {
             "name": "Prof Ping-jen Chen",
             "organisation": "Department of Family Medicine, Kaohsiung Medical University Hospital, Kaohsiung Medical University and School of Medicine, National Sun Yat-sen University, Kaohsiung, Taiwan",
-            "presenting": false
+            "presenting": true
           },
           {
             "name": "Mr Wei-Zhe Tseng",
@@ -27332,7 +26163,7 @@
             "presenting": false
           }
         ],
-        "presenter": "Dr Chia-jung Li"
+        "presenter": "Prof Ping-jen Chen"
       },
       {
         "id": 862,
@@ -27490,71 +26321,6 @@
         "presenter": "Dr Lisa Graham-Wisener"
       },
       {
-        "id": 866,
-        "title": "Access to palliative care in Brazil’s Unified Health System: a crossroads moment",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Laianny Carvalho",
-            "organisation": "Hospital Nina Rodrigues",
-            "presenting": true
-          },
-          {
-            "name": "Ms Dominique Batista",
-            "organisation": "Centro Universitário Florence",
-            "presenting": false
-          },
-          {
-            "name": "Ms Mariana Martins",
-            "organisation": "Centro Universitário Florence",
-            "presenting": false
-          },
-          {
-            "name": "Mr Felipe Mendes",
-            "organisation": "Secretaria Estadual de Saúde do Maranhão",
-            "presenting": false
-          },
-          {
-            "name": "Ms Priscila Barros",
-            "organisation": "Secretaria Estadual de Saúde do Maranhão",
-            "presenting": false
-          },
-          {
-            "name": "Ms Vanessa Marques",
-            "organisation": "Hospital Nina Rodrigues",
-            "presenting": false
-          },
-          {
-            "name": "Prof Thamyres Martins",
-            "organisation": "Centro Universitário Florence",
-            "presenting": false
-          },
-          {
-            "name": "Ms Lívia Monteiro",
-            "organisation": "Hospital Nina Rodrigues",
-            "presenting": false
-          },
-          {
-            "name": "Prof Francisca Noronha",
-            "organisation": "Centro Universitário Florence",
-            "presenting": false
-          },
-          {
-            "name": "Dr Luanna Carvalho",
-            "organisation": "Sundare Clínica de Cuidados paliativos",
-            "presenting": false
-          },
-          {
-            "name": "Dr Beatriz Coutinho",
-            "organisation": "Sundare Clínica de Cuidados paliativos",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Laianny Carvalho"
-      },
-      {
         "id": 867,
         "title": "Developing death literacy in community partners through co-creation of a digital tool for proactive end-of-life conversations",
         "starts_at": "09:00",
@@ -27687,7 +26453,7 @@
             "presenting": false
           },
           {
-            "name": "Mrs Teresa Gabarró Taulé",
+            "name": "Mrs teresa gabarró",
             "organisation": "Supportive Cancer and Palliative Care Unit, Cancer and Blood Diseases Institute. Hospital Clinic (Barcelona)",
             "presenting": false
           },
@@ -28072,7 +26838,7 @@
             "presenting": false
           },
           {
-            "name": "Dr Sarah Dauchy",
+            "name": "Dr Sarah DAUCHY",
             "organisation": "FRENCH CENTRE OF PALLIATIVE CARE AND END OF LIFE",
             "presenting": false
           }
@@ -29069,10 +27835,15 @@
           {
             "name": "Dr Sarah Mills",
             "organisation": "University of St Andrews",
+            "presenting": false
+          },
+          {
+            "name": "Dr Sam Quinn",
+            "organisation": "Population and Behavioural Science, School of Medicine, University of St Andrews",
             "presenting": true
           }
         ],
-        "presenter": "Dr Sarah Mills"
+        "presenter": "Dr Sam Quinn"
       },
       {
         "id": 908,
@@ -29690,126 +28461,6 @@
         "presenter": "Dr Daphna Grossman"
       },
       {
-        "id": 924,
-        "title": "Transforming palliative and end-of-life care through a captivating educational journey that fosters knowledge, communication, and compassion",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mrs Jacquie Smith",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": true
-          },
-          {
-            "name": "Ms Rita Dawson",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": false
-          },
-          {
-            "name": "Prof Teresa G-B Merino",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": false
-          },
-          {
-            "name": "Dr Rachel Smyth",
-            "organisation": "St Margaret of Scotland Hospice &amp; NHS Education for Scotland",
-            "presenting": false
-          },
-          {
-            "name": "Dr Lochlan Kennedy",
-            "organisation": "St Margaret of Scotland Hospice &amp; NHS Education for Scotland",
-            "presenting": false
-          },
-          {
-            "name": "Mrs Katy Paterson",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": false
-          },
-          {
-            "name": "Mrs Kathryn Nattress",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": false
-          },
-          {
-            "name": "Prof Andrew Biankin",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": false
-          },
-          {
-            "name": "Ms Gillian Bradford",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": false
-          },
-          {
-            "name": "Dr Charlotte Nicholl",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": false
-          }
-        ],
-        "presenter": "Mrs Jacquie Smith"
-      },
-      {
-        "id": 925,
-        "title": "The Influence of a Comprehensive Palliative and End-of-Life Care Educational Experience on the Advancement of Knowledge, Communication Skills, and Compassionate Practices in P&amp;EOL",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mrs Jacquie Smith",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": true
-          },
-          {
-            "name": "Ms Rita Dawson",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": false
-          },
-          {
-            "name": "Prof Teresa G-B Merino",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": false
-          },
-          {
-            "name": "Dr Angela Campbell",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": false
-          },
-          {
-            "name": "Ms Heather Wilson",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": false
-          },
-          {
-            "name": "Mrs Emily Ferrier",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": false
-          },
-          {
-            "name": "Mr Juri Mikson",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": false
-          },
-          {
-            "name": "Mrs Kate Nelson",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": false
-          },
-          {
-            "name": "Ms Emma Dougherty-Smallman",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": false
-          },
-          {
-            "name": "Dr Sandhya Muthumana",
-            "organisation": "St Margaret of Scotland Hospice",
-            "presenting": false
-          }
-        ],
-        "presenter": "Mrs Jacquie Smith"
-      },
-      {
         "id": 926,
         "title": "Global Learning, Local Impact: Strengthening Children’s Palliative Care Through Blended Education",
         "starts_at": "09:00",
@@ -30425,66 +29076,6 @@
         "presenter": "Dr Emily Harrop"
       },
       {
-        "id": 943,
-        "title": "Development of a Prototype Simulation System of Conversational Virtual Standardized Patients for End-of-Life Communication Training",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Prof Mihyun Park",
-            "organisation": "Research Institute for Hospice/Palliative Care, College of Nursing, The Catholic University of Korea",
-            "presenting": true
-          },
-          {
-            "name": "Mr YunSeob Yuk",
-            "organisation": "AI Research, ZIPIDA Inc.",
-            "presenting": false
-          },
-          {
-            "name": "Mrs Heejin Chung",
-            "organisation": "College of Nursing, The Catholic University of Korea",
-            "presenting": false
-          },
-          {
-            "name": "Mr JunYoung Choi",
-            "organisation": "AI Research, ZIPIDA Inc.",
-            "presenting": false
-          },
-          {
-            "name": "Mr jeongyoung lee",
-            "organisation": "AI Research, ZIPIDA Inc.",
-            "presenting": false
-          },
-          {
-            "name": "Mr Gyujae Jo",
-            "organisation": "AI Research, ZIPIDA Inc.",
-            "presenting": false
-          }
-        ],
-        "presenter": "Prof Mihyun Park"
-      },
-      {
-        "id": 944,
-        "title": "Simplifying Palliative Care Training within Community",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr PIYUSH GUPTA",
-            "organisation": "Cancer Aid Society",
-            "presenting": true
-          },
-          {
-            "name": "Mr K Radhakrishna Menon",
-            "organisation": "Cancer Aid Society",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr PIYUSH GUPTA"
-      },
-      {
         "id": 945,
         "title": "General Practitioner as a Coordinator of End-of-Life Care",
         "starts_at": "09:00",
@@ -30630,36 +29221,6 @@
         "presenter": "Prof Samadhi Rajapaksa"
       },
       {
-        "id": 950,
-        "title": "Palliative care in Orthopedics: nurses´ knowledge in caring for people with hip fragility fractures.",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Prof Sara Gomes",
-            "organisation": "Nursing School University of Coimbra",
-            "presenting": true
-          },
-          {
-            "name": "Prof Ivo Paiva",
-            "organisation": "Nursing School University of Coimbra",
-            "presenting": false
-          },
-          {
-            "name": "Prof Isabel Moreira",
-            "organisation": "Nursing School University of Coimbra",
-            "presenting": false
-          },
-          {
-            "name": "Prof Andréa Marques",
-            "organisation": "Nursing School University of Coimbra",
-            "presenting": false
-          }
-        ],
-        "presenter": "Prof Sara Gomes"
-      },
-      {
         "id": 951,
         "title": "Dying Well at Home: Innovative Information and Education Programme for Carers and Professionals supporting improvements in palliative and end of life care.",
         "starts_at": "09:00",
@@ -30677,12 +29238,12 @@
             "presenting": false
           },
           {
-            "name": "Ms Paula O’Reilly",
+            "name": "Ms Paula O'Reilly",
             "organisation": "CEO, Irish Hospice Foundation",
             "presenting": true
           }
         ],
-        "presenter": "Ms Paula O’Reilly"
+        "presenter": "Ms Paula O'Reilly"
       },
       {
         "id": 952,
@@ -31047,7 +29608,7 @@
             "presenting": true
           },
           {
-            "name": "Ms Gabrielle Lalonde Leblond",
+            "name": "Ms Gabrielle Lalonde-LeBlond",
             "organisation": "Centre de recherche du CHUM",
             "presenting": false
           },
@@ -31607,7 +30168,7 @@
         "duration_mins": 15,
         "authors": [
           {
-            "name": "Mrs Victoria Ali",
+            "name": "Dr Victoria Ali",
             "organisation": "Lancaster University",
             "presenting": true
           },
@@ -31622,7 +30183,7 @@
             "presenting": false
           }
         ],
-        "presenter": "Mrs Victoria Ali"
+        "presenter": "Dr Victoria Ali"
       },
       {
         "id": 981,
@@ -33345,41 +31906,6 @@
         "presenter": "Dr Monica Moarcas"
       },
       {
-        "id": 1024,
-        "title": "Demographic and clinical predictors of quality of life, sexual satisfaction, and sexual function among patients with bladder cancer: A multivariate analysis",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mrs Fateme Rezaeeniya",
-            "organisation": "Student Research Committee, Department of Medical Surgical Nursing, School of Nursing and Midwifery, Shahid Beheshti University of Medical Sciences, Tehran, Iran",
-            "presenting": false
-          },
-          {
-            "name": "Dr Fateme Hasandoost",
-            "organisation": "Assistant Professor, Department of Medical Surgical Nursing, School of Nursing and Midwifery, Shahid Beheshti University of Medical Sciences, Tehran, Iran.",
-            "presenting": false
-          },
-          {
-            "name": "Dr Amir Reza Abedi",
-            "organisation": "Associate Professor, Men's Health and Reproductive Health Research Center, Shahid Beheshti University of Medical Sciences, Tehran, Iran.",
-            "presenting": false
-          },
-          {
-            "name": "Dr Alireza Amanollahi",
-            "organisation": "Assistant Professor, Trauma and Injury Research Center, Iran University of Medical Sciences, Tehran, Iran.",
-            "presenting": false
-          },
-          {
-            "name": "Dr Soolmaz Moosavi",
-            "organisation": "Assistant Professor, Department of Medical Surgical Nursing, School of Nursing and Midwifery, Shahid Beheshti University of Medical Sciences, Tehran, Iran.",
-            "presenting": true
-          }
-        ],
-        "presenter": "Dr Soolmaz Moosavi"
-      },
-      {
         "id": 1025,
         "title": "The Role of an Advanced Practice Nurse in Developing a Palliative Care Consult Service at Caritas Hospital Bad Mergentheim",
         "starts_at": "09:00",
@@ -33605,51 +32131,6 @@
         "presenter": "Dr T-Yunn Chia"
       },
       {
-        "id": 1032,
-        "title": "Differential impacts of chronic dyspnoea on younger people: a national survey",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Vanessa Brunelli",
-            "organisation": "University of Wollongong",
-            "presenting": true
-          },
-          {
-            "name": "Dr Slavica Kochovska",
-            "organisation": "Flinders University",
-            "presenting": false
-          },
-          {
-            "name": "Dr Sungwon Chang",
-            "organisation": "University of Technology Syndey",
-            "presenting": false
-          },
-          {
-            "name": "Prof Jane Phillips",
-            "organisation": "Queensland University of Technology",
-            "presenting": false
-          },
-          {
-            "name": "Prof Deidre Morgan",
-            "organisation": "Flinders University",
-            "presenting": false
-          },
-          {
-            "name": "Prof Patricia Davidson",
-            "organisation": "University of New South Wales",
-            "presenting": false
-          },
-          {
-            "name": "Prof David Currow",
-            "organisation": "Flinders University",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Vanessa Brunelli"
-      },
-      {
         "id": 1033,
         "title": "Early Integration of Palliative Care in Chronic Heart Failure: Evidence from a Systematic Review",
         "starts_at": "09:00",
@@ -33814,7 +32295,7 @@
     "ends_at_iso": "2026-05-15T18:00:00+02:00",
     "description": "",
     "chairs": [],
-    "presentations_count": 265,
+    "presentations_count": 231,
     "presentations": [
       {
         "id": 1037,
@@ -34039,7 +32520,7 @@
             "presenting": false
           },
           {
-            "name": "Ms Milena Solveira Ribeiro",
+            "name": "Ms Milena Ribeiro",
             "organisation": "Private practice",
             "presenting": true
           },
@@ -34049,7 +32530,7 @@
             "presenting": false
           }
         ],
-        "presenter": "Ms Milena Solveira Ribeiro"
+        "presenter": "Ms Milena Ribeiro"
       },
       {
         "id": 1043,
@@ -34075,51 +32556,6 @@
           }
         ],
         "presenter": "Dr Diana Alcantara Severiano"
-      },
-      {
-        "id": 1044,
-        "title": "Mapping the Invisible: Implementing the Psycho-Existential Symptom Assessment Scale (PeSAS) in Palliative Care",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Andrea Bovero",
-            "organisation": "Clinical Psychology Unit, Department of Neuroscience, University of Torino, A.O.U. Città della Salute e della Scienza Hospital, Torino",
-            "presenting": true
-          },
-          {
-            "name": "Dr Francesca Cotardo",
-            "organisation": "Department of Clinical and Biological Sciences, University of Torino, Torino",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Andrea Bovero"
-      },
-      {
-        "id": 1045,
-        "title": "Rehumanizing End-of-Life Care: Evaluating the Impact of the TIME Questionnaire on Compassion and Empathy in Palliative Oncology",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Andrea Bovero",
-            "organisation": "Clinical Psychology Unit, Department of Neuroscience, University of Torino, A.O.U. Città della Salute e della Scienza Hospital, Torino",
-            "presenting": true
-          },
-          {
-            "name": "Prof Sara Carletto",
-            "organisation": "Department of Clinical and Biological Sciences, University of Torino",
-            "presenting": false
-          },
-          {
-            "name": "Dr Francesca Cotardo",
-            "organisation": "Department of Clinical and Biological Sciences, University of Torino, Torino",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Andrea Bovero"
       },
       {
         "id": 1046,
@@ -34245,26 +32681,6 @@
           }
         ],
         "presenter": "Ms Camilla Lykke"
-      },
-      {
-        "id": 1049,
-        "title": "Different Treatment Models for Psychedelics in Palliative Care: A Scoping Review",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Prof Claudio Soares",
-            "organisation": "Queen's Unversity",
-            "presenting": true
-          },
-          {
-            "name": "Dr Danielle Kain",
-            "organisation": "Queen's Unversity",
-            "presenting": false
-          }
-        ],
-        "presenter": "Prof Claudio Soares"
       },
       {
         "id": 1050,
@@ -35117,41 +33533,6 @@
         "presenter": "Dr Ranak Trivedi"
       },
       {
-        "id": 1071,
-        "title": "Remote Comprehensive Care for People with Advanced Illnesses: Evaluation and Patient Profiling in Digital Palliative Contexts",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mr Rafael Castell",
-            "organisation": "La Caixa Foundation",
-            "presenting": true
-          },
-          {
-            "name": "Mrs Iciar Ancizu",
-            "organisation": "La Caixa Foundation",
-            "presenting": false
-          },
-          {
-            "name": "Mr João Carmezim",
-            "organisation": "Biostatistics Support and Research Unit,  Germans Trias i Pujol Research Institute and Hospital, Badalona, Spain",
-            "presenting": false
-          },
-          {
-            "name": "Dr Cristian Tebé",
-            "organisation": "Biostatistics Support and Research Unit, Germans Trias i Pujol Research Institute and Hospital, Badalona, Spain &amp; Department of Statistics and Operations Research, Universitat Politècnica de Catalunya - BarcelonaTech (UPC)",
-            "presenting": false
-          },
-          {
-            "name": "Dr Xavier Gómez-Batiste",
-            "organisation": "Instituto Catalão de Oncologia, Univerdad de Vic-Barcelona",
-            "presenting": false
-          }
-        ],
-        "presenter": "Mr Rafael Castell"
-      },
-      {
         "id": 1072,
         "title": "Mapping Therapeutic Cinema: A Descriptive Analysis of Films Used in Psychotherapeutic Interventions",
         "starts_at": "09:00",
@@ -35907,21 +34288,6 @@
         "presenter": "Ms Sofia Ribeiro"
       },
       {
-        "id": 1095,
-        "title": "The indices of deprivation and palliative care",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Steve Marshall",
-            "organisation": "Cicely Saunders Instititute, Florence Nightingale Faculty of Nursing, Midwifery and Palliative Care, King's College London",
-            "presenting": true
-          }
-        ],
-        "presenter": "Dr Steve Marshall"
-      },
-      {
         "id": 1096,
         "title": "Patients’ Expressions of Sense of Coherence in Specialised Palliative Home Care: A Secondary Analysis in the Context of Living with a Partner",
         "starts_at": "09:00",
@@ -36020,21 +34386,6 @@
           }
         ],
         "presenter": "Dr Tim Biesbrouck"
-      },
-      {
-        "id": 1099,
-        "title": "Buddhist Concepts' Influence on Patients and Their Support Networks in Chinese Hospice Palliative Care: Historical and Netnographic Explorations",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Ms Tinglu Cao",
-            "organisation": "University of Tartu",
-            "presenting": true
-          }
-        ],
-        "presenter": "Ms Tinglu Cao"
       },
       {
         "id": 1100,
@@ -37007,21 +35358,6 @@
         "presenter": "Mrs Victoria Kammin"
       },
       {
-        "id": 1127,
-        "title": "Wish Granting as a Therapeutic Element in Paediatric Palliative Care: Insights from Family Feedback",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mrs Zuzana Vaculíková",
-            "organisation": "Zlatá rybka, z.ú.",
-            "presenting": true
-          }
-        ],
-        "presenter": "Mrs Zuzana Vaculíková"
-      },
-      {
         "id": 1128,
         "title": "Opioid Prescription Trends in End-of-Life Care: A Cohort Analysis of Patients with Cancer (2012-2023)",
         "starts_at": "09:00",
@@ -37334,12 +35670,12 @@
             "presenting": false
           },
           {
-            "name": "Dr R. Sean Morrison",
+            "name": "Dr sean Morrison",
             "organisation": "Icahn School of Medicine at Mount Sinai",
             "presenting": true
           }
         ],
-        "presenter": "Dr R. Sean Morrison"
+        "presenter": "Dr sean Morrison"
       },
       {
         "id": 1135,
@@ -37424,7 +35760,7 @@
             "presenting": false
           },
           {
-            "name": "Prof Sven Gottschling",
+            "name": "Prof sven Gottschling",
             "organisation": "Centre of Palliative Care and Pediatric Pain, Saarland University Medical Center and Saarland University Faculty of Medicine, Homburg/Saar, Germany",
             "presenting": true
           },
@@ -37439,7 +35775,7 @@
             "presenting": false
           }
         ],
-        "presenter": "Prof Sven Gottschling"
+        "presenter": "Prof sven Gottschling"
       },
       {
         "id": 1139,
@@ -37710,71 +36046,6 @@
           }
         ],
         "presenter": "Dr Elena Brezovska"
-      },
-      {
-        "id": 1148,
-        "title": "The PHYSPECTIVE study: Perspectives on physiotherapy in advanced cancer care from those who give, receive, and refer: a qualitative interview study",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Ms Luna Gauchez",
-            "organisation": "1: Rehabilitation Research Group, Vrije Universiteit Brussel (VUB), Brussels, Belgium;  2: End-of-Life Care Research Group, Vrije Universiteit Brussel (VUB) &amp; Ghent University, Brussels, Belgium",
-            "presenting": true
-          },
-          {
-            "name": "Prof Kim Beernaert",
-            "organisation": "End-of-Life Care Research Group, Vrije Universiteit Brussel (VUB) &amp; Ghent University",
-            "presenting": false
-          },
-          {
-            "name": "Prof Lore Decoster",
-            "organisation": "1: Medical Oncology Department, UZ Brussel, Brussels Belgium; Translational Oncology; 2: Research Centre (TORC), Vrije Universiteit Brussel (VUB), Brussels, Belgium Medical Oncology Department, UZ Brussel, Brussels Belgium",
-            "presenting": false
-          },
-          {
-            "name": "Prof Tom Deliens",
-            "organisation": "Movement and nutrition for health and performance (MOVE), Vrije Universiteit Brussel (VUB), Brussels, Belgium",
-            "presenting": false
-          },
-          {
-            "name": "Prof Nele Adriaenssens",
-            "organisation": "1: Rehabilitation Research Group, Vrije Universiteit Brussel (VUB), Brussels, Belgium;  2: Medical Oncology Department, UZ Brussel, Brussels Belgium",
-            "presenting": false
-          },
-          {
-            "name": "Dr Anne-Lore Scherrens",
-            "organisation": "End-of-Life Care Research Group, Vrije Universiteit Brussel (VUB) &amp; Ghent University",
-            "presenting": false
-          }
-        ],
-        "presenter": "Ms Luna Gauchez"
-      },
-      {
-        "id": 1149,
-        "title": "What do palliative rehabilitation teams across Europe look like: who is involved, and who should ideally be?",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Ms Luna Gauchez",
-            "organisation": "1: Rehabilitation Research Group, Vrije Universiteit Brussel (VUB), Brussels, Belgium;  2: End-of-Life Care Research Group, Vrije Universiteit Brussel (VUB) &amp; Ghent University, Brussels, Belgium",
-            "presenting": true
-          },
-          {
-            "name": "Ms Leonor Marques",
-            "organisation": "Specialist palliative care service, Lisbon",
-            "presenting": false
-          },
-          {
-            "name": "Ms Andrea Magrelli",
-            "organisation": "Antea",
-            "presenting": false
-          }
-        ],
-        "presenter": "Ms Luna Gauchez"
       },
       {
         "id": 1150,
@@ -38150,31 +36421,6 @@
           }
         ],
         "presenter": "Dr Jed Jerwood"
-      },
-      {
-        "id": 1160,
-        "title": "Culturally informed inquiry: Conducting research on end-of-life care with culturally diverse participants",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mr Jay Balante",
-            "organisation": "The University of Sydney",
-            "presenting": true
-          },
-          {
-            "name": "Dr Diane Van Den Broek",
-            "organisation": "The University of Sydney",
-            "presenting": false
-          },
-          {
-            "name": "Prof Kate White",
-            "organisation": "The University of Sydney",
-            "presenting": false
-          }
-        ],
-        "presenter": "Mr Jay Balante"
       },
       {
         "id": 1161,
@@ -40332,41 +38578,6 @@
         "presenter": "Ms Dunya Selemangel"
       },
       {
-        "id": 1224,
-        "title": "Pioneering Palliative Care in a Low-Resource Context: Feasibility and Impact of a Free Home-Based Service in North Lebanon",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Mariem Saadallah",
-            "organisation": "Sanabel Palliative Care, Non-Governmental Organization (NGO), Tripoli, North Lebanon, Lebanon",
-            "presenting": true
-          },
-          {
-            "name": "Ms Bouchra Sayed",
-            "organisation": "Sanabel Palliative Care, Non-Governmental Organization (NGO), Tripoli, North Lebanon, Lebanon",
-            "presenting": false
-          },
-          {
-            "name": "Dr Tarek Badra",
-            "organisation": "Nini Hospital, Tripoli, North Lebanon, Lebanon, Sanabel Palliative Care, Non-Governmental Organization (NGO), Tripoli, North Lebanon, Lebanon",
-            "presenting": false
-          },
-          {
-            "name": "Dr Mohamad Hamade",
-            "organisation": "Palliative Medicine, Cancer Center of Excellence, King Faisal Specialist Hospital and Research Centre, Riyadh, Saudi Arabia, \tSanabel Palliative Care, Non-Governmental Organization (NGO), Tripoli, North Lebanon, Lebanon",
-            "presenting": false
-          },
-          {
-            "name": "Dr Zeina Dassouki",
-            "organisation": "Faculty of Health Sciences, University of Balamand, Beirut P.O. Box 55251 Sin El Fil, Lebanon",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Mariem Saadallah"
-      },
-      {
         "id": 1225,
         "title": "Review of antimicrobial use in the last four weeks of life in a tertiary Irish Hospital",
         "starts_at": "09:00",
@@ -41227,71 +39438,6 @@
         "presenter": "Ms Claire Parkes"
       },
       {
-        "id": 1244,
-        "title": "Changing one place at a time: Implementing Palliative Care in a Hospital of the Amazon Region",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Laianny Carvalho",
-            "organisation": "Hospital Nina Rodrigues",
-            "presenting": true
-          },
-          {
-            "name": "Ms Dominique Batista",
-            "organisation": "Centro Universitário Florence",
-            "presenting": false
-          },
-          {
-            "name": "Ms Mariana Martins",
-            "organisation": "Centro Universitário Florence",
-            "presenting": false
-          },
-          {
-            "name": "Mr Felipe Mendes",
-            "organisation": "Secretaria Estadual de Saúde do Maranhão",
-            "presenting": false
-          },
-          {
-            "name": "Ms Priscila Barros",
-            "organisation": "Secretaria Estadual de Saúde do Maranhão",
-            "presenting": false
-          },
-          {
-            "name": "Ms Vanessa Marques",
-            "organisation": "Hospital Nina Rodrigues",
-            "presenting": false
-          },
-          {
-            "name": "Prof Thamyres Martins",
-            "organisation": "Centro Universitário Florence",
-            "presenting": false
-          },
-          {
-            "name": "Ms Lívia Monteiro",
-            "organisation": "Hospital Nina Rodrigues",
-            "presenting": false
-          },
-          {
-            "name": "Prof Francisca Noronha",
-            "organisation": "Centro Universitário Florence",
-            "presenting": false
-          },
-          {
-            "name": "Dr Luanna Carvalho",
-            "organisation": "Sundare Clínica de Cuidados paliativos",
-            "presenting": false
-          },
-          {
-            "name": "Dr Beatriz Coutinho",
-            "organisation": "Sundare Clínica de Cuidados paliativos",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Laianny Carvalho"
-      },
-      {
         "id": 1245,
         "title": "Exploring the care trajectories of cancer patients in palliative care",
         "starts_at": "09:00",
@@ -41440,41 +39586,6 @@
           }
         ],
         "presenter": "Ms Paola Sillitti"
-      },
-      {
-        "id": 1250,
-        "title": "Comprehensive Psychosocial and Spiritual Care for People with Advanced Chronic Conditions: 16 Years of Experience from the La Caixa Foundation Program",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mr Rafael Castell",
-            "organisation": "La Caixa Foundation",
-            "presenting": true
-          },
-          {
-            "name": "Mrs Iciar Ancizu",
-            "organisation": "La Caixa Foundation",
-            "presenting": false
-          },
-          {
-            "name": "Mr João Carmezim",
-            "organisation": "Biostatistics Support and Research Unit,  Germans Trias i Pujol Research Institute and Hospital, Badalona, Spain",
-            "presenting": false
-          },
-          {
-            "name": "Dr Cristian Tebé",
-            "organisation": "Biostatistics Support and Research Unit, Germans Trias i Pujol Research Institute and Hospital, Badalona, Spain &amp; Department of Statistics and Operations Research, Universitat Politècnica de Catalunya - BarcelonaTech (UPC)",
-            "presenting": false
-          },
-          {
-            "name": "Dr Xavier Gómez-Batiste",
-            "organisation": "Instituto Catalão de Oncologia, Univerdad de Vic-Barcelona",
-            "presenting": false
-          }
-        ],
-        "presenter": "Mr Rafael Castell"
       },
       {
         "id": 1251,
@@ -41766,10 +39877,15 @@
           {
             "name": "Dr Sarah Mills",
             "organisation": "University of St Andrews",
+            "presenting": false
+          },
+          {
+            "name": "Dr Sam Quinn",
+            "organisation": "Population and Behavioural Science, School of Medicine, University of St Andrews",
             "presenting": true
           }
         ],
-        "presenter": "Dr Sarah Mills"
+        "presenter": "Dr Sam Quinn"
       },
       {
         "id": 1258,
@@ -42089,12 +40205,12 @@
             "presenting": false
           },
           {
-            "name": "Dr Carmen Roch",
+            "name": "Prof Carmen Roch",
             "organisation": "Interdisciplinary Center for Palliative Medicine, Departement of Radiation Oncology, University Hospital Würzburg",
             "presenting": true
           }
         ],
-        "presenter": "Dr Carmen Roch"
+        "presenter": "Prof Carmen Roch"
       },
       {
         "id": 1264,
@@ -42500,136 +40616,6 @@
           }
         ],
         "presenter": "Prof Suzanne Guerin"
-      },
-      {
-        "id": 1277,
-        "title": "Co-Creating Palliative Care Research Priorities in Colombia Through a National Multi-Stakeholder Partnership",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Tracey McConnell",
-            "organisation": "Queen's University Belfast",
-            "presenting": true
-          },
-          {
-            "name": "Dr Cindy V. Mendieta",
-            "organisation": "Pontificia Universidad Javeriana",
-            "presenting": false
-          },
-          {
-            "name": "Prof Esther De Vries",
-            "organisation": "Pontificia Universidad Javeriana",
-            "presenting": false
-          },
-          {
-            "name": "Prof Jose A. Calvache",
-            "organisation": "Universidad del Cauca",
-            "presenting": false
-          },
-          {
-            "name": "Dr Gillian Prue",
-            "organisation": "Queen's University Belfast",
-            "presenting": false
-          },
-          {
-            "name": "Prof Sam H. Ahmedzai",
-            "organisation": "University of Sheffield",
-            "presenting": false
-          },
-          {
-            "name": "Prof Joanne Reid",
-            "organisation": "Queen's University Belfast",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Tracey McConnell"
-      },
-      {
-        "id": 1278,
-        "title": "Palliative care needs in long-term care units: results from a multicenter study",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Dr Alexandre Tea",
-            "organisation": "Nantes Université, CHU de Nantes, Service Interdisciplinaire Douleur, Soins Palliatifs et de Support, Médecine intégrative, F-44000 Nantes, France",
-            "presenting": true
-          },
-          {
-            "name": "Dr marianne Lerhun",
-            "organisation": "Ancenis Hospital, Ancenis",
-            "presenting": false
-          },
-          {
-            "name": "Dr marine asfar",
-            "organisation": "CHU Angers, Angers",
-            "presenting": false
-          },
-          {
-            "name": "Dr Marielle BERLIOZ THIBAL",
-            "organisation": "CHU Nantes, Nantes",
-            "presenting": false
-          },
-          {
-            "name": "Dr Nicole Collet",
-            "organisation": "Hospital Center Of Haut Anjou, Château-Gontier",
-            "presenting": false
-          },
-          {
-            "name": "Dr véronique pavie",
-            "organisation": "Hospital Center Of Haut Anjou, Château-Gontier",
-            "presenting": false
-          },
-          {
-            "name": "Dr Sophie Potel",
-            "organisation": "Loire Vendée Océan Hospital Centre",
-            "presenting": false
-          },
-          {
-            "name": "Dr anne-caroline pichereau",
-            "organisation": "Rehabilitation center les capucins, Angers",
-            "presenting": false
-          },
-          {
-            "name": "Dr Philippe BARGMAN",
-            "organisation": "regional health agency, Nantes",
-            "presenting": false
-          },
-          {
-            "name": "Dr Adrien Evin",
-            "organisation": "Nantes Université, CHU de Nantes, Service Interdisciplinaire Douleur, Soins Palliatifs et de Support, Médecine intégrative, F-44000 Nantes, France",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Alexandre Tea"
-      },
-      {
-        "id": 1279,
-        "title": "Bridging Critical and Palliative Care: A Pragmatic Protocol to Identify and Manage ICU Patients with Palliative Needs",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mr Pedro Meireles",
-            "organisation": "Unicamp",
-            "presenting": true
-          },
-          {
-            "name": "Ms Nilcilene Pinheiro",
-            "organisation": "Unicamp",
-            "presenting": false
-          },
-          {
-            "name": "Dr Cristina Bueno Terzi Coelho",
-            "organisation": "Unicamp",
-            "presenting": false
-          }
-        ],
-        "presenter": "Mr Pedro Meireles"
       },
       {
         "id": 1280,
@@ -43287,31 +41273,6 @@
         "presenter": "Ms Ioanna Prasini"
       },
       {
-        "id": 1296,
-        "title": "Reconciling care: A multi-phase, cross-country study of how nurses navigate personal, cultural, and professional values in cancer and end-of-life care",
-        "starts_at": "09:00",
-        "ends_at": "18:00",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Mr Jay Balante",
-            "organisation": "The University of Sydney",
-            "presenting": true
-          },
-          {
-            "name": "Dr Diane Van Den Broek",
-            "organisation": "The University of Sydney",
-            "presenting": false
-          },
-          {
-            "name": "Prof Kate White",
-            "organisation": "The University of Sydney",
-            "presenting": false
-          }
-        ],
-        "presenter": "Mr Jay Balante"
-      },
-      {
         "id": 1297,
         "title": "Professional Quality of Life, Burnout and Social Support among Hungarian Palliative Nurses",
         "starts_at": "09:00",
@@ -43735,6 +41696,66 @@
           }
         ],
         "presenter": "Prof Peyman Eshghi"
+      },
+      {
+        "id": 1312,
+        "title": "Palliative care needs in long-term care units: results from a multicenter study",
+        "starts_at": "23:30",
+        "ends_at": "23:45",
+        "duration_mins": 15,
+        "authors": [
+          {
+            "name": "Dr Alexandre Tea",
+            "organisation": "Nantes Université, CHU de Nantes, Service Interdisciplinaire Douleur, Soins Palliatifs et de Support, Médecine intégrative, F-44000 Nantes, France",
+            "presenting": true
+          },
+          {
+            "name": "Dr marianne Lerhun",
+            "organisation": "Ancenis Hospital, Ancenis",
+            "presenting": false
+          },
+          {
+            "name": "Dr marine asfar",
+            "organisation": "CHU Angers, Angers",
+            "presenting": false
+          },
+          {
+            "name": "Dr Marielle BERLIOZ THIBAL",
+            "organisation": "CHU Nantes, Nantes",
+            "presenting": false
+          },
+          {
+            "name": "Dr Nicole Collet",
+            "organisation": "Hospital Center Of Haut Anjou, Château-Gontier",
+            "presenting": false
+          },
+          {
+            "name": "Dr véronique pavie",
+            "organisation": "Hospital Center Of Haut Anjou, Château-Gontier",
+            "presenting": false
+          },
+          {
+            "name": "Dr Sophie Potel",
+            "organisation": "Loire Vendée Océan Hospital Centre",
+            "presenting": false
+          },
+          {
+            "name": "Dr anne-caroline pichereau",
+            "organisation": "Rehabilitation center les capucins, Angers",
+            "presenting": false
+          },
+          {
+            "name": "Dr Philippe BARGMAN",
+            "organisation": "regional health agency, Nantes",
+            "presenting": false
+          },
+          {
+            "name": "Dr Adrien Evin",
+            "organisation": "Nantes Université, CHU de Nantes, Service Interdisciplinaire Douleur, Soins Palliatifs et de Support, Médecine intégrative, F-44000 Nantes, France",
+            "presenting": false
+          }
+        ],
+        "presenter": "Dr Alexandre Tea"
       }
     ]
   },
@@ -44114,7 +42135,7 @@
     "ends_at": "12:45",
     "starts_at_iso": "2026-05-15T11:15:00+02:00",
     "ends_at_iso": "2026-05-15T12:45:00+02:00",
-    "description": "Panel 6: Engaging with policy\nThis panel will explore how research consortia can strategically engage policymakers at EU, national and regional levels through timely evidence synthesis, policy briefs, stakeholder alliances, and alignment with legislative and funding cycles. The session will highlight practical approaches to ensure palliative care evidence informs sustainable policy development across Europe.\nPanellists: Nancy Preston (Pal-Cycles, EU PAL-COPD and PalSed), Tadeusz Hawrot (PsyPal), Tania Pastrana (RAPHAEL)\nPanel 7: The Future of EU Funding Calls: \nThis panel will examine the new EU health research funding landscape, including mission-oriented approaches, public–private partnerships, widening participation mechanisms, and increasing emphasis on digital transformation, resilience, and implementation impact. The session will explore how the palliative care community can strategically position itself within future EU agendas to secure sustainable investment and strengthen its contribution to European health policy and systems innovation.\nPanellists: Andreja  (RAPHAEL), Cinzia Brunelli   (EUonQOL), Dirk Hadrich   (EU Cancer Mission)",
+    "description": "Chairs: Carla Reigada (EAPC) and Maite Carrillo (PAINLESS)\nPresentations: The Future of EU Funding Calls\nThis session will examine the new EU health research funding landscape, including mission-oriented approaches, public–private partnerships, widening participation mechanisms, and increasing emphasis on digital transformation, resilience, and implementation impact. The session will explore how the palliative care community can strategically position itself within future EU agendas to secure sustainable investment and strengthen its contribution to European health policy and systems innovation.\nPresenters: Andreja Zulin de Swarte (EU Liaison officer, UMCU), Dirk Hadrich (EU Cancer Mission)\n\nPanel 6: Engaging with policy\nThis panel will explore how research consortia can strategically engage policymakers at EU, national and regional levels through timely evidence synthesis, policy briefs, stakeholder alliances, and alignment with legislative and funding cycles. The session will highlight practical approaches to ensure palliative care evidence informs sustainable policy development across Europe.\nPanellists: Nancy Preston (Pal-Cycles, EU PAL-COPD and PalSed), Tadeusz Hawrot (PsyPal), Tania Pastrana (RAPHAEL), Claudia Bausewein (VR TALKS) Alexandra Eni (ECO), Cinzia Brunelli (EUonQOL)",
     "chairs": [
       "Prof Nancy Preston",
       "Dr Dirk Hadrich",
@@ -44122,7 +42143,10 @@
       "Mr Tadeusz Hawrot",
       "Dr Cinzia Brunelli",
       "Dr María Teresa Carrillo De La Peña",
-      "Dr Tania Pastrana"
+      "Dr Tania Pastrana",
+      "None Carla Reigada",
+      "Ms Alexandra Eni",
+      "Prof Claudia Bausewein"
     ],
     "presentations_count": 0,
     "presentations": []
@@ -45008,7 +43032,7 @@
             "presenting": false
           },
           {
-            "name": "Ms Marissa Mulcahy",
+            "name": "Ms Mulcahy Mulcahy",
             "organisation": "Victorian Aboriginal Community Controlled Health Organisation",
             "presenting": true
           },
@@ -45023,7 +43047,7 @@
             "presenting": false
           }
         ],
-        "presenter": "Ms Marissa Mulcahy"
+        "presenter": "Ms Mulcahy Mulcahy"
       },
       {
         "id": 30,
@@ -45168,7 +43192,7 @@
     "ends_at": "12:45",
     "starts_at_iso": "2026-05-15T11:15:00+02:00",
     "ends_at_iso": "2026-05-15T12:45:00+02:00",
-    "description": "Designed to foster dialogue and collaboration, this interactive session hosted by the EAPC Reference Group for Family Caregiving aims to advance and prioritise the international research and policy agenda for family caregiving. Prof Gardiner will provide an overview of emerging concepts in family caregiver research and present updates from the EAPC White Paper for Family Caregiving. Interactive ranking tools will be used to solicit audience input on emerging research priorities. Prof Hudson will outline progress on the proposed Lancet Commission on family caregiving, which will provide global strategies to improve the well-being of family carers. Interactive tools will be used to collate audience views on policy solutions and effective interventions to contribute to the Commission.  Prof De Vleminck will provide an update on emerging interventions and technology innovations supporting family caregiving. A global perspective will provide a ‘state of the science’ and a novel perspective on harnessing technology to support carers.\n\nThe aims and learning objectives:\nThe aim of this interactive session is to provide an overview of new and emerging innovations in family caregiving and engage delegates in identifying priorities for advancing this field of research. The learning objectives are to: \n1. Educate attendees on new and emerging concepts and innovations in family caregiving, including global policy, technology innovations and research approaches. \n2. Facilitate audience engagement to actively co-produce ranked research priorities and capture stakeholder views to inform health policy and practice. \n\nSpeakers: \nProf Clare Gardiner, Professor of Palliative Care, UK \nProf Peter Hudson, Director Centre for Palliative Care c/o St Vincent’s Hospital and The University of Melbourne ,Australia \nProf Aline De Vleminck, Associate Professor at the End-of-life Care Research Group, Free University of Brussels (VUB) and Ghent University, Belgium\n\nAll speakers are members of the EAPC Reference Group for Family Carers.",
+    "description": "Designed to foster dialogue and collaboration, this interactive session hosted by the EAPC Reference Group for Family Caregiving aims to advance and prioritise the international research and policy agenda for family caregiving. \n\nThe aims and learning objectives:\nThe aim of this interactive session is to provide an overview of new and emerging innovations in family caregiving and engage delegates in identifying priorities for advancing this field of research. The learning objectives are to: \n1. Educate attendees on new and emerging concepts and innovations in family caregiving, including global policy, technology innovations and research approaches. \n2. Facilitate audience engagement to actively co-produce ranked research priorities and capture stakeholder views to inform health policy and practice. \n\nSpeakers: \nProf Clare Gardiner, Professor of Palliative Care, UK \nDr Viktoria Wallin - Marie Cederschiöld University, Sweden \nProf Aline De Vleminck, Associate Professor at the End-of-life Care Research Group, Free University of Brussels (VUB) and Ghent University, Belgium\n\nAll speakers are members of the EAPC Reference Group for Family Carers.",
     "chairs": [
       "Prof Clare Gardiner",
       "Dr Aline De Vleminck",
@@ -46052,12 +44076,14 @@
     "ends_at": "15:45",
     "starts_at_iso": "2026-05-15T14:15:00+02:00",
     "ends_at_iso": "2026-05-15T15:45:00+02:00",
-    "description": "Panel 8: Showcasing research successes\nThis session will present selected case studies illustrating successful outcomes, including real-world implementation, policy influence, stakeholder engagement, and measurable improvements in patient care. The session will highlight practical lessons and transferable strategies that can guide future EU-funded palliative care projects and strengthen their visibility and impact.Jan Hrdlička (VR TALKS), Jo Bayly (INSPIRE), Stein Kaasa (EPCRC)",
+    "description": "Chairs: Cathy Payne (EAPC) and Suzanne Guerin (EMTReK)\nPanel 8: Showcasing research successes\nThis session will present selected case studies illustrating successful outcomes, including real-world implementation, policy influence, stakeholder engagement, and measurable improvements in patient care. The session will highlight practical lessons and transferable strategies that can guide future EU-funded palliative care projects and strengthen their visibility and impact.\nMinna Hokka (NursEduPal), Jan Hrdlička (VR TALKS), Stein Kaasa (EPCRC),  Juliet Jacobsen, (Temel Study)",
     "chairs": [
       "Prof Suzanne Guerin",
       "Mr Jan Hrdlička",
       "Prof Stein Kaasa",
-      "Dr Joanne Bayly"
+      "Dr Juliet Jacobsen",
+      "Dr Cathy Payne",
+      "Dr Minna Hökkä"
     ],
     "presentations_count": 0,
     "presentations": []
@@ -46811,9 +44837,8 @@
     "ends_at": "15:45",
     "starts_at_iso": "2026-05-15T14:15:00+02:00",
     "ends_at_iso": "2026-05-15T15:45:00+02:00",
-    "description": "Palliative sedation involves the intentional lowering of the level of consciousness in patients with life-limiting disease who are experiencing refractory suffering. There are many differences between European countries in its application and its use across palliative care practices. The session will start with explaining the main content of the updated framework on palliative sedation (published 2024), including some controversies. The session will continue with the main findings from a recent international multicenter study on palliative sedation (published 2024), showing a significant decrease of discomfort levels. The session will continue with experiences of relatives and healthcare professionals regarding palliative sedation (published 2025). Here, palliative sedation will be discussed as a complex intervention, with mixed experiences of relief and distress. Finally, the role of communication. Despite variations between settings, open dialogue with patients, families, and HCPs was considered valuable (publication 2025). The session will finish with space for discussion.\nAttendees will learn which elements around palliative sedation reached expert consensus and which elements are still controversial in the debate surrounding palliative sedation, based on the updated framework for palliative sedation (published in 2024). In addition, highlights from European research will be shown regarding its medical aspects and the experiences of professionals and relatives. There will be space for a guided discussion.\nSpeakers:\n\n1.\tProf Dr Lukas Radbruch, University of Bonn, Germany\n\n2.\tProf Dr Jeroen Hasselaar, Radboudumc, the Netherlands \n\n3.\tProf Dr Sheila Payne, Lancaster University, England\n\n4.\tDr Agnes Csikos, Pecs University, Hungary \n\nAll speakers are members of the EAPC Task Force on Palliative Sedation.",
+    "description": "Palliative sedation involves the intentional lowering of the level of consciousness in patients with life-limiting disease who are experiencing refractory suffering. There are many differences between European countries in its application and its use across palliative care practices. The session will start with explaining the main content of the updated framework on palliative sedation (published 2024), including some controversies. The session will continue with the main findings from a recent international multicenter study on palliative sedation (published 2024), showing a significant decrease of discomfort levels. The session will continue with experiences of relatives and healthcare professionals regarding palliative sedation (published 2025). Here, palliative sedation will be discussed as a complex intervention, with mixed experiences of relief and distress. Finally, the role of communication. Despite variations between settings, open dialogue with patients, families, and HCPs was considered valuable (publication 2025). The session will finish with space for discussion.\nAttendees will learn which elements around palliative sedation reached expert consensus and which elements are still controversial in the debate surrounding palliative sedation, based on the updated framework for palliative sedation (published in 2024). In addition, highlights from European research will be shown regarding its medical aspects and the experiences of professionals and relatives. There will be space for a guided discussion.\nSpeakers:\n\nProf Dr Jeroen Hasselaar, Radboudumc, the Netherlands \n\nProf Dr Sheila Payne, Lancaster University, England\n\nDr Daniel Balazs Fulop, Department of Primary Health Care, University of Pecs Medical School, Pecs, Hungary\n\nAll speakers are members of the EAPC Task Force on Palliative Sedation.",
     "chairs": [
-      "Prof Lukas Radbruch",
       "Prof Jeroen Hasselaar",
       "Prof Sheila Payne",
       "Dr Balazs Daniel Fulop"
@@ -46848,7 +44873,7 @@
     "ends_at": "18:00",
     "starts_at_iso": "2026-05-15T16:30:00+02:00",
     "ends_at_iso": "2026-05-15T18:00:00+02:00",
-    "description": "Research into the management of symptoms and patient and family needs.\n\nThis themed session will feature three interconnected presentations.\n\nÁgnes Csikós (University of Pécs) will discuss the challenges of integrating palliative care into respiratory care, including barriers at the patient, provider, and system levels, highlighting complexities such as unpredictable disease trajectories and the management of breathlessness.\n\nNancy Preston (Lancaster University) will present the ICLEAR intervention developed by Dr Paul Marsden at the Royal Preston Hospital in the UK, which helped integrate palliative care and improved communication between teams, reduced hospital admissions and enabled people to spend more time at home toward the end of life.\n\nLuc Deliens (Vrije Universiteit Brussel) will introduce the EU PAL-COPD project, a large-scale, stepped-wedge RCT adapting and scaling the ICLEAR intervention across Europe. We will share preliminary findings from the first control wedge.\n\nThe session will conclude with a panel discussion inviting audience questions and reflections on the speakers’ experiences implementing ICLEAR in their respective countries.\n\nAims and learning objectives:\n\nThis session will highlight the importance of integrating palliative care into respiratory services for patients with advanced respiratory diseases. Participants will: Recognise the challenges and barriers to effective integration; Learn from the practical experiences of a UK study embedding palliative care within respiratory clinics; Gain insights into the EU PAL-COPD project, a European initiative focused on integrated palliative care in COPD. By the end of the session, attendees will be able to critically assess implementation strategies and explore ways to improve patient-centred care in respiratory services across diverse healthcare settings.",
+    "description": "Research into the management of symptoms and patient and family needs.\n\nThis themed session will feature three interconnected presentations.\n\nÁgnes Csikós (University of Pécs) will discuss the challenges of integrating palliative care into respiratory care, including barriers at the patient, provider, and system levels, highlighting complexities such as unpredictable disease trajectories and the management of breathlessness.\n\nNancy Preston (Lancaster University) will present the ICLEAR intervention developed by Dr Paul Marsden at the Royal Preston Hospital in the UK, which helped integrate palliative care and improved communication between teams, reduced hospital admissions and enabled people to spend more time at home toward the end of life.\n\nJulie Stevens (Vrije Universiteit Brussel) will introduce the EU PAL-COPD project, a large-scale, stepped-wedge RCT adapting and scaling the ICLEAR intervention across Europe. We will share preliminary findings from the first control wedge.\n\nThe session will conclude with a panel discussion inviting audience questions and reflections on the speakers’ experiences implementing ICLEAR in their respective countries.\n\nAims and learning objectives:\n\nThis session will highlight the importance of integrating palliative care into respiratory services for patients with advanced respiratory diseases. Participants will: Recognise the challenges and barriers to effective integration; Learn from the practical experiences of a UK study embedding palliative care within respiratory clinics; Gain insights into the EU PAL-COPD project, a European initiative focused on integrated palliative care in COPD. By the end of the session, attendees will be able to critically assess implementation strategies and explore ways to improve patient-centred care in respiratory services across diverse healthcare settings.",
     "chairs": [
       "Prof Philip Larkin",
       "Dr Zuzana Křemenová"
@@ -47148,53 +45173,13 @@
       "None Manuel Castillo",
       "Dr Julie Ling"
     ],
-    "presentations_count": 6,
+    "presentations_count": 4,
     "presentations": [
-      {
-        "id": 191,
-        "title": "Breaking Down the Conversation: Communication Priorities Differ Between Clinicians and Surrogates in Clinician-Family Meetings in Neurocritical Care",
-        "starts_at": "16:30",
-        "ends_at": "16:45",
-        "duration_mins": 15,
-        "authors": [
-          {
-            "name": "Ms Eleni Panagopoulos",
-            "organisation": "Johns Hopkins School of Medicine",
-            "presenting": false
-          },
-          {
-            "name": "Ms Michaela Bostwick",
-            "organisation": "Johns Hopkins School of Medicine",
-            "presenting": false
-          },
-          {
-            "name": "Ms Winnie Liu",
-            "organisation": "Johns Hopkins School of Medicine",
-            "presenting": false
-          },
-          {
-            "name": "Ms Celine Arar",
-            "organisation": "Johns Hopkins School of Medicine",
-            "presenting": false
-          },
-          {
-            "name": "Dr Miriam Quinlan",
-            "organisation": "Johns Hopkins School of Medicine",
-            "presenting": true
-          },
-          {
-            "name": "Dr Susanne Muehlschlegel",
-            "organisation": "Johns Hopkins School of Medicine",
-            "presenting": false
-          }
-        ],
-        "presenter": "Dr Miriam Quinlan"
-      },
       {
         "id": 192,
         "title": "Designing a Patient Question Prompt List to Enhance Palliative Care Communication: A Delphi Consensus Study",
-        "starts_at": "16:45",
-        "ends_at": "17:00",
+        "starts_at": "16:30",
+        "ends_at": "16:45",
         "duration_mins": 15,
         "authors": [
           {
@@ -47233,8 +45218,8 @@
       {
         "id": 193,
         "title": "Development and Evaluation of a Conversation-Based Intervention to Improve Family Functioning in Advanced Cancer Patients and Adolescent Children",
-        "starts_at": "17:00",
-        "ends_at": "17:15",
+        "starts_at": "16:45",
+        "ends_at": "17:00",
         "duration_mins": 15,
         "authors": [
           {
@@ -47248,8 +45233,8 @@
       {
         "id": 194,
         "title": "Learning from visual storytelling with those facing the end of life: What matters most?",
-        "starts_at": "17:15",
-        "ends_at": "17:30",
+        "starts_at": "17:00",
+        "ends_at": "17:15",
         "duration_mins": 15,
         "authors": [
           {
@@ -47283,8 +45268,8 @@
       {
         "id": 195,
         "title": "The impact of Shared Decision-Making Tools on Patient-Centered Outcomes in Real-Life Palliative Care Settings: A Systematic Review &amp; Meta-Analysis",
-        "starts_at": "17:30",
-        "ends_at": "17:45",
+        "starts_at": "17:15",
+        "ends_at": "17:30",
         "duration_mins": 15,
         "authors": [
           {
@@ -47338,8 +45323,8 @@
       {
         "id": 196,
         "title": "Using Audio-Diaries to Capture Communication about Palliative Care in Oncology",
-        "starts_at": "17:45",
-        "ends_at": "18:00",
+        "starts_at": "17:30",
+        "ends_at": "17:45",
         "duration_mins": 15,
         "authors": [
           {
@@ -48159,11 +46144,12 @@
     "ends_at": "18:00",
     "starts_at_iso": "2026-05-15T16:30:00+02:00",
     "ends_at_iso": "2026-05-15T18:00:00+02:00",
-    "description": "This session focuses on the implementation of the EAPC’s LGBT+ palliative care guidelines across varying cultural and geopolitical contexts. Katherine Bristowe will outline current translation and adaptation efforts across Europe. Theodor Kruse will address the urgent and specific needs of trans communities under threat, highlighting the role of palliative care professionals in responding to crisis with advocacy and action. Max Kleijberg will ground the discussion in real-world examples from Sweden, exploring practical tools for healthcare teams to offer inclusive care. Together, these presentations offer insight into translating policy into practice, building intersectional care structures, and responding to an increasingly polarized world.\n\nThis session aims to explore how EAPC recommendations for LGBT+ inclusive palliative care are being translated into local contexts amid rising anti-LGBT+ sentiment. Participants will learn how to implement culturally sensitive and inclusive practices, especially for trans individuals facing systemic threats. The session also fosters critical reflection on the intersection of care, politics, and equity, offering practical tools and solidarity-driven frameworks for clinical, educational, and policy responses. \n\nSpeakers:\n\nDr Katherine Bristowe – King’s College London, UK \nTheodor P. Kruse – Sygehus Lillebælt, Denmark \nMax Kleijberg – Mälardalen University / Karolinska Institutet, Sweden\n\nAll speakers are members of the EAPC Task Force on Palliative Care for LGBT+ People",
+    "description": "This session focuses on the implementation of the EAPC’s LGBT+ palliative care guidelines across varying cultural and geopolitical contexts. Katherine Bristowe will outline current translation and adaptation efforts across Europe. Theodor Kruse will address the urgent and specific needs of trans communities under threat, highlighting the role of palliative care professionals in responding to crisis with advocacy and action. Max Kleijberg will ground the discussion in real-world examples from Sweden, exploring practical tools for healthcare teams to offer inclusive care. Claude Chidiac will illustrate the adaptation of the guidelines in Lebanon, alongside related initiatives, highlighting the importance of community-led, partnership-driven responses within a socio-politically challenging context. Together, these presentations offer insight into translating policy into practice, building intersectional care structures, and responding to an increasingly polarized world.\n\nThis session aims to explore how EAPC recommendations for LGBT+ inclusive palliative care are being translated into local contexts amid rising anti-LGBT+ sentiment. Participants will learn how to implement culturally sensitive and inclusive practices, especially for trans individuals facing systemic threats. The session also fosters critical reflection on the intersection of care, politics, and equity, offering practical tools and solidarity-driven frameworks for clinical, educational, and policy responses.\n\nSpeakers:\n\nDr Katherine Bristowe – King’s College London, UK\n\nTheodor P. Kruse – Sygehus Lillebælt, Denmark\n\nMax Kleijberg – Mälardalen University / Karolinska Institutet, Sweden\n\nClaude Chidiac – Homerton Healthcare NHS Foundation Trust, UK / Lebanese Medical Association for Sexual Health, LebanonAll speakers are members of the EAPC Task Force on Palliative Care for LGBT+ People",
     "chairs": [
       "Dr Katherine Bristowe",
       "Mr Theodor Pilou Kruse",
-      "Dr Max Kleijberg"
+      "Dr Max Kleijberg",
+      "Mr Claude Chidiac"
     ],
     "presentations_count": 0,
     "presentations": []
@@ -48315,12 +46301,12 @@
             "presenting": false
           },
           {
-            "name": "Dr R. Sean Morrison",
+            "name": "Dr sean Morrison",
             "organisation": "Icahn School of Medicine at Mount Sinai",
             "presenting": true
           }
         ],
-        "presenter": "Dr R. Sean Morrison"
+        "presenter": "Dr sean Morrison"
       },
       {
         "id": 52,
@@ -48742,12 +46728,12 @@
           {
             "name": "Mrs Louise Kamara",
             "organisation": "Lancaster University",
-            "presenting": true
+            "presenting": false
           },
           {
             "name": "Dr Yakubu Salifu",
             "organisation": "Lancaster University",
-            "presenting": false
+            "presenting": true
           },
           {
             "name": "Prof Nancy Preston",
@@ -48755,7 +46741,7 @@
             "presenting": false
           }
         ],
-        "presenter": "Mrs Louise Kamara"
+        "presenter": "Dr Yakubu Salifu"
       },
       {
         "id": 226,
@@ -48835,11 +46821,10 @@
     "ends_at": "10:30",
     "starts_at_iso": "2026-05-16T09:00:00+02:00",
     "ends_at_iso": "2026-05-16T10:30:00+02:00",
-    "description": "Panel 10: Patient and Public Involvement in Palliative Care – round table discussions\nThis World Café session will bring together people with lived experience, carers, researchers, clinicians, and members NGOs to share perspectives on how patient and public involvement (PPI) can meaningfully shape palliative care research. Through a series of small-group conversations, participants will explore key questions about how we can strengthen PPI, improve collaboration, and ensure that research better reflects the needs and priorities of patients and families across Europe.",
+    "description": "Chairs: Patricia White (EAPC), Sarah Mroz (EAPC)\nPanel 10: Patient and Public Involvement in Palliative Care – round table discussions\nThis World Café session will bring together people with lived experience, carers, researchers, clinicians, and members NGOs to share perspectives on how patient and public involvement (PPI) can meaningfully shape palliative care research. Through a series of small-group conversations, participants will explore key questions about how we can strengthen PPI, improve collaboration, and ensure that research better reflects the needs and priorities of patients and families across Europe.\nPPI facilitators/contributors include: \nInke Minnée-van Braak and Merel Engelaar (PPI reps, EUonQOL), Věra Ryšavá Sylva Dneboská (PPI, AI4HOPE, Alzheimer Europe), Alexandra Eni (ECO)",
     "chairs": [
       "Dr Patricia White",
-      "None Sarah Mroz",
-      "Dr Rabab Chrifou"
+      "None Sarah Mroz"
     ],
     "presentations_count": 0,
     "presentations": []
@@ -49226,7 +47211,8 @@
     "description": "EAPC Partnered Research. Closed meeting with PPI representatives",
     "chairs": [
       "Ms Yuliana Gatsolaeva",
-      "Dr Rabab Chrifou"
+      "None Sarah Mroz",
+      "Dr Patricia White"
     ],
     "presentations_count": 0,
     "presentations": []

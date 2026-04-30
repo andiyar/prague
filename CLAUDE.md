@@ -315,7 +315,23 @@ CREATE TABLE conference_picks (
 
 ### V4 Roadmap
 - **Programme update**: Fetch updated JSON from URL without app rebuild
-- **Programme data refresh**: If Exordo data changes before the conference
+
+### Refreshing programme data (pre-conference)
+
+If Exordo updates the programme before the conference, refresh the bundled data:
+
+```bash
+bash data/eapc/refresh.sh             # Pull + diff (preview only)
+bash data/eapc/refresh.sh --apply     # Pull + diff + replace canonical files
+```
+
+The script hits Exordo's public `/api/schedule_events` endpoint (no auth — same one the website uses) for all 3 days, diffs against the canonical `data/eapc/day_*.json`, and with `--apply` regenerates `programme_structured.json`. After applying:
+
+1. `cp data/eapc/programme_structured.json ConferenceNav/Resources/programme.json`
+2. Bump `lastUpdated` stamp in `ConferenceStore.swift`
+3. Rebuild and push to TestFlight
+
+The refresh on 2026-04-30 dropped 1 session (Overflow Plenary) and ~159 presentations (mostly late poster withdrawals). Both of Ben's talks survived.
 
 ### Key Files to Know
 | File | What it does |
