@@ -7,7 +7,12 @@ extension Theme {
         .gitHub
             .text {
                 ForegroundColor(CNColors.textPrimary(for: colorScheme))
-                FontSize(15)
+                if CNLayout.isPad {
+                    FontFamily(.custom("New York"))
+                    FontSize(18)
+                } else {
+                    FontSize(15)
+                }
             }
             .code {
                 FontFamilyVariant(.monospaced)

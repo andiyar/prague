@@ -58,10 +58,84 @@ struct SessionDetailView: View {
         hasSearch && matchingPresentations.count < session.presentations.count
     }
 
+    // MARK: - iPad reader-mode header
+
+    @ViewBuilder
+    private var iPadHeader: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("\(session.dayLabel) · \(session.startsAt)–\(session.endsAt) · \(session.venue)")
+                .font(CNFonts.readerMeta)
+                .textCase(.uppercase)
+                .tracking(0.8)
+                .foregroundStyle(.secondary)
+
+            Text(session.title)
+                .font(CNFonts.readerHeadline)
+                .foregroundStyle(CNColors.navy(for: colorScheme))
+                .lineSpacing(2)
+
+            if let primaryPresenter = session.presentations.first?.presenter,
+               !primaryPresenter.isEmpty {
+                Text(primaryPresenter)
+                    .font(.custom("New York", size: 15).italic())
+                    .foregroundStyle(CNColors.teal(for: colorScheme))
+            }
+        }
+        .padding(.bottom, 12)
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 // Header
+                if CNLayout.isPad {
+                    VStack(alignment: .leading, spacing: 10) {
+                        TypeBadge(type: session.type)
+                        iPadHeader
+                        // Pick + badges row
+                        HStack(spacing: 12) {
+                            PickButton(sessionId: session.id)
+                            MateBadges(session: session)
+                            // Session-level note button only for sessions with no presentations
+                            if session.presentations.isEmpty {
+                                Button {
+                                    showingNoteEditor = true
+                                } label: {
+                                    HStack(spacing: 4) {
+                                        Image(systemName: notesStore.hasNote(forSession: session.id) ? "note.text" : "note.text.badge.plus")
+                                            .font(.system(size: 16))
+                                        if notesStore.hasNote(forSession: session.id) {
+                                            Circle()
+                                                .fill(CNColors.teal(for: colorScheme))
+                                                .frame(width: 6, height: 6)
+                                        }
+                                    }
+                                    .foregroundStyle(CNColors.teal(for: colorScheme))
+                                    .padding(.horizontal, 10)
+                                    .padding(.vertical, 6)
+                                    .background(CNColors.surfaceSecondary(for: colorScheme))
+                                    .clipShape(Capsule())
+                                }
+                            } else if notesStore.hasAnyNote(forSession: session.id) {
+                                HStack(spacing: 4) {
+                                    Image(systemName: "note.text")
+                                        .font(.system(size: 14))
+                                    Circle()
+                                        .fill(CNColors.teal(for: colorScheme))
+                                        .frame(width: 6, height: 6)
+                                }
+                                .foregroundStyle(CNColors.teal(for: colorScheme))
+                            }
+                            Spacer()
+                        }
+                        // Conflict warning
+                        if let conflict = store.conflictingSession(for: session),
+                           store.isPicked(session.id) {
+                            ConflictBanner(conflictingTitle: conflict.title)
+                        }
+                    }
+                    .padding(.horizontal, 16)
+                } else {
                 VStack(alignment: .leading, spacing: 10) {
                     TypeBadge(type: session.type)
 
@@ -128,6 +202,7 @@ struct SessionDetailView: View {
                     }
                 }
                 .padding(.horizontal, 16)
+                } // end iPhone header
 
                 // Venue map thumbnail — tap to open full venue map
                 VenueMapThumbnail(venue: session.venue)
@@ -204,6 +279,7 @@ struct SessionDetailView: View {
                 Spacer(minLength: 40)
             }
             .padding(.top, 8)
+            .cnPadMaxWidth(CNLayout.MaxWidth.readerBody)
         }
         .sheet(isPresented: $showingNoteEditor) {
             NoteEditorView(session: session, presentation: nil)
