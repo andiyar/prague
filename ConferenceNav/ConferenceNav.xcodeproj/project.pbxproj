@@ -59,6 +59,7 @@
 		E9A3C36411D9B78F0649A269 /* DebugClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A019158E5B5CF1704C6BC448 /* DebugClock.swift */; };
 		F02B33683EDA7403622D602D /* IdiomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FEEAD240BA4BB842B437E7 /* IdiomLayout.swift */; };
 		F09E8A5A014D7C1458DF6D94 /* ContactStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8A4B544BCE2EED3C45B73 /* ContactStore.swift */; };
+		F761EC498C48462954D83DCB /* PDFExportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2194DC1A42750DDC127F1E /* PDFExportService.swift */; };
 		FE2EC69A050F1756E79C0290 /* TypeBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421665C99AF96863DB84F34 /* TypeBadge.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		27F4AA3996BD6DD8FA7299C1 /* MyDayOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayOverlay.swift; sourceTree = "<group>"; };
 		2C8C3E4F7B3B746731B2E40B /* DayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPicker.swift; sourceTree = "<group>"; };
 		2D19F6CC6B036B9A63464531 /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
+		2E2194DC1A42750DDC127F1E /* PDFExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFExportService.swift; sourceTree = "<group>"; };
 		2FE189CB9DCA5816125BA0FA /* VenueMapDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueMapDebugView.swift; sourceTree = "<group>"; };
 		3849F1C44B79277CEF99F0F2 /* MarkdownTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTheme.swift; sourceTree = "<group>"; };
 		4892D4D14C96B8ADE4E9520C /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				A019158E5B5CF1704C6BC448 /* DebugClock.swift */,
 				0EFF38970856A976CDD64DD1 /* NotesStore.swift */,
 				0CC6A211695F9F00B26E7BD4 /* NotificationService.swift */,
+				2E2194DC1A42750DDC127F1E /* PDFExportService.swift */,
 				A8EF0E69F44ED6B4CCD641FE /* PicksSyncService.swift */,
 				DCEE2D9637735FA17911238B /* SearchIndex.swift */,
 				4D394FB946D4895D815C9502 /* SketchOCRService.swift */,
@@ -364,6 +367,7 @@
 				0D7C5F8C6E837B167AE44E4D /* NoteListView.swift in Sources */,
 				82B89C76CEAEB46ED94503ED /* NotesStore.swift in Sources */,
 				BBE777061BFCC9F280661159 /* NotificationService.swift in Sources */,
+				F761EC498C48462954D83DCB /* PDFExportService.swift in Sources */,
 				E6D5620D8AED78205F25F2FF /* PeopleListView.swift in Sources */,
 				881944143EC8720B76C5F4EE /* PhotoPickerView.swift in Sources */,
 				B14984DBFFA96F178425C872 /* PickButton.swift in Sources */,
