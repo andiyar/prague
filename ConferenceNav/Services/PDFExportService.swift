@@ -2,6 +2,10 @@ import Foundation
 import WebKit
 import UIKit
 
+enum PDFExportError: Error {
+    case missingOutputURL
+}
+
 @MainActor
 final class PDFExportService: NSObject {
     enum Mode {
@@ -33,7 +37,8 @@ final class PDFExportService: NSObject {
     // MARK: - HTML construction
 
     private func buildHTML(mode: Mode, mediaURLProvider: (String) -> URL?) -> String {
-        let css = (try? String(contentsOf: Bundle.main.url(forResource: "report", withExtension: "css")!, encoding: .utf8)) ?? ""
+        let cssURL = Bundle.main.url(forResource: "report", withExtension: "css")
+        let css = cssURL.flatMap { try? String(contentsOf: $0, encoding: .utf8) } ?? ""
 
         var body = ""
 
@@ -121,6 +126,9 @@ final class PDFExportService: NSObject {
                     }
                 }
                 html += renderMarkdownBody(note.body)
+                for filename in note.photoFilenames {
+                    html += "<figure><img src=\"photos/\(filename)\"></figure>"
+                }
             }
             html += "</article>"
         }
@@ -137,6 +145,9 @@ final class PDFExportService: NSObject {
                 html += "<div class=\"presenter\">\(escapeHTML(note.presenter))</div>"
             }
             html += renderMarkdownBody(note.body)
+            for filename in note.photoFilenames {
+                html += "<figure><img src=\"photos/\(filename)\"></figure>"
+            }
             html += "</article>"
         }
         return html
@@ -232,8 +243,10 @@ extension PDFExportService.Mode {
     var allMediaFilenames: [String] {
         switch self {
         case .allNotes(let notes), .conferenceReport(_, let notes, _):
-            return notes.flatMap { $0.photoFilenames + $0.sketchFilenames.map { "sketches/\($0)" } }
-                + notes.flatMap { $0.photoFilenames.map { "photos/\($0)" } }
+            return notes.flatMap {
+                $0.photoFilenames.map { "photos/\($0)" }
+                    + $0.sketchFilenames.map { "sketches/\($0)" }
+            }
         }
     }
 }
@@ -241,7 +254,11 @@ extension PDFExportService.Mode {
 extension PDFExportService: WKNavigationDelegate {
     nonisolated func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         Task { @MainActor in
-            guard let outputURL = self.outputURL else { return }
+            guard let outputURL = self.outputURL else {
+                self.continuation?.resume(throwing: PDFExportError.missingOutputURL)
+                self.continuation = nil
+                return
+            }
             try? await Task.sleep(nanoseconds: 600_000_000)
             let config = WKPDFConfiguration()
             webView.createPDF(configuration: config) { result in
