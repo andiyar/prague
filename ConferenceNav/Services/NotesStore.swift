@@ -179,7 +179,7 @@ class NotesStore {
 
     /// Combined media filenames (photos + sketches) for export
     var allMediaFilenames: [String] {
-        notes.flatMap { $0.photoFilenames + $0.sketchFilenames }
+        notesWithContent.flatMap { $0.photoFilenames + $0.sketchFilenames }
     }
 
     func sketchOrPhotoURL(filename: String) -> URL? {
@@ -379,6 +379,10 @@ class NotesStore {
             for photo in note.photoFilenames {
                 let photoURL = self.photosDirectory().appendingPathComponent(photo)
                 try? FileManager.default.removeItem(at: photoURL)
+            }
+
+            for sketch in note.sketchFilenames {
+                self.deleteSketch(filename: sketch)
             }
         }
     }
