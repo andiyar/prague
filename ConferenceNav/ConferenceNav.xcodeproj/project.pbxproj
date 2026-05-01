@@ -32,6 +32,7 @@
 		8DE366B071BED80669662FAD /* VenueMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5160D738B676A8A49EAC5F73 /* VenueMap.swift */; };
 		8E114903E66E59DF59AEEADA /* VenueMapThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F48A8EA3472703F679BEBE /* VenueMapThumbnail.swift */; };
 		90169BCAE57F9F98E3152AA2 /* ConferenceNavApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D132BE6002F392FA73C410 /* ConferenceNavApp.swift */; };
+		998F9A46BE99AA2D76B3AA3D /* DotGridBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192D2FDA16AB8CAB211B339 /* DotGridBackgroundView.swift */; };
 		9C2EAB7CA1856210D60C2BE2 /* ContactFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CB20D2EA6F65D8A36A1DE1 /* ContactFormView.swift */; };
 		A167A4C4FD3A61A98E76FE35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAEF12E4AE1A856CE79051D3 /* Assets.xcassets */; };
 		A2089B62FC3F005BAA5C7978 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 681E8D0B10A4F3533B42B01F /* MarkdownUI */; };
@@ -71,6 +72,7 @@
 		4892D4D14C96B8ADE4E9520C /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		5160D738B676A8A49EAC5F73 /* VenueMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueMap.swift; sourceTree = "<group>"; };
 		6AB3DF6E94C2B441E064F7FA /* VenueMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueMapView.swift; sourceTree = "<group>"; };
+		7192D2FDA16AB8CAB211B339 /* DotGridBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotGridBackgroundView.swift; sourceTree = "<group>"; };
 		75F8DA2243F9539A0DABC1B9 /* VenueMapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueMapPin.swift; sourceTree = "<group>"; };
 		806773D59A447642DBC5605F /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		81CB20D2EA6F65D8A36A1DE1 /* ContactFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormView.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				CCF438AA89D0AB0473C3C12C /* SplashScreen.swift */,
 				F33FA74F231592E2E84267B9 /* UserPickerView.swift */,
 				8D4C237B668DECF2C9C8B182 /* Components */,
+				601853706C41AC48C13F6EC6 /* SketchEditor */,
 				CE59C13665EE5BE7F612634F /* VenueMap */,
 			);
 			path = Views;
@@ -155,6 +158,14 @@
 				CB18E6E703765036469FAF4A /* ConferenceNav.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		601853706C41AC48C13F6EC6 /* SketchEditor */ = {
+			isa = PBXGroup;
+			children = (
+				7192D2FDA16AB8CAB211B339 /* DotGridBackgroundView.swift */,
+			);
+			path = SketchEditor;
 			sourceTree = "<group>";
 		};
 		70E1C00BE13825905EF0EC66 /* Services */ = {
@@ -318,6 +329,7 @@
 				F09E8A5A014D7C1458DF6D94 /* ContactStore.swift in Sources */,
 				140AACDEEBBA289CA46A9B7A /* DayPicker.swift in Sources */,
 				E9A3C36411D9B78F0649A269 /* DebugClock.swift in Sources */,
+				998F9A46BE99AA2D76B3AA3D /* DotGridBackgroundView.swift in Sources */,
 				4BF364BC5F678097A00EF423 /* ExportView.swift in Sources */,
 				1C20602467A99573E1BA3AAD /* ExtrasView.swift in Sources */,
 				E624B8B3765D8A8F8A1EBD28 /* FilterChips.swift in Sources */,
