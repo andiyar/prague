@@ -1,3 +1,4 @@
+import PencilKit
 import SwiftUI
 import UIKit
 
@@ -140,6 +141,51 @@ class NotesStore {
         notesWithContent.flatMap(\.photoFilenames)
     }
 
+    // MARK: - Sketch CRUD
+
+    /// Saves a sketch — both the editable PKDrawing data and a rendered PNG.
+    /// Returns the relative filename of the PNG (for embedding in note body).
+    func saveSketch(drawing: PKDrawing, image: UIImage) -> String? {
+        let stem = UUID().uuidString
+        let pngName = "\(stem).png"
+        let drawingName = "\(stem).drawing"
+        let dir = sketchesDirectory()
+
+        do {
+            try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+            if let pngData = image.pngData() {
+                try pngData.write(to: dir.appendingPathComponent(pngName))
+            }
+            try drawing.dataRepresentation().write(to: dir.appendingPathComponent(drawingName))
+            return pngName
+        } catch {
+            print("NotesStore: Failed to save sketch: \(error)")
+            return nil
+        }
+    }
+
+    func loadSketchDrawing(filename pngFilename: String) -> PKDrawing? {
+        guard let url = sketchDrawingURL(forImageFilename: pngFilename) else { return nil }
+        guard let data = try? Data(contentsOf: url) else { return nil }
+        return try? PKDrawing(data: data)
+    }
+
+    func deleteSketch(filename pngFilename: String) {
+        let dir = sketchesDirectory()
+        let stem = (pngFilename as NSString).deletingPathExtension
+        try? FileManager.default.removeItem(at: dir.appendingPathComponent(pngFilename))
+        try? FileManager.default.removeItem(at: dir.appendingPathComponent("\(stem).drawing"))
+    }
+
+    /// Combined media filenames (photos + sketches) for export
+    var allMediaFilenames: [String] {
+        notes.flatMap { $0.photoFilenames + $0.sketchFilenames }
+    }
+
+    func sketchOrPhotoURL(filename: String) -> URL? {
+        photoURL(filename: filename) ?? sketchURL(filename: filename)
+    }
+
     /// All notes sorted by session date/time, then presentation
     var sortedNotes: [SessionNote] {
         notes.sorted { a, b in
@@ -248,6 +294,22 @@ class NotesStore {
     private func photosDirectory() -> URL {
         let base = containerURL()
         return base.appendingPathComponent("photos")
+    }
+
+    private func sketchesDirectory() -> URL {
+        let base = containerURL()
+        return base.appendingPathComponent("sketches")
+    }
+
+    func sketchURL(filename: String) -> URL? {
+        let url = sketchesDirectory().appendingPathComponent(filename)
+        return FileManager.default.fileExists(atPath: url.path) ? url : nil
+    }
+
+    func sketchDrawingURL(forImageFilename pngFilename: String) -> URL? {
+        let stem = (pngFilename as NSString).deletingPathExtension
+        let url = sketchesDirectory().appendingPathComponent("\(stem).drawing")
+        return FileManager.default.fileExists(atPath: url.path) ? url : nil
     }
 
     /// Returns iCloud Drive Documents URL if available, otherwise local Documents
