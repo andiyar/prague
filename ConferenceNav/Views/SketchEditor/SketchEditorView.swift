@@ -37,7 +37,7 @@ struct SketchEditorView: View {
             )
             ZStack {
                 DotGridBackground()
-                CanvasContainer(canvas: $canvasView, drawing: $drawing, tool: $tool)
+                CanvasContainer(canvas: canvasView, drawing: $drawing, tool: $tool)
             }
         }
         .background(Color(red: 0.98, green: 0.98, blue: 0.97))
@@ -59,7 +59,18 @@ struct SketchEditorView: View {
                 .truncationMode(.tail)
             Spacer()
             Button {
-                let image = canvasView.drawing.image(from: canvasView.bounds, scale: UIScreen.main.scale)
+                let renderRect: CGRect
+                if !canvasView.bounds.isEmpty {
+                    renderRect = canvasView.bounds
+                } else if !canvasView.drawing.bounds.isEmpty {
+                    renderRect = canvasView.drawing.bounds
+                } else {
+                    renderRect = CGRect(x: 0, y: 0, width: 768, height: 1024)
+                }
+                let scale = canvasView.traitCollection.displayScale > 0
+                    ? canvasView.traitCollection.displayScale
+                    : 2.0
+                let image = canvasView.drawing.image(from: renderRect, scale: scale)
                 onSave(canvasView.drawing, image)
             } label: {
                 Text("Save").fontWeight(.semibold).foregroundStyle(.white)
@@ -82,7 +93,7 @@ struct SketchEditorView: View {
 }
 
 private struct CanvasContainer: UIViewRepresentable {
-    @Binding var canvas: PKCanvasView
+    let canvas: PKCanvasView
     @Binding var drawing: PKDrawing
     @Binding var tool: PKTool
 
