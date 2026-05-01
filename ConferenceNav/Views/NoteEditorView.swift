@@ -48,9 +48,10 @@ struct NoteEditorView: View {
                     previewMode
                 } else {
                     editMode
+                        .cnPadMaxWidth(CNLayout.MaxWidth.noteEditor)
                 }
 
-                if !photoFilenames.isEmpty {
+                if !photoFilenames.isEmpty && !CNLayout.isPad {
                     photoStrip
                 }
 
@@ -77,6 +78,7 @@ struct NoteEditorView: View {
                             }
                         }
                     )
+                    .cnPadMaxWidth(CNLayout.MaxWidth.noteEditor)
                 }
             }
             .background(CNColors.background(for: colorScheme))
@@ -351,14 +353,34 @@ struct NoteEditorView: View {
         let imgRef = "![sketch](sketches/\(filename))"
         guard let range = body.range(of: imgRef) else { return body }
         let afterImage = body[range.upperBound...]
-        if let nextDoubleNewline = afterImage.range(of: "\n\n") {
-            let captionEnd = afterImage[nextDoubleNewline.upperBound...].range(of: "\n\n")?.lowerBound
-                ?? afterImage.endIndex
-            let prefix = body[..<range.upperBound]
-            let suffix = afterImage[captionEnd...]
+
+        // Find the paragraph immediately following the image
+        guard let firstParagraphStart = afterImage.range(of: "\n\n") else {
+            // No paragraph after image at all — append a fresh transcription
+            return body + "\n\n" + text
+        }
+
+        let paragraphContentStart = firstParagraphStart.upperBound
+        let nextParagraphBreak = afterImage[paragraphContentStart...].range(of: "\n\n")
+        let paragraphEnd = nextParagraphBreak?.lowerBound ?? afterImage.endIndex
+        let paragraphSubstring = afterImage[paragraphContentStart..<paragraphEnd]
+        let paragraphTrimmed = paragraphSubstring.trimmingCharacters(in: .whitespaces)
+
+        // If the next paragraph is structural (another image, a heading, or a list), don't replace it.
+        // Insert a new transcription paragraph BEFORE the structural element instead.
+        let isStructural = paragraphTrimmed.hasPrefix("![")
+            || paragraphTrimmed.hasPrefix("#")
+            || paragraphTrimmed.hasPrefix("- ")
+            || paragraphTrimmed.hasPrefix("* ")
+
+        let prefix = body[..<range.upperBound]
+        if isStructural {
+            let suffix = afterImage  // include the structural paragraph and everything after
+            return "\(prefix)\n\n\(text)\(suffix)"
+        } else {
+            let suffix = afterImage[paragraphEnd...]
             return "\(prefix)\n\n\(text)\(suffix)"
         }
-        return body + "\n\n" + text
     }
 
     private func appendTranscriptionAfterImage(filename: String, body: String, with text: String) -> String {
@@ -371,7 +393,7 @@ struct NoteEditorView: View {
             let prefix = body[..<range.upperBound]
             let middle = afterImage[..<insertionIndex]
             let suffix = afterImage[insertionIndex...]
-            return "\(prefix)\(middle) \(text)\(suffix)"
+            return "\(prefix)\(middle)\n\n\(text)\(suffix)"
         }
         return body + "\n\n" + text
     }

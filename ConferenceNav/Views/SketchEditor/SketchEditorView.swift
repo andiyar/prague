@@ -20,6 +20,7 @@ struct SketchEditorView: View {
     @State private var selectedColor: Color = Color(red: 0, green: 0.15, blue: 0.39)
     @State private var canvasView = PKCanvasView()
     @State private var showOCRPrompt = false
+    @State private var isSaving = false
     private var isReedit: Bool { !initialDrawing.strokes.isEmpty }
 
     init(
@@ -59,9 +60,9 @@ struct SketchEditorView: View {
             isPresented: $showOCRPrompt,
             titleVisibility: .visible
         ) {
-            Button("Replace existing transcription") { save(decision: .replace) }
-            Button("Append new transcription") { save(decision: .append) }
-            Button("Skip OCR (keep transcription as-is)") { save(decision: .skip) }
+            Button("Replace existing transcription") { isSaving = true; save(decision: .replace) }
+            Button("Append new transcription") { isSaving = true; save(decision: .append) }
+            Button("Skip OCR (keep transcription as-is)") { isSaving = true; save(decision: .skip) }
             Button("Cancel", role: .cancel) {}
         }
     }
@@ -81,11 +82,13 @@ struct SketchEditorView: View {
                 if isReedit {
                     showOCRPrompt = true
                 } else {
+                    isSaving = true
                     save(decision: .none)
                 }
             } label: {
                 Text("Save").fontWeight(.semibold).foregroundStyle(.white)
             }
+            .disabled(isSaving)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
