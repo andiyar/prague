@@ -79,6 +79,26 @@ struct CNFonts {
     static let small = sans(11)
     static let time = mono(13, weight: .semibold)
     static let timeSmall = mono(11)
+
+    // iPad-tuned variants — fall back to phone tokens on iPhone
+    static var readerHeadline: Font {
+        CNLayout.isPad
+            ? .custom("New York", size: 32).weight(.medium)
+            : title
+    }
+    static var readerBody: Font {
+        CNLayout.isPad
+            ? .custom("New York", size: 18)
+            : body
+    }
+    static var readerCaption: Font {
+        CNLayout.isPad
+            ? .custom("New York", size: 13).italic()
+            : caption.italic()
+    }
+    static var readerMeta: Font {
+        .system(size: CNLayout.isPad ? 11 : 10, weight: .regular, design: .default)
+    }
 }
 
 // MARK: - Card Style

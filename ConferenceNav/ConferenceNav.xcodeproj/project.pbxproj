@@ -50,6 +50,7 @@
 		E633ABB8D16A7C3CBCEFEF26 /* MyPicksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4FBA25A56952993867E09 /* MyPicksView.swift */; };
 		E6D5620D8AED78205F25F2FF /* PeopleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D68B1D6DCC148013B6C23 /* PeopleListView.swift */; };
 		E9A3C36411D9B78F0649A269 /* DebugClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A019158E5B5CF1704C6BC448 /* DebugClock.swift */; };
+		F02B33683EDA7403622D602D /* IdiomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FEEAD240BA4BB842B437E7 /* IdiomLayout.swift */; };
 		F09E8A5A014D7C1458DF6D94 /* ContactStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8A4B544BCE2EED3C45B73 /* ContactStore.swift */; };
 		FE2EC69A050F1756E79C0290 /* TypeBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421665C99AF96863DB84F34 /* TypeBadge.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,7 @@
 		CB18E6E703765036469FAF4A /* ConferenceNav.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ConferenceNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF438AA89D0AB0473C3C12C /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		D1D7DDB99F4720F1690CC658 /* ExtrasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtrasView.swift; sourceTree = "<group>"; };
+		D4FEEAD240BA4BB842B437E7 /* IdiomLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdiomLayout.swift; sourceTree = "<group>"; };
 		D7DCCE05D03ED77F14D5E700 /* ConferenceDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceDesign.swift; sourceTree = "<group>"; };
 		D818A856FBA8AD3E835B6C9C /* ConflictBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictBanner.swift; sourceTree = "<group>"; };
 		DBB78744B1F1A19FB7595441 /* ConferenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceStore.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				D7DCCE05D03ED77F14D5E700 /* ConferenceDesign.swift */,
+				D4FEEAD240BA4BB842B437E7 /* IdiomLayout.swift */,
 				3849F1C44B79277CEF99F0F2 /* MarkdownTheme.swift */,
 			);
 			path = Design;
@@ -318,6 +321,7 @@
 				4BF364BC5F678097A00EF423 /* ExportView.swift in Sources */,
 				1C20602467A99573E1BA3AAD /* ExtrasView.swift in Sources */,
 				E624B8B3765D8A8F8A1EBD28 /* FilterChips.swift in Sources */,
+				F02B33683EDA7403622D602D /* IdiomLayout.swift in Sources */,
 				637D5707861F36BA9E47F10D /* MainTabView.swift in Sources */,
 				3B365F0C8B01AC46C26358C0 /* MarkdownTheme.swift in Sources */,
 				24708B210E80D772D5A46030 /* MateBadges.swift in Sources */,
