@@ -75,7 +75,8 @@ struct ExportView: View {
                             allSessions: store.sessions
                         ),
                         filename: "EAPC-2026-Conference-Report.md",
-                        photoFilenames: notesStore.allPhotoFilenames
+                        photoFilenames: notesStore.allPhotoFilenames,
+                        sketchFilenames: notesStore.notesWithContent.flatMap(\.sketchFilenames)
                     )
                 }
 
@@ -89,7 +90,8 @@ struct ExportView: View {
                     exportWithPhotos(
                         content: exportAllNotes(),
                         filename: "EAPC-2026-Notes.md",
-                        photoFilenames: notesStore.allPhotoFilenames
+                        photoFilenames: notesStore.allPhotoFilenames,
+                        sketchFilenames: notesStore.notesWithContent.flatMap(\.sketchFilenames)
                     )
                 }
 
@@ -182,7 +184,12 @@ struct ExportView: View {
         sharePayload = SharePayload(items: [fileURL])
     }
 
-    private func exportWithPhotos(content: String, filename: String, photoFilenames: [String]) {
+    private func exportWithPhotos(
+        content: String,
+        filename: String,
+        photoFilenames: [String],
+        sketchFilenames: [String] = []
+    ) {
         // Create a unique temp directory for this export
         let exportDir = FileManager.default.temporaryDirectory
             .appendingPathComponent("EAPC-Export-\(UUID().uuidString.prefix(8))")
@@ -224,6 +231,19 @@ struct ExportView: View {
                 let destURL = exportDir.appendingPathComponent(exportName)
                 try? FileManager.default.copyItem(at: sourceURL, to: destURL)
                 items.append(destURL)
+            }
+        }
+
+        // Stage sketches into a sketches/ subdirectory matching the Markdown body's references
+        if !sketchFilenames.isEmpty {
+            let sketchesDir = exportDir.appendingPathComponent("sketches")
+            try? FileManager.default.createDirectory(at: sketchesDir, withIntermediateDirectories: true)
+            for sketchFilename in sketchFilenames {
+                if let sourceURL = notesStore.sketchURL(filename: sketchFilename) {
+                    let destURL = sketchesDir.appendingPathComponent(sketchFilename)
+                    try? FileManager.default.copyItem(at: sourceURL, to: destURL)
+                    items.append(destURL)
+                }
             }
         }
 

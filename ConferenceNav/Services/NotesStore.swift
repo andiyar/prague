@@ -210,9 +210,9 @@ class NotesStore {
     func exportConferenceReport(pickedSessions: [Session], allSessions: [Session]) -> String {
         let dates = ["2026-05-14", "2026-05-15", "2026-05-16"]
         let dayLabels = [
-            "2026-05-14": "Wednesday, 14 May",
-            "2026-05-15": "Thursday, 15 May",
-            "2026-05-16": "Friday, 16 May",
+            "2026-05-14": "Thursday, 14 May",
+            "2026-05-15": "Friday, 15 May",
+            "2026-05-16": "Saturday, 16 May",
         ]
 
         // Merge picked sessions with any sessions that have notes
@@ -258,7 +258,9 @@ class NotesStore {
 
                 // Presentation-level notes
                 let presNotes = notes.filter { $0.sessionId == session.id && $0.presentationId != nil }
-                    .filter { !$0.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !$0.photoFilenames.isEmpty }
+                    .filter { !$0.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                        || !$0.photoFilenames.isEmpty
+                        || !$0.sketchFilenames.isEmpty }
 
                 if !presNotes.isEmpty {
                     for pNote in presNotes {
