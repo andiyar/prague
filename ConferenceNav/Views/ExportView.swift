@@ -9,6 +9,7 @@ struct ExportView: View {
     @State private var sharePayload: SharePayload?
     @State private var pdfExporter = PDFExportService()
     @State private var isExportingPDF = false
+    @State private var pdfError: String?
     @AppStorage("conferenceNavUser") private var userId: String = "ben"
 
     var body: some View {
@@ -138,6 +139,11 @@ struct ExportView: View {
                 }
             }
         }
+        .alert("PDF Export Failed", isPresented: .constant(pdfError != nil), presenting: pdfError) { _ in
+            Button("OK") { pdfError = nil }
+        } message: { msg in
+            Text(msg)
+        }
     }
 
     private func exportRow(
@@ -225,6 +231,7 @@ struct ExportView: View {
     }
 
     private func exportPDF(mode: PDFExportService.Mode) {
+        guard !isExportingPDF else { return }
         isExportingPDF = true
         Task {
             defer { isExportingPDF = false }
@@ -247,6 +254,9 @@ struct ExportView: View {
                 }
             } catch {
                 print("PDF export failed: \(error)")
+                await MainActor.run {
+                    pdfError = error.localizedDescription
+                }
             }
         }
     }
