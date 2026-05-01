@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0926B92629E00D96362CFCC4 /* SketchOCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D394FB946D4895D815C9502 /* SketchOCRService.swift */; };
 		0B0BA07E1BAF1E0CF280E1F3 /* PicksSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EF0E69F44ED6B4CCD641FE /* PicksSyncService.swift */; };
 		0D7C5F8C6E837B167AE44E4D /* NoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF287F6BF372F9BAC05CC878 /* NoteListView.swift */; };
 		140AACDEEBBA289CA46A9B7A /* DayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C3E4F7B3B746731B2E40B /* DayPicker.swift */; };
@@ -72,6 +73,7 @@
 		2FE189CB9DCA5816125BA0FA /* VenueMapDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueMapDebugView.swift; sourceTree = "<group>"; };
 		3849F1C44B79277CEF99F0F2 /* MarkdownTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTheme.swift; sourceTree = "<group>"; };
 		4892D4D14C96B8ADE4E9520C /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
+		4D394FB946D4895D815C9502 /* SketchOCRService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchOCRService.swift; sourceTree = "<group>"; };
 		5160D738B676A8A49EAC5F73 /* VenueMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueMap.swift; sourceTree = "<group>"; };
 		6AB3DF6E94C2B441E064F7FA /* VenueMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueMapView.swift; sourceTree = "<group>"; };
 		7192D2FDA16AB8CAB211B339 /* DotGridBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotGridBackgroundView.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				0CC6A211695F9F00B26E7BD4 /* NotificationService.swift */,
 				A8EF0E69F44ED6B4CCD641FE /* PicksSyncService.swift */,
 				DCEE2D9637735FA17911238B /* SearchIndex.swift */,
+				4D394FB946D4895D815C9502 /* SketchOCRService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				AB5F1B4CF81ADC74FF3AE9FF /* SessionDetailView.swift in Sources */,
 				3E2383F522640C3A7D3D0E32 /* SessionNote.swift in Sources */,
 				5D2FA24D52912819DBAC7B99 /* SketchEditorView.swift in Sources */,
+				0926B92629E00D96362CFCC4 /* SketchOCRService.swift in Sources */,
 				684BF2AC370B2123A7054790 /* SketchToolbar.swift in Sources */,
 				4D2D19E23D7C95A78A4AAD65 /* SplashScreen.swift in Sources */,
 				FE2EC69A050F1756E79C0290 /* TypeBadge.swift in Sources */,
