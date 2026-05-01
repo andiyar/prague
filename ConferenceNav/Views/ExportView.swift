@@ -7,6 +7,9 @@ struct ExportView: View {
     @Environment(\.colorScheme) var colorScheme
 
     @State private var sharePayload: SharePayload?
+    @State private var pdfExporter = PDFExportService()
+    @State private var isExportingPDF = false
+    @AppStorage("conferenceNavUser") private var userId: String = "ben"
 
     var body: some View {
         List {
@@ -88,6 +91,30 @@ struct ExportView: View {
                         photoFilenames: notesStore.allPhotoFilenames
                     )
                 }
+
+                exportRow(
+                    title: "Conference Report (PDF)",
+                    subtitle: "Picks + notes · paginated · TOC",
+                    icon: "doc.fill",
+                    iconColor: CNColors.navy(for: colorScheme),
+                    disabled: store.myPickedSessions.isEmpty && notesStore.notesWithContent.isEmpty
+                ) {
+                    exportPDF(mode: .conferenceReport(
+                        picks: store.myPickedSessions,
+                        notes: notesStore.notesWithContent,
+                        userId: userId
+                    ))
+                }
+
+                exportRow(
+                    title: "All Notes (PDF)",
+                    subtitle: "\(notesStore.notesWithContent.count) notes",
+                    icon: "doc.text.fill",
+                    iconColor: CNColors.teal(for: colorScheme),
+                    disabled: notesStore.notesWithContent.isEmpty
+                ) {
+                    exportPDF(mode: .allNotes(notes: notesStore.notesWithContent))
+                }
             } header: {
                 Text("Notes & Report")
             }
@@ -96,6 +123,20 @@ struct ExportView: View {
         .navigationTitle("Export")
         .sheet(item: $sharePayload) { payload in
             ShareSheet(items: payload.items)
+        }
+        .overlay {
+            if isExportingPDF {
+                ZStack {
+                    Color.black.opacity(0.3).ignoresSafeArea()
+                    VStack(spacing: 12) {
+                        ProgressView()
+                        Text("Building PDF…").font(.caption).foregroundStyle(.white)
+                    }
+                    .padding(20)
+                    .background(.ultraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
+            }
         }
     }
 
@@ -181,6 +222,33 @@ struct ExportView: View {
         }
 
         sharePayload = SharePayload(items: items)
+    }
+
+    private func exportPDF(mode: PDFExportService.Mode) {
+        isExportingPDF = true
+        Task {
+            defer { isExportingPDF = false }
+            do {
+                let url = try await pdfExporter.export(mode: mode) { filename in
+                    // The filename arrives as "photos/X.jpg" or "sketches/Y.png"
+                    if filename.hasPrefix("photos/") {
+                        let bare = String(filename.dropFirst("photos/".count))
+                        return notesStore.photoURL(filename: bare)
+                    } else if filename.hasPrefix("sketches/") {
+                        let bare = String(filename.dropFirst("sketches/".count))
+                        return notesStore.sketchURL(filename: bare)
+                    } else {
+                        // Fallback: try both
+                        return notesStore.sketchOrPhotoURL(filename: filename)
+                    }
+                }
+                await MainActor.run {
+                    sharePayload = SharePayload(items: [url])
+                }
+            } catch {
+                print("PDF export failed: \(error)")
+            }
+        }
     }
 
     private func exportAllNotes() -> String {
