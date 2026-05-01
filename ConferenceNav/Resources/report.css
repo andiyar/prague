@@ -1,0 +1,98 @@
+@page {
+    size: A4;
+    margin: 18mm;
+    @bottom-right { content: counter(page); font-family: -apple-system, sans-serif; font-size: 9pt; color: #888; }
+}
+
+* { box-sizing: border-box; }
+body {
+    font-family: "New York", "Times New Roman", Georgia, serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #2A2A35;
+    margin: 0;
+}
+
+.cover {
+    text-align: center;
+    page-break-after: always;
+    padding-top: 40mm;
+}
+.cover h1 {
+    font-size: 32pt;
+    color: #002664;
+    margin-bottom: 16pt;
+    font-weight: 500;
+}
+.cover .author { font-size: 14pt; color: #2A2A35; margin-bottom: 8pt; }
+.cover .dates { font-size: 12pt; color: #1B6B7D; margin-bottom: 24pt; }
+.cover .stats { font-size: 11pt; color: #888; }
+.cover .generated {
+    color: #C9A227;
+    font-size: 9pt;
+    font-style: italic;
+    margin-top: 32pt;
+}
+
+.toc { page-break-after: always; }
+.toc h2 { color: #002664; font-size: 22pt; margin-bottom: 16pt; }
+.toc ol { list-style: none; padding-left: 0; }
+.toc li { margin-bottom: 6pt; font-size: 11pt; }
+.toc a { color: #002664; text-decoration: none; }
+.toc .day { font-weight: 600; margin-top: 12pt; color: #1B6B7D; }
+
+.session { page-break-before: always; }
+.session h2 {
+    color: #002664;
+    font-size: 18pt;
+    margin-bottom: 4pt;
+    line-height: 1.18;
+}
+.session .meta {
+    text-transform: uppercase;
+    font-size: 9pt;
+    letter-spacing: 0.06em;
+    color: #888;
+    font-family: -apple-system, sans-serif;
+    margin-bottom: 8pt;
+}
+.session .presenter {
+    color: #1B6B7D;
+    font-style: italic;
+    font-size: 11pt;
+    margin-bottom: 12pt;
+}
+
+img {
+    max-width: 100%;
+    max-height: 70vh;
+    border: 0.5pt solid #ddd;
+    border-radius: 4pt;
+    margin: 8pt 0 4pt;
+    display: block;
+}
+figure { margin: 12pt 0; }
+figcaption {
+    font-style: italic;
+    color: #888;
+    font-size: 9pt;
+    text-align: center;
+    margin-top: 4pt;
+    font-family: -apple-system, sans-serif;
+}
+
+h1, h2, h3, h4 { color: #002664; font-weight: 500; }
+h3 { font-size: 13pt; margin-top: 14pt; margin-bottom: 4pt; }
+
+p { margin: 0 0 8pt 0; }
+ul, ol { margin: 0 0 8pt 1.2em; padding-left: 0.5em; }
+li { margin-bottom: 3pt; }
+
+a { color: #1B6B7D; }
+em { font-style: italic; }
+strong { font-weight: 600; }
+code { font-family: "SF Mono", monospace; font-size: 10pt; background: #f4f1eb; padding: 1pt 3pt; }
+
+@media (prefers-color-scheme: dark) {
+    /* PDF rendering ignores prefers-color-scheme, so no dark mode needed in PDF output */
+}

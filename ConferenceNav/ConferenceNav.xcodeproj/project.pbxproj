@@ -38,6 +38,7 @@
 		90169BCAE57F9F98E3152AA2 /* ConferenceNavApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D132BE6002F392FA73C410 /* ConferenceNavApp.swift */; };
 		998F9A46BE99AA2D76B3AA3D /* DotGridBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192D2FDA16AB8CAB211B339 /* DotGridBackgroundView.swift */; };
 		9C2EAB7CA1856210D60C2BE2 /* ContactFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CB20D2EA6F65D8A36A1DE1 /* ContactFormView.swift */; };
+		A02D97A1BA18A515D2BD5D7E /* report.css in Resources */ = {isa = PBXBuildFile; fileRef = 890208330CCC517E6FDB059B /* report.css */; };
 		A167A4C4FD3A61A98E76FE35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAEF12E4AE1A856CE79051D3 /* Assets.xcassets */; };
 		A2089B62FC3F005BAA5C7978 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 681E8D0B10A4F3533B42B01F /* MarkdownUI */; };
 		A50036AB1B7ACEDE553E2381 /* ConferenceDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DCCE05D03ED77F14D5E700 /* ConferenceDesign.swift */; };
@@ -84,6 +85,7 @@
 		81CB20D2EA6F65D8A36A1DE1 /* ContactFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormView.swift; sourceTree = "<group>"; };
 		8421665C99AF96863DB84F34 /* TypeBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeBadge.swift; sourceTree = "<group>"; };
 		88CDFF2C0C7C27530C2DEAF0 /* SketchToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchToolbar.swift; sourceTree = "<group>"; };
+		890208330CCC517E6FDB059B /* report.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = report.css; sourceTree = "<group>"; };
 		8BBFF9EBEC0A1C303429029A /* MateBadges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MateBadges.swift; sourceTree = "<group>"; };
 		8E10FF67314AB7E35816A9D8 /* MediaStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaStrip.swift; sourceTree = "<group>"; };
 		905DAB7858468A4F9BB51832 /* PickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickButton.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				F4FAA964607147AFD06F8EE2 /* programme.json */,
+				890208330CCC517E6FDB059B /* report.css */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 			files = (
 				A167A4C4FD3A61A98E76FE35 /* Assets.xcassets in Resources */,
 				41998527D364FEEB64034E39 /* programme.json in Resources */,
+				A02D97A1BA18A515D2BD5D7E /* report.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
