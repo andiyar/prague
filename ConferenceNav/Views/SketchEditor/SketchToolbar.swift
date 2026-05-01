@@ -21,6 +21,15 @@ enum SketchToolKind: Hashable {
         case .eraser: return "eraser.fill"
         }
     }
+
+    var accessibilityLabel: String {
+        switch self {
+        case .pen: return "Pen"
+        case .pencil: return "Pencil"
+        case .marker: return "Marker"
+        case .eraser: return "Eraser"
+        }
+    }
 }
 
 struct SketchToolbar: View {
@@ -56,6 +65,7 @@ struct SketchToolbar: View {
                     .overlay(Circle().stroke(Color.white.opacity(0.4), lineWidth: 1))
                     .padding(6)
             }
+            .accessibilityLabel("Colour picker")
             .popover(isPresented: $showingColorPalette) {
                 paletteView()
                     .presentationCompactAdaptation(.popover)
@@ -69,16 +79,31 @@ struct SketchToolbar: View {
                     .foregroundStyle(.white)
                     .padding(8)
             }
+            .accessibilityLabel("Undo")
+
             Button(action: onRedo) {
                 Image(systemName: "arrow.uturn.forward")
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundStyle(.white)
                     .padding(8)
             }
+            .accessibilityLabel("Redo")
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 6)
         .background(Color(red: 0.0, green: 0.10, blue: 0.27))
+    }
+
+    private func colorName(_ color: Color) -> String {
+        if color == palette[0] { return "Navy" }
+        if color == palette[1] { return "Red" }
+        if color == palette[2] { return "Gold" }
+        if color == palette[3] { return "Teal" }
+        if color == palette[4] { return "Black" }
+        if color == palette[5] { return "Grey" }
+        if color == palette[6] { return "Purple" }
+        if color == palette[7] { return "Green" }
+        return "Custom colour"
     }
 
     @ViewBuilder
@@ -94,6 +119,8 @@ struct SketchToolbar: View {
                         .fill(isActive ? Color(red: 0.79, green: 0.64, blue: 0.16) : Color.white.opacity(0.08))
                 )
         }
+        .accessibilityLabel(kind.accessibilityLabel)
+        .accessibilityAddTraits(isActive ? .isSelected : [])
     }
 
     private func paletteView() -> some View {
@@ -108,6 +135,7 @@ struct SketchToolbar: View {
                         .frame(width: 32, height: 32)
                         .overlay(Circle().stroke(Color.gray.opacity(0.3), lineWidth: 1))
                 }
+                .accessibilityLabel(colorName(color))
             }
         }
         .padding(12)
