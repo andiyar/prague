@@ -1,5 +1,40 @@
 import MarkdownUI
 import SwiftUI
+import UIKit
+
+/// Resolves relative image paths in note bodies (e.g. `sketches/abc.png`,
+/// `photos/xyz.jpg`) to local files in the iCloud Drive notes container.
+/// Without this, MarkdownUI's default provider sends relative URLs through
+/// URLSession and they fail to load — sketches would render as empty space
+/// in the in-app Preview.
+struct LocalMediaImageProvider: ImageProvider {
+    let notesStore: NotesStore
+
+    @ViewBuilder
+    func makeImage(url: URL?) -> some View {
+        if let url, let local = localFileURL(for: url),
+           let data = try? Data(contentsOf: local),
+           let uiImage = UIImage(data: data) {
+            Image(uiImage: uiImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(maxWidth: .infinity)
+        } else {
+            EmptyView()
+        }
+    }
+
+    private func localFileURL(for url: URL) -> URL? {
+        let raw = url.absoluteString.removingPercentEncoding ?? url.absoluteString
+        if raw.hasPrefix("sketches/") {
+            return notesStore.sketchURL(filename: String(raw.dropFirst("sketches/".count)))
+        }
+        if raw.hasPrefix("photos/") {
+            return notesStore.photoURL(filename: String(raw.dropFirst("photos/".count)))
+        }
+        return nil
+    }
+}
 
 extension Theme {
     /// Conference-themed Markdown rendering

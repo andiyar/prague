@@ -104,6 +104,7 @@ struct ExportView: View {
                 ) {
                     exportPDF(mode: .conferenceReport(
                         picks: store.myPickedSessions,
+                        allSessions: store.sessions,
                         notes: notesStore.notesWithContent,
                         userId: userId
                     ))
@@ -195,8 +196,10 @@ struct ExportView: View {
             .appendingPathComponent("EAPC-Export-\(UUID().uuidString.prefix(8))")
         try? FileManager.default.createDirectory(at: exportDir, withIntermediateDirectories: true)
 
-        // Build a mapping from internal filename -> readable export name
+        // Build a mapping from internal filename -> readable export name.
+        // Notes with similar slugged titles can collide, so dedupe by suffix.
         var renameMap: [String: String] = [:]
+        var usedNames = Set<String>()
         for note in notesStore.notesWithContent {
             for (i, photoFilename) in note.photoFilenames.enumerated() {
                 let baseName = note.presentationTitle.isEmpty ? note.sessionTitle : note.presentationTitle
@@ -208,7 +211,14 @@ struct ExportView: View {
                     .lowercased()
                 let suffix = note.photoFilenames.count > 1 ? "-\(i + 1)" : ""
                 let ext = (photoFilename as NSString).pathExtension
-                renameMap[photoFilename] = "\(slug)\(suffix).\(ext)"
+                var candidate = "\(slug)\(suffix).\(ext)"
+                var dedup = 2
+                while usedNames.contains(candidate) {
+                    candidate = "\(slug)\(suffix)-\(dedup).\(ext)"
+                    dedup += 1
+                }
+                usedNames.insert(candidate)
+                renameMap[photoFilename] = candidate
             }
         }
 

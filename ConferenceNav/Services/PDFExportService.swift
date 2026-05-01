@@ -9,7 +9,7 @@ enum PDFExportError: Error {
 @MainActor
 final class PDFExportService: NSObject {
     enum Mode {
-        case conferenceReport(picks: [Session], notes: [SessionNote], userId: String)
+        case conferenceReport(picks: [Session], allSessions: [Session], notes: [SessionNote], userId: String)
         case allNotes(notes: [SessionNote])
     }
 
@@ -43,10 +43,19 @@ final class PDFExportService: NSObject {
         var body = ""
 
         switch mode {
-        case .conferenceReport(let picks, let notes, let userId):
+        case .conferenceReport(let picks, let allSessions, let notes, let userId):
+            // Include picked sessions PLUS any sessions that have notes but weren't picked.
+            // Cover stats still report `picks.count` so the user sees an accurate pick count.
+            let pickedIds = Set(picks.map(\.id))
+            let extraIds = Set(notes.map(\.sessionId)).subtracting(pickedIds)
+            let extras = allSessions.filter { extraIds.contains($0.id) }
+            let merged = (picks + extras).sorted { a, b in
+                if a.date != b.date { return a.date < b.date }
+                return a.startsAt < b.startsAt
+            }
             body += renderCover(userId: userId, picks: picks, notes: notes)
-            body += renderTOC(picks: picks, notes: notes)
-            body += renderConferenceContent(picks: picks, notes: notes)
+            body += renderTOC(sessions: merged)
+            body += renderConferenceContent(sessions: merged, notes: notes)
         case .allNotes(let notes):
             body += renderAllNotes(notes: notes)
         }
@@ -89,7 +98,7 @@ final class PDFExportService: NSObject {
         }
     }
 
-    private func renderTOC(picks: [Session], notes: [SessionNote]) -> String {
+    private func renderTOC(sessions: [Session]) -> String {
         let dates = ["2026-05-14", "2026-05-15", "2026-05-16"]
         let dayLabels = [
             "2026-05-14": "Thursday, 14 May",
@@ -98,7 +107,7 @@ final class PDFExportService: NSObject {
         ]
         var html = "<nav class=\"toc\"><h2>Contents</h2><ol>"
         for date in dates {
-            let day = picks.filter { $0.date == date }
+            let day = sessions.filter { $0.date == date }
             if day.isEmpty { continue }
             html += "<li class=\"day\">\(dayLabels[date] ?? date)</li>"
             for s in day {
@@ -109,9 +118,9 @@ final class PDFExportService: NSObject {
         return html
     }
 
-    private func renderConferenceContent(picks: [Session], notes: [SessionNote]) -> String {
+    private func renderConferenceContent(sessions: [Session], notes: [SessionNote]) -> String {
         var html = ""
-        for session in picks {
+        for session in sessions {
             html += "<article class=\"session\" id=\"session-\(session.id)\">"
             html += "<div class=\"meta\">\(session.date) · \(session.startsAt)–\(session.endsAt) · \(escapeHTML(session.venue))</div>"
             html += "<h2>\(escapeHTML(session.title))</h2>"
@@ -179,7 +188,7 @@ final class PDFExportService: NSObject {
                 continue
             }
 
-            html += "<p>\(escapeInline(p.replacingOccurrences(of: "\n", with: "<br>")))</p>"
+            html += "<p>\(escapeInline(p).replacingOccurrences(of: "\n", with: "<br>"))</p>"
         }
         return html
     }
@@ -242,7 +251,7 @@ extension PDFExportService.Mode {
     }
     var allMediaFilenames: [String] {
         switch self {
-        case .allNotes(let notes), .conferenceReport(_, let notes, _):
+        case .allNotes(let notes), .conferenceReport(_, _, let notes, _):
             return notes.flatMap {
                 $0.photoFilenames.map { "photos/\($0)" }
                     + $0.sketchFilenames.map { "sketches/\($0)" }
@@ -278,6 +287,22 @@ extension PDFExportService: WKNavigationDelegate {
                     self.webView = nil
                 }
             }
+        }
+    }
+
+    nonisolated func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        Task { @MainActor in
+            self.continuation?.resume(throwing: error)
+            self.continuation = nil
+            self.webView = nil
+        }
+    }
+
+    nonisolated func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        Task { @MainActor in
+            self.continuation?.resume(throwing: error)
+            self.continuation = nil
+            self.webView = nil
         }
     }
 }

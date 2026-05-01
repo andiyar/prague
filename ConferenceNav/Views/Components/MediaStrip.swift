@@ -6,6 +6,7 @@ struct MediaStrip: View {
     let onAddSketch: () -> Void
     let onAddPhoto: () -> Void
     let onTapMedia: (MediaItem) -> Void
+    let onDeleteMedia: (MediaItem) -> Void
 
     enum MediaItem: Hashable {
         case photo(filename: String)
@@ -79,6 +80,13 @@ struct MediaStrip: View {
                         .background(Color.gray.opacity(0.2))
                         .clipShape(RoundedRectangle(cornerRadius: 6))
                 }
+            }
+        }
+        .contextMenu {
+            Button(role: .destructive) {
+                onDeleteMedia(item)
+            } label: {
+                Label("Remove", systemImage: "trash")
             }
         }
     }

@@ -21,6 +21,7 @@ struct NoteEditorView: View {
     @State private var hasLoaded = false
     @State private var showSketchEditor = false
     @State private var pendingSketchEdit: (filename: String, drawing: PKDrawing)?
+    @State private var isSketchSaving = false
 
     init(session: Session, presentation: Presentation? = nil) {
         self.session = session
@@ -76,6 +77,14 @@ struct NoteEditorView: View {
                                     showSketchEditor = true
                                 }
                             }
+                        },
+                        onDeleteMedia: { item in
+                            switch item {
+                            case .photo(let f):
+                                removePhoto(f)
+                            case .sketch(let f):
+                                removeSketch(f)
+                            }
                         }
                     )
                     .cnPadMaxWidth(CNLayout.MaxWidth.noteEditor)
@@ -90,6 +99,7 @@ struct NoteEditorView: View {
                         saveAndDismiss()
                     }
                     .fontWeight(.semibold)
+                    .disabled(isSketchSaving)
                 }
 
                 ToolbarItemGroup(placement: .topBarTrailing) {
@@ -135,6 +145,7 @@ struct NoteEditorView: View {
                     },
                     onSave: { drawing, image, decision in
                         showSketchEditor = false
+                        isSketchSaving = true
                         Task { await handleSketchSave(drawing: drawing, image: image, decision: decision) }
                     }
                 )
@@ -247,6 +258,7 @@ struct NoteEditorView: View {
             } else {
                 Markdown(noteBody)
                     .markdownTheme(.conference(colorScheme: colorScheme))
+                    .markdownImageProvider(LocalMediaImageProvider(notesStore: notesStore))
                     .padding(16)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
@@ -305,9 +317,23 @@ struct NoteEditorView: View {
         notesStore.deletePhoto(filename: filename)
     }
 
+    private func removeSketch(_ filename: String) {
+        sketchFilenames.removeAll { $0 == filename }
+        notesStore.deleteSketch(filename: filename)
+        // Strip the inline image reference (and the leading paragraph break) from the body.
+        // Leave any trailing transcription paragraph alone — it's edited prose at this point.
+        let imgRef = "![sketch](sketches/\(filename))"
+        if let range = noteBody.range(of: "\n\n" + imgRef) {
+            noteBody.removeSubrange(range)
+        } else if let range = noteBody.range(of: imgRef) {
+            noteBody.removeSubrange(range)
+        }
+    }
+
     // MARK: - Sketch handling
 
     private func handleSketchSave(drawing: PKDrawing, image: UIImage, decision: OCRDecision) async {
+        defer { isSketchSaving = false }
         guard let pngFilename = notesStore.saveSketch(drawing: drawing, image: image) else { return }
 
         if let existing = pendingSketchEdit {
