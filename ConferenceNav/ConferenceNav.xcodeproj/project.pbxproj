@@ -22,6 +22,7 @@
 		4BF364BC5F678097A00EF423 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19F6CC6B036B9A63464531 /* ExportView.swift */; };
 		4D2D19E23D7C95A78A4AAD65 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF438AA89D0AB0473C3C12C /* SplashScreen.swift */; };
 		51B4D1B4711ED952DAF0C7C1 /* VenueMapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8DA2243F9539A0DABC1B9 /* VenueMapPin.swift */; };
+		5D2FA24D52912819DBAC7B99 /* SketchEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EA32D5FAB2E45DE084BC6 /* SketchEditorView.swift */; };
 		637D5707861F36BA9E47F10D /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C20146D120CDC1954E3B374 /* MainTabView.swift */; };
 		684BF2AC370B2123A7054790 /* SketchToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDFF2C0C7C27530C2DEAF0 /* SketchToolbar.swift */; };
 		6DAF4358E3534325C9CAD3D2 /* UserPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33FA74F231592E2E84267B9 /* UserPickerView.swift */; };
@@ -81,6 +82,7 @@
 		88CDFF2C0C7C27530C2DEAF0 /* SketchToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchToolbar.swift; sourceTree = "<group>"; };
 		8BBFF9EBEC0A1C303429029A /* MateBadges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MateBadges.swift; sourceTree = "<group>"; };
 		905DAB7858468A4F9BB51832 /* PickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickButton.swift; sourceTree = "<group>"; };
+		947EA32D5FAB2E45DE084BC6 /* SketchEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchEditorView.swift; sourceTree = "<group>"; };
 		973E810CB78C7D2116DAE13F /* SessionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCardView.swift; sourceTree = "<group>"; };
 		A019158E5B5CF1704C6BC448 /* DebugClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugClock.swift; sourceTree = "<group>"; };
 		A314A12B39A28121D292BDA5 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				7192D2FDA16AB8CAB211B339 /* DotGridBackgroundView.swift */,
+				947EA32D5FAB2E45DE084BC6 /* SketchEditorView.swift */,
 				88CDFF2C0C7C27530C2DEAF0 /* SketchToolbar.swift */,
 			);
 			path = SketchEditor;
@@ -358,6 +361,7 @@
 				ABB202A3C3FF442305F380C1 /* SessionCardView.swift in Sources */,
 				AB5F1B4CF81ADC74FF3AE9FF /* SessionDetailView.swift in Sources */,
 				3E2383F522640C3A7D3D0E32 /* SessionNote.swift in Sources */,
+				5D2FA24D52912819DBAC7B99 /* SketchEditorView.swift in Sources */,
 				684BF2AC370B2123A7054790 /* SketchToolbar.swift in Sources */,
 				4D2D19E23D7C95A78A4AAD65 /* SplashScreen.swift in Sources */,
 				FE2EC69A050F1756E79C0290 /* TypeBadge.swift in Sources */,
