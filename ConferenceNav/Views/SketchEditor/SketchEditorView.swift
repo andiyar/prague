@@ -1,23 +1,32 @@
 import SwiftUI
 import PencilKit
 
+enum OCRDecision {
+    case none           // first-time save → caller decides what to do (typically: run OCR)
+    case replace        // re-save: replace existing transcription
+    case append         // re-save: append new transcription
+    case skip           // re-save: keep existing transcription, don't OCR again
+}
+
 struct SketchEditorView: View {
     let sessionTitle: String
     let initialDrawing: PKDrawing
     let onCancel: () -> Void
-    let onSave: (PKDrawing, UIImage) -> Void
+    let onSave: (PKDrawing, UIImage, OCRDecision) -> Void
 
     @State private var drawing: PKDrawing
     @State private var tool: PKTool = PKInkingTool(.pen, color: UIColor(red: 0, green: 0.15, blue: 0.39, alpha: 1), width: 2)
     @State private var selectedToolKind: SketchToolKind = .pen
     @State private var selectedColor: Color = Color(red: 0, green: 0.15, blue: 0.39)
     @State private var canvasView = PKCanvasView()
+    @State private var showOCRPrompt = false
+    private var isReedit: Bool { !initialDrawing.strokes.isEmpty }
 
     init(
         sessionTitle: String,
         initialDrawing: PKDrawing = PKDrawing(),
         onCancel: @escaping () -> Void,
-        onSave: @escaping (PKDrawing, UIImage) -> Void
+        onSave: @escaping (PKDrawing, UIImage, OCRDecision) -> Void
     ) {
         self.sessionTitle = sessionTitle
         self.initialDrawing = initialDrawing
@@ -45,6 +54,16 @@ struct SketchEditorView: View {
         .onChange(of: selectedToolKind) { _, _ in updateTool() }
         .onChange(of: selectedColor) { _, _ in updateTool() }
         .onAppear { updateTool() }
+        .confirmationDialog(
+            "Sketch updated — what about the transcription?",
+            isPresented: $showOCRPrompt,
+            titleVisibility: .visible
+        ) {
+            Button("Replace existing transcription") { save(decision: .replace) }
+            Button("Append new transcription") { save(decision: .append) }
+            Button("Skip OCR (keep transcription as-is)") { save(decision: .skip) }
+            Button("Cancel", role: .cancel) {}
+        }
     }
 
     private var appBar: some View {
@@ -59,19 +78,11 @@ struct SketchEditorView: View {
                 .truncationMode(.tail)
             Spacer()
             Button {
-                let renderRect: CGRect
-                if !canvasView.bounds.isEmpty {
-                    renderRect = canvasView.bounds
-                } else if !canvasView.drawing.bounds.isEmpty {
-                    renderRect = canvasView.drawing.bounds
+                if isReedit {
+                    showOCRPrompt = true
                 } else {
-                    renderRect = CGRect(x: 0, y: 0, width: 768, height: 1024)
+                    save(decision: .none)
                 }
-                let scale = canvasView.traitCollection.displayScale > 0
-                    ? canvasView.traitCollection.displayScale
-                    : 2.0
-                let image = canvasView.drawing.image(from: renderRect, scale: scale)
-                onSave(canvasView.drawing, image)
             } label: {
                 Text("Save").fontWeight(.semibold).foregroundStyle(.white)
             }
@@ -79,6 +90,22 @@ struct SketchEditorView: View {
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
         .background(Color(red: 0, green: 0.15, blue: 0.39))
+    }
+
+    private func save(decision: OCRDecision) {
+        let renderRect: CGRect
+        if !canvasView.bounds.isEmpty {
+            renderRect = canvasView.bounds
+        } else if !canvasView.drawing.bounds.isEmpty {
+            renderRect = canvasView.drawing.bounds
+        } else {
+            renderRect = CGRect(x: 0, y: 0, width: 768, height: 1024)
+        }
+        let scale = canvasView.traitCollection.displayScale > 0
+            ? canvasView.traitCollection.displayScale
+            : 2.0
+        let image = canvasView.drawing.image(from: renderRect, scale: scale)
+        onSave(canvasView.drawing, image, decision)
     }
 
     private func updateTool() {
@@ -133,6 +160,6 @@ private struct CanvasContainer: UIViewRepresentable {
     SketchEditorView(
         sessionTitle: "SILENCE Trial Talk",
         onCancel: {},
-        onSave: { _, _ in }
+        onSave: { _, _, _ in }
     )
 }
