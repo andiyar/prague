@@ -140,11 +140,6 @@ class NotesStore {
         notesWithContent.flatMap(\.photoFilenames)
     }
 
-    /// All sketch filenames referenced by notes that have content
-    var allSketchFilenames: [String] {
-        notesWithContent.flatMap(\.sketchFilenames)
-    }
-
     /// All notes sorted by session date/time, then presentation
     var sortedNotes: [SessionNote] {
         notes.sorted { a, b in
