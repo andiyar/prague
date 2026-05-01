@@ -15,6 +15,7 @@
 		1C20602467A99573E1BA3AAD /* ExtrasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D7DDB99F4720F1690CC658 /* ExtrasView.swift */; };
 		22B8C7D682511D5E75DCD06B /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8654FF576496E1DBA602B /* UserProfile.swift */; };
 		24708B210E80D772D5A46030 /* MateBadges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBFF9EBEC0A1C303429029A /* MateBadges.swift */; };
+		2DA31BD36FDA65B813D24461 /* MediaStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E10FF67314AB7E35816A9D8 /* MediaStrip.swift */; };
 		3B365F0C8B01AC46C26358C0 /* MarkdownTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3849F1C44B79277CEF99F0F2 /* MarkdownTheme.swift */; };
 		3C3A02D0BFB717DF9A3A7C84 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A314A12B39A28121D292BDA5 /* ScheduleView.swift */; };
 		3D14095D483511B17D269768 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B93C3F602ADC1451B95D /* Session.swift */; };
@@ -83,6 +84,7 @@
 		8421665C99AF96863DB84F34 /* TypeBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeBadge.swift; sourceTree = "<group>"; };
 		88CDFF2C0C7C27530C2DEAF0 /* SketchToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchToolbar.swift; sourceTree = "<group>"; };
 		8BBFF9EBEC0A1C303429029A /* MateBadges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MateBadges.swift; sourceTree = "<group>"; };
+		8E10FF67314AB7E35816A9D8 /* MediaStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaStrip.swift; sourceTree = "<group>"; };
 		905DAB7858468A4F9BB51832 /* PickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickButton.swift; sourceTree = "<group>"; };
 		947EA32D5FAB2E45DE084BC6 /* SketchEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchEditorView.swift; sourceTree = "<group>"; };
 		973E810CB78C7D2116DAE13F /* SessionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCardView.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				2C8C3E4F7B3B746731B2E40B /* DayPicker.swift */,
 				25DBFC2BEBC7B97FD3DDBCCB /* FilterChips.swift */,
 				8BBFF9EBEC0A1C303429029A /* MateBadges.swift */,
+				8E10FF67314AB7E35816A9D8 /* MediaStrip.swift */,
 				905DAB7858468A4F9BB51832 /* PickButton.swift */,
 				8421665C99AF96863DB84F34 /* TypeBadge.swift */,
 			);
@@ -347,6 +350,7 @@
 				3B365F0C8B01AC46C26358C0 /* MarkdownTheme.swift in Sources */,
 				24708B210E80D772D5A46030 /* MateBadges.swift in Sources */,
 				CDE82F251FC80BF43A6C18CB /* MatesView.swift in Sources */,
+				2DA31BD36FDA65B813D24461 /* MediaStrip.swift in Sources */,
 				B834CDC7A202CEBA6886F667 /* MyDayOverlay.swift in Sources */,
 				E633ABB8D16A7C3CBCEFEF26 /* MyPicksView.swift in Sources */,
 				B1F3D17D1B9D524FE2CE17B2 /* NoteEditorView.swift in Sources */,
