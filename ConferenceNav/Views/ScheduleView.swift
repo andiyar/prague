@@ -70,6 +70,7 @@ struct ScheduleView: View {
                     }
                 }
                 .padding(.vertical, 8)
+                .cnPadMaxWidth(CNLayout.MaxWidth.tabContent)
             }
             .background(CNColors.background(for: colorScheme))
             .navigationTitle("Schedule")

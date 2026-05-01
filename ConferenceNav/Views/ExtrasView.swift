@@ -113,6 +113,7 @@ struct ExtrasView: View {
                 #endif
             }
             .listStyle(.insetGrouped)
+            .cnPadMaxWidth(CNLayout.MaxWidth.tabContent)
             .navigationTitle("Extras")
             .navigationDestination(for: String.self) { destination in
                 switch destination {

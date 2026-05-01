@@ -74,6 +74,7 @@ struct MyPicksView: View {
                     pickedList
                 }
             }
+            .cnPadMaxWidth(CNLayout.MaxWidth.tabContent)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(CNColors.background(for: colorScheme).ignoresSafeArea())
             .navigationTitle("My Picks")

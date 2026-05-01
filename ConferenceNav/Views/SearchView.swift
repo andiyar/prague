@@ -116,6 +116,7 @@ struct SearchView: View {
                     }
                 }
             }
+            .cnPadMaxWidth(CNLayout.MaxWidth.tabContent)
             .background(CNColors.background(for: colorScheme))
             .navigationTitle("Search")
             .navigationDestination(for: SessionNav.self) { nav in
