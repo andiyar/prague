@@ -53,21 +53,27 @@ class NotesStore {
     func hasNote(forPresentation presentationId: Int) -> Bool {
         let key = "p-\(presentationId)"
         guard let note = notes.first(where: { $0.noteKey == key }) else { return false }
-        return !note.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !note.photoFilenames.isEmpty
+        return !note.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            || !note.photoFilenames.isEmpty
+            || !note.sketchFilenames.isEmpty
     }
 
     /// Check if a session has a note with content (session-level only)
     func hasNote(forSession sessionId: Int) -> Bool {
         let key = "s-\(sessionId)"
         guard let note = notes.first(where: { $0.noteKey == key }) else { return false }
-        return !note.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !note.photoFilenames.isEmpty
+        return !note.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            || !note.photoFilenames.isEmpty
+            || !note.sketchFilenames.isEmpty
     }
 
     /// Check if any notes exist for a session (session-level or any of its presentations)
     func hasAnyNote(forSession sessionId: Int) -> Bool {
         notes.contains { note in
             note.sessionId == sessionId &&
-            (!note.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !note.photoFilenames.isEmpty)
+            (!note.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                || !note.photoFilenames.isEmpty
+                || !note.sketchFilenames.isEmpty)
         }
     }
 
@@ -134,6 +140,11 @@ class NotesStore {
         notesWithContent.flatMap(\.photoFilenames)
     }
 
+    /// All sketch filenames referenced by notes that have content
+    var allSketchFilenames: [String] {
+        notesWithContent.flatMap(\.sketchFilenames)
+    }
+
     /// All notes sorted by session date/time, then presentation
     var sortedNotes: [SessionNote] {
         notes.sorted { a, b in
@@ -146,7 +157,9 @@ class NotesStore {
     /// Notes that have content (for export/listing)
     var notesWithContent: [SessionNote] {
         sortedNotes.filter {
-            !$0.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !$0.photoFilenames.isEmpty
+            !$0.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                || !$0.photoFilenames.isEmpty
+                || !$0.sketchFilenames.isEmpty
         }
     }
 

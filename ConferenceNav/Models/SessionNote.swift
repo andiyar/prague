@@ -12,6 +12,7 @@ struct SessionNote: Identifiable, Equatable {
     let presenter: String
     var body: String             // Markdown content
     var photoFilenames: [String] // Relative filenames in photos/ dir
+    var sketchFilenames: [String] // Relative filenames in sketches/ dir
     var lastModified: Date
 
     /// Unique key for lookups — presentation ID if available, otherwise session ID
@@ -34,6 +35,7 @@ struct SessionNote: Identifiable, Equatable {
         presenter: String = "",
         body: String = "",
         photoFilenames: [String] = [],
+        sketchFilenames: [String] = [],
         lastModified: Date = Date()
     ) {
         self.id = id
@@ -47,6 +49,7 @@ struct SessionNote: Identifiable, Equatable {
         self.presenter = presenter
         self.body = body
         self.photoFilenames = photoFilenames
+        self.sketchFilenames = sketchFilenames
         self.lastModified = lastModified
     }
 
@@ -87,6 +90,12 @@ struct SessionNote: Identifiable, Equatable {
                 md += "  - \(photo)\n"
             }
         }
+        if !sketchFilenames.isEmpty {
+            md += "sketches:\n"
+            for sketch in sketchFilenames {
+                md += "  - \(sketch)\n"
+            }
+        }
         md += "last_modified: \(dateFormatter.string(from: lastModified))\n"
         md += "---\n\n"
         md += "# \(displayTitle)\n\n"
@@ -107,26 +116,27 @@ struct SessionNote: Identifiable, Equatable {
         // Parse YAML key-value pairs
         var yaml: [String: String] = [:]
         var photos: [String] = []
+        var sketches: [String] = []
         var inPhotos = false
+        var inSketches = false
 
         for line in yamlBlock.components(separatedBy: "\n") {
             let trimmed = line.trimmingCharacters(in: .whitespaces)
             if trimmed.isEmpty { continue }
 
-            if trimmed.hasPrefix("- ") && inPhotos {
-                photos.append(String(trimmed.dropFirst(2)))
-                continue
+            if trimmed.hasPrefix("- ") {
+                if inPhotos { photos.append(String(trimmed.dropFirst(2))); continue }
+                if inSketches { sketches.append(String(trimmed.dropFirst(2))); continue }
             }
             inPhotos = false
+            inSketches = false
 
             if let colonIndex = trimmed.firstIndex(of: ":") {
                 let key = String(trimmed[trimmed.startIndex..<colonIndex]).trimmingCharacters(in: .whitespaces)
                 let value = String(trimmed[trimmed.index(after: colonIndex)...]).trimmingCharacters(in: .whitespaces)
 
-                if key == "photos" {
-                    inPhotos = true
-                    continue
-                }
+                if key == "photos" { inPhotos = true; continue }
+                if key == "sketches" { inSketches = true; continue }
                 yaml[key] = value.trimmingCharacters(in: CharacterSet(charactersIn: "\""))
             }
         }
@@ -162,7 +172,37 @@ struct SessionNote: Identifiable, Equatable {
             presenter: yaml["presenter"] ?? "",
             body: cleanBody,
             photoFilenames: photos,
+            sketchFilenames: sketches,
             lastModified: dateFormatter.date(from: yaml["last_modified"] ?? "") ?? Date()
         )
     }
 }
+
+#if DEBUG
+import SwiftUI
+
+struct SessionNoteRoundTripPreview: View {
+    var body: some View {
+        let original = SessionNote(
+            sessionId: 42,
+            sessionTitle: "Test Session",
+            sessionDate: "2026-05-15",
+            sessionTime: "10:00-11:00",
+            sessionVenue: "C1",
+            body: "Some notes\n\n![sketch](sketches/abc.png)\n\nCaption",
+            photoFilenames: ["a.jpg"],
+            sketchFilenames: ["abc.png"]
+        )
+        let md = original.toMarkdown()
+        let parsed = SessionNote.fromMarkdown(md)
+        return VStack(alignment: .leading) {
+            Text("Original sketches: \(original.sketchFilenames.joined(separator: ","))")
+            Text("Parsed sketches:   \(parsed?.sketchFilenames.joined(separator: ",") ?? "nil")")
+            Text("Match: \(original.sketchFilenames == parsed?.sketchFilenames ? "✅" : "❌")")
+        }
+        .padding()
+    }
+}
+
+#Preview { SessionNoteRoundTripPreview() }
+#endif
