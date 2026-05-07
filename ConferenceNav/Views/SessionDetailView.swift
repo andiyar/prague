@@ -103,7 +103,7 @@ struct SessionDetailView: View {
                                 } label: {
                                     HStack(spacing: 4) {
                                         Image(systemName: notesStore.hasNote(forSession: session.id) ? "note.text" : "note.text.badge.plus")
-                                            .font(.system(size: 16))
+                                            .font(.system(size: 17))
                                         if notesStore.hasNote(forSession: session.id) {
                                             Circle()
                                                 .fill(CNColors.teal(for: colorScheme))
@@ -111,10 +111,12 @@ struct SessionDetailView: View {
                                         }
                                     }
                                     .foregroundStyle(CNColors.teal(for: colorScheme))
-                                    .padding(.horizontal, 10)
-                                    .padding(.vertical, 6)
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 9)
                                     .background(CNColors.surfaceSecondary(for: colorScheme))
                                     .clipShape(Capsule())
+                                    .frame(minHeight: 44)
+                                    .contentShape(Rectangle())
                                 }
                             } else if notesStore.hasAnyNote(forSession: session.id) {
                                 HStack(spacing: 4) {
@@ -168,7 +170,7 @@ struct SessionDetailView: View {
                             } label: {
                                 HStack(spacing: 4) {
                                     Image(systemName: notesStore.hasNote(forSession: session.id) ? "note.text" : "note.text.badge.plus")
-                                        .font(.system(size: 16))
+                                        .font(.system(size: 17))
                                     if notesStore.hasNote(forSession: session.id) {
                                         Circle()
                                             .fill(CNColors.teal(for: colorScheme))
@@ -176,10 +178,12 @@ struct SessionDetailView: View {
                                     }
                                 }
                                 .foregroundStyle(CNColors.teal(for: colorScheme))
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 6)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 9)
                                 .background(CNColors.surfaceSecondary(for: colorScheme))
                                 .clipShape(Capsule())
+                                .frame(minHeight: 44)
+                                .contentShape(Rectangle())
                             }
                         } else if notesStore.hasAnyNote(forSession: session.id) {
                             // Show indicator that this session has notes on presentations
@@ -336,10 +340,10 @@ struct PresentationRow: View {
                         Button {
                             showingNoteEditor = true
                         } label: {
-                            HStack(spacing: 3) {
+                            HStack(spacing: 4) {
                                 Image(systemName: notesStore.hasNote(forPresentation: presentation.id)
                                       ? "note.text" : "note.text.badge.plus")
-                                    .font(.system(size: 12))
+                                    .font(.system(size: 15))
                                 if notesStore.hasNote(forPresentation: presentation.id) {
                                     Circle()
                                         .fill(CNColors.teal(for: colorScheme))
@@ -347,10 +351,12 @@ struct PresentationRow: View {
                                 }
                             }
                             .foregroundStyle(CNColors.teal(for: colorScheme))
-                            .padding(.horizontal, 7)
-                            .padding(.vertical, 4)
+                            .padding(.horizontal, 11)
+                            .padding(.vertical, 8)
                             .background(CNColors.surfaceSecondary(for: colorScheme))
                             .clipShape(Capsule())
+                            .frame(minHeight: 44)
+                            .contentShape(Rectangle())
                         }
 
                         if presentation.authors.count > 1 {
