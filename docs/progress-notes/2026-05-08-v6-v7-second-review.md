@@ -1,15 +1,30 @@
 # V6+V7 Independent Review — Findings & Fixes (8 May 2026)
 
 > Overnight pass while Ben was asleep. Probed the four highest-risk files
-> from the handoff doc + investigated three issues visible in Ben's iPad
-> testing screenshots. Six fixes shipped inline. Build green on iPhone 16
-> and iPad mini (6th gen) sims.
+> from the handoff doc + investigated issues visible in Ben's iPad
+> testing screenshots + did a second sweep through the deferred items
+> after Ben asked for more bulletproofing. Total of **fourteen fixes
+> shipped** across ten commits. Build green on iPhone 16 and iPad
+> mini (6th gen) sims.
 
 ## TL;DR
 
-**Six fixes shipped overnight.** All tightly scoped, low risk, high value.
-Build green. No blockers found in V6+V7. The app is in good shape for
-TestFlight after Ben's hardware walkthrough.
+**Fourteen fixes shipped overnight.** All tightly scoped, low risk,
+high value. Each in its own commit so any can be reverted
+independently. Build green. No blockers found in V6+V7.
+
+The two highest-impact catches were:
+
+1. **Notifications would have fired ~8 hours late during the
+   conference** if Ben scheduled them in Sydney before flying.
+   `UNCalendarNotificationTrigger` was using device-current timezone
+   instead of Europe/Prague.
+2. **Picks loaded from disk weren't getting reminders scheduled at
+   all** until the user toggled a pick. didSet vs late-attached
+   service timing.
+
+Either alone could have meant Ben missing his own keynote. Both
+fixed now.
 
 | # | Severity | What | Why it matters |
 |---|---|---|---|
@@ -19,8 +34,17 @@ TestFlight after Ben's hardware walkthrough.
 | 4 | Important | Empty-canvas saves | Tapping Save with no strokes inserted a blank PNG into the body. Now treated as Cancel. |
 | 5 | Medium | PDF export leaked /tmp | Each export left ~10MB of staged media in /tmp forever. Now cleaned up after every export (success or failure). |
 | 6 | Medium | Notes didn't refresh on iCloud sync | iPad-edit → switch to iPhone, you'd see stale data until app restart. Now reloads on `willEnterForeground`. |
+| 7 | Minor | PDF continuation re-entrancy | Defensive race-guard before createPDF result handler. |
+| 8 | Cleanup | Dead code | `ReaderModeFigure.swift` deleted (never wired up post-V6 task 13). |
+| 9 | Cleanup | `OCRDecision.none` rename | Renamed to `.firstSave` so it doesn't shadow `Optional.none`. |
+| 10 | Medium | Sync image loading in markdown | Replaced `Data(contentsOf:)` in `LocalMediaImageProvider` with an async + cached `AsyncLocalImage`. No more main-thread blocks on iCloud-cold images. |
+| 11 | Important | PickButton tap target | Gold-star pick button was a 20×20pt SF Symbol with no padding — well below HIG 44pt. 44pt invisible hit area added. |
+| 12 | Important | Markdown export photo paths | Body referenced `![Photo](abc.jpg)` (bare filename) but bundle had photos at root. Now `photos/abc.jpg` paths matched by `photos/` subdir in the export. Sketches already worked this way; pattern now uniform. |
+| 13 | Medium | Export temp dirs leaked | `EAPC-Export-*` and `EAPC-PDF-*` dirs accumulated in /tmp. Launch-time sweep clears them. |
+| **14** | **Important** | **Notifications used device timezone** | `UNCalendarNotificationTrigger` was given timezone-less components extracted via `Calendar.current`. Schedule in Sydney → trigger fires 8 hours late once device shifts to CET. Pinned to Europe/Prague. |
+| **15** | **Important** | **Notifications missed at cold start** | Picks loaded during `ConferenceStore.init()` triggered `didSet` → reschedule, but notificationService wasn't attached yet, so the call no-oped. Until the user re-toggled a pick, no reminders existed. didSet observer + explicit reschedule after auth grant fix it. |
 
-Plus a defensive race-guard in PDF export (continuation re-entrancy).
+(Fixes 14 and 15 are the two highest-impact catches — both could have caused missed-notification incidents during the actual conference.)
 
 ---
 
@@ -199,22 +223,61 @@ compile + code review. Hardware testing is Ben's next step.
 
 ## Recommended next steps (Ben's morning)
 
-1. **Hardware test the OCR fix** — write a sketch with messy strokes, confirm `_`/`-`/`:` artefacts no longer appear
-2. **Hardware test the dot grid** — confirm dots are visible on iPad mini at typical brightness
-3. **Hardware test sketch in dark mode** — confirm cream background renders in preview AND in PDF export
-4. **Re-export a conference report** — confirm it's the only file in /tmp afterward (no `EAPC-PDF-*` dirs left over)
-5. **Cross-device iCloud test** — edit a note on iPad, background, open iPhone — confirm changes appear without app restart
-6. **Venue map pin recalibration** — use the DEBUG crosshair tool in Extras to confirm/refine my eyeball estimates
+**Critical hardware tests (notification fixes):**
+
+1. **Notification timezone test** — Set device to Sydney time, pick a session for tomorrow morning Prague time. Then change device timezone to Europe/Prague. The reminder should still fire 15 min before the session starts in Prague time, not 8 hours late.
+2. **Cold-launch reminder test** — Force-quit the app. Re-launch. Pick a session that's 20 min away. Wait 5 min without toggling anything. The reminder should fire 15 min before the session.
+
+**Visual fixes (sketch editor):**
+
+3. **OCR fix** — write a sketch with messy strokes, confirm `_`/`-`/`:` artefacts no longer appear in body
+4. **Dot grid** — confirm dots are visible on iPad mini at typical brightness
+5. **Cream background in dark mode** — make a sketch, switch app to dark mode, view note in preview, confirm sketch is on cream not dark navy. Same in PDF export.
+
+**Other tests:**
+
+6. **Re-export a conference report** — confirm it's the only file in /tmp afterward (no `EAPC-PDF-*` or `EAPC-Export-*` dirs left over)
+7. **Markdown export with photos** — share a note with photos, open the resulting bundle in another markdown app, confirm photos render (paths now resolve via `photos/` subdir)
+8. **Cross-device iCloud test** — edit a note on iPad, background, open iPhone — confirm changes appear without app restart
+9. **Pick star tap target** — confirm hitting just the edge of the gold star reliably toggles pick
+10. **Venue map pin recalibration** — use the DEBUG crosshair tool in Extras to confirm/refine my eyeball estimates
 
 ## Risk assessment
 
-**Net risk delta vs pre-overnight:** lower. Six real bugs gone, no new
-behaviour added beyond what was needed for the fixes. The only
-behavioural change a user could notice is:
+**Net risk delta vs pre-overnight:** materially lower. Fourteen real
+bugs gone (two of them critical for the actual conference experience),
+no new behaviour added beyond what was needed for the fixes. Each fix
+is in its own commit so any can be reverted without disturbing the
+others.
 
+User-visible behavioural changes:
 - OCR no longer transcribes single-letter handwriting (acceptable)
-- Sketches saved during this session forward look slightly different
-  from sketches saved previously (cream background baked in) — old
-  sketches still render correctly, just without the bake
+- Sketches saved going forward look slightly different from older
+  sketches (cream background baked in) — old sketches still render
+  fine, just without the bake
+- Empty-canvas Save in sketch editor now silently dismisses instead
+  of inserting a blank PNG
+- First markdown image render now shows a brief grey placeholder
+  while loading (instead of blocking the UI)
 
 **Confidence level for ship after Ben's walkthrough: high.**
+
+## Commit history (overnight)
+
+```
+1d254bc fix(conf): note button hit area, pin shape, and pin coordinates
+9e2d6c5 fix(conf): sketch editor, note preview, PDF report — iPad testing pass
+308ca7e fix(conf): V6+V7 second-review bulletproofing pass     ← purged
+fc6629f chore: remove accidentally-committed PDF                ← purged
+[history rewritten via git filter-branch — accidentally-committed
+ personal flight itinerary purged, force-pushed]
+19c00ac fix(conf): V6+V7 second-review bulletproofing pass     ← rewritten
+4ef86f9 chore(conf): remove dead ReaderModeFigure component
+e931469 refactor(conf): rename OCRDecision.none → .firstSave
+b33b3b2 perf(conf): async + cached image loading in MarkdownTheme
+1108a59 fix(conf): bump PickButton tap target to 44pt
+3cd992a fix(conf): markdown exports — consistent photos/ + sketches/ paths
+8af9e6a fix(conf): sweep stale export temp dirs on launch
+c099724 fix(conf): pin session notifications to Europe/Prague timezone
+bf6efe7 fix(conf): reschedule notifications after auth grant
+```
