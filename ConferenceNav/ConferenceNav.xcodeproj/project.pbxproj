@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -42,7 +42,6 @@
 		A167A4C4FD3A61A98E76FE35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAEF12E4AE1A856CE79051D3 /* Assets.xcassets */; };
 		A2089B62FC3F005BAA5C7978 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 681E8D0B10A4F3533B42B01F /* MarkdownUI */; };
 		A50036AB1B7ACEDE553E2381 /* ConferenceDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DCCE05D03ED77F14D5E700 /* ConferenceDesign.swift */; };
-		A6936333DF529A817019BD5B /* ReaderModeFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925DCEF0DF83659D69A6150E /* ReaderModeFigure.swift */; };
 		AB5F1B4CF81ADC74FF3AE9FF /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806773D59A447642DBC5605F /* SessionDetailView.swift */; };
 		ABB202A3C3FF442305F380C1 /* SessionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973E810CB78C7D2116DAE13F /* SessionCardView.swift */; };
 		B14984DBFFA96F178425C872 /* PickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905DAB7858468A4F9BB51832 /* PickButton.swift */; };
@@ -91,7 +90,6 @@
 		8BBFF9EBEC0A1C303429029A /* MateBadges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MateBadges.swift; sourceTree = "<group>"; };
 		8E10FF67314AB7E35816A9D8 /* MediaStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaStrip.swift; sourceTree = "<group>"; };
 		905DAB7858468A4F9BB51832 /* PickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickButton.swift; sourceTree = "<group>"; };
-		925DCEF0DF83659D69A6150E /* ReaderModeFigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderModeFigure.swift; sourceTree = "<group>"; };
 		947EA32D5FAB2E45DE084BC6 /* SketchEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchEditorView.swift; sourceTree = "<group>"; };
 		973E810CB78C7D2116DAE13F /* SessionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCardView.swift; sourceTree = "<group>"; };
 		A019158E5B5CF1704C6BC448 /* DebugClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugClock.swift; sourceTree = "<group>"; };
@@ -101,7 +99,7 @@
 		B22A4F389E85B91D969404A0 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		C5F48A8EA3472703F679BEBE /* VenueMapThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueMapThumbnail.swift; sourceTree = "<group>"; };
 		CAEF12E4AE1A856CE79051D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CB18E6E703765036469FAF4A /* ConferenceNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConferenceNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB18E6E703765036469FAF4A /* ConferenceNav.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ConferenceNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF438AA89D0AB0473C3C12C /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		D1D7DDB99F4720F1690CC658 /* ExtrasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtrasView.swift; sourceTree = "<group>"; };
 		D4FEEAD240BA4BB842B437E7 /* IdiomLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdiomLayout.swift; sourceTree = "<group>"; };
@@ -236,7 +234,6 @@
 				8BBFF9EBEC0A1C303429029A /* MateBadges.swift */,
 				8E10FF67314AB7E35816A9D8 /* MediaStrip.swift */,
 				905DAB7858468A4F9BB51832 /* PickButton.swift */,
-				925DCEF0DF83659D69A6150E /* ReaderModeFigure.swift */,
 				8421665C99AF96863DB84F34 /* TypeBadge.swift */,
 			);
 			path = Components;
@@ -297,6 +294,7 @@
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					643E5BFEBB7734EBAF6D7B42 = {
+						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -314,6 +312,7 @@
 			packageReferences = (
 				ECD5C5426F95B95796C97820 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 			);
+			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -370,7 +369,6 @@
 				881944143EC8720B76C5F4EE /* PhotoPickerView.swift in Sources */,
 				B14984DBFFA96F178425C872 /* PickButton.swift in Sources */,
 				0B0BA07E1BAF1E0CF280E1F3 /* PicksSyncService.swift in Sources */,
-				A6936333DF529A817019BD5B /* ReaderModeFigure.swift in Sources */,
 				3C3A02D0BFB717DF9A3A7C84 /* ScheduleView.swift in Sources */,
 				D7B2C1FD36142A55BD82882A /* SearchIndex.swift in Sources */,
 				735C658CFB9D205C360F09E2 /* SearchView.swift in Sources */,
@@ -406,7 +404,7 @@
 				CODE_SIGN_ENTITLEMENTS = ConferenceNav.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5W72UJL332;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "EAPragueC 2026";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Take photos of sessions, posters, and slides";
@@ -561,7 +559,7 @@
 				CODE_SIGN_ENTITLEMENTS = ConferenceNav.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5W72UJL332;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "EAPragueC 2026";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Take photos of sessions, posters, and slides";
