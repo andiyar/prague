@@ -99,25 +99,38 @@ struct SketchEditorView: View {
     }
 
     private func save(decision: OCRDecision) {
+        // Empty-canvas guard. PencilKit's `image(from:)` on an empty drawing
+        // produces a blank PNG that pollutes the note body if saved. Treat
+        // an empty-canvas save as a cancel — user can delete an existing
+        // sketch via the MediaStrip if that's what they meant.
+        guard !canvasView.drawing.strokes.isEmpty else {
+            onCancel()
+            return
+        }
+
         // Prefer the bounding box of the actual strokes — keeps the saved PNG
         // tight to what was drawn, so it embeds in notes/exports without acres
-        // of empty whitespace. Fall back to the full canvas only when nothing
-        // has been drawn yet.
-        let renderRect: CGRect
+        // of empty whitespace.
         let strokeBounds = canvasView.drawing.bounds
-        if !strokeBounds.isEmpty {
-            // Pad 24pt on each side so strokes aren't crammed against the edge.
-            renderRect = strokeBounds.insetBy(dx: -24, dy: -24)
-        } else if !canvasView.bounds.isEmpty {
-            renderRect = canvasView.bounds
-        } else {
-            renderRect = CGRect(x: 0, y: 0, width: 768, height: 1024)
-        }
+        let renderRect = strokeBounds.insetBy(dx: -24, dy: -24)
+
         let scale = canvasView.traitCollection.displayScale > 0
             ? canvasView.traitCollection.displayScale
             : 2.0
-        let image = canvasView.drawing.image(from: renderRect, scale: scale)
-        onSave(canvasView.drawing, image, decision)
+
+        // PencilKit renders strokes onto a transparent canvas. Bake the cream
+        // paper background in so sketches look right in dark-mode previews
+        // (otherwise they show up as light-coloured strokes floating on a
+        // dark navy backdrop, losing the "drawn on paper" aesthetic).
+        let strokesOnly = canvasView.drawing.image(from: renderRect, scale: scale)
+        let renderer = UIGraphicsImageRenderer(size: renderRect.size)
+        let composedImage = renderer.image { ctx in
+            UIColor(red: 0.98, green: 0.98, blue: 0.97, alpha: 1.0).setFill()
+            ctx.fill(CGRect(origin: .zero, size: renderRect.size))
+            strokesOnly.draw(in: CGRect(origin: .zero, size: renderRect.size))
+        }
+
+        onSave(canvasView.drawing, composedImage, decision)
     }
 
     private func updateTool() {

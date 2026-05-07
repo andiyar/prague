@@ -20,8 +20,11 @@ final class DotGridUIView: UIView {
 
     override func draw(_ rect: CGRect) {
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
-        let isDark = traitCollection.userInterfaceStyle == .dark
-        let dotColor = isDark ? UIColor(white: 1.0, alpha: 0.16) : UIColor(red: 0.90, green: 0.90, blue: 0.88, alpha: 1.0)
+        // Editor background is fixed cream regardless of system theme, so the
+        // dot colour is also fixed. Original `0.90` on `0.98` cream was nearly
+        // invisible on iPad mini at typical brightness; `0.78` is just-visible
+        // and stays subtle enough not to compete with strokes.
+        let dotColor = UIColor(red: 0.78, green: 0.78, blue: 0.75, alpha: 1.0)
         ctx.setFillColor(dotColor.cgColor)
 
         var y: CGFloat = spacing / 2

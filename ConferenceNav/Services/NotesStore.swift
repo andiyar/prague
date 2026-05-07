@@ -13,6 +13,21 @@ class NotesStore {
     init(userId: String) {
         self.userId = userId
         loadNotes()
+        // Reload when the app comes back to the foreground — picks up notes
+        // synced in from another device while we were backgrounded. Notes
+        // aren't observed via NSMetadataQuery, so this is the cheapest way to
+        // stay roughly fresh across iCloud updates.
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.willEnterForegroundNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.loadNotes()
+        }
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: - Public API

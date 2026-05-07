@@ -16,13 +16,20 @@ final class PDFExportService: NSObject {
     private var webView: WKWebView?
     private var continuation: CheckedContinuation<URL, Error>?
     private var outputURL: URL?
+    private var stagingDir: URL?
 
     func export(mode: Mode, mediaURLProvider: (String) -> URL?) async throws -> URL {
         let html = buildHTML(mode: mode, mediaURLProvider: mediaURLProvider)
         let baseDir = try writeHTMLAndCopyMedia(html: html, mode: mode, mediaURLProvider: mediaURLProvider)
         let htmlURL = baseDir.appendingPathComponent("report.html")
-        let outputURL = baseDir.appendingPathComponent(mode.outputFilename)
+        // Write the PDF to /tmp directly (NOT inside the staging dir) so the
+        // staging dir can be torn down without taking the PDF with it. Caller
+        // is responsible for the final PDF's lifecycle.
+        let outputURL = FileManager.default.temporaryDirectory
+            .appendingPathComponent(mode.outputFilename)
+        try? FileManager.default.removeItem(at: outputURL)
         self.outputURL = outputURL
+        self.stagingDir = baseDir
 
         return try await withCheckedThrowingContinuation { cont in
             self.continuation = cont
@@ -31,6 +38,16 @@ final class PDFExportService: NSObject {
             webView.navigationDelegate = self
             self.webView = webView
             webView.loadFileURL(htmlURL, allowingReadAccessTo: baseDir)
+        }
+    }
+
+    /// Tears down the staging dir created during export. Safe to call multiple
+    /// times. Called from every continuation-resume path so we never leak the
+    /// per-export ~10MB of media into /tmp.
+    private func cleanupStaging() {
+        if let dir = stagingDir {
+            try? FileManager.default.removeItem(at: dir)
+            stagingDir = nil
         }
     }
 
@@ -269,12 +286,21 @@ extension PDFExportService: WKNavigationDelegate {
             guard let outputURL = self.outputURL else {
                 self.continuation?.resume(throwing: PDFExportError.missingOutputURL)
                 self.continuation = nil
+                self.cleanupStaging()
                 return
             }
             try? await Task.sleep(nanoseconds: 600_000_000)
             let config = WKPDFConfiguration()
             webView.createPDF(configuration: config) { result in
                 Task { @MainActor in
+                    // Re-entrancy guard. If a `didFail*` fired during the
+                    // 600ms wait or while createPDF was running, the
+                    // continuation will already have been consumed and set
+                    // to nil. Without this check we'd double-resume and crash.
+                    guard self.continuation != nil else {
+                        self.cleanupStaging()
+                        return
+                    }
                     switch result {
                     case .success(let data):
                         do {
@@ -288,6 +314,7 @@ extension PDFExportService: WKNavigationDelegate {
                     }
                     self.continuation = nil
                     self.webView = nil
+                    self.cleanupStaging()
                 }
             }
         }
@@ -298,6 +325,7 @@ extension PDFExportService: WKNavigationDelegate {
             self.continuation?.resume(throwing: error)
             self.continuation = nil
             self.webView = nil
+            self.cleanupStaging()
         }
     }
 
@@ -306,6 +334,7 @@ extension PDFExportService: WKNavigationDelegate {
             self.continuation?.resume(throwing: error)
             self.continuation = nil
             self.webView = nil
+            self.cleanupStaging()
         }
     }
 }

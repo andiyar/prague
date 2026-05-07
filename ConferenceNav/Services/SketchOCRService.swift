@@ -30,8 +30,28 @@ enum SketchOCR {
                     return a.boundingBox.minX < b.boundingBox.minX       // same line, left-to-right
                 }
 
-                let lines = sorted.compactMap { $0.topCandidates(1).first?.string }
+                // Drop very-low-confidence observations entirely. Vision happily
+                // emits stray marks ("_", "-", ":") with sub-0.3 confidence —
+                // they end up polluting the note body otherwise.
+                let lines = sorted.compactMap { obs -> String? in
+                    guard let top = obs.topCandidates(1).first else { return nil }
+                    if top.confidence < 0.3 { return nil }
+                    return top.string
+                }
                 let combined = lines.joined(separator: "\n").trimmingCharacters(in: .whitespacesAndNewlines)
+
+                // Reject the whole transcription if it has fewer than 2
+                // alphanumeric characters — almost certainly a misread mark
+                // rather than real handwritten text. Better to insert nothing
+                // than insert a stray "_" the user has to clean up.
+                let alphanumericCount = combined.unicodeScalars.reduce(0) {
+                    $0 + (CharacterSet.alphanumerics.contains($1) ? 1 : 0)
+                }
+                if alphanumericCount < 2 {
+                    continuation.resume(returning: nil)
+                    return
+                }
+
                 continuation.resume(returning: combined.isEmpty ? nil : combined)
             }
             request.recognitionLevel = .accurate
