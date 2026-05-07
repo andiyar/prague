@@ -349,7 +349,7 @@ struct NoteEditorView: View {
         let transcription: String? = await {
             switch decision {
             case .skip: return nil
-            case .none, .replace, .append: return await SketchOCR.transcribe(image: image)
+            case .firstSave, .replace, .append: return await SketchOCR.transcribe(image: image)
             }
         }()
 
@@ -362,7 +362,7 @@ struct NoteEditorView: View {
                 noteBody = replaceTranscriptionAfterImage(filename: pngFilename, body: noteBody, with: t)
             case .append:
                 noteBody = appendTranscriptionAfterImage(filename: pngFilename, body: noteBody, with: t)
-            case .skip, .none:
+            case .skip, .firstSave:
                 break
             }
         }

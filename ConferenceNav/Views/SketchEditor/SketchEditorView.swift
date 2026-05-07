@@ -2,7 +2,7 @@ import SwiftUI
 import PencilKit
 
 enum OCRDecision {
-    case none           // first-time save → caller decides what to do (typically: run OCR)
+    case firstSave      // first-time save → caller decides what to do (typically: run OCR)
     case replace        // re-save: replace existing transcription
     case append         // re-save: append new transcription
     case skip           // re-save: keep existing transcription, don't OCR again
@@ -86,7 +86,7 @@ struct SketchEditorView: View {
                     showOCRPrompt = true
                 } else {
                     isSaving = true
-                    save(decision: .none)
+                    save(decision: .firstSave)
                 }
             } label: {
                 Text("Save").fontWeight(.semibold).foregroundStyle(.white)
