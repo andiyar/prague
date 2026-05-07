@@ -8,7 +8,19 @@ class ConferenceStore {
     let lastUpdated = "30 April 2026"
 
     // MARK: - Notifications
-    var notificationService: NotificationService?
+    var notificationService: NotificationService? {
+        didSet {
+            // Picks load from disk during init() before notificationService is
+            // attached, so the didSet on myPicks fires with notificationService
+            // = nil and no reminders get scheduled. Once the service is
+            // attached (from ConferenceNavApp.init), reschedule using the
+            // already-loaded picks. Otherwise notifications would only kick in
+            // after the user pick/unpicks a session.
+            if notificationService != nil {
+                rescheduleNotifications()
+            }
+        }
+    }
 
     // MARK: - Picks
     var myPicks: Set<Int> = [] {
@@ -25,7 +37,10 @@ class ConferenceStore {
     // MARK: - Sync
     private let syncService = PicksSyncService()
 
-    private func rescheduleNotifications() {
+    /// Re-schedules reminders for the current picks. Call after notification
+    /// authorization is granted to retroactively cover picks loaded from disk
+    /// before the service was attached.
+    func rescheduleNotifications() {
         notificationService?.scheduleNotifications(for: myPickedSessions)
     }
 

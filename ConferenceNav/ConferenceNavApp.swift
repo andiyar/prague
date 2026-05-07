@@ -74,6 +74,11 @@ struct ConferenceNavApp: App {
                     if savedUserId != nil {
                         await store.syncPicks()
                         await notificationService.requestPermission()
+                        // After permission resolves, reschedule using the
+                        // picks already loaded from disk during store.init —
+                        // those didn't trigger a schedule because the service
+                        // wasn't attached / authorized at the time.
+                        store.rescheduleNotifications()
                     }
                 }
 
