@@ -32,6 +32,18 @@ class NotificationService: NSObject, UNUserNotificationCenterDelegate {
         let now = Date()
         let reminderInterval: TimeInterval = -15 * 60  // 15 min before
 
+        // Schedule against Prague time, NOT the device's current timezone.
+        // Otherwise: Ben schedules in Sydney (UTC+10), the trigger captures
+        // components in Sydney-local time. Once he lands in Prague (UTC+2),
+        // the device timezone shifts and the trigger fires ~8 hours late
+        // because UNCalendarNotificationTrigger interprets timezone-less
+        // components in the device's CURRENT timezone at fire time. Pinning
+        // the components to Europe/Prague makes the trigger fire at the
+        // correct absolute moment regardless of where the device is.
+        let praguTimezone = TimeZone(identifier: "Europe/Prague") ?? TimeZone.current
+        var praguCalendar = Calendar(identifier: .gregorian)
+        praguCalendar.timeZone = praguTimezone
+
         for session in sessions {
             // Skip posters
             guard session.type != .poster else { continue }
@@ -48,10 +60,11 @@ class NotificationService: NSObject, UNUserNotificationCenterDelegate {
             content.sound = .default
             content.userInfo = ["sessionId": session.id]
 
-            let components = Calendar.current.dateComponents(
+            var components = praguCalendar.dateComponents(
                 [.year, .month, .day, .hour, .minute],
                 from: notificationDate
             )
+            components.timeZone = praguTimezone
             let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
 
             let request = UNNotificationRequest(
