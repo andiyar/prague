@@ -32,21 +32,74 @@ enum SketchToolKind: Hashable {
     }
 }
 
+enum SketchWidth: CaseIterable {
+    case thin, medium, thick
+
+    /// Stroke width in points for the given tool.
+    func width(for tool: SketchToolKind) -> CGFloat {
+        switch tool {
+        case .pen, .pencil:
+            switch self {
+            case .thin:   return 1
+            case .medium: return 2
+            case .thick:  return 4
+            }
+        case .marker:
+            switch self {
+            case .thin:   return 4
+            case .medium: return 8
+            case .thick:  return 14
+            }
+        case .eraser: return 1
+        }
+    }
+
+    /// Visual line thickness for the toolbar icon.
+    var iconLineWidth: CGFloat {
+        switch self {
+        case .thin:   return 1.5
+        case .medium: return 3
+        case .thick:  return 5
+        }
+    }
+
+    var next: SketchWidth {
+        switch self {
+        case .thin:   return .medium
+        case .medium: return .thick
+        case .thick:  return .thin
+        }
+    }
+
+    var accessibilityLabel: String {
+        switch self {
+        case .thin:   return "Thin"
+        case .medium: return "Medium"
+        case .thick:  return "Thick"
+        }
+    }
+}
+
 struct SketchToolbar: View {
     @Binding var selectedTool: SketchToolKind
     @Binding var selectedColor: Color
+    @Binding var selectedWidth: SketchWidth
     let onUndo: () -> Void
     let onRedo: () -> Void
 
     @Environment(\.colorScheme) var colorScheme
     @State private var showingColorPalette = false
 
+    // All entries use explicit RGB. Avoid `Color.black` / `Color.gray` — when
+    // bridged to UIColor and handed to PKInkingTool in dark mode, PencilKit
+    // treats them as user-adaptive and renders them light, so a "black" pen
+    // draws white strokes on the cream canvas. Explicit RGB sidesteps this.
     private let palette: [Color] = [
         Color(red: 0.0, green: 0.15, blue: 0.39),    // navy
         Color(red: 0.85, green: 0.08, blue: 0.23),   // red
         Color(red: 0.79, green: 0.64, blue: 0.16),   // gold
         Color(red: 0.11, green: 0.42, blue: 0.49),   // teal
-        Color.black,
+        Color(red: 0.05, green: 0.05, blue: 0.05),   // near-black (fixed)
         Color(red: 0.4, green: 0.4, blue: 0.4),      // grey
         Color(red: 0.45, green: 0.10, blue: 0.55),   // purple
         Color(red: 0.2, green: 0.55, blue: 0.2),     // green
@@ -70,6 +123,21 @@ struct SketchToolbar: View {
                 paletteView()
                     .presentationCompactAdaptation(.popover)
             }
+
+            // Thickness — tap to cycle thin → medium → thick → thin.
+            Button {
+                selectedWidth = selectedWidth.next
+            } label: {
+                Capsule()
+                    .fill(.white)
+                    .frame(width: 18, height: selectedWidth.iconLineWidth)
+                    .frame(width: 36, height: 32)
+                    .background(
+                        RoundedRectangle(cornerRadius: 6)
+                            .fill(Color.white.opacity(0.08))
+                    )
+            }
+            .accessibilityLabel("Stroke width: \(selectedWidth.accessibilityLabel). Tap to cycle.")
 
             Spacer()
 
@@ -145,9 +213,11 @@ struct SketchToolbar: View {
 #Preview {
     @Previewable @State var tool: SketchToolKind = .pen
     @Previewable @State var color: Color = Color(red: 0.0, green: 0.15, blue: 0.39)
+    @Previewable @State var width: SketchWidth = .medium
     return SketchToolbar(
         selectedTool: $tool,
         selectedColor: $color,
+        selectedWidth: $width,
         onUndo: {},
         onRedo: {}
     )

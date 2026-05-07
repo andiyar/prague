@@ -77,7 +77,10 @@ final class PDFExportService: NSObject {
 
     private func renderCover(userId: String, picks: [Session], notes: [SessionNote]) -> String {
         let name = fullName(for: userId)
-        let totalSketches = notes.reduce(0) { $0 + $1.sketchFilenames.count }
+        // Count by parsing body, not sketchFilenames — legacy notes can have
+        // inline sketch refs without the array populated, and the body is the
+        // canonical source of what actually renders in the report.
+        let totalSketches = notes.reduce(0) { $0 + max($1.sketchFilenames.count, $1.inlineSketchCount) }
         let formattedToday = DateFormatter.localizedString(from: Date(), dateStyle: .long, timeStyle: .none)
         return """
         <div class="cover">

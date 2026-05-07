@@ -18,6 +18,7 @@ struct SketchEditorView: View {
     @State private var tool: PKTool = PKInkingTool(.pen, color: UIColor(red: 0, green: 0.15, blue: 0.39, alpha: 1), width: 2)
     @State private var selectedToolKind: SketchToolKind = .pen
     @State private var selectedColor: Color = Color(red: 0, green: 0.15, blue: 0.39)
+    @State private var selectedWidth: SketchWidth = .medium
     @State private var canvasView = PKCanvasView()
     @State private var showOCRPrompt = false
     @State private var isSaving = false
@@ -42,6 +43,7 @@ struct SketchEditorView: View {
             SketchToolbar(
                 selectedTool: $selectedToolKind,
                 selectedColor: $selectedColor,
+                selectedWidth: $selectedWidth,
                 onUndo: { canvasView.undoManager?.undo() },
                 onRedo: { canvasView.undoManager?.redo() }
             )
@@ -54,6 +56,7 @@ struct SketchEditorView: View {
         .ignoresSafeArea(.keyboard)
         .onChange(of: selectedToolKind) { _, _ in updateTool() }
         .onChange(of: selectedColor) { _, _ in updateTool() }
+        .onChange(of: selectedWidth) { _, _ in updateTool() }
         .onAppear { updateTool() }
         .confirmationDialog(
             "Sketch updated — what about the transcription?",
@@ -96,11 +99,17 @@ struct SketchEditorView: View {
     }
 
     private func save(decision: OCRDecision) {
+        // Prefer the bounding box of the actual strokes — keeps the saved PNG
+        // tight to what was drawn, so it embeds in notes/exports without acres
+        // of empty whitespace. Fall back to the full canvas only when nothing
+        // has been drawn yet.
         let renderRect: CGRect
-        if !canvasView.bounds.isEmpty {
+        let strokeBounds = canvasView.drawing.bounds
+        if !strokeBounds.isEmpty {
+            // Pad 24pt on each side so strokes aren't crammed against the edge.
+            renderRect = strokeBounds.insetBy(dx: -24, dy: -24)
+        } else if !canvasView.bounds.isEmpty {
             renderRect = canvasView.bounds
-        } else if !canvasView.drawing.bounds.isEmpty {
-            renderRect = canvasView.drawing.bounds
         } else {
             renderRect = CGRect(x: 0, y: 0, width: 768, height: 1024)
         }
@@ -113,10 +122,11 @@ struct SketchEditorView: View {
 
     private func updateTool() {
         let uiColor = UIColor(selectedColor)
+        let w = selectedWidth.width(for: selectedToolKind)
         switch selectedToolKind {
-        case .pen:    tool = PKInkingTool(.pen, color: uiColor, width: 2)
-        case .pencil: tool = PKInkingTool(.pencil, color: uiColor, width: 2)
-        case .marker: tool = PKInkingTool(.marker, color: uiColor, width: 8)
+        case .pen:    tool = PKInkingTool(.pen, color: uiColor, width: w)
+        case .pencil: tool = PKInkingTool(.pencil, color: uiColor, width: w)
+        case .marker: tool = PKInkingTool(.marker, color: uiColor, width: w)
         case .eraser: tool = PKEraserTool(.vector)
         }
     }

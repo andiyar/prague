@@ -66,6 +66,25 @@ struct SessionNote: Identifiable, Equatable {
         return "session-\(sessionId).md"
     }
 
+    /// Number of inline `![sketch](sketches/...)` references in the body.
+    /// Source of truth for "how many sketches does this note contain" — more
+    /// reliable than `sketchFilenames.count` because legacy notes from earlier
+    /// builds may have body image refs without the array being populated.
+    var inlineSketchCount: Int {
+        body.components(separatedBy: "![sketch](sketches/").count - 1
+    }
+
+    /// Body text with all `![alt](url)` image references stripped, suitable
+    /// for plain-text previews in lists. Trims surrounding whitespace.
+    var bodyWithoutImages: String {
+        guard let regex = try? NSRegularExpression(pattern: #"!\[[^\]]*\]\([^)]*\)"#) else {
+            return body
+        }
+        let range = NSRange(body.startIndex..., in: body)
+        let stripped = regex.stringByReplacingMatches(in: body, range: range, withTemplate: "")
+        return stripped.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
     // MARK: - YAML Front Matter Serialisation
 
     /// Serialise to Markdown file content with YAML front matter

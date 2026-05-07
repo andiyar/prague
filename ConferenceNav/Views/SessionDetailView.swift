@@ -287,6 +287,7 @@ struct SessionDetailView: View {
         }
         .sheet(isPresented: $showingNoteEditor) {
             NoteEditorView(session: session, presentation: nil)
+                .presentationDetents([.large])
         }
         .background(CNColors.background(for: colorScheme))
         .navigationBarTitleDisplayMode(.inline)
@@ -397,6 +398,7 @@ struct PresentationRow: View {
         .clipShape(RoundedRectangle(cornerRadius: 8))
         .sheet(isPresented: $showingNoteEditor) {
             NoteEditorView(session: session, presentation: presentation)
+                .presentationDetents([.large])
         }
     }
 }

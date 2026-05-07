@@ -29,12 +29,15 @@ struct NoteListView: View {
         .sheet(isPresented: isShowingEditor) {
             if let note = editingNote,
                let session = store.sessions.first(where: { $0.id == note.sessionId }) {
-                if let presId = note.presentationId,
-                   let pres = session.presentations.first(where: { $0.id == presId }) {
-                    NoteEditorView(session: session, presentation: pres)
-                } else {
-                    NoteEditorView(session: session, presentation: nil)
+                Group {
+                    if let presId = note.presentationId,
+                       let pres = session.presentations.first(where: { $0.id == presId }) {
+                        NoteEditorView(session: session, presentation: pres)
+                    } else {
+                        NoteEditorView(session: session, presentation: nil)
+                    }
                 }
+                .presentationDetents([.large])
             }
         }
     }
@@ -97,20 +100,41 @@ struct NoteListView: View {
                         }
                         .foregroundStyle(CNColors.teal(for: colorScheme))
 
-                        // Note preview
-                        Text(note.body.trimmingCharacters(in: .whitespacesAndNewlines))
-                            .font(CNFonts.body)
-                            .foregroundStyle(CNColors.textSecondary)
-                            .lineLimit(2)
+                        // Note preview — strip image markdown so the line shows
+                        // prose (or transcribed text) instead of `![sketch](...)`.
+                        let preview = note.bodyWithoutImages
+                        if !preview.isEmpty {
+                            Text(preview)
+                                .font(CNFonts.body)
+                                .foregroundStyle(CNColors.textSecondary)
+                                .lineLimit(2)
+                        }
 
-                        if !note.photoFilenames.isEmpty {
-                            HStack(spacing: 4) {
-                                Image(systemName: "photo")
-                                    .font(.system(size: 11))
-                                Text("\(note.photoFilenames.count) photo\(note.photoFilenames.count == 1 ? "" : "s")")
-                                    .font(CNFonts.small)
+                        // Photo + sketch badges. Sketch count parses the body so
+                        // legacy notes (where sketchFilenames may be empty)
+                        // still surface the correct number.
+                        let sketchCount = max(note.sketchFilenames.count, note.inlineSketchCount)
+                        if !note.photoFilenames.isEmpty || sketchCount > 0 {
+                            HStack(spacing: 10) {
+                                if !note.photoFilenames.isEmpty {
+                                    HStack(spacing: 4) {
+                                        Image(systemName: "photo")
+                                            .font(.system(size: 11))
+                                        Text("\(note.photoFilenames.count) photo\(note.photoFilenames.count == 1 ? "" : "s")")
+                                            .font(CNFonts.small)
+                                    }
+                                    .foregroundStyle(CNColors.gold(for: colorScheme))
+                                }
+                                if sketchCount > 0 {
+                                    HStack(spacing: 4) {
+                                        Image(systemName: "scribble.variable")
+                                            .font(.system(size: 11))
+                                        Text("\(sketchCount) sketch\(sketchCount == 1 ? "" : "es")")
+                                            .font(CNFonts.small)
+                                    }
+                                    .foregroundStyle(CNColors.teal(for: colorScheme))
+                                }
                             }
-                            .foregroundStyle(CNColors.gold(for: colorScheme))
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
