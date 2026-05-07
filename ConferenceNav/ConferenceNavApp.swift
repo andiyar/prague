@@ -16,6 +16,26 @@ struct ConferenceNavApp: App {
 
         UNUserNotificationCenter.current().delegate = _notificationService.wrappedValue
         _store.wrappedValue.notificationService = _notificationService.wrappedValue
+
+        Self.sweepStaleExports()
+    }
+
+    /// Reaps export staging dirs and stale PDFs from previous sessions.
+    /// PDFExportService and ExportView both write to /tmp/EAPC-{Export,PDF}-*
+    /// and we can't reliably clean up after the share sheet dismisses,
+    /// so we sweep on launch instead — safe because these are always
+    /// session-scoped temp artefacts.
+    private static func sweepStaleExports() {
+        let tmp = FileManager.default.temporaryDirectory
+        guard let entries = try? FileManager.default.contentsOfDirectory(at: tmp, includingPropertiesForKeys: nil) else {
+            return
+        }
+        for url in entries {
+            let name = url.lastPathComponent
+            if name.hasPrefix("EAPC-Export-") || name.hasPrefix("EAPC-PDF-") || name.hasPrefix("EAPC-2026-") {
+                try? FileManager.default.removeItem(at: url)
+            }
+        }
     }
 
     var body: some Scene {
