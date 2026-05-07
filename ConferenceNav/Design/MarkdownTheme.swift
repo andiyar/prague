@@ -12,13 +12,8 @@ struct LocalMediaImageProvider: ImageProvider {
 
     @ViewBuilder
     func makeImage(url: URL?) -> some View {
-        if let url, let local = localFileURL(for: url),
-           let data = try? Data(contentsOf: local),
-           let uiImage = UIImage(data: data) {
-            Image(uiImage: uiImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: .infinity)
+        if let url, let local = localFileURL(for: url) {
+            AsyncLocalImage(url: local)
         } else {
             EmptyView()
         }
@@ -34,6 +29,58 @@ struct LocalMediaImageProvider: ImageProvider {
         }
         return nil
     }
+}
+
+/// Loads a local image off the main thread and caches the result. Replaces
+/// the synchronous `Data(contentsOf:)` + `UIImage(data:)` we used to do in
+/// the ImageProvider — that approach blocked the main thread on
+/// iCloud-backed files that hadn't downloaded yet, and re-loaded on every
+/// re-render. With this view, the load happens in a detached task and
+/// re-renders hit the in-memory cache.
+struct AsyncLocalImage: View {
+    let url: URL
+    @State private var image: UIImage?
+
+    var body: some View {
+        Group {
+            if let image {
+                Image(uiImage: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            } else {
+                // Subtle placeholder while the image loads — keeps layout stable.
+                Rectangle()
+                    .fill(Color.secondary.opacity(0.08))
+                    .aspectRatio(4.0 / 3.0, contentMode: .fit)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .task(id: url) {
+            self.image = await Self.loadImage(at: url)
+        }
+    }
+
+    private static func loadImage(at url: URL) async -> UIImage? {
+        if let cached = LocalImageCache.shared.image(for: url) { return cached }
+        let loaded: UIImage? = await Task.detached(priority: .userInitiated) {
+            guard let data = try? Data(contentsOf: url),
+                  let image = UIImage(data: data) else { return nil }
+            return image
+        }.value
+        if let loaded { LocalImageCache.shared.set(loaded, for: url) }
+        return loaded
+    }
+}
+
+/// Process-wide in-memory cache for note media images. NSCache evicts under
+/// memory pressure automatically; we cap count at 50 so a long scroll
+/// through many notes doesn't balloon RAM forever.
+final class LocalImageCache {
+    static let shared = LocalImageCache()
+    private let cache = NSCache<NSURL, UIImage>()
+    private init() { cache.countLimit = 50 }
+    func image(for url: URL) -> UIImage? { cache.object(forKey: url as NSURL) }
+    func set(_ image: UIImage, for url: URL) { cache.setObject(image, forKey: url as NSURL) }
 }
 
 extension Theme {
