@@ -234,17 +234,21 @@ struct ExportView: View {
 
         var items: [Any] = [mdURL]
 
-        // Copy referenced photos with readable names
-        for photoFilename in photoFilenames {
-            if let sourceURL = notesStore.photoURL(filename: photoFilename) {
-                let exportName = renameMap[photoFilename] ?? photoFilename
-                let destURL = exportDir.appendingPathComponent(exportName)
-                try? FileManager.default.copyItem(at: sourceURL, to: destURL)
-                items.append(destURL)
+        // Stage photos into a photos/ subdirectory matching the body's `photos/X.jpg` refs.
+        if !photoFilenames.isEmpty {
+            let photosDir = exportDir.appendingPathComponent("photos")
+            try? FileManager.default.createDirectory(at: photosDir, withIntermediateDirectories: true)
+            for photoFilename in photoFilenames {
+                if let sourceURL = notesStore.photoURL(filename: photoFilename) {
+                    let exportName = renameMap[photoFilename] ?? photoFilename
+                    let destURL = photosDir.appendingPathComponent(exportName)
+                    try? FileManager.default.copyItem(at: sourceURL, to: destURL)
+                    items.append(destURL)
+                }
             }
         }
 
-        // Stage sketches into a sketches/ subdirectory matching the Markdown body's references
+        // Stage sketches into a sketches/ subdirectory matching the body's `sketches/Y.png` refs.
         if !sketchFilenames.isEmpty {
             let sketchesDir = exportDir.appendingPathComponent("sketches")
             try? FileManager.default.createDirectory(at: sketchesDir, withIntermediateDirectories: true)
@@ -308,7 +312,7 @@ struct ExportView: View {
             if !note.photoFilenames.isEmpty {
                 md += "\n\n"
                 for (i, filename) in note.photoFilenames.enumerated() {
-                    md += "![Photo \(i + 1)](\(filename))\n\n"
+                    md += "![Photo \(i + 1)](photos/\(filename))\n\n"
                 }
             }
             md += "\n---\n\n"

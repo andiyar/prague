@@ -266,7 +266,7 @@ class NotesStore {
                     md += note.body + "\n\n"
                     if !note.photoFilenames.isEmpty {
                         for (i, filename) in note.photoFilenames.enumerated() {
-                            md += "![Photo \(i + 1)](\(filename))\n\n"
+                            md += "![Photo \(i + 1)](photos/\(filename))\n\n"
                         }
                     }
                 }
@@ -288,7 +288,7 @@ class NotesStore {
                         }
                         if !pNote.photoFilenames.isEmpty {
                             for (i, filename) in pNote.photoFilenames.enumerated() {
-                                md += "![Photo \(i + 1)](\(filename))\n\n"
+                                md += "![Photo \(i + 1)](photos/\(filename))\n\n"
                             }
                         }
                     }
