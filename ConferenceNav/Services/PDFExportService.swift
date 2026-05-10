@@ -155,7 +155,11 @@ final class PDFExportService: NSObject {
                     }
                 }
                 html += renderMarkdownBody(note.body)
-                for filename in note.photoFilenames {
+                // Append only photos that aren't already referenced inline in
+                // the body — new photos are inserted as `![photo](photos/X)`
+                // refs at attach time, so they render in context. Legacy
+                // photos (no body ref) get appended here as before.
+                for filename in note.photosToAppend {
                     html += "<figure><img src=\"photos/\(filename)\"></figure>"
                 }
             }
@@ -174,7 +178,8 @@ final class PDFExportService: NSObject {
                 html += "<div class=\"presenter\">\(escapeHTML(note.presenter))</div>"
             }
             html += renderMarkdownBody(note.body)
-            for filename in note.photoFilenames {
+            // Same dedupe as renderConferenceContent — see comment there.
+            for filename in note.photosToAppend {
                 html += "<figure><img src=\"photos/\(filename)\"></figure>"
             }
             html += "</article>"

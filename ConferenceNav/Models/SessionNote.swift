@@ -74,6 +74,32 @@ struct SessionNote: Identifiable, Equatable {
         body.components(separatedBy: "![sketch](sketches/").count - 1
     }
 
+    /// Photo filenames that already appear as `![photo](photos/X.jpg)` refs
+    /// in the body. Used by exports to avoid duplicating photos that have
+    /// been inlined (new notes) while still appending photos that haven't
+    /// been (legacy notes from before inline-photo support).
+    var inlinePhotoFilenames: Set<String> {
+        guard let regex = try? NSRegularExpression(pattern: #"!\[photo\]\(photos/([^)]+)\)"#) else {
+            return []
+        }
+        let range = NSRange(body.startIndex..., in: body)
+        var found: Set<String> = []
+        regex.enumerateMatches(in: body, range: range) { match, _, _ in
+            guard let match, match.numberOfRanges > 1,
+                  let r = Range(match.range(at: 1), in: body) else { return }
+            found.insert(String(body[r]))
+        }
+        return found
+    }
+
+    /// Photos that are NOT yet referenced inline. Exports should append these
+    /// after the body (legacy fallback) while leaving inline-referenced ones
+    /// to render in their natural body position.
+    var photosToAppend: [String] {
+        let inline = inlinePhotoFilenames
+        return photoFilenames.filter { !inline.contains($0) }
+    }
+
     /// Body text with all `![alt](url)` image references stripped, suitable
     /// for plain-text previews in lists. Trims surrounding whitespace.
     var bodyWithoutImages: String {

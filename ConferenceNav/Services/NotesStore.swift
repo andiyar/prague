@@ -264,10 +264,10 @@ class NotesStore {
                 if let note = sessionNote,
                    !note.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                     md += note.body + "\n\n"
-                    if !note.photoFilenames.isEmpty {
-                        for (i, filename) in note.photoFilenames.enumerated() {
-                            md += "![Photo \(i + 1)](photos/\(filename))\n\n"
-                        }
+                    // Append only photos not already referenced inline.
+                    let toAppend = note.photosToAppend
+                    for (i, filename) in toAppend.enumerated() {
+                        md += "![Photo \(i + 1)](photos/\(filename))\n\n"
                     }
                 }
 
@@ -286,10 +286,9 @@ class NotesStore {
                         if !pNote.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                             md += pNote.body + "\n\n"
                         }
-                        if !pNote.photoFilenames.isEmpty {
-                            for (i, filename) in pNote.photoFilenames.enumerated() {
-                                md += "![Photo \(i + 1)](photos/\(filename))\n\n"
-                            }
+                        let toAppend = pNote.photosToAppend
+                        for (i, filename) in toAppend.enumerated() {
+                            md += "![Photo \(i + 1)](photos/\(filename))\n\n"
                         }
                     }
                 } else if sessionNote == nil && isPicked {

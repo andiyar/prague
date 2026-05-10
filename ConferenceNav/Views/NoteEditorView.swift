@@ -307,14 +307,33 @@ struct NoteEditorView: View {
     // MARK: - Actions
 
     private func attachPhoto(_ image: UIImage) {
-        if let filename = notesStore.savePhoto(image, for: currentNote) {
-            photoFilenames.append(filename)
+        guard let filename = notesStore.savePhoto(image, for: currentNote) else { return }
+        photoFilenames.append(filename)
+        // Insert the image reference inline at the end of the body — matches
+        // the sketch flow so photos render in context (in preview, in
+        // markdown export, in the PDF) instead of being clustered at the
+        // bottom. The user can manually move the ref earlier in the body
+        // via the markdown editor if they want a different position.
+        let imgRef = "![photo](photos/\(filename))"
+        if noteBody.isEmpty {
+            noteBody = imgRef + "\n"
+        } else {
+            noteBody += "\n\n" + imgRef + "\n"
         }
     }
 
     private func removePhoto(_ filename: String) {
         photoFilenames.removeAll { $0 == filename }
         notesStore.deletePhoto(filename: filename)
+        // Strip the inline image reference from the body too. Mirrors
+        // removeSketch — leave any user-typed prose adjacent to the photo
+        // alone, just nuke the image ref + leading paragraph break.
+        let imgRef = "![photo](photos/\(filename))"
+        if let range = noteBody.range(of: "\n\n" + imgRef) {
+            noteBody.removeSubrange(range)
+        } else if let range = noteBody.range(of: imgRef) {
+            noteBody.removeSubrange(range)
+        }
     }
 
     private func removeSketch(_ filename: String) {

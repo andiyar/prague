@@ -309,9 +309,11 @@ struct ExportView: View {
                 md += "*\(note.sessionDate) · \(note.sessionTime) · \(note.sessionVenue)*\n\n"
             }
             md += note.body
-            if !note.photoFilenames.isEmpty {
+            // Append only photos that aren't already referenced inline in the body.
+            let toAppend = note.photosToAppend
+            if !toAppend.isEmpty {
                 md += "\n\n"
-                for (i, filename) in note.photoFilenames.enumerated() {
+                for (i, filename) in toAppend.enumerated() {
                     md += "![Photo \(i + 1)](photos/\(filename))\n\n"
                 }
             }
