@@ -12,6 +12,5 @@ INSERT INTO config (key, value) VALUES
     ('consulate_phone', '+420 257 022 100')
 ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
 
--- TODO: Update these when you have the numbers
--- UPDATE config SET value = 'Mum: +61 XXX XXX XXX' WHERE key = 'emergency_contact';
--- UPDATE config SET value = '+420 XXX XXX XXX' WHERE key = 'hotel_phone';
+-- Remove unused placeholder rows
+DELETE FROM config WHERE key IN ('emergency_contact', 'hotel_phone');

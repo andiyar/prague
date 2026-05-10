@@ -177,14 +177,6 @@ struct TripInfoView: View {
                     phone: tripData.config.insurancePhone ?? "Not set"
                 )
 
-                if let emergency = tripData.config.emergencyContact {
-                    Divider().padding(.leading, 44)
-
-                    EmergencyContactRow(
-                        title: "Emergency Contact",
-                        phone: emergency
-                    )
-                }
             }
             .background(Color.cozyCardBackground)
             .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
