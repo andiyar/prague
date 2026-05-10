@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -99,7 +99,7 @@
 		B22A4F389E85B91D969404A0 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		C5F48A8EA3472703F679BEBE /* VenueMapThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueMapThumbnail.swift; sourceTree = "<group>"; };
 		CAEF12E4AE1A856CE79051D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CB18E6E703765036469FAF4A /* ConferenceNav.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ConferenceNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB18E6E703765036469FAF4A /* ConferenceNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConferenceNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF438AA89D0AB0473C3C12C /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		D1D7DDB99F4720F1690CC658 /* ExtrasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtrasView.swift; sourceTree = "<group>"; };
 		D4FEEAD240BA4BB842B437E7 /* IdiomLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdiomLayout.swift; sourceTree = "<group>"; };
@@ -294,7 +294,6 @@
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					643E5BFEBB7734EBAF6D7B42 = {
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -312,7 +311,6 @@
 			packageReferences = (
 				ECD5C5426F95B95796C97820 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 			);
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -404,7 +402,7 @@
 				CODE_SIGN_ENTITLEMENTS = ConferenceNav.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5W72UJL332;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "EAPragueC 2026";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Take photos of sessions, posters, and slides";
@@ -559,7 +557,7 @@
 				CODE_SIGN_ENTITLEMENTS = ConferenceNav.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5W72UJL332;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "EAPragueC 2026";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Take photos of sessions, posters, and slides";

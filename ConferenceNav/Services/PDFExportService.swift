@@ -294,35 +294,57 @@ extension PDFExportService: WKNavigationDelegate {
                 self.cleanupStaging()
                 return
             }
+            // Wait for layout + image decoding to settle before rendering.
             try? await Task.sleep(nanoseconds: 600_000_000)
-            let config = WKPDFConfiguration()
-            webView.createPDF(configuration: config) { result in
-                Task { @MainActor in
-                    // Re-entrancy guard. If a `didFail*` fired during the
-                    // 600ms wait or while createPDF was running, the
-                    // continuation will already have been consumed and set
-                    // to nil. Without this check we'd double-resume and crash.
-                    guard self.continuation != nil else {
-                        self.cleanupStaging()
-                        return
-                    }
-                    switch result {
-                    case .success(let data):
-                        do {
-                            try data.write(to: outputURL)
-                            self.continuation?.resume(returning: outputURL)
-                        } catch {
-                            self.continuation?.resume(throwing: error)
-                        }
-                    case .failure(let error):
-                        self.continuation?.resume(throwing: error)
-                    }
-                    self.continuation = nil
-                    self.webView = nil
-                    self.cleanupStaging()
-                }
+            // Re-entrancy guard. If didFail fired during the wait, the
+            // continuation will already be consumed.
+            guard self.continuation != nil else {
+                self.cleanupStaging()
+                return
             }
+            do {
+                // Use UIPrintPageRenderer rather than WKWebView.createPDF.
+                // createPDF ignores CSS `@page` and `page-break-*` rules and
+                // emits one giant tall page; UIPrintPageRenderer respects
+                // pagination via the print formatter and produces a proper
+                // multi-page A4 PDF.
+                let data = try Self.renderPaginatedPDF(from: webView)
+                try data.write(to: outputURL)
+                self.continuation?.resume(returning: outputURL)
+            } catch {
+                self.continuation?.resume(throwing: error)
+            }
+            self.continuation = nil
+            self.webView = nil
+            self.cleanupStaging()
         }
+    }
+
+    /// Renders the given web view to a multi-page A4 PDF via
+    /// UIPrintPageRenderer. Margins match `report.css` (18mm).
+    private static func renderPaginatedPDF(from webView: WKWebView) throws -> Data {
+        // A4 in PDF points (72 dpi): 595.276 × 841.89.
+        let a4 = CGRect(x: 0, y: 0, width: 595.276, height: 841.89)
+        // 18mm margin = 51.024 pt.
+        let margin: CGFloat = 51.024
+        let printable = a4.insetBy(dx: margin, dy: margin)
+
+        let renderer = UIPrintPageRenderer()
+        let formatter = webView.viewPrintFormatter()
+        formatter.perPageContentInsets = .zero
+        renderer.addPrintFormatter(formatter, startingAtPageAt: 0)
+        renderer.setValue(NSValue(cgRect: a4), forKey: "paperRect")
+        renderer.setValue(NSValue(cgRect: printable), forKey: "printableRect")
+
+        let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, a4, nil)
+        let pageCount = renderer.numberOfPages
+        for i in 0..<pageCount {
+            UIGraphicsBeginPDFPage()
+            renderer.drawPage(at: i, in: UIGraphicsGetPDFContextBounds())
+        }
+        UIGraphicsEndPDFContext()
+        return pdfData as Data
     }
 
     nonisolated func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
