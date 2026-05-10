@@ -139,7 +139,7 @@ struct MainTabView: View {
             if coord.latitude < 0 {
                 timezone = TimeZone(identifier: "Australia/Sydney")!
             } else if coord.latitude > 20 && coord.latitude < 30 {
-                timezone = TimeZone(identifier: "Asia/Dubai")!
+                timezone = TimeZone(identifier: "Asia/Hong_Kong")!
             } else {
                 timezone = TimeZone(identifier: "Europe/Prague")!
             }
@@ -203,7 +203,7 @@ struct DebugTimeSheet: View {
                         QuickJumpButton(label: "Flight 1", date: ISO8601DateFormatter().date(from: "2026-05-12T15:00:00Z")!) {
                             selectedDate = ISO8601DateFormatter().date(from: "2026-05-12T15:00:00Z")!
                         }
-                        QuickJumpButton(label: "Dubai layover", date: ISO8601DateFormatter().date(from: "2026-05-13T02:00:00Z")!) {
+                        QuickJumpButton(label: "HK layover", date: ISO8601DateFormatter().date(from: "2026-05-13T02:00:00Z")!) {
                             selectedDate = ISO8601DateFormatter().date(from: "2026-05-13T02:00:00Z")!
                         }
                         QuickJumpButton(label: "Prague arrival", date: ISO8601DateFormatter().date(from: "2026-05-13T12:00:00Z")!) {

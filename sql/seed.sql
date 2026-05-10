@@ -91,10 +91,13 @@ INSERT INTO config (key, value) VALUES
 ('home_timezone', 'Australia/Sydney'),
 ('trip_timezone', 'Europe/Prague'),
 ('return_datetime_utc', '2026-05-18T01:45:00Z'),
-('contact_phone', '+61XXXXXXXXX'),
+('contact_phone', '+61 423 518 466'),
 ('emergency_contact', 'Mum: +61XXXXXXXXX'),
 ('hotel_name', 'STAGES HOTEL Prague'),
 ('hotel_address', 'Ceskomoravska 19a, Prague, CZ-19000'),
 ('hotel_phone', '+420XXXXXXXXX'),
 ('conference_name', 'EAPC World Congress 2026'),
-('conference_url', 'https://www.eapcnet.eu/eapc2026/');
+('conference_url', 'https://www.eapcnet.eu/eapc2026/'),
+('insurance_phone', '+61 2 8907 5604'),
+('insurance_policy', 'Liberty / ASMOF Corporate Travel'),
+('consulate_phone', '+420 257 022 100');
