@@ -48,38 +48,41 @@ struct VenueMapView: View {
     }
 
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 0) {
-                mapArea
-                floorSwitcher
+        // No NavigationStack here — caller is responsible for providing the
+        // outer container (a NavigationStack for sheet presentation, or just
+        // pushing onto an existing stack). Wrapping a NavigationStack inside
+        // a navigation push creates a nested-stack bug where SwiftUI auto-pops
+        // and leaves the parent stack unresponsive.
+        VStack(spacing: 0) {
+            mapArea
+            floorSwitcher
+        }
+        .background(CNColors.background(for: colorScheme))
+        .navigationTitle(currentFloor.displayName)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("Done") { dismiss() }
             }
-            .background(CNColors.background(for: colorScheme))
-            .navigationTitle(currentFloor.displayName)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button("Done") { dismiss() }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    showMyDay.toggle()
+                } label: {
+                    Image(systemName: showMyDay ? "calendar.badge.checkmark" : "calendar")
+                        .foregroundStyle(showMyDay ? CNColors.gold(for: colorScheme) : CNColors.textSecondary)
                 }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        showMyDay.toggle()
-                    } label: {
-                        Image(systemName: showMyDay ? "calendar.badge.checkmark" : "calendar")
-                            .foregroundStyle(showMyDay ? CNColors.gold(for: colorScheme) : CNColors.textSecondary)
-                    }
-                    .accessibilityLabel(showMyDay ? "Hide My Day" : "Show My Day")
-                }
-                #if DEBUG
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        showCrosshairs.toggle()
-                    } label: {
-                        Image(systemName: "scope")
-                            .foregroundStyle(showCrosshairs ? CNColors.red(for: colorScheme) : CNColors.textSecondary)
-                    }
-                }
-                #endif
+                .accessibilityLabel(showMyDay ? "Hide My Day" : "Show My Day")
             }
+            #if DEBUG
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    showCrosshairs.toggle()
+                } label: {
+                    Image(systemName: "scope")
+                        .foregroundStyle(showCrosshairs ? CNColors.red(for: colorScheme) : CNColors.textSecondary)
+                }
+            }
+            #endif
         }
     }
 

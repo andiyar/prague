@@ -18,7 +18,10 @@ struct VenueMapThumbnail: View {
             }
             .buttonStyle(.plain)
             .sheet(isPresented: $showingMap) {
-                VenueMapView(focus: .specificRoom(room))
+                // VenueMapView no longer owns a NavigationStack — wrap it.
+                NavigationStack {
+                    VenueMapView(focus: .specificRoom(room))
+                }
             }
         }
         // else: render nothing — graceful fallback for unknown venues

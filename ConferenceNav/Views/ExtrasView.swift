@@ -6,6 +6,15 @@ struct ExtrasView: View {
     @Environment(NotesStore.self) var notesStore
     @Environment(\.colorScheme) var colorScheme
 
+    // Venue map (and debug variant) present as sheets, not navigation pushes,
+    // because VenueMapView wraps its body in its own NavigationStack — pushing
+    // it via navigationDestination created nested NavigationStacks that
+    // SwiftUI auto-pops, leaving the parent stack in a broken state.
+    @State private var showingVenueMap = false
+    #if DEBUG
+    @State private var showingVenueMapDebug = false
+    #endif
+
     var body: some View {
         NavigationStack {
             List {
@@ -69,7 +78,9 @@ struct ExtrasView: View {
                 }
 
                 Section {
-                    NavigationLink(value: "venueMap") {
+                    Button {
+                        showingVenueMap = true
+                    } label: {
                         Label {
                             VStack(alignment: .leading, spacing: 2) {
                                 Text("Venue Map")
@@ -86,11 +97,14 @@ struct ExtrasView: View {
                         }
                         .padding(.vertical, 6)
                     }
+                    .buttonStyle(.plain)
                 }
 
                 #if DEBUG
                 Section {
-                    NavigationLink(value: "venueMapDebug") {
+                    Button {
+                        showingVenueMapDebug = true
+                    } label: {
                         Label {
                             VStack(alignment: .leading, spacing: 2) {
                                 Text("Venue Map Debug")
@@ -107,6 +121,7 @@ struct ExtrasView: View {
                         }
                         .padding(.vertical, 6)
                     }
+                    .buttonStyle(.plain)
                 } header: {
                     Text("Debug")
                 }
@@ -123,16 +138,25 @@ struct ExtrasView: View {
                     ExportView()
                 case "notes":
                     NoteListView()
-                case "venueMap":
-                    VenueMapView(focus: .browse(.floor3))
-                #if DEBUG
-                case "venueMapDebug":
-                    VenueMapDebugView()
-                #endif
                 default:
                     EmptyView()
                 }
             }
+            .sheet(isPresented: $showingVenueMap) {
+                // VenueMapView no longer owns a NavigationStack — wrap it
+                // here so the title bar / Done button / toolbar render in
+                // the sheet.
+                NavigationStack {
+                    VenueMapView(focus: .browse(.floor3))
+                }
+            }
+            #if DEBUG
+            .sheet(isPresented: $showingVenueMapDebug) {
+                NavigationStack {
+                    VenueMapDebugView()
+                }
+            }
+            #endif
         }
     }
 }
