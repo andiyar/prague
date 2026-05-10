@@ -91,10 +91,10 @@ struct KidsView: View {
             // Map
             Map {
                 // Flight paths
-                MapPolyline(coordinates: flightPath(from: Airports.sydney, to: Airports.dubai))
+                MapPolyline(coordinates: flightPath(from: Airports.sydney, to: Airports.hongKong))
                     .stroke(.purple.opacity(0.4), style: StrokeStyle(lineWidth: 3, dash: [8, 8]))
 
-                MapPolyline(coordinates: flightPath(from: Airports.dubai, to: Airports.prague))
+                MapPolyline(coordinates: flightPath(from: Airports.hongKong, to: Airports.prague))
                     .stroke(.purple.opacity(0.4), style: StrokeStyle(lineWidth: 3, dash: [8, 8]))
 
                 // Daddy's position
