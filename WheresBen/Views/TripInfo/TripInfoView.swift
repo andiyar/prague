@@ -111,8 +111,9 @@ struct TripInfoView: View {
 
             VStack(spacing: 12) {
                 // WhatsApp call button
-                if let phone = tripData.config.contactPhone {
-                    Link(destination: URL(string: "https://wa.me/\(phone.replacingOccurrences(of: "+", with: ""))")!) {
+                if let phone = tripData.config.contactPhone,
+                   let url = phone.whatsAppURL {
+                    Link(destination: url) {
                         HStack {
                             Image(systemName: "phone.fill")
                                 .font(.title2)
@@ -133,8 +134,9 @@ struct TripInfoView: View {
                 }
 
                 // Regular phone
-                if let phone = tripData.config.contactPhone {
-                    Link(destination: URL(string: "tel:\(phone)")!) {
+                if let phone = tripData.config.contactPhone,
+                   let url = phone.telURL {
+                    Link(destination: url) {
                         HStack {
                             Image(systemName: "phone")
                             Text("Call Mobile")
@@ -266,13 +268,40 @@ struct EmergencyContactRow: View {
 
             Spacer()
 
-            Link(destination: URL(string: "tel:\(phone)")!) {
+            if let url = phone.telURL {
+                Link(destination: url) {
+                    Text(phone)
+                        .font(.cozyCaption)
+                        .foregroundColor(.cozyAccent)
+                }
+            } else {
                 Text(phone)
                     .font(.cozyCaption)
-                    .foregroundColor(.cozyAccent)
+                    .foregroundColor(.cozyTextSecondary)
             }
         }
         .padding()
+    }
+}
+
+// MARK: - Phone URL helpers
+
+private extension String {
+    /// Digits only, used for the wa.me path component.
+    var digitsOnly: String { filter(\.isNumber) }
+
+    /// `tel:+<digits>` URL, nil if no digits found.
+    var telURL: URL? {
+        let digits = digitsOnly
+        guard !digits.isEmpty else { return nil }
+        return URL(string: "tel:+\(digits)")
+    }
+
+    /// `https://wa.me/<digits>` URL, nil if no digits found.
+    var whatsAppURL: URL? {
+        let digits = digitsOnly
+        guard !digits.isEmpty else { return nil }
+        return URL(string: "https://wa.me/\(digits)")
     }
 }
 
