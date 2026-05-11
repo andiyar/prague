@@ -3,6 +3,11 @@ import SwiftUI
 struct StatusCard: View {
     @EnvironmentObject var tripData: TripDataService
     @State private var isAnimating = false
+    @State private var showPhotoFullscreen = false
+
+    private var showPhoto: Bool {
+        tripData.currentStatus.photoUrl != nil && tripData.currentStatus.audience.showsOnMain
+    }
 
     var body: some View {
         VStack(spacing: 16) {
@@ -30,6 +35,10 @@ struct StatusCard: View {
                 Spacer()
             }
 
+            if showPhoto, let urlString = tripData.currentStatus.photoUrl, let url = URL(string: urlString) {
+                photoView(url: url)
+            }
+
             // Updated timestamp (only show if recent - within 1 hour)
             if tripData.currentStatus.isOverride,
                let updatedAt = tripData.currentStatus.updatedAt,
@@ -48,6 +57,40 @@ struct StatusCard: View {
         .onAppear {
             isAnimating = true
         }
+        .fullScreenCover(isPresented: $showPhotoFullscreen) {
+            if let urlString = tripData.currentStatus.photoUrl, let url = URL(string: urlString) {
+                FullscreenPhotoView(url: url) {
+                    showPhotoFullscreen = false
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func photoView(url: URL) -> some View {
+        AsyncImage(url: url) { phase in
+            switch phase {
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFill()
+            case .failure:
+                Color.cozyCardBackground.overlay(
+                    Image(systemName: "photo.badge.exclamationmark")
+                        .foregroundColor(.cozyTextSecondary)
+                )
+            case .empty:
+                ProgressView()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 200)
+            @unknown default:
+                EmptyView()
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: 220)
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .onTapGesture { showPhotoFullscreen = true }
     }
 
     private func timeAgo(from date: Date) -> String {
@@ -93,6 +136,45 @@ struct StatusCard: View {
         case "🏠": return "status-home"
         default: return nil
         }
+    }
+}
+
+struct FullscreenPhotoView: View {
+    let url: URL
+    let onDismiss: () -> Void
+
+    var body: some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            AsyncImage(url: url) { phase in
+                switch phase {
+                case .success(let image):
+                    image.resizable().scaledToFit()
+                case .failure:
+                    Image(systemName: "photo.badge.exclamationmark")
+                        .font(.system(size: 64))
+                        .foregroundColor(.white.opacity(0.6))
+                case .empty:
+                    ProgressView().tint(.white)
+                @unknown default:
+                    EmptyView()
+                }
+            }
+
+            VStack {
+                HStack {
+                    Spacer()
+                    Button(action: onDismiss) {
+                        Image(systemName: "xmark.circle.fill")
+                            .font(.system(size: 32))
+                            .foregroundStyle(.white, .black.opacity(0.4))
+                            .padding()
+                    }
+                }
+                Spacer()
+            }
+        }
+        .statusBarHidden()
     }
 }
 

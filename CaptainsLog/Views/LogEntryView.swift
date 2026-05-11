@@ -1,5 +1,6 @@
 import SwiftUI
 import CoreLocation
+import PhotosUI
 
 struct LogEntryView: View {
     @StateObject private var locationManager = LocationManager()
@@ -10,6 +11,11 @@ struct LogEntryView: View {
     @State private var lastSentStatus: QuickStatus?
     @State private var recentUpdates: [RecentUpdate] = []
     @State private var showHistory = false
+    @State private var showPhotoSheet = false
+    @State private var photoItem: PhotosPickerItem?
+    @State private var photoImage: UIImage?
+    @State private var photoCaption = ""
+    @State private var photoAudience: StatusAudience = .both
 
     var body: some View {
         NavigationStack {
@@ -33,6 +39,9 @@ struct LogEntryView: View {
                         isEnabled: !isSending
                     )
 
+                    // Photo button
+                    photoButton
+
                     Spacer()
 
                     // Recent updates toggle
@@ -51,6 +60,9 @@ struct LogEntryView: View {
             .navigationBarTitleDisplayMode(.large)
             .sheet(isPresented: $showCustomMessage) {
                 customMessageSheet
+            }
+            .sheet(isPresented: $showPhotoSheet, onDismiss: resetPhotoState) {
+                photoSheet
             }
             .onAppear {
                 locationManager.requestPermission()
@@ -208,6 +220,141 @@ struct LogEntryView: View {
         .presentationDetents([.medium])
     }
 
+    // MARK: - Photo Button
+
+    private var photoButton: some View {
+        Button {
+            showPhotoSheet = true
+        } label: {
+            HStack(spacing: 10) {
+                Image(systemName: "camera.fill")
+                Text("Send a photo")
+                    .font(.cozyHeadline)
+            }
+            .foregroundColor(.cozyAccent)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 14)
+            .background(
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .strokeBorder(Color.cozyAccent.opacity(0.4), lineWidth: 1.5)
+                    .background(Color.cozyCardBackground.clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous)))
+            )
+        }
+        .disabled(isSending)
+    }
+
+    // MARK: - Photo Sheet
+
+    private var photoSheet: some View {
+        NavigationStack {
+            VStack(spacing: 20) {
+                // Image preview / picker
+                if let image = photoImage {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: 240)
+                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                } else {
+                    PhotosPicker(selection: $photoItem, matching: .images, photoLibrary: .shared()) {
+                        VStack(spacing: 12) {
+                            Image(systemName: "photo.on.rectangle.angled")
+                                .font(.system(size: 48))
+                            Text("Choose a photo")
+                                .font(.cozyHeadline)
+                        }
+                        .foregroundColor(.cozyAccent)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 200)
+                        .background(
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .strokeBorder(Color.cozyAccent.opacity(0.4), lineWidth: 1.5, antialiased: true)
+                        )
+                    }
+                }
+
+                // Audience picker
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Send to")
+                        .font(.cozyCaption)
+                        .foregroundColor(.cozyTextSecondary)
+                    Picker("Audience", selection: $photoAudience) {
+                        ForEach(StatusAudience.allCases) { audience in
+                            Label(audience.label, systemImage: audience.icon).tag(audience)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                }
+
+                // Optional caption
+                TextField("Caption (optional)", text: $photoCaption, axis: .vertical)
+                    .lineLimit(1...3)
+                    .textFieldStyle(.roundedBorder)
+
+                Spacer()
+
+                // Send button
+                Button {
+                    sendPhoto()
+                } label: {
+                    HStack {
+                        if isSending {
+                            ProgressView().tint(.white)
+                        } else {
+                            Image(systemName: "paperplane.fill")
+                        }
+                        Text(isSending ? "Sending..." : "Send")
+                    }
+                    .font(.cozyHeadline)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.cozyAccent)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                }
+                .disabled(photoImage == nil || isSending)
+
+                // Re-pick option when an image is selected
+                if photoImage != nil && !isSending {
+                    PhotosPicker(selection: $photoItem, matching: .images, photoLibrary: .shared()) {
+                        Text("Choose a different photo")
+                            .font(.cozyCaption)
+                            .foregroundColor(.cozyAccent)
+                    }
+                }
+            }
+            .padding()
+            .navigationTitle("Send a photo")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        showPhotoSheet = false
+                    }
+                    .disabled(isSending)
+                }
+            }
+            .onChange(of: photoItem) { _, newItem in
+                Task { await loadPhoto(from: newItem) }
+            }
+        }
+    }
+
+    private func loadPhoto(from item: PhotosPickerItem?) async {
+        guard let item = item else { return }
+        if let data = try? await item.loadTransferable(type: Data.self),
+           let image = UIImage(data: data) {
+            photoImage = image
+        }
+    }
+
+    private func resetPhotoState() {
+        photoItem = nil
+        photoImage = nil
+        photoCaption = ""
+        photoAudience = .both
+    }
+
     // MARK: - Actions
 
     private func sendStatus(_ status: QuickStatus) {
@@ -310,6 +457,85 @@ struct LogEntryView: View {
 
             isSending = false
         }
+    }
+
+    private func sendPhoto() {
+        guard !isSending, let image = photoImage else { return }
+        guard let jpeg = image.jpegData(compressionQuality: 0.7) else { return }
+
+        // Downscale if very large (>1.5 MB) to keep uploads quick
+        let payload = jpeg.count > 1_500_000 ? (image.resizedJPEG(maxDimension: 1600) ?? jpeg) : jpeg
+
+        let caption = photoCaption.trimmingCharacters(in: .whitespaces)
+        let audience = photoAudience
+
+        isSending = true
+
+        Task {
+            do {
+                let url = try await SupabaseClient.shared.uploadStatusPhoto(jpegData: payload)
+
+                let statusText = caption.isEmpty ? "Sent a photo" : caption
+                let kidsText = caption.isEmpty ? "Daddy sent a picture!" : "Daddy says: \(caption)"
+
+                try await SupabaseClient.shared.postStatusOverride(
+                    emoji: "📸",
+                    statusText: statusText,
+                    kidsText: kidsText,
+                    note: caption.isEmpty ? nil : caption,
+                    latitude: locationManager.coordinate?.latitude,
+                    longitude: locationManager.coordinate?.longitude,
+                    photoUrl: url,
+                    audience: audience
+                )
+
+                let update = RecentUpdate(
+                    emoji: "📸",
+                    text: caption.isEmpty ? "Photo → \(audience.label)" : "\(caption) → \(audience.label)",
+                    sentAt: Date()
+                )
+                recentUpdates.insert(update, at: 0)
+
+                lastSentStatus = QuickStatus(
+                    emoji: "📸",
+                    label: "Photo",
+                    statusText: statusText,
+                    kidsText: kidsText
+                )
+
+                showPhotoSheet = false
+
+                withAnimation(.bouncy) {
+                    showConfirmation = true
+                }
+
+                try await Task.sleep(nanoseconds: 1_500_000_000)
+
+                withAnimation(.bouncy) {
+                    showConfirmation = false
+                }
+            } catch {
+                print("Error sending photo: \(error)")
+            }
+
+            isSending = false
+        }
+    }
+}
+
+// MARK: - UIImage helpers
+
+private extension UIImage {
+    func resizedJPEG(maxDimension: CGFloat, quality: CGFloat = 0.7) -> Data? {
+        let longest = max(size.width, size.height)
+        guard longest > maxDimension else { return jpegData(compressionQuality: quality) }
+        let scale = maxDimension / longest
+        let newSize = CGSize(width: size.width * scale, height: size.height * scale)
+        let renderer = UIGraphicsImageRenderer(size: newSize)
+        let scaled = renderer.image { _ in
+            draw(in: CGRect(origin: .zero, size: newSize))
+        }
+        return scaled.jpegData(compressionQuality: quality)
     }
 }
 

@@ -6,6 +6,13 @@ struct KidsView: View {
     @State private var emojiScale: CGFloat = 1.0
     @State private var showSparkles = false
     @State private var showConfetti = false
+    @State private var photoFullscreen = false
+
+    private var kidsPhotoURL: URL? {
+        guard tripData.currentStatus.audience.showsOnKids,
+              let urlString = tripData.currentStatus.photoUrl else { return nil }
+        return URL(string: urlString)
+    }
 
     var body: some View {
         ZStack {
@@ -34,6 +41,11 @@ struct KidsView: View {
                 // Big status emoji
                 statusSection
 
+                // Photo from Daddy (if there's one for the kids)
+                if let url = kidsPhotoURL {
+                    kidsPhotoSection(url: url)
+                }
+
                 // Map
                 mapSection
 
@@ -50,6 +62,47 @@ struct KidsView: View {
                     .allowsHitTesting(false)
             }
         }
+        .fullScreenCover(isPresented: $photoFullscreen) {
+            if let url = kidsPhotoURL {
+                FullscreenPhotoView(url: url) { photoFullscreen = false }
+            }
+        }
+    }
+
+    // MARK: - Photo Section
+
+    private func kidsPhotoSection(url: URL) -> some View {
+        AsyncImage(url: url) { phase in
+            switch phase {
+            case .success(let image):
+                image.resizable().scaledToFill()
+            case .failure:
+                Color.white.overlay(
+                    Image(systemName: "photo.badge.exclamationmark")
+                        .foregroundColor(.kidsPurple)
+                )
+            case .empty:
+                Color.white.overlay(ProgressView())
+            @unknown default:
+                EmptyView()
+            }
+        }
+        .frame(height: 180)
+        .frame(maxWidth: .infinity)
+        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .stroke(
+                    LinearGradient(
+                        colors: [.kidsPurple, .kidsPink, .kidsSun],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ),
+                    lineWidth: 4
+                )
+        )
+        .shadow(color: .kidsPurple.opacity(0.3), radius: 16)
+        .onTapGesture { photoFullscreen = true }
     }
 
     // MARK: - Status Section

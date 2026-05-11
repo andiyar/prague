@@ -4,7 +4,10 @@ import Foundation
 actor SupabaseClient {
     static let shared = SupabaseClient()
 
-    private let baseURL = "https://dyxupzbyssvcxjppipnl.supabase.co/rest/v1"
+    private let projectURL = "https://dyxupzbyssvcxjppipnl.supabase.co"
+    private var baseURL: String { "\(projectURL)/rest/v1" }
+    private var storageURL: String { "\(projectURL)/storage/v1/object" }
+    private let photoBucket = "status-photos"
     private let apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR5eHVwemJ5c3N2Y3hqcHBpcG5sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg5Mjc0MTksImV4cCI6MjA4NDUwMzQxOX0._pmFY2kmyUYLauX-BQeELbWziJ4nuXIaxOM5YsUYsBI"
 
     private let decoder: JSONDecoder = {
@@ -49,7 +52,9 @@ actor SupabaseClient {
         kidsText: String,
         note: String?,
         latitude: Double?,
-        longitude: Double?
+        longitude: Double?,
+        photoUrl: String? = nil,
+        audience: StatusAudience = .both
     ) async throws {
         let url = URL(string: "\(baseURL)/status_override")!
         var request = URLRequest(url: url)
@@ -69,7 +74,9 @@ actor SupabaseClient {
             note: note,
             lat: latitude,
             lng: longitude,
-            expiresAt: expiresAt
+            expiresAt: expiresAt,
+            photoUrl: photoUrl,
+            audience: audience.rawValue
         )
 
         request.httpBody = try encoder.encode(override)
@@ -80,6 +87,31 @@ actor SupabaseClient {
               (200...299).contains(httpResponse.statusCode) else {
             throw SupabaseError.postFailed
         }
+    }
+
+    // MARK: - Photo Upload
+
+    /// Uploads JPEG image data to the `status-photos` bucket and returns the public URL.
+    func uploadStatusPhoto(jpegData: Data) async throws -> String {
+        let filename = "\(UUID().uuidString).jpg"
+        let url = URL(string: "\(storageURL)/\(photoBucket)/\(filename)")!
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue(apiKey, forHTTPHeaderField: "apikey")
+        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+        request.setValue("image/jpeg", forHTTPHeaderField: "Content-Type")
+        request.setValue("3600", forHTTPHeaderField: "Cache-Control")
+        request.httpBody = jpegData
+
+        let (_, response) = try await URLSession.shared.data(for: request)
+
+        guard let httpResponse = response as? HTTPURLResponse,
+              (200...299).contains(httpResponse.statusCode) else {
+            throw SupabaseError.postFailed
+        }
+
+        return "\(projectURL)/storage/v1/object/public/\(photoBucket)/\(filename)"
     }
 
     func clearStatusOverride() async throws {

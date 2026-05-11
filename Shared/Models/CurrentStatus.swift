@@ -10,6 +10,8 @@ struct CurrentStatus {
     let coordinate: CLLocationCoordinate2D?
     let isOverride: Bool
     let updatedAt: Date?
+    let photoUrl: String?
+    let audience: StatusAudience
 
     // Flight info (if currently flying)
     let flightNumber: String?
@@ -37,6 +39,8 @@ struct CurrentStatus {
         self.note = nil
         self.isOverride = false
         self.updatedAt = nil
+        self.photoUrl = nil
+        self.audience = .both
 
         if let lat = segment.lat, let lng = segment.lng {
             self.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
@@ -58,6 +62,8 @@ struct CurrentStatus {
         self.note = override.note
         self.isOverride = true
         self.updatedAt = override.createdAt
+        self.photoUrl = override.photoUrl
+        self.audience = override.effectiveAudience
 
         if let lat = override.lat, let lng = override.lng {
             self.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
@@ -81,6 +87,8 @@ struct CurrentStatus {
         coordinate: CLLocationCoordinate2D(latitude: -34.4278, longitude: 150.8931), // Wollongong
         isOverride: false,
         updatedAt: nil,
+        photoUrl: nil,
+        audience: .both,
         flightNumber: nil,
         flightFrom: nil,
         flightTo: nil,
@@ -97,6 +105,8 @@ struct CurrentStatus {
         coordinate: CLLocationCoordinate2D(latitude: -34.4278, longitude: 150.8931), // Wollongong
         isOverride: false,
         updatedAt: nil,
+        photoUrl: nil,
+        audience: .both,
         flightNumber: nil,
         flightFrom: nil,
         flightTo: nil,
@@ -112,6 +122,8 @@ struct CurrentStatus {
         coordinate: CLLocationCoordinate2D?,
         isOverride: Bool,
         updatedAt: Date?,
+        photoUrl: String?,
+        audience: StatusAudience,
         flightNumber: String?,
         flightFrom: String?,
         flightTo: String?,
@@ -125,6 +137,8 @@ struct CurrentStatus {
         self.coordinate = coordinate
         self.isOverride = isOverride
         self.updatedAt = updatedAt
+        self.photoUrl = photoUrl
+        self.audience = audience
         self.flightNumber = flightNumber
         self.flightFrom = flightFrom
         self.flightTo = flightTo
